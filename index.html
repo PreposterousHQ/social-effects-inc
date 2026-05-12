@@ -45,34 +45,58 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
+    background: rgba(14, 13, 11, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 168, 75, 0.15);
+  }
+  .nav-sprocket {
+    height: 9px;
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent 0px,
+      transparent 4px,
+      rgba(200, 168, 75, 0.28) 4px,
+      rgba(200, 168, 75, 0.28) 13px,
+      transparent 13px,
+      transparent 17px
+    );
+  }
+  .nav-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.25rem 3rem;
-    background: rgba(247, 244, 239, 0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+    padding: 0 3rem;
+    height: 54px;
   }
   .nav-logo {
     font-family: var(--serif);
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: var(--ink);
+    color: var(--paper);
     text-decoration: none;
   }
   .nav-logo span { color: var(--gold); }
   .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
     list-style: none;
+    align-items: center;
+  }
+  .nav-links li { display: flex; align-items: center; gap: 0.35rem; }
+  .nav-frame {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: rgba(200, 168, 75, 0.35);
+    letter-spacing: 0.05em;
+    line-height: 1;
   }
   .nav-links a {
     font-size: 0.82rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: rgba(247, 244, 239, 0.6);
     text-decoration: none;
     transition: color 0.2s;
   }
@@ -84,7 +108,7 @@
     text-transform: uppercase;
     color: var(--film) !important;
     background: var(--gold);
-    padding: 0.6rem 1.4rem;
+    padding: 0.5rem 1.4rem;
     border-radius: 2px;
     text-decoration: none;
     transition: background 0.2s;
@@ -814,7 +838,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 1rem 1.5rem; }
+    .nav-inner { padding: 0 1.5rem; }
     .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .fa-grid, .giving-intro, .mission-inner { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -834,14 +858,18 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <a href="#" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; color: var(--ink-muted);">Inc</span></a>
-  <ul class="nav-links">
-    <li><a href="#filmanthropy">Filmanthropy</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="Filmanthropy_Ledger.html">The Ledger</a></li>
-    <li><a href="#contact" class="nav-cta">Work With Us</a></li>
-  </ul>
+  <div class="nav-sprocket"></div>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; color:rgba(247,244,239,0.3);">Inc</span></a>
+    <ul class="nav-links">
+      <li><span class="nav-frame">01</span><a href="#filmanthropy">Filmanthropy</a></li>
+      <li><span class="nav-frame">02</span><a href="#services">Services</a></li>
+      <li><span class="nav-frame">03</span><a href="#mission">Mission</a></li>
+      <li><span class="nav-frame">04</span><a href="Filmanthropy_Ledger.html">The Ledger</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Work With Us</a>
+  </div>
+  <div class="nav-sprocket"></div>
 </nav>
 
 <!-- HERO -->
@@ -859,8 +887,8 @@
   <h1 class="hero-headline">From Special Effects to <em>Social Effects</em></h1>
 
   <p class="hero-subhead">New Jersey's film boom is the largest in the country.<br>
-What a production leaves behind,<br>
-in boxes and in people,<br>
+What gets left on the truck, and<br>
+what gets left in people's hearts,<br>
 that's going to be our business.</p>
 
 </section>
