@@ -41,6 +41,22 @@
   }
 
   /* ── NAVIGATION (inline) ── */
+  .nav-frame-link {
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+  .nav-frame-link:hover {
+    background: rgba(247,244,239,0.07);
+    box-shadow: inset 0 0 18px rgba(247,244,239,0.06);
+  }
+  .nav-frame-link:hover .nav-frame-label {
+    color: #f7f4ef;
+    text-shadow: 0 0 12px rgba(247,244,239,0.9),
+                 0 0 24px rgba(247,244,239,0.5),
+                 0 0 40px rgba(200,168,75,0.3);
+  }
+  .nav-frame-link:hover .frame-no {
+    color: rgba(200,168,75,0.5);
+  }
   nav:hover {
     background: #1e1a0e;
   }
@@ -803,10 +819,10 @@
   <div style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 2.5rem;">
     <a href="#" style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;letter-spacing:0.02em;color:#f7f4ef;text-decoration:none;">Social<span style="color:#c8a84b;">Effects</span> <span style="font-size:0.7rem;font-weight:300;letter-spacing:0.08em;color:rgba(247,244,239,0.3);">Inc</span></a>
     <div style="display:flex;gap:2rem;align-items:center;">
-      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">01</span><a href="#filmanthropy" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;">Filmanthropy</a></span>
-      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">02</span><a href="#services" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;">Services</a></span>
-      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">03</span><a href="#mission" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;">Mission</a></span>
-      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">04</span><a href="Filmanthropy_Ledger.html" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;">The Ledger</a></span>
+      <a href="#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">01</span><span class="nav-frame-label">Filmanthropy</span></a>
+      <a href="#services" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">02</span><span class="nav-frame-label">Services</span></a>
+      <a href="#mission" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">03</span><span class="nav-frame-label">Mission</span></a>
+      <a href="Filmanthropy_Ledger.html" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">04</span><span class="nav-frame-label">The Ledger</span></a>
     </div>
     <a href="#contact" style="font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#1a1814;background:#c8a84b;padding:0.5rem 1.4rem;border-radius:2px;text-decoration:none;">Work With Us</a>
   </div>
