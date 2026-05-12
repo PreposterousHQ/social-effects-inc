@@ -549,67 +549,6 @@
   /* ── SERVICES ── */
   .services { background: var(--cream); max-width: none; }
   .services-inner { max-width: 1100px; margin: 0 auto; }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2rem;
-    margin-top: 3.5rem;
-  }
-  .service-card {
-    border: 1px solid rgba(14, 13, 11, 0.1);
-    border-radius: 4px;
-    padding: 1.75rem 1.5rem;
-    background: var(--cream);
-    position: relative;
-    overflow: hidden;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gold);
-  }
-  .service-card.human-accent::before { background: var(--moss); }
-  .service-num {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .service-card.human-accent .service-num { color: var(--moss); }
-  .service-title {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-    color: var(--ink);
-    line-height: 1.3;
-  }
-  .service-desc {
-    font-size: 0.9rem;
-    color: var(--ink-muted);
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
-  }
-  .service-for {
-    font-size: 0.75rem;
-    font-family: var(--mono);
-    letter-spacing: 0.08em;
-    color: var(--moss);
-    text-transform: uppercase;
-  }
-  .service-examples {
-    margin-top: 1rem;
-    border-top: 1px solid rgba(14,13,11,0.07);
-    padding-top: 1rem;
-  }
-  .service-card.human-accent .giving-toggle { color: var(--moss); }
-  .service-card.human-accent .giving-toggle:hover { color: var(--rust); }
-  .service-card .giving-items li { background: var(--paper-warm); }
 
   /* ── NJ TAKE TWO ── */
   .njtake { background: var(--film); padding: 6rem 3rem; }
@@ -852,6 +791,76 @@
       transparent 30px
     );
     opacity: 0.5;
+  }
+
+  /* ── SERVICES LIST ── */
+  .svc-list {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(14,13,11,0.1);
+  }
+  .svc-row {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    gap: 0 1.5rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(14,13,11,0.08);
+  }
+  .svc-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    padding-top: 3px;
+  }
+  .svc-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 0.3rem;
+    line-height: 1.3;
+  }
+  .svc-desc {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+  .svc-audience {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 3px;
+  }
+  .svc-divider {
+    height: 1px;
+    background: rgba(200,168,75,0.2);
+    margin: 0.25rem 0;
+  }
+  .human-row .svc-num,
+  .human-num { color: var(--moss); }
+  .human-audience { color: var(--moss); }
+  .svc-human-pill {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--moss);
+    border: 1px solid rgba(74,103,65,0.4);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    font-style: normal;
+  }
+  @media (max-width: 700px) {
+    .svc-row { grid-template-columns: 2rem 1fr; }
+    .svc-audience { display: none; }
   }
 
   /* ── RESPONSIVE ── */
@@ -1262,91 +1271,84 @@
 <section class="services" id="services">
   <div class="services-inner">
     <span class="section-tag">What We Offer</span>
-    <h2 class="section-headline">Services we want to build — for productions, municipalities, nonprofits & vendors</h2>
+    <h2 class="section-headline">Services for productions, municipalities, <em>nonprofits & vendors</em></h2>
 
-    <div class="services-grid">
+    <div class="svc-list">
 
-      <div class="service-card">
-        <span class="service-num">01 — Production</span>
-        <h3 class="service-title">Filmanthropy Wrap-Out Concierge</h3>
-        <p class="service-desc">End-of-production coordination of all surplus — sets, wardrobe, food, props, equipment, vehicles, flowers. We want to handle everything after the final shot.</p>
-        <p class="service-for">For: Productions & Studios</p>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">02 — Production</span>
-        <h3 class="service-title">Regenerative Pre-Production Audit</h3>
-        <p class="service-desc">Before production begins, we want to assess every giving opportunity — sustainable sourcing, local vendor matching, and intentional community impact design. Build it in, not on.</p>
-        <p class="service-for">For: Productions & Studios</p>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">03 — Documentation</span>
-        <h3 class="service-title">Filmanthropy Impact Report</h3>
-        <p class="service-desc">Comprehensive documentation of your production's community impact — material and human — tax-ready, ESG-ready, and PR-ready. Quantified value, named recipients, beautiful delivery.</p>
-        <p class="service-for">For: Productions, Studios & Brands</p>
-      </div>
-
-      <div class="service-card human-accent">
-        <span class="service-num">04 — Human Gift</span>
-        <h3 class="service-title">Experiential Giving Coordination</h3>
-        <p class="service-desc">We coordinate the human layer of Filmanthropy — the giving that goes beyond the material. Workshops, set visits, mentorships, dream moments, and community screenings, all organized so productions can say yes without adding to their workload.</p>
-        <p class="service-for">For: Productions, Studios & Community Partners</p>
-        <div class="service-examples">
-          <button class="giving-toggle" onclick="toggleRecipients(this)" aria-expanded="false">
-            <span class="giving-toggle-arrow">›</span> See examples
-          </button>
-          <div class="giving-recipients">
-            <ul class="giving-items">
-              <li>Actor workshops at 180 TLA</li>
-              <li>DP lighting classes</li>
-              <li>Student PA days</li>
-              <li>Dream visits</li>
-              <li>Nonprofit Q&As</li>
-            </ul>
-          </div>
+      <div class="svc-row">
+        <span class="svc-num">01</span>
+        <div class="svc-body">
+          <p class="svc-title">Filmanthropy Wrap-Out Concierge</p>
+          <p class="svc-desc">End-of-production coordination of all surplus — wardrobe, food, sets, props, equipment, vehicles, flowers. We want to handle everything after the final shot.</p>
         </div>
+        <span class="svc-audience">Productions & Studios</span>
       </div>
 
-      <div class="service-card human-accent">
-        <span class="service-num">05 — Youth & Education</span>
-        <h3 class="service-title">School & Set Access Program</h3>
-        <p class="service-desc">Connecting productions with local high schools, Brookdale Film Academy, and community college programs — set visits, career pathway introductions, hands-on learning days, and behind-the-scenes access for students who've never seen this world up close.</p>
-        <p class="service-for">For: Productions, Schools & Educational Orgs</p>
-        <div class="service-examples">
-          <button class="giving-toggle" onclick="toggleRecipients(this)" aria-expanded="false">
-            <span class="giving-toggle-arrow">›</span> See examples
-          </button>
-          <div class="giving-recipients">
-            <ul class="giving-items">
-              <li>Brookdale Film Academy days</li>
-              <li>High school A/V partnerships</li>
-              <li>PA apprenticeships</li>
-              <li>Career panels</li>
-            </ul>
-          </div>
+      <div class="svc-row">
+        <span class="svc-num">02</span>
+        <div class="svc-body">
+          <p class="svc-title">Regenerative Pre-Production Audit</p>
+          <p class="svc-desc">Assess every giving opportunity before production begins — sustainable sourcing, local vendor matching, intentional community impact design. Build it in, not on.</p>
         </div>
+        <span class="svc-audience">Productions & Studios</span>
       </div>
 
-      <div class="service-card">
-        <span class="service-num">06 — Municipal</span>
-        <h3 class="service-title">Film Ready Filmanthropy Integration</h3>
-        <p class="service-desc">We want to help Film Ready communities build the local giving infrastructure so productions can act on-site, immediately. Permanent pipelines, not one-off donations.</p>
-        <p class="service-for">For: Municipalities</p>
+      <div class="svc-row">
+        <span class="svc-num">03</span>
+        <div class="svc-body">
+          <p class="svc-title">Filmanthropy Impact Report</p>
+          <p class="svc-desc">Full community impact documentation — material and human — tax-ready, ESG-ready, and PR-ready. Quantified value, named recipients, beautifully delivered.</p>
+        </div>
+        <span class="svc-audience">Productions, Studios & Brands</span>
       </div>
 
-      <div class="service-card">
-        <span class="service-num">07 — Network</span>
-        <h3 class="service-title">Sustainable Vendor Directory</h3>
-        <p class="service-desc">A curated, vetted directory of organic caterers, sustainable materials suppliers, local artisans, and NJ-based vendors. Productions find them. We want to vouch for them.</p>
-        <p class="service-for">For: NJ Vendors & Suppliers</p>
+      <div class="svc-divider"></div>
+
+      <div class="svc-row human-row">
+        <span class="svc-num human-num">04</span>
+        <div class="svc-body">
+          <p class="svc-title">Experiential Giving Coordination <span class="svc-human-pill">Human Gift</span></p>
+          <p class="svc-desc">Workshops, set visits, mentorships, dream moments, and community screenings — all coordinated so productions can say yes without adding to their workload.</p>
+        </div>
+        <span class="svc-audience human-audience">Productions & Community</span>
       </div>
 
-      <div class="service-card">
-        <span class="service-num">08 — Community</span>
-        <h3 class="service-title">Recipient Network Membership</h3>
-        <p class="service-desc">Nonprofits, schools, shelters, food banks, theaters, and community organizations join our vetted receiving network — free. Productions find you. We coordinate intake.</p>
-        <p class="service-for">For: Nonprofits & Community Orgs</p>
+      <div class="svc-row human-row">
+        <span class="svc-num human-num">05</span>
+        <div class="svc-body">
+          <p class="svc-title">School & Set Access Program <span class="svc-human-pill">Human Gift</span></p>
+          <p class="svc-desc">Set visits, career pathway introductions, and PA apprenticeships for local high schools, Brookdale Film Academy, and community college programs.</p>
+        </div>
+        <span class="svc-audience human-audience">Productions & Schools</span>
+      </div>
+
+      <div class="svc-divider"></div>
+
+      <div class="svc-row">
+        <span class="svc-num">06</span>
+        <div class="svc-body">
+          <p class="svc-title">Film Ready Filmanthropy Integration</p>
+          <p class="svc-desc">Help Film Ready communities build permanent local giving pipelines — not one-off donations.</p>
+        </div>
+        <span class="svc-audience">Municipalities</span>
+      </div>
+
+      <div class="svc-row">
+        <span class="svc-num">07</span>
+        <div class="svc-body">
+          <p class="svc-title">Sustainable Vendor Directory</p>
+          <p class="svc-desc">Vetted NJ caterers, materials suppliers, local artisans, and NJ-based vendors. Productions find them. We want to vouch for them.</p>
+        </div>
+        <span class="svc-audience">NJ Vendors & Suppliers</span>
+      </div>
+
+      <div class="svc-row">
+        <span class="svc-num">08</span>
+        <div class="svc-body">
+          <p class="svc-title">Recipient Network Membership</p>
+          <p class="svc-desc">Nonprofits, schools, shelters, food banks, theaters, and community organizations join our vetted receiving network — free. Productions find you. We coordinate intake.</p>
+        </div>
+        <span class="svc-audience">Nonprofits & Community Orgs</span>
       </div>
 
     </div>
