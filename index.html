@@ -40,80 +40,7 @@
     overflow-x: hidden;
   }
 
-  /* ── NAVIGATION ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(14, 13, 11, 0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200, 168, 75, 0.15);
-  }
-  .nav-sprocket {
-    height: 9px;
-    background-image: repeating-linear-gradient(
-      to right,
-      transparent 0px,
-      transparent 4px,
-      rgba(200, 168, 75, 0.28) 4px,
-      rgba(200, 168, 75, 0.28) 13px,
-      transparent 13px,
-      transparent 17px
-    );
-  }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 54px;
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--paper);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-links li { display: flex; align-items: center; gap: 0.35rem; }
-  .nav-frame {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: rgba(200, 168, 75, 0.35);
-    letter-spacing: 0.05em;
-    line-height: 1;
-  }
-  .nav-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(247, 244, 239, 0.6);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--film) !important;
-    background: var(--gold);
-    padding: 0.5rem 1.4rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); }
+  /* ── NAVIGATION (inline) ── */
 
   /* ── HERO ── */
   .hero {
@@ -141,20 +68,6 @@
     height: 100%;
     background: linear-gradient(135deg, transparent 40%, rgba(200, 168, 75, 0.06) 100%);
     pointer-events: none;
-    z-index: 5;
-  }
-  .hero-filmstrip {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: repeating-linear-gradient(
-      to bottom,
-      var(--gold) 0px,
-      var(--gold) 16px,
-      transparent 16px,
-      transparent 28px
-    );
-    opacity: 0.6;
     z-index: 5;
   }
   .hero-tag {
@@ -838,8 +751,6 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .nav-inner { padding: 0 1.5rem; }
-    .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .fa-grid, .giving-intro, .mission-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .how-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -857,19 +768,57 @@
 <body>
 
 <!-- NAVIGATION -->
-<nav>
-  <div class="nav-sprocket"></div>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; color:rgba(247,244,239,0.3);">Inc</span></a>
-    <ul class="nav-links">
-      <li><span class="nav-frame">01</span><a href="#filmanthropy">Filmanthropy</a></li>
-      <li><span class="nav-frame">02</span><a href="#services">Services</a></li>
-      <li><span class="nav-frame">03</span><a href="#mission">Mission</a></li>
-      <li><span class="nav-frame">04</span><a href="Filmanthropy_Ledger.html">The Ledger</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Work With Us</a>
+<nav style="background:#0a0806;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
+  <div style="display:flex;align-items:center;justify-content:space-around;height:10px;padding:0 8px;">
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
   </div>
-  <div class="nav-sprocket"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 2.5rem;">
+    <a href="#" style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;letter-spacing:0.02em;color:#f7f4ef;text-decoration:none;">Social<span style="color:#c8a84b;">Effects</span> <span style="font-size:0.7rem;font-weight:300;letter-spacing:0.08em;color:rgba(247,244,239,0.3);">Inc</span></a>
+    <div style="display:flex;gap:2rem;align-items:center;">
+      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">01</span><a href="#filmanthropy" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;">Filmanthropy</a></span>
+      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">02</span><a href="#services" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;">Services</a></span>
+      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">03</span><a href="#mission" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;">Mission</a></span>
+      <span style="display:flex;align-items:center;gap:0.35rem;"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">04</span><a href="Filmanthropy_Ledger.html" style="font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;">The Ledger</a></span>
+    </div>
+    <a href="#contact" style="font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#1a1814;background:#c8a84b;padding:0.5rem 1.4rem;border-radius:2px;text-decoration:none;">Work With Us</a>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-around;height:10px;padding:0 8px;">
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+    <div style="width:11px;height:6px;background:rgba(200,168,75,0.28);border-radius:1px;flex-shrink:0;"></div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -880,7 +829,6 @@
   <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.06%22/%3E%3C/svg%3E');opacity:0.4;z-index:2;pointer-events:none;"></div>
   <div class="hero-grain"></div>
   <div class="hero-accent"></div>
-  <div class="hero-filmstrip"></div>
 
   <p class="hero-tag">Wrap It Forward</p>
 
@@ -1244,7 +1192,6 @@ that's going to be our business.</p>
   <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,0.96) 0%,rgba(10,8,6,0.65) 40%,rgba(10,8,6,0.35) 100%);z-index:1;"></div>
   <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);z-index:2;pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,0.72) 100%);z-index:2;pointer-events:none;"></div>
-  <div style="position:absolute;left:0;top:0;bottom:0;width:4px;background:repeating-linear-gradient(to bottom,var(--gold) 0px,var(--gold) 16px,transparent 16px,transparent 28px);opacity:0.5;z-index:3;"></div>
   <div class="njtake-inner">
     <span class="section-tag" style="text-align:center; display:block;">Our Position in the Ecosystem</span>
     <h2 class="njtake-headline">The state has a foundation. <em>We want to build the full infrastructure.</em></h2>
