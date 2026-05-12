@@ -40,81 +40,19 @@
   }
 
   /* ── NAVIGATION ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: rgba(14, 13, 11, 0.97);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(200, 168, 75, 0.15);
+  .nav-frame-link:hover {
+    background: rgba(247,244,239,0.07);
+    box-shadow: inset 0 0 18px rgba(247,244,239,0.06);
   }
-  .nav-sprocket {
-    height: 9px;
-    background-image: repeating-linear-gradient(
-      to right,
-      transparent 0px,
-      transparent 4px,
-      rgba(200, 168, 75, 0.28) 4px,
-      rgba(200, 168, 75, 0.28) 13px,
-      transparent 13px,
-      transparent 17px
-    );
+  .nav-frame-link:hover .nav-frame-label {
+    color: #f7f4ef;
+    text-shadow: 0 0 12px rgba(247,244,239,0.9),
+                 0 0 24px rgba(247,244,239,0.5),
+                 0 0 40px rgba(200,168,75,0.3);
   }
-  .nav-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 54px;
+  .nav-frame-link:hover .frame-no {
+    color: rgba(200,168,75,0.5);
   }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: var(--paper);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-links li { display: flex; align-items: center; gap: 0.35rem; }
-  .nav-frame {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    color: rgba(200, 168, 75, 0.35);
-    letter-spacing: 0.05em;
-    line-height: 1;
-  }
-  .nav-links a {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(247, 244, 239, 0.6);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--film) !important;
-    background: var(--gold);
-    padding: 0.5rem 1.4rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); }
 
   /* ── HERO ── */
   .hero {
@@ -125,7 +63,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    padding: 8rem 3rem 5rem;
+    padding: 68px 3rem 5rem;
   }
   .hero-grain {
     position: absolute;
@@ -843,19 +781,90 @@
 <body>
 
 <!-- NAVIGATION -->
-<nav>
-  <div class="nav-sprocket"></div>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="social-effects-logo.png?v=4" alt="Social Effects Inc logo" style="height:52px;width:52px;object-fit:contain;margin-right:0.5rem;flex-shrink:0;">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; color:rgba(247,244,239,0.3);">Inc</span></a>
-    <ul class="nav-links">
-      <li><span class="nav-frame">01</span><a href="#filmanthropy">Filmanthropy</a></li>
-      <li><span class="nav-frame">02</span><a href="#services">Services</a></li>
-      <li><span class="nav-frame">03</span><a href="#mission">Mission</a></li>
-      <li><span class="nav-frame">04</span><a href="Filmanthropy_Ledger.html">The Ledger</a></li>
-    </ul>
-    <a href="#contact" class="nav-cta">Work With Us</a>
+<nav style="background:#0a0806;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
+
+  <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;gap:22px;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
   </div>
-  <div class="nav-sprocket"></div>
+
+  <div style="position:absolute;bottom:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;gap:22px;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+
+  <div style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
+
+  <div style="position:absolute;top:22px;bottom:22px;left:0;right:0;display:flex;align-items:center;padding:0 20px;z-index:5;">
+
+    <a href="#" style="display:flex;align-items:center;gap:6px;padding-right:1.25rem;border-right:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
+      <img src="social-effects-logo.png?v=4" alt="Social Effects Inc logo" style="height:44px;width:44px;object-fit:contain;flex-shrink:0;">
+      <span style="font-family:var(--serif);font-size:0.95rem;font-weight:700;color:var(--paper);">Social<em style="color:var(--gold);font-style:normal;">Effects</em></span>
+      <span style="font-family:var(--mono);font-size:0.5rem;color:rgba(200,168,75,0.35);letter-spacing:0.08em;">Inc</span>
+    </a>
+
+    <div style="display:flex;align-items:center;flex:1;justify-content:center;height:100%;">
+
+      <a href="#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-left:1px solid rgba(200,168,75,0.1);border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">01</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Filmanthropy</span>
+      </a>
+
+      <a href="#services" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">02</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Services</span>
+      </a>
+
+      <a href="#mission" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">03</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Mission</span>
+      </a>
+
+      <a href="Filmanthropy_Ledger.html" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">04</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">The Ledger</span>
+      </a>
+
+    </div>
+
+    <a href="#contact" style="display:flex;align-items:center;padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
+      <span style="background:var(--gold);color:#0a0806;font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2px;font-weight:700;">Work With Us</span>
+    </a>
+
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1384,6 +1393,47 @@ that's going to be our business.</p>
 
 <!-- FOOTER -->
 <footer>
+  <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;gap:22px;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+  <div style="position:absolute;bottom:24px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;gap:22px;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+  <div style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
   <div class="footer-taglines">
     <span class="footer-tag">From Special Effects to Social Effects</span>
     <span class="footer-tag">·</span>
