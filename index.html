@@ -501,7 +501,7 @@
 
   /* ── NJ TAKE TWO ── */
   .njtake { background: var(--film); padding: 6rem 3rem; position: relative; overflow: hidden; }
-  .njtake-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .njtake-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; z-index: 5; }
   .njtake-headline {
     font-family: var(--serif);
     font-size: clamp(1.6rem, 3.5vw, 2.4rem);
@@ -846,8 +846,8 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div style="position:absolute;inset:0;background-image:url('hero-bg.png');background-size:cover;background-position:90% center;filter:brightness(0.42) saturate(0.75);z-index:0;"></div>
-  <div style="position:absolute;inset:0;background:rgba(26,24,20,0.22);z-index:1;"></div>
+  <div style="position:absolute;inset:0;background-image:url('hero-bg.png');background-size:cover;background-position:85% center;filter:brightness(0.42) saturate(0.75);z-index:0;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,24,20,0.75) 0%,rgba(26,24,20,0.35) 40%,rgba(26,24,20,0.08) 100%);z-index:1;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(200,168,75,0.05) 0%,transparent 60%);z-index:1;"></div>
   <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.06%22/%3E%3C/svg%3E');opacity:0.4;z-index:2;pointer-events:none;"></div>
   <div class="hero-grain"></div>
@@ -1208,13 +1208,18 @@ that's going to be our business.</p>
 
 <!-- OUR POSITION IN THE ECOSYSTEM -->
 <div class="njtake">
-  <div style="position:absolute;left:0;top:0;bottom:0;width:4px;background:repeating-linear-gradient(to bottom,var(--gold) 0px,var(--gold) 16px,transparent 16px,transparent 28px);opacity:0.5;z-index:1;"></div>
+  <div style="position:absolute;inset:0;background-image:url('fort-lee-1920.jpg');background-size:cover;background-position:center center;filter:sepia(0.75) contrast(1.15) brightness(0.35) saturate(0.6);z-index:0;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,0.96) 0%,rgba(10,8,6,0.65) 40%,rgba(10,8,6,0.35) 100%);z-index:1;"></div>
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,0.72) 100%);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;left:0;top:0;bottom:0;width:4px;background:repeating-linear-gradient(to bottom,var(--gold) 0px,var(--gold) 16px,transparent 16px,transparent 28px);opacity:0.5;z-index:3;"></div>
   <div class="njtake-inner">
     <span class="section-tag" style="text-align:center; display:block;">Our Position in the Ecosystem</span>
     <h2 class="njtake-headline">The state has a foundation. <em>We want to build the full infrastructure.</em></h2>
     <p class="njtake-body">New Jersey's Take Two program — run by the NJMPTVC under Jon Crowley — is already doing real work. Productions like Happy Gilmore 2, The Beast in Me, and House of Dynamite have donated surplus to community organizations, schools, and nonprofits through it. Mayor Perry in Middletown has shown what it looks like when someone takes it personally: wardrobe from Rabbit Rabbit going to 180 Turning Lives Around, food to the local pantry, a genuine proof of concept.</p>
     <p class="njtake-body">Social Effects wants to be the voice, platform, and infrastructure that makes that proof of concept a standard. Dedicated coordination, vetted nonprofit pipelines, pre-production planning, documented impact — so that what one mayor is doing by hand in one town becomes something systematic, celebrated, and available to every Film Ready community in New Jersey. Filmanthropy as an innovation unto itself. It would be our privilege to help build that.</p>
     <p class="njtake-body">New Jersey was central to the birth of American cinema. For 130 years it watched the industry it helped create flourish elsewhere. The boom coming back to this state is an extraordinary economic story — and an extraordinary opportunity to ask a question no film state has yet fully embraced: <em>what becomes possible when a production is designed to give back?</em> We think New Jersey, with its community spirit, its municipalities, and this extraordinary moment, is exactly the place to find out. <a href="Filmanthropy_Ledger.html" style="color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px;">Read The Filmanthropy Ledger &rarr;</a></p>
+    <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(200,168,75,0.3);margin-top:2rem;text-align:center;">Selznick Studio · Fort Lee, New Jersey · c. 1920</p>
   </div>
 </div>
 
