@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow, noarchive">
 <title>Social Effects — Filmanthropy & Regenerative Filmmaking | Central New Jersey</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,34 +39,82 @@
     overflow-x: hidden;
   }
 
-  /* ── NAVIGATION (inline) ── */
-  .nav-frame-link {
-    transition: background 0.2s ease, box-shadow 0.2s ease;
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(14, 13, 11, 0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 168, 75, 0.15);
   }
-  .nav-frame-link:hover {
-    background: rgba(247,244,239,0.07);
-    box-shadow: inset 0 0 18px rgba(247,244,239,0.06);
+  .nav-sprocket {
+    height: 9px;
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent 0px,
+      transparent 4px,
+      rgba(200, 168, 75, 0.28) 4px,
+      rgba(200, 168, 75, 0.28) 13px,
+      transparent 13px,
+      transparent 17px
+    );
   }
-  .nav-frame-link:hover .nav-frame-label {
-    color: #f7f4ef;
-    text-shadow: 0 0 12px rgba(247,244,239,0.9),
-                 0 0 24px rgba(247,244,239,0.5),
-                 0 0 40px rgba(200,168,75,0.3);
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 54px;
   }
-  .nav-frame-link:hover .frame-no {
-    color: rgba(200,168,75,0.5);
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--paper);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
   }
-  nav:hover {
-    background: #1e1a0e;
+  .nav-logo span { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
   }
-  nav:hover .nav-label,
-  nav:hover a span:last-child {
-    color: rgba(200,168,75,0.8);
+  .nav-links li { display: flex; align-items: center; gap: 0.35rem; }
+  .nav-frame {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: rgba(200, 168, 75, 0.35);
+    letter-spacing: 0.05em;
+    line-height: 1;
   }
-  nav:hover .edge-line,
-  nav:hover [style*="background:rgba(200,168,75"] {
-    opacity: 1.5;
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(247, 244, 239, 0.6);
+    text-decoration: none;
+    transition: color 0.2s;
   }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--film) !important;
+    background: var(--gold);
+    padding: 0.5rem 1.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
 
   /* ── HERO ── */
   .hero {
@@ -681,7 +728,7 @@
   }
   .footer-logo { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--paper); }
   .footer-logo span { color: var(--gold); }
-  .footer-taglines { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-taglines { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
   .footer-tag {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -776,6 +823,8 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
+    .nav-inner { padding: 0 1.5rem; }
+    .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .fa-grid, .giving-intro, .mission-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .how-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -793,57 +842,19 @@
 <body>
 
 <!-- NAVIGATION -->
-<nav style="background:#1c1a14;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
-  <div style="display:flex;align-items:center;justify-content:space-around;height:10px;padding:0 8px;">
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
+<nav>
+  <div class="nav-sprocket"></div>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="social-effects-logo.png?v=4" alt="Social Effects Inc logo" style="height:52px;width:52px;object-fit:contain;margin-right:0.5rem;flex-shrink:0;">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; color:rgba(247,244,239,0.3);">Inc</span></a>
+    <ul class="nav-links">
+      <li><span class="nav-frame">01</span><a href="#filmanthropy">Filmanthropy</a></li>
+      <li><span class="nav-frame">02</span><a href="#services">Services</a></li>
+      <li><span class="nav-frame">03</span><a href="#mission">Mission</a></li>
+      <li><span class="nav-frame">04</span><a href="Filmanthropy_Ledger.html">The Ledger</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Work With Us</a>
   </div>
-  <div style="display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 2.5rem;">
-    <a href="#" style="font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;font-weight:700;letter-spacing:0.02em;color:#f7f4ef;text-decoration:none;display:flex;align-items:center;"><img src="social-effects-logo.png?v=4" alt="Social Effects Inc logo" style="height:52px;width:52px;object-fit:contain;margin-right:0.5rem;flex-shrink:0;">Social<span style="color:#c8a84b;">Effects</span> <span style="font-size:0.7rem;font-weight:300;letter-spacing:0.08em;color:rgba(247,244,239,0.3);">Inc</span></a>
-    <div style="display:flex;gap:2rem;align-items:center;">
-      <a href="#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">01</span><span class="nav-frame-label">Filmanthropy</span></a>
-      <a href="#services" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">02</span><span class="nav-frame-label">Services</span></a>
-      <a href="#mission" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">03</span><span class="nav-frame-label">Mission</span></a>
-      <a href="Filmanthropy_Ledger.html" class="nav-frame-link" style="display:flex;align-items:center;gap:0.35rem;font-size:0.82rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(247,244,239,0.6);text-decoration:none;transition:color 0.2s ease;padding:4px 8px;border-radius:2px;"><span class="frame-no" style="font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(200,168,75,0.35);letter-spacing:0.05em;line-height:1;">04</span><span class="nav-frame-label">The Ledger</span></a>
-    </div>
-    <a href="#contact" style="font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:#1a1814;background:#c8a84b;padding:0.5rem 1.4rem;border-radius:2px;text-decoration:none;">Work With Us</a>
-  </div>
-  <div style="display:flex;align-items:center;justify-content:space-around;height:10px;padding:0 8px;">
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-    <div style="width:11px;height:6px;background:#0a0806;box-shadow:inset 0 0 0 1px rgba(0,0,0,0.8);border-radius:1px;flex-shrink:0;"></div>
-  </div>
+  <div class="nav-sprocket"></div>
 </nav>
 
 <!-- HERO -->
@@ -1372,116 +1383,21 @@ that's going to be our business.</p>
 
 <!-- FOOTER -->
 <footer>
-<style>
-.footer-frame-link {
-  transition: background 0.2s ease;
-}
-.footer-frame-link:hover {
-  background: rgba(247,244,239,0.06);
-  box-shadow: inset 0 0 18px rgba(247,244,239,0.05);
-}
-.footer-frame-link:hover .footer-frame-label {
-  color: #f7f4ef;
-  text-shadow: 0 0 10px rgba(247,244,239,0.9),
-               0 0 22px rgba(247,244,239,0.5),
-               0 0 38px rgba(200,168,75,0.3);
-}
-.footer-frame-link:hover .footer-frame-no {
-  color: rgba(200,168,75,0.5);
-}
-</style>
-
-<div style="background:#0e0c09;position:relative;overflow:hidden;border-top:1px solid rgba(200,168,75,0.1);">
-
-  <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:22px;pointer-events:none;z-index:1;">
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  <div class="footer-taglines">
+    <span class="footer-tag">From Special Effects to Social Effects</span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag">Sets. Souls. Stories.</span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag">Wrap It Forward</span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag"><a href="Filmanthropy_Ledger.html" style="color: inherit; text-decoration: none;">The Filmanthropy Ledger</a></span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag">Central New Jersey</span>
   </div>
-
-  <div style="position:absolute;bottom:28px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:22px;pointer-events:none;z-index:1;">
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
-    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  <p class="footer-legal">© 2026 Social Effects Inc. Filmanthropy & Regenerative Filmmaking.</p>
+  <div style="padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.12);flex-shrink:0;height:100%;display:flex;align-items:center;">
+    <img src="social-effects-logo-text.png?v=3" alt="Social Effects Inc" style="height:180px;width:180px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(200,168,75,0.2));">
   </div>
-
-  <div style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
-  <div style="position:absolute;bottom:47px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
-
-  <div style="position:relative;z-index:5;display:flex;align-items:center;height:68px;padding:0 20px;">
-
-    <div style="display:flex;align-items:center;gap:4px;padding-right:1.25rem;border-right:1px solid rgba(200,168,75,0.12);flex-shrink:0;height:24px;">
-      <img src="social-effects-logo.png?v=4" alt="Social Effects Inc logo" style="height:20px;width:20px;object-fit:contain;flex-shrink:0;">
-      <span style="font-family:var(--serif);font-size:0.9rem;font-weight:700;color:var(--paper);">Social<em style="color:var(--gold);font-style:normal;">Effects</em></span>
-      <span style="font-family:var(--mono);font-size:0.5rem;color:rgba(200,168,75,0.35);letter-spacing:0.08em;">Inc</span>
-    </div>
-
-    <div style="display:flex;align-items:center;flex:1;justify-content:center;height:24px;">
-
-      <div class="footer-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1rem;border-left:1px solid rgba(200,168,75,0.1);border-right:1px solid rgba(200,168,75,0.1);position:relative;cursor:default;">
-        <span class="footer-frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">01</span>
-        <span class="footer-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(247,244,239,0.3);white-space:nowrap;">From Special Effects to Social Effects</span>
-      </div>
-
-      <div class="footer-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1rem;border-right:1px solid rgba(200,168,75,0.1);position:relative;cursor:default;">
-        <span class="footer-frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">02</span>
-        <span class="footer-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(247,244,239,0.3);white-space:nowrap;">Sets. Souls. Stories.</span>
-      </div>
-
-      <div class="footer-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1rem;border-right:1px solid rgba(200,168,75,0.1);position:relative;cursor:default;">
-        <span class="footer-frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">03</span>
-        <span class="footer-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(247,244,239,0.3);white-space:nowrap;">Wrap It Forward</span>
-      </div>
-
-      <div class="footer-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1rem;border-right:1px solid rgba(200,168,75,0.1);position:relative;cursor:default;">
-        <span class="footer-frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">04</span>
-        <span class="footer-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(247,244,239,0.3);white-space:nowrap;">The Filmanthropy Ledger</span>
-      </div>
-
-      <div class="footer-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1rem;border-right:1px solid rgba(200,168,75,0.1);position:relative;cursor:default;">
-        <span class="footer-frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">05</span>
-        <span class="footer-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(247,244,239,0.3);white-space:nowrap;">Central New Jersey</span>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div style="position:relative;z-index:5;text-align:center;padding:0 1.5rem 0.6rem;border-top:1px solid rgba(200,168,75,0.05);">
-    <span style="font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;color:rgba(247,244,239,0.18);">© 2026 Social Effects Inc. · Filmanthropy & Regenerative Filmmaking.</span>
-  </div>
-
-</div>
 </footer>
 
 <script>
