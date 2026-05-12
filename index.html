@@ -464,7 +464,7 @@
   .services-inner { max-width: 1100px; margin: 0 auto; }
 
   /* ── NJ TAKE TWO ── */
-  .njtake { background: var(--film); padding: 6rem 3rem; position: relative; overflow: hidden; }
+  .njtake { background: var(--film); padding: 6rem 3rem 2.5rem; position: relative; overflow: hidden; }
   .njtake-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; z-index: 5; }
   .njtake-headline {
     font-family: var(--serif);
@@ -568,17 +568,15 @@
     display: block;
     margin-bottom: 2rem;
   }
-  .context-stats { display: flex; gap: 0; flex-wrap: wrap; }
+  .context-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem; }
   .context-stat {
-    flex: 1;
-    min-width: 160px;
-    padding: 1rem 1.25rem;
+    padding: 0.75rem 0;
     border-left: 1px solid rgba(200, 168, 75, 0.2);
   }
   .context-stat:first-child { border-left: none; }
   .context-num {
     font-family: var(--serif);
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 900;
     color: var(--gold);
     display: block;
@@ -782,7 +780,7 @@
     .fa-grid, .giving-intro, .mission-inner { grid-template-columns: 1fr; gap: 2.5rem; }
     .how-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .how-flow::before { display: none; }
-    .context-stats { flex-direction: column; gap: 0; }
+    .context-stats { grid-template-columns: repeat(2, 1fr); }
     .hero { padding: 7rem 1.5rem 4rem; }
     footer { flex-direction: column; align-items: flex-start; }
     .human-gift { padding: 4rem 1.5rem; }
@@ -867,47 +865,6 @@ what gets left in people's hearts,<br>
 that's going to be our business.</p>
 
 </section>
-
-<!-- NJ BOOM CONTEXT BAR -->
-<div class="context-bar">
-  <div class="context-bar-inner">
-    <span class="context-bar-label">The NJ Film Boom — By the Numbers</span>
-    <div class="context-stats">
-      <div class="context-stat">
-        <span class="context-num">$1B</span>
-        <span class="context-label">Netflix Fort Monmouth investment, opening 2028</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">30K</span>
-        <span class="context-label">Crew hires in 2024, up from 17K the year before</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">2049</span>
-        <span class="context-label">NJ Film Tax Credit on the books through this year</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">#3</span>
-        <span class="context-label">Film workforce in the US, behind only LA and NYC</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">3</span>
-        <span class="context-label">Major studios — Netflix, Paramount, Lionsgate — building now</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">$833M</span>
-        <span class="context-label">NJ qualified production spend in 2024</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">41%</span>
-        <span class="context-label">Production growth year over year</span>
-      </div>
-      <div class="context-stat">
-        <span class="context-num">58</span>
-        <span class="context-label">Film-ready communities across the state</span>
-      </div>
-    </div>
-  </div>
-</div>
 
 <div class="film-divider"></div>
 
@@ -1226,6 +1183,47 @@ that's going to be our business.</p>
     <p class="njtake-body">Social Effects wants to be the voice, platform, and infrastructure that makes that proof of concept a standard. Dedicated coordination, vetted nonprofit pipelines, pre-production planning, documented impact — so that what one mayor is doing by hand in one town becomes something systematic, celebrated, and available to every Film Ready community in New Jersey. Filmanthropy as an innovation unto itself. It would be our privilege to help build that.</p>
     <p class="njtake-body">New Jersey was central to the birth of American cinema. For 130 years it watched the industry it helped create flourish elsewhere. The boom coming back to this state is an extraordinary economic story — and an extraordinary opportunity to ask a question no film state has yet fully embraced: <em>what becomes possible when a production is designed to give back?</em> We think New Jersey, with its community spirit, its municipalities, and this extraordinary moment, is exactly the place to find out. <a href="Filmanthropy_Ledger.html" style="color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px;">Read The Filmanthropy Ledger &rarr;</a></p>
     <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(200,168,75,0.3);margin-top:2rem;text-align:center;">Selznick Studio · Fort Lee, New Jersey · c. 1920</p>
+  </div>
+</div>
+
+<!-- NJ BOOM CONTEXT BAR -->
+<div class="context-bar">
+  <div class="context-bar-inner">
+    <span class="context-bar-label">The NJ Film Boom — What's at Stake</span>
+    <div class="context-stats">
+      <div class="context-stat">
+        <span class="context-num">$1B</span>
+        <span class="context-label">Netflix Fort Monmouth investment, opening 2028</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">30K</span>
+        <span class="context-label">Crew hires in 2024, up from 17K the year before</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">2049</span>
+        <span class="context-label">NJ Film Tax Credit on the books through this year</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">#3</span>
+        <span class="context-label">Film workforce in the US, behind only LA and NYC</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">3</span>
+        <span class="context-label">Major studios — Netflix, Paramount, Lionsgate — building now</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">$833M</span>
+        <span class="context-label">NJ qualified production spend in 2024</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">41%</span>
+        <span class="context-label">Production growth year over year</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">58</span>
+        <span class="context-label">Film-ready communities across the state</span>
+      </div>
+    </div>
   </div>
 </div>
 
