@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -171,81 +171,6 @@
     position: relative;
     z-index: 5;
   }
-  .hero-tagline {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid rgba(200, 168, 75, 0.4);
-    padding: 0.5rem 1.2rem;
-    border-radius: 2px;
-    margin-bottom: 3.5rem;
-    position: relative;
-    z-index: 5;
-  }
-  .hero-ctas {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 5;
-  }
-  .btn-primary {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--film);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 1rem 2.2rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-primary:hover { background: var(--gold-light); }
-  .btn-ghost {
-    display: inline-block;
-    border: 1px solid rgba(247, 244, 239, 0.3);
-    color: var(--paper);
-    font-size: 0.85rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 1rem 2.2rem;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-  .hero-stats {
-    position: absolute;
-    bottom: 3rem;
-    right: 3rem;
-    display: flex;
-    gap: 3rem;
-    z-index: 5;
-  }
-  .hero-stat { text-align: right; }
-  .hero-stat-num {
-    font-family: var(--serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--gold);
-    display: block;
-    line-height: 1;
-  }
-  .hero-stat-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(247, 244, 239, 0.45);
-    display: block;
-    margin-top: 0.3rem;
-  }
-
   /* ── SECTIONS ── */
   section { padding: 6rem 3rem; }
   .section-tag {
@@ -667,7 +592,7 @@
   }
 
   /* ── CONTEXT BAR ── */
-  .context-bar { background: var(--ink); padding: 3.5rem 3rem; overflow: hidden; }
+  .context-bar { background: var(--ink); padding: 2.5rem 3rem; overflow: hidden; }
   .context-bar-inner { max-width: 1100px; margin: 0 auto; }
   .context-bar-label {
     font-family: var(--mono);
@@ -682,20 +607,20 @@
   .context-stat {
     flex: 1;
     min-width: 160px;
-    padding: 1.5rem 2rem;
+    padding: 1rem 1.25rem;
     border-left: 1px solid rgba(200, 168, 75, 0.2);
   }
   .context-stat:first-child { border-left: none; }
   .context-num {
     font-family: var(--serif);
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     font-weight: 900;
     color: var(--gold);
     display: block;
     line-height: 1;
     margin-bottom: 0.4rem;
   }
-  .context-label { font-size: 0.8rem; color: rgba(247, 244, 239, 0.5); line-height: 1.4; }
+  .context-label { font-size: 0.72rem; color: rgba(247, 244, 239, 0.5); line-height: 1.4; }
 
   /* ── MISSION ── */
   .mission { background: var(--paper-warm); padding: 7rem 3rem 4rem; }
@@ -892,7 +817,6 @@
     .nav-links { display: none; }
     section { padding: 4rem 1.5rem; }
     .fa-grid, .giving-intro, .mission-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-stats { position: static; margin-top: 3rem; flex-wrap: wrap; gap: 1.5rem; }
     .how-flow { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .how-flow::before { display: none; }
     .context-stats { flex-direction: column; gap: 0; }
@@ -929,33 +853,12 @@
   <div class="hero-accent"></div>
   <div class="hero-filmstrip"></div>
 
-  <p class="hero-tag">Central New Jersey · Filmanthropy & Regenerative Filmmaking</p>
+  <p class="hero-tag">Wrap It Forward</p>
 
   <h1 class="hero-headline">From Special Effects to <em>Social Effects</em></h1>
 
   <p class="hero-subhead">New Jersey's film boom is the largest in the country. What a production leaves behind — in boxes and in people — that's going to be our business.</p>
 
-  <span class="hero-tagline">Wrap It Forward</span>
-
-  <div class="hero-ctas">
-    <a href="#filmanthropy" class="btn-primary">See What We Do</a>
-    <a href="#contact" class="btn-ghost">Get In Touch</a>
-  </div>
-
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <span class="hero-stat-num">$833M</span>
-      <span class="hero-stat-label">NJ Qualified Spend 2024</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">41%</span>
-      <span class="hero-stat-label">Production Growth YoY</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num">58</span>
-      <span class="hero-stat-label">Film Ready Communities</span>
-    </div>
-  </div>
 </section>
 
 <!-- NJ BOOM CONTEXT BAR -->
@@ -982,6 +885,18 @@
       <div class="context-stat">
         <span class="context-num">3</span>
         <span class="context-label">Major studios — Netflix, Paramount, Lionsgate — building now</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">$833M</span>
+        <span class="context-label">NJ qualified production spend in 2024</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">41%</span>
+        <span class="context-label">Production growth year over year</span>
+      </div>
+      <div class="context-stat">
+        <span class="context-num">58</span>
+        <span class="context-label">Film-ready communities across the state</span>
       </div>
     </div>
   </div>
