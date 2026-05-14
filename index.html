@@ -776,6 +776,20 @@
   @media (max-width: 580px) {
     .human-gift-grid { grid-template-columns: 1fr; }
   }
+
+  @media (max-width: 768px) {
+    nav {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+    nav > div[style*="position:absolute;top:22px"] {
+      min-width: max-content;
+    }
+  }
 </style>
 </head>
 <body>
