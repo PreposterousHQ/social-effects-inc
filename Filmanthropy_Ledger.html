@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -565,6 +566,48 @@
     .case-block { padding: 4rem 1.5rem; }
     footer { flex-direction: column; align-items: flex-start; }
   }
+
+  /* ── SHARE STRIP ── */
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: rgba(247,244,239,0.025);
+    border: 1px solid rgba(200,168,75,0.22);
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .share-btn:hover, .share-btn:focus {
+    background: rgba(200,168,75,0.08);
+    border-color: rgba(200,168,75,0.45);
+    outline: none;
+  }
+  .share-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #252018;
+    color: #c8a84b;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+  .share-btn:hover::after, .share-btn:focus::after {
+    opacity: 1;
+  }
 </style>
 </head>
 <body>
@@ -946,6 +989,21 @@
   </div>
 </section>
 
+<!-- SHARE STRIP -->
+<div style="background:#1a1814;padding:1.5rem 3rem;position:relative;text-align:center;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:rgba(200,168,75,0.4);"></div>
+  <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:#c8a84b;margin-bottom:1rem;">Wrap It Forward</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.9rem;">
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html&text=130%20years%20of%20cinema.%20What%20productions%20gave.%20What%20more%20was%20possible.%20The%20Filmanthropy%20Ledger." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="X"><i class="ti ti-brand-x" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Facebook"><i class="ti ti-brand-facebook" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://wa.me/?text=The%20Filmanthropy%20Ledger%20%E2%80%94%2030%20years%20of%20cinema%2C%20what%20productions%20gave%2C%20what%20more%20was%20possible.%20https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="WhatsApp"><i class="ti ti-brand-whatsapp" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://t.me/share/url?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html&text=The%20Filmanthropy%20Ledger%20%E2%80%94%20130%20years%20of%20what%20cinema%20gave%20back." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Telegram"><i class="ti ti-brand-telegram" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="mailto:?subject=The%20Filmanthropy%20Ledger%20%E2%80%94%20130%20Years%20of%20What%20Cinema%20Gave%20Back&body=Worth%20reading%20%E2%80%94%20a%20research%20archive%20documenting%20what%20film%20productions%20have%20given%20back%20through%20history%2C%20and%20what%20more%20was%20possible.%20https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" class="share-btn" data-label="Email"><i class="ti ti-mail" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="#" id="copy-link-btn-ledger" class="share-btn" data-label="Copy link"><i class="ti ti-link" style="font-size:20px;color:#c8a84b;"></i></a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; opacity:0.5;">Inc</span></div>
@@ -958,6 +1016,21 @@
   </div>
   <p class="footer-legal">© 2026 Social Effects Inc. Filmanthropy & Regenerative Filmmaking.</p>
 </footer>
+
+<script>
+(function() {
+  var btn = document.getElementById('copy-link-btn-ledger');
+  if (!btn) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText('https://socialeffectsnj.com/Filmanthropy_Ledger.html').then(function() {
+      var icon = btn.querySelector('i');
+      icon.className = 'ti ti-check';
+      setTimeout(function() { icon.className = 'ti ti-link'; }, 1500);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
