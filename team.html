@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who We Are — Social Effects Inc</title>
+<!-- REMOVE THE LINE BELOW WHEN THIS PAGE GOES PUBLIC -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:        #0e0d0b;
+    --card-bg:    #1a1814;
+    --paper:      #f7f4ef;
+    --paper-muted: rgba(247,244,239,0.65);
+    --paper-dim:   rgba(247,244,239,0.35);
+    --gold:       #c8a84b;
+    --gold-light: #e8d08a;
+    --rust:       #b84c2a;
+    --serif:  'Playfair Display', Georgia, serif;
+    --sans:   'DM Sans', system-ui, sans-serif;
+    --mono:   'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 16px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── PASSWORD OVERLAY ── */
+  #pw-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: #0a0908;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition: opacity 0.4s ease;
+  }
+  #pw-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pw-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .pw-logo span { color: var(--gold); }
+  .pw-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    opacity: 0.7;
+  }
+  .pw-box {
+    background: var(--card-bg);
+    border: 1px solid rgba(200,168,75,0.2);
+    border-radius: 6px;
+    padding: 2.5rem 2.5rem 2rem;
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+  }
+  .pw-heading {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 0.5rem;
+  }
+  .pw-sub {
+    font-size: 0.875rem;
+    color: var(--paper-muted);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+  .pw-input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,168,75,0.25);
+    border-radius: 3px;
+    padding: 0.75rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--paper);
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+  .pw-input:focus { border-color: rgba(200,168,75,0.6); }
+  .pw-input::placeholder { color: var(--paper-dim); letter-spacing: 0.05em; }
+  .pw-btn {
+    width: 100%;
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    border-radius: 3px;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .pw-btn:hover { background: var(--gold-light); }
+  .pw-error {
+    font-size: 0.8rem;
+    color: #d4725a;
+    margin-top: 0.75rem;
+    min-height: 1.2em;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+  }
+  .pw-footer-note {
+    margin-top: 2rem;
+    font-size: 0.72rem;
+    color: var(--paper-dim);
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(14,13,11,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,168,75,0.15);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-back {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 0.55rem 1.3rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 9rem 3rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 0.5px solid rgba(200,168,75,0.12);
+  }
+  .page-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+  .page-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: var(--paper);
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .page-headline em { font-style: italic; color: var(--gold); }
+  .page-intro {
+    font-size: 1.05rem;
+    color: var(--paper-muted);
+    line-height: 1.8;
+    max-width: 58ch;
+  }
+
+  /* ── PREVIEW BANNER ── */
+  .preview-banner {
+    background: rgba(184,76,42,0.12);
+    border: 1px solid rgba(184,76,42,0.3);
+    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 3rem auto 0;
+    max-width: 900px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  .preview-banner-dot {
+    width: 8px;
+    height: 8px;
+    background: #d4725a;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .preview-banner p {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #d4725a;
+  }
+
+  /* ── FOUNDER SECTION ── */
+  .founder-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+    border-bottom: 0.5px solid rgba(200,168,75,0.12);
+  }
+  .founder-section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 2.5rem;
+  }
+  .founder-strip {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+  .founder-photo-wrap {
+    position: relative;
+  }
+  .founder-photo {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 8px;
+    display: block;
+    filter: brightness(0.95) contrast(1.05);
+  }
+  /* Subtle gold accent line under the photo */
+  .founder-photo-wrap::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 60px;
+    background: var(--gold);
+    margin-top: 1rem;
+    opacity: 0.6;
+  }
+  .founder-info {}
+  .founder-name {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+  .founder-title {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.75rem;
+  }
+  .founder-bio p {
+    font-size: 0.975rem;
+    color: var(--paper-muted);
+    line-height: 1.85;
+    margin-bottom: 1.1rem;
+  }
+  .founder-bio p:last-child { margin-bottom: 0; }
+  .founder-bio em { font-style: italic; color: rgba(247,244,239,0.8); }
+
+  /* ── ADVISORS SECTION ── */
+  .advisors-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 3rem 7rem;
+  }
+  .advisors-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .advisors-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--paper);
+    margin-bottom: 3rem;
+  }
+
+  /* Advisor cards: stacked single column, each card is a horizontal strip */
+  .advisor-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 2.25rem 0;
+    border-top: 0.5px solid rgba(200,168,75,0.12);
+  }
+  .advisor-card:last-child {
+    border-bottom: 0.5px solid rgba(200,168,75,0.12);
+  }
+  .advisor-photo-wrap {
+    position: relative;
+  }
+  .advisor-photo {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 6px;
+    display: block;
+    filter: brightness(0.92) contrast(1.04);
+  }
+  .advisor-info {}
+  .advisor-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+  .advisor-title {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
+    line-height: 1.5;
+  }
+  .advisor-bio {
+    font-size: 0.9rem;
+    color: var(--paper-muted);
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a0908;
+    border-top: 0.5px solid rgba(200,168,75,0.1);
+    padding: 2.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-legal {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--paper-dim);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-back { display: none; }
+    .page-header,
+    .founder-section,
+    .advisors-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .preview-banner { margin-left: 1.5rem; margin-right: 1.5rem; }
+    .founder-strip {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+    .founder-photo { width: 180px; height: 180px; }
+    .advisor-card {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .advisor-photo { width: 120px; height: 120px; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD OVERLAY -->
+<div id="pw-overlay" role="dialog" aria-modal="true" aria-label="Access required">
+  <div class="pw-logo">Social<span>Effects</span> <span style="font-size:0.7rem;font-weight:300;opacity:0.4;">Inc</span></div>
+  <div class="pw-tag">Advisor Preview</div>
+  <div class="pw-box">
+    <h1 class="pw-heading">Who We Are</h1>
+    <p class="pw-sub">This page is in active development. Enter the preview password to continue.</p>
+    <input
+      type="password"
+      id="pw-input"
+      class="pw-input"
+      placeholder="Enter password"
+      autocomplete="off"
+      aria-label="Preview password"
+    />
+    <button class="pw-btn" onclick="checkPassword()">Enter</button>
+    <div class="pw-error" id="pw-error" aria-live="polite"></div>
+    <p class="pw-footer-note">Sets. Souls. Stories.</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.7rem;font-weight:300;letter-spacing:0.08em;color:rgba(247,244,239,0.35);">Inc</span></a>
+  <a href="index.html" class="nav-back">← Back to Social Effects</a>
+  <a href="index.html#contact" class="nav-cta">Work With Us</a>
+</nav>
+
+<!-- PREVIEW BANNER -->
+<div class="preview-banner">
+  <div class="preview-banner-dot"></div>
+  <p>You're seeing this early. This page is in active development, built with our advisors in mind.</p>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <span class="page-eyebrow">Social Effects Inc</span>
+  <h1 class="page-headline">Who <em>We Are</em></h1>
+  <p class="page-intro">Social Effects is a startup in formation, built by people who believe the film industry can leave something better behind by design. This is the team working to make that happen in New Jersey and beyond.</p>
+</div>
+
+<!-- FOUNDER SECTION -->
+<section class="founder-section">
+  <span class="founder-section-label">Founder</span>
+  <div class="founder-strip">
+    <div class="founder-photo-wrap">
+      <img
+        src="bret-bio.jpg"
+        alt="Bret Warshawsky, Founder of Social Effects Inc"
+        class="founder-photo"
+      />
+    </div>
+    <div class="founder-info">
+      <h2 class="founder-name">Bret Warshawsky</h2>
+      <p class="founder-title">Founder &amp; Chief Filmanthropist</p>
+      <div class="founder-bio">
+        <p>Bret Warshawsky is a polymath founder, speaker, and futurist working at the intersection of consciousness, storylivingry, evolutionary and spiritual philanthropy, mental health reform, and Filmanthropy. His body of work spans more than a decade of practical co-creation and systems-design across Europe, Asia, and the Americas, including direct collaboration with the late futurist Barbara Marx Hubbard, co-founding Symphonics with creative partner Andrea Harding, co-creating Synergy Hub 1.0 in Rotterdam with the Meesteren Foundation and United Earth, contributing a chapter to Lisa Nichols's Amazon best-seller <em>Unbreakable Spirit</em>, and more than three hundred published essays at The Syntony Times Substack.</p>
+        <p>Today he is the founder of Social Effects Inc., the New Jersey startup pioneering Filmanthropy, the practice of making philanthropy a featured, designed-in outcome of the filmmaking process itself. He is the co-visionary behind the Mental Health Reformation with business partner Janet Werner, leading development of the AWARE App for first responders and serving as an AWARE New Jersey Representative. He is currently writing an article for SOCKO! Magazine on the live emergence of Filmanthropy in New Jersey, anchored by Middletown's coordination of the Netflix series <em>Rabbit Rabbit</em>, which wraps June 26, 2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVISORS SECTION -->
+<section class="advisors-section">
+  <span class="advisors-label">Advisory Team</span>
+  <h2 class="advisors-heading">The Council</h2>
+
+  <!-- KURT DREWES -->
+  <div class="advisor-card">
+    <div class="advisor-photo-wrap">
+      <img
+        src="kurt-drewes.jpg"
+        alt="Kurt Drewes, Operations and Compliance Advisor"
+        class="advisor-photo"
+      />
+    </div>
+    <div class="advisor-info">
+      <h3 class="advisor-name">Kurt Drewes</h3>
+      <p class="advisor-title">Operations and Compliance Advisor</p>
+      <p class="advisor-bio">Kurt Drewes is a strategic learning and quality leader with over 20 years of experience driving compliance, quality management, and innovative learning solutions in the life sciences industry. He has proven expertise in designing and implementing Learning Management Systems, compliance training programs, and quality management systems across global organizations. Kurt is skilled at leading cross-functional teams, managing regulatory requirements, and leveraging AI and technology integrations to optimize productivity and engagement, and is adept at managing complex projects, audits, and vendor partnerships to reduce risk and support corporate growth.</p>
+    </div>
+  </div>
+
+  <!-- JANET WERNER -->
+  <div class="advisor-card">
+    <div class="advisor-photo-wrap">
+      <img
+        src="janet-werner.jpg"
+        alt="Janet Werner, Strategic Partnerships and Executive Advisor"
+        class="advisor-photo"
+      />
+    </div>
+    <div class="advisor-info">
+      <h3 class="advisor-name">Janet Werner</h3>
+      <p class="advisor-title">Mental Health Reformation Partner &amp; Executive Advisor</p>
+      <p style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,168,75,0.5);margin-bottom:1.1rem;margin-top:-0.7rem;">Strategic Partnerships &middot; Nonprofit Leadership</p>
+      <p class="advisor-bio">Janet Werner is President of U Have My Word LLC, a consulting firm serving corporate America as an executive coach and systems transformation consultant since 1988, on a mission to ease the journey through change, transition, and transformation in Rethinking How We Think. Janet is also President of Calling God to the Witness Stand LLC since 2019, leading film projects into production on the spiritual side of mental health, and is featured in these films with her lived experience of being misdiagnosed, involuntarily hospitalized, and forced on medication when having a spiritual experience in 1979 and 2005. Janet is the co-founder of A.W.A.R.E. New Jersey, an initiative started in 2023 that has expanded to A.W.A.R.E. USA and A.W.A.R.E. Global. She leads this coalition of behavioral healthcare professionals, first responders, faith leaders, and mental health consumers on a mission to transform the mental health system by including chaplains, clergy, and peer support, with a shared mission to prevent misdiagnosis and wrongful hospitalization of spiritual experiences through training, proper screening, and care. Janet holds a B.S. and M.Ed. from The College of New Jersey.</p>
+    </div>
+  </div>
+
+  <!-- ANDREW ALAN -->
+  <div class="advisor-card">
+    <div class="advisor-photo-wrap">
+      <img
+        src="andrew-alan.jpg"
+        alt="Andrew Alan, Creative and Strategic Narrative Advisor"
+        class="advisor-photo"
+      />
+    </div>
+    <div class="advisor-info">
+      <h3 class="advisor-name">Andrew Alan</h3>
+      <p class="advisor-title">Creative and Strategic Narrative Advisor</p>
+      <p class="advisor-bio">Andrew Alan is a network weaver, storytelling strategist, writer, director, producer, and editor working across moving images, sound, words, and ideas. Born and raised in Berkeley, California and based in Europe, Andrew brings a transatlantic creative perspective shaped by a decade of concepting and visioneering across documentary, narrative, and strategic communications work. He holds a Bachelor's degree in Film Production, Screenwriting, and Directing from New York University's Tisch School of the Arts. For Social Effects, Andrew brings the rare combination of someone who understands how stories get made and how they land in communities, the connective tissue between a production's creative intent and the real-world relationships that make Filmanthropy possible to execute.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Social<span>Effects</span> <span style="font-size:0.7rem;font-weight:300;opacity:0.4;">Inc</span></div>
+  <p class="footer-legal">© 2026 Social Effects Inc. &middot; Filmanthropy &amp; Regenerative Filmmaking.</p>
+</footer>
+
+<script>
+// ── PASSWORD LOGIC ──
+// Change the password below before sharing with advisors.
+// This is a light-touch preview gate, not a security system.
+// Anyone who views the page source can find the password.
+const PREVIEW_PASSWORD = 'filmanthropy2026';
+
+function checkPassword() {
+  const input = document.getElementById('pw-input').value.trim();
+  const error = document.getElementById('pw-error');
+  if (input === PREVIEW_PASSWORD) {
+    // Store auth in sessionStorage so it persists on refresh
+    sessionStorage.setItem('team-auth', '1');
+    const overlay = document.getElementById('pw-overlay');
+    overlay.classList.add('fade-out');
+    setTimeout(() => { overlay.style.display = 'none'; }, 420);
+  } else {
+    error.textContent = 'Incorrect password.';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+// Allow Enter key to submit
+document.getElementById('pw-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPassword();
+});
+
+// Check sessionStorage on load — skip the prompt if already authenticated
+(function() {
+  if (sessionStorage.getItem('team-auth') === '1') {
+    const overlay = document.getElementById('pw-overlay');
+    overlay.style.display = 'none';
+  }
+})();
+</script>
+
+</body>
+</html>
