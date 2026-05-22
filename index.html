@@ -674,6 +674,103 @@
     margin-bottom: 2.5rem;
   }
 
+  .contact-founder-strip {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+    margin: 2.5rem 0 2rem;
+  }
+
+  .contact-founder-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 8px;
+    flex-shrink: 0;
+    filter: brightness(0.95) contrast(1.05);
+  }
+
+  .contact-founder-name {
+    font-family: var(--serif, Georgia, serif);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--paper, #f5f0e8);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-founder-title {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold, #c66835);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .contact-links a {
+    font-size: 0.95rem;
+    color: rgba(247,244,239,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover {
+    color: var(--gold, #c8a84b);
+  }
+
+  .contact-heading {
+    font-family: var(--serif, Georgia, serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--paper, #f7f4ef);
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    color: var(--gold, #c8a84b);
+  }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(247,244,239,0.65);
+    line-height: 1.8;
+    max-width: 58ch;
+    margin-bottom: 1rem;
+  }
+
+  .contact-formation {
+    font-size: 0.9rem;
+    color: rgba(247,244,239,0.55);
+    line-height: 1.75;
+    font-style: italic;
+    border-top: 0.5px solid rgba(200,168,75,0.2);
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .contact-founder-strip {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .contact-founder-photo {
+      width: 180px;
+      height: 180px;
+    }
+    .contact-links {
+      align-items: center;
+    }
+  }
+
   /* ── FOOTER ── */
   footer {
     background: var(--ink);
@@ -1528,35 +1625,29 @@ that's going to be our business.</p>
   <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.05%22/%3E%3C/svg%3E');z-index:1;pointer-events:none;"></div>
   <div class="contact-inner">
     <span class="section-tag" style="text-align:center; display:block;">Get In Touch</span>
-    <h2 class="section-headline" style="text-align:center; max-width:none;">Sets. Souls. Stories.</h2>
-    <p class="contact-intro">Whether you're a production company, a municipality, a nonprofit, a school, or a NJ vendor who wants to be part of what's coming, we want to hear from you.</p>
+    <h2 class="contact-heading">Sets. Souls. <em>Stories.</em></h2>
+<p class="contact-sub">Whether you're a production company, a municipality, a nonprofit, a school, or a NJ vendor who wants to be part of what's coming, we want to hear from you.</p>
+<p class="contact-sub">Curious about the history of Filmanthropy: what's been done, what's been missed, and what's possible now? Read The Filmanthropy Ledger →</p>
 
-    <p style="font-size:0.9rem; color: rgba(247,244,239,0.45); margin-bottom: 2rem;">Curious about the history of Filmanthropy: what's been done, what's been missed, and what's possible now? Read <a href="Filmanthropy_Ledger.html" style="color: var(--gold); text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">The Filmanthropy Ledger →</a></p>
+<div class="contact-founder-strip">
+  <img
+    src="bret-bio.jpg"
+    alt="Bret Warshawsky, Founder of Social Effects Inc"
+    class="contact-founder-photo"
+  />
+  <div class="contact-founder-details">
+    <p class="contact-founder-name">Bret Warshawsky</p>
+    <p class="contact-founder-title">Founder &amp; Chief Filmanthropist</p>
+    <div class="contact-links">
+      <a href="mailto:bret@socialeffectsnj.com">✉ bret@socialeffectsnj.com</a>
+      <a href="tel:9089921711">📱 908-992-1711</a>
+      <a href="https://wa.me/19089921711" target="_blank" rel="noopener noreferrer">💬 WhatsApp: 908-992-1711</a>
+      <a href="https://t.me/Bret_Warshawsky" target="_blank" rel="noopener noreferrer">✈ Telegram: @Bret_Warshawsky</a>
+    </div>
+  </div>
+</div>
 
-    <p style="font-family:var(--serif);font-size:1rem;
-color:rgba(247,244,239,0.75);margin-bottom:0.75rem;">
-Contact founder Bret Warshawsky:
-</p>
-<p style="font-family:var(--mono);font-size:0.75rem;
-letter-spacing:0.08em;line-height:2.2;
-color:rgba(247,244,239,0.65);">
-✉ <a href="mailto:bret@socialeffectsnj.com"
-style="color:var(--gold);text-decoration:none;">
-bret@socialeffectsnj.com</a><br>
-📱 <a href="tel:+19089921711"
-style="color:var(--gold);text-decoration:none;">
-908-992-1711</a><br>
-💬 <a href="https://wa.me/19089921711"
-target="_blank"
-style="color:var(--gold);text-decoration:none;">
-WhatsApp: 908-992-1711</a><br>
-✈ <a href="https://t.me/Bret_Warshawsky"
-target="_blank"
-style="color:var(--gold);text-decoration:none;">
-Telegram: @Bret_Warshawsky</a>
-</p>
-
-    <p style="font-size:0.85rem; color: rgba(247,244,239,0.45); font-style:italic;">Social Effects is a Central New Jersey startup in active formation. We are building our founding partner team, welcoming first-mover productions and community collaborators, and exploring seed investment. If you want in early, now is the moment.</p>
+<p class="contact-formation">Social Effects is a Central New Jersey startup in active formation. We are building our founding partner team, welcoming first-mover productions and community collaborators, and exploring seed investment. If you want in early, now is the moment.</p>
   </div>
 </section>
 
