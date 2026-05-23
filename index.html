@@ -895,26 +895,130 @@
     .human-gift-grid { grid-template-columns: 1fr; }
   }
 
+  /* ── MOBILE NAV HAMBURGER ── */
+  .nav-mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 2px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-left: auto;
+    z-index: 10;
+  }
+  .nav-mobile-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: rgba(247,244,239,0.8);
+    border-radius: 1px;
+  }
+  .nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0a0806;
+    z-index: 1100;
+    flex-direction: column;
+    padding-top: 68px;
+    overflow-y: auto;
+  }
+  .nav-mobile-overlay.open { display: flex; }
+  .nav-mobile-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(247,244,239,0.6);
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 4px 8px;
+  }
+  .nav-mobile-close:hover { color: var(--paper); }
+  .nav-mobile-item {
+    display: block;
+    padding: 1.1rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,168,75,0.1);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-mobile-item:first-of-type { border-top: 1px solid rgba(200,168,75,0.1); }
+  .nav-mobile-item:hover { color: var(--paper); background: rgba(200,168,75,0.05); }
+  .nav-mobile-num {
+    font-size: 0.58rem;
+    color: rgba(200,168,75,0.45);
+    margin-right: 0.75rem;
+  }
+  .nav-mobile-cta-item {
+    display: block;
+    margin: 2rem;
+    background: var(--gold);
+    color: #0a0806;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    border-radius: 2px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
-    nav {
-      overflow-x: auto !important;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
+    /* D1 — Show hamburger, hide desktop nav elements, contain sprockets */
+    .nav-mobile-btn { display: flex; }
+    #nav-desktop-center { display: none !important; }
+    .nav-team-link { display: none !important; }
+    .nav-cta-desktop { display: none !important; }
+    nav { overflow: hidden !important; }
+  }
+
+  /* ── MOBILE PHONE — D2–D5 ── */
+  @media (max-width: 600px) {
+    /* D2 — Fix heading overflow */
+    .vision-eyebrow-badge {
+      font-size: 0.78rem !important;
+      letter-spacing: 0.14em !important;
+      padding: 0.35rem 0.9rem !important;
     }
-    nav::-webkit-scrollbar {
-      display: none;
+    .vision-heading {
+      white-space: normal !important;
+      font-size: 1.2rem !important;
     }
-    nav > div[style*="position:absolute;top:22px"] {
-      position: relative !important;
-      top: auto !important;
-      bottom: auto !important;
-      left: auto !important;
-      right: auto !important;
-      width: max-content;
-      min-width: 100%;
-      padding: 0 20px;
+    .section-tag { letter-spacing: 0.1em; }
+    .section-headline { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+    .mission-inner {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
     }
+
+    /* D3a — Filmanthropy Spectrum: single column */
+    .filmanthropy-spectrum-grid { grid-template-columns: 1fr !important; }
+
+    /* D3b — Flagship Audit card: single column */
+    .flagship-audit-inner { grid-template-columns: 1fr !important; }
+
+    /* D3c — Moonshot card: reduce padding */
+    .mission-moonshot { padding: 1.5rem !important; }
+
+    /* D4 — Left-align dark-section running paragraphs */
+    .vision-section .njtake-body { text-align: left; }
+    .mission-left p { text-align: left; }
+
+    /* D5 — Hide footer film-strip framing */
+    .footer-film-deco { display: none !important; }
+    footer { padding: 1.5rem 1.25rem !important; }
   }
 
   /* ── SHARE STRIP ── */
@@ -1017,7 +1121,7 @@
       <span style="font-family:var(--mono);font-size:0.5rem;color:rgba(200,168,75,0.35);letter-spacing:0.08em;">Inc</span>
     </a>
 
-    <div style="display:flex;align-items:center;flex:1;justify-content:center;height:100%;">
+    <div id="nav-desktop-center" style="display:flex;align-items:center;flex:1;justify-content:center;height:100%;">
 
       <a href="#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-left:1px solid rgba(200,168,75,0.1);border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
         <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">01</span>
@@ -1043,9 +1147,12 @@
 
     <a href="team.html" class="nav-team-link">Who We Are</a>
 
-    <a href="#contact" style="display:flex;align-items:center;padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
+    <a href="#contact" class="nav-cta-desktop" style="display:flex;align-items:center;padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
       <span style="background:var(--gold);color:#0a0806;font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2px;font-weight:700;">Work With Us</span>
     </a>
+    <button class="nav-mobile-btn" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
 
   </div>
 </nav>
@@ -1090,7 +1197,7 @@
     </div>
 
     <!-- Equal-height grid; ascent expressed through accent bar height + color, and card 03 elevation shadow -->
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem;align-items:start;">
+    <div class="filmanthropy-spectrum-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem;align-items:start;">
 
       <div style="background:#EDE8DB;border:1px solid rgba(160,135,90,0.22);border-radius:3px;padding:1.75rem;">
         <div style="height:3px;width:1.75rem;background:#C4B89A;border-radius:2px;margin-bottom:1.25rem;"></div>
@@ -1460,7 +1567,7 @@
       </div>
       <p style="font-size:0.82rem;color:var(--ink-soft);line-height:1.6;margin-bottom:1.25rem;">Filmanthropy by Design is what sets a production apart: giving planned in from the first day of pre-production. It is the practice the whole company is built around.</p>
       <div style="border:1px solid rgba(184,76,42,0.35);border-top:3px solid var(--rust);padding:1.5rem 1.75rem;background:rgba(184,76,42,0.03);">
-        <div style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;">
+        <div class="flagship-audit-inner" style="display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;">
           <div>
             <p style="font-family:var(--serif);font-size:1.15rem;font-weight:700;color:var(--ink);margin:0 0 0.4rem;line-height:1.3;">The Filmanthropy by Design Audit</p>
             <p style="font-size:0.85rem;color:var(--ink-soft);margin:0;line-height:1.6;">We assess every giving opportunity before production begins: sustainable sourcing, local vendor matching, intentional community impact design. Build it in, not on. This is the on-ramp to Regenerative Filmmaking, the standard where a production leaves something permanent behind.</p>
@@ -1569,14 +1676,14 @@
 <section class="mission" id="mission">
 
   <!-- PART A: THE VISION -->
-  <div style="background:var(--film);position:relative;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
+  <div class="vision-section" style="background:var(--film);position:relative;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
     <div style="position:absolute;inset:0;background-image:url('theater-hero.png');background-size:cover;background-position:center center;z-index:0;"></div>
     <!-- Dark gradient: transparent over screen, darkens only over seat area -->
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,transparent 44%,rgba(5,4,3,0.62) 58%,rgba(5,4,3,0.86) 78%,rgba(5,4,3,0.95) 100%);z-index:1;pointer-events:none;"></div>
     <!-- UPPER: text projected onto the screen -->
     <div style="max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:5;padding:5rem 3rem 3rem;">
-      <span style="display:inline-block;font-family:var(--mono);font-size:1.05rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,168,75,0.55);padding:0.45rem 1.4rem;border-radius:2px;margin-bottom:1.5rem;">The Vision</span>
-      <h2 style="font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.65rem);font-weight:700;color:var(--paper);line-height:1.2;margin-bottom:1.75rem;white-space:nowrap;">The world we are working toward</h2>
+      <span class="vision-eyebrow-badge" style="display:inline-block;font-family:var(--mono);font-size:1.05rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,168,75,0.55);padding:0.45rem 1.4rem;border-radius:2px;margin-bottom:1.5rem;">The Vision</span>
+      <h2 class="vision-heading" style="font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.65rem);font-weight:700;color:var(--paper);line-height:1.2;margin-bottom:1.75rem;white-space:nowrap;">The world we are working toward</h2>
       <p class="njtake-body">Humanity has spent most of its history believing there was not enough. Not enough food, not enough time, not enough security, and so not enough room for most people to live from creativity and love rather than fear.</p>
       <p class="njtake-body">That is beginning to change. We are entering an age of superabundance, where intelligence, energy, and the means of production are growing faster and cheaper than ever before. For the first time, the old excuse of scarcity is failing.</p>
       <p class="njtake-body">But producing enough was never the whole human problem. The deeper question is the one that remains: whether we will build a culture generous enough, creative enough, and humane enough to be worthy of what we can now produce.</p>
@@ -1712,7 +1819,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
+  <div class="footer-film-deco" style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
@@ -1732,7 +1839,7 @@
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
   </div>
-  <div style="position:absolute;bottom:24px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
+  <div class="footer-film-deco" style="position:absolute;bottom:24px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
@@ -1752,7 +1859,7 @@
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
   </div>
-  <div style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
+  <div class="footer-film-deco" style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
   <div class="footer-taglines">
     <span class="footer-tag">From Special Effects to Social Effects</span>
     <span class="footer-tag">·</span>
@@ -1781,6 +1888,41 @@
       setTimeout(function() { icon.className = 'ti ti-link'; }, 1500);
     });
   });
+})();
+</script>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation menu">&#x2715;</button>
+  <a href="#filmanthropy" class="nav-mobile-item"><span class="nav-mobile-num">01</span>Filmanthropy</a>
+  <a href="#services" class="nav-mobile-item"><span class="nav-mobile-num">02</span>Services</a>
+  <a href="#mission" class="nav-mobile-item"><span class="nav-mobile-num">03</span>Vision &amp; Mission</a>
+  <a href="Filmanthropy_Ledger.html" class="nav-mobile-item"><span class="nav-mobile-num">04</span>The Ledger</a>
+  <a href="team.html" class="nav-mobile-item">Who We Are</a>
+  <a href="#contact" class="nav-mobile-cta-item">Work With Us</a>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('nav-mobile-overlay');
+  var hamburger = document.getElementById('nav-hamburger');
+  var closeBtn = document.getElementById('nav-mobile-close');
+  function openNav() {
+    overlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', openNav);
+  closeBtn.addEventListener('click', closeNav);
+  overlay.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', closeNav);
+  });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeNav(); });
 })();
 </script>
 
