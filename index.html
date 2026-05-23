@@ -1555,39 +1555,51 @@
 <section class="mission" id="mission">
 
   <!-- PART A: THE VISION -->
-  <div style="position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(200,168,75,0.1);">
-    <!-- Background image: theater interior, position top to keep screen glow, crop watermark -->
-    <div style="position:absolute;inset:0;background-image:url('theater hero.png');background-size:cover;background-position:center top;filter:brightness(0.28) saturate(0.55) sepia(0.4) contrast(1.1);z-index:0;"></div>
-    <!-- Warm near-black overlay, heavier at bottom -->
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,4,0.55) 0%,rgba(8,6,4,0.72) 50%,rgba(8,6,4,0.9) 100%);z-index:1;"></div>
-    <!-- Radial warm glow at top-center echoing screen light -->
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 12%,rgba(200,168,75,0.06) 0%,transparent 70%);z-index:2;pointer-events:none;"></div>
+  <div style="position:relative;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
+    <!-- Background image: theater interior, center top keeps screen glow and crops watermark -->
+    <div style="position:absolute;inset:0;background-image:url('theater hero.png');background-size:cover;background-position:center top;filter:brightness(0.42) saturate(0.7) sepia(0.25) contrast(1.12);z-index:0;"></div>
+    <!-- Gradient: very light at top (screen glow reads), heavy at bottom anchoring text -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,0.9) 0%,rgba(8,6,4,0.42) 42%,rgba(8,6,4,0.14) 100%);z-index:1;"></div>
     <!-- Scanline texture -->
     <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 4px);z-index:2;pointer-events:none;"></div>
-    <!-- Radial vignette -->
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.65) 100%);z-index:2;pointer-events:none;"></div>
+    <!-- Soft vignette at edges only -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 50%,rgba(0,0,0,0.45) 100%);z-index:2;pointer-events:none;"></div>
     <!-- Content -->
-    <div style="position:relative;z-index:5;max-width:60ch;margin:0 auto;padding:7rem 3rem 6rem;text-align:center;">
-      <span class="section-tag" style="display:block;margin-bottom:1.25rem;">The Vision</span>
-      <h2 class="section-headline" style="color:var(--paper);margin-bottom:2.5rem;">The world we are working toward</h2>
+    <div style="position:relative;z-index:5;max-width:1200px;margin:0 auto;padding:5rem 3rem;">
 
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.5rem;">Humanity has spent most of its history believing there was not enough. Not enough food, not enough time, not enough security, and so not enough room for most people to live from creativity and love rather than fear.</p>
+      <!-- Centered header -->
+      <div style="text-align:center;margin-bottom:2.5rem;">
+        <span class="section-tag" style="display:block;margin-bottom:1rem;">The Vision</span>
+        <h2 class="section-headline" style="color:var(--paper);">The world we are working toward</h2>
+      </div>
 
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.5rem;">That is beginning to change. We are entering an age of superabundance, where intelligence, energy, and the means of production are growing faster and cheaper than ever before. For the first time, the old excuse of scarcity is failing.</p>
+      <!-- Two-column group 1 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:1.5rem;">
+        <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">Humanity has spent most of its history believing there was not enough. Not enough food, not enough time, not enough security, and so not enough room for most people to live from creativity and love rather than fear.</p>
+        <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">That is beginning to change. We are entering an age of superabundance, where intelligence, energy, and the means of production are growing faster and cheaper than ever before. For the first time, the old excuse of scarcity is failing.</p>
+      </div>
 
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.75rem;">But producing enough was never the whole human problem. The deeper question is the one that remains: whether we will build a culture generous enough, creative enough, and humane enough to be worthy of what we can now produce.</p>
+      <!-- Bridge paragraph (full width, leads into first gold beat) -->
+      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;max-width:72ch;margin:0 auto 1.75rem;">But producing enough was never the whole human problem. The deeper question is the one that remains: whether we will build a culture generous enough, creative enough, and humane enough to be worthy of what we can now produce.</p>
 
-      <p style="font-family:var(--serif);font-size:1.55rem;font-style:italic;color:var(--gold);line-height:1.35;margin:0 0 1.75rem;">Abundance with no soul is just a fuller warehouse.</p>
+      <!-- Full-width gold beat 1 -->
+      <p style="font-family:var(--serif);font-size:1.55rem;font-style:italic;color:var(--gold);line-height:1.35;text-align:center;margin:0 0 1.75rem;">Abundance with no soul is just a fuller warehouse.</p>
 
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.5rem;">Abundance becomes meaningful only when a community can feel it, in care, in beauty, in belonging, and not merely measure it.</p>
+      <!-- Two-column group 2 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:1.75rem;">
+        <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">Abundance becomes meaningful only when a community can feel it, in care, in beauty, in belonging, and not merely measure it.</p>
+        <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">Social Effects exists for that deeper question. We believe the answer begins with how things are made. When generosity is designed into the act of creation itself, rather than added afterward or left to chance,</p>
+      </div>
 
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.75rem;">Social Effects exists for that deeper question. We believe the answer begins with how things are made. When generosity is designed into the act of creation itself, rather than added afterward or left to chance,</p>
+      <!-- Full-width gold beat 2 -->
+      <p style="font-family:var(--serif);font-size:1.55rem;font-style:italic;color:var(--gold);line-height:1.35;text-align:center;margin:0 0 1.75rem;">the making of a thing becomes an act of love, and not only an act of production.</p>
 
-      <p style="font-family:var(--serif);font-size:1.55rem;font-style:italic;color:var(--gold);line-height:1.35;margin:0 0 1.75rem;">the making of a thing becomes an act of love, and not only an act of production.</p>
+      <!-- Two-column group 3 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;padding-bottom:1rem;">
+        <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">We start with film, because story is how a culture understands itself, and filmmaking is how story is told at the greatest scale. Change how films are made, so that every production leaves its community more whole, more capable, and more alive than it found it, and you move the small surface that turns the larger ship.</p>
+        <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">A film industry where generosity and creativity are designed in. A New Jersey that proves it. And beyond both, a wider culture learning to meet material abundance with a generosity of spirit equal to it.</p>
+      </div>
 
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.5rem;">We start with film, because story is how a culture understands itself, and filmmaking is how story is told at the greatest scale. Change how films are made, so that every production leaves its community more whole, more capable, and more alive than it found it, and you move the small surface that turns the larger ship.</p>
-
-      <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;">A film industry where generosity and creativity are designed in. A New Jersey that proves it. And beyond both, a wider culture learning to meet material abundance with a generosity of spirit equal to it.</p>
     </div>
   </div>
 
