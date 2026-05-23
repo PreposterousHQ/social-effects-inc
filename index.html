@@ -184,43 +184,25 @@
 
   /* ── WHAT IS FILMANTHROPY ── */
   .filmanthropy {
-    background: var(--film);
-    color: var(--paper);
+    background: #F3EEE3;
+    color: #2A2520;
     position: relative;
     overflow: hidden;
   }
-  .filmanthropy .section-headline { color: var(--paper); }
-  .filmanthropy .section-body { color: rgba(247, 244, 239, 0.7); }
-  .fa-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    max-width: 1100px;
-    margin: 0 auto;
-    align-items: start;
-    position: relative;
-    z-index: 2;
-  }
-  .fa-tagline {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--gold-light);
-    letter-spacing: 0.04em;
-    margin-bottom: 2rem;
-    display: block;
-  }
+  .filmanthropy .section-headline { color: #2A2520; }
+  .filmanthropy .section-body { color: #3A3028; max-width: 68ch; line-height: 1.65; }
   .fa-definition {
-    border-left: 3px solid var(--gold);
+    border-left: 3px solid #9A7B2A;
     padding-left: 2rem;
     margin: 2.5rem 0;
+    max-width: 60ch;
   }
   .fa-definition p {
     font-family: var(--serif);
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-style: italic;
     line-height: 1.6;
-    color: var(--paper);
+    color: #2A2520;
   }
   .fa-ladder {
     display: flex;
@@ -1083,11 +1065,10 @@
 
 <!-- WHAT IS FILMANTHROPY -->
 <section class="filmanthropy" id="filmanthropy">
-  <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(200,168,75,0.018) 2px,rgba(200,168,75,0.018) 4px),repeating-linear-gradient(90deg,transparent,transparent 60px,rgba(200,168,75,0.012) 60px,rgba(200,168,75,0.012) 61px);z-index:1;pointer-events:none;"></div>
   <div style="max-width:1100px;margin:0 auto;position:relative;z-index:2;">
 
-    <span class="section-tag">Sets. Souls. Stories.</span>
-    <h2 class="section-headline" style="color:var(--paper);">What Is <em style="color:var(--gold);">Filmanthropy</em></h2>
+    <span class="section-tag" style="color:#B85C38;">Sets. Souls. Stories.</span>
+    <h2 class="section-headline" style="color:#2A2520;">What Is <em style="color:#9A7B2A;">Filmanthropy</em></h2>
 
     <div class="fa-definition">
       <p>"Filmanthropy is everything a film production gives back to the place it is made. In materials. In people. By chance, or by design."</p>
@@ -1098,38 +1079,43 @@
     <p class="section-body" style="margin-top:1.5rem;">Filmanthropy treats both of those, the material and the human, as gifts a community can receive, rather than waste a production leaves behind. It is not one fixed thing. It runs along a spectrum of rising intention, and a production can sit anywhere on it.</p>
 
     <div style="margin-top:3.5rem;margin-bottom:1.75rem;">
-      <h3 style="font-family:var(--serif);font-size:1.35rem;font-weight:700;color:var(--paper);margin-bottom:0.5rem;">The Filmanthropy Spectrum</h3>
-      <p style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,168,75,0.65);">Three levels of one field. Most of the industry stops at the first.</p>
+      <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#2A2520;margin-bottom:0.5rem;">The Filmanthropy Spectrum</h3>
+      <p style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#B85C38;opacity:0.85;">Three levels of one field. Most of the industry stops at the first.</p>
     </div>
 
-    <!-- Ascending staircase: align-items:flex-end + rising min-height creates the climb -->
-    <div style="display:flex;align-items:flex-end;gap:3px;margin-bottom:2.5rem;">
+    <!-- Equal-height grid; ascent expressed through accent bar height + color, and card 03 elevation shadow -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2.5rem;align-items:start;">
 
-      <div style="flex:1;background:rgba(247,244,239,0.04);border:1px solid rgba(200,168,75,0.12);border-top:3px solid rgba(200,168,75,0.3);border-radius:3px 3px 0 0;padding:1.5rem;min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;">
-        <span style="font-family:var(--mono);font-size:0.6rem;color:rgba(200,168,75,0.5);letter-spacing:0.16em;margin-bottom:0.6rem;display:block;">01</span>
-        <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--paper);display:block;margin-bottom:0.4rem;">Sustainable</span>
-        <p style="font-size:0.85rem;color:rgba(247,244,239,0.55);line-height:1.55;">The floor. Do less harm. Reduce, recycle, divert waste from the landfill. It lowers a production's footprint, and it is where most of the industry stops.</p>
+      <div style="background:#EDE8DB;border:1px solid rgba(160,135,90,0.22);border-radius:3px;padding:1.75rem;">
+        <div style="height:3px;width:1.75rem;background:#C4B89A;border-radius:2px;margin-bottom:1.25rem;"></div>
+        <span style="font-family:var(--mono);font-size:0.6rem;color:#B85C38;letter-spacing:0.16em;margin-bottom:0.5rem;display:block;">01</span>
+        <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#2A2520;display:block;margin-bottom:0.5rem;">Sustainable</span>
+        <p style="font-size:0.85rem;color:#4A3F36;line-height:1.6;">The floor. Do less harm. Reduce, recycle, divert waste from the landfill. It lowers a production's footprint, and it is where most of the industry stops.</p>
       </div>
 
-      <div style="flex:1;background:rgba(247,244,239,0.055);border:1px solid rgba(200,168,75,0.2);border-top:3px solid rgba(200,168,75,0.55);border-radius:3px 3px 0 0;padding:1.5rem;min-height:310px;display:flex;flex-direction:column;justify-content:flex-end;">
-        <span style="font-family:var(--mono);font-size:0.6rem;color:rgba(200,168,75,0.7);letter-spacing:0.16em;margin-bottom:0.6rem;display:block;">02</span>
-        <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--paper);display:block;margin-bottom:0.4rem;">Filmanthropic</span>
-        <p style="font-size:0.85rem;color:rgba(247,244,239,0.62);line-height:1.55;">The middle, and the act the whole field is named for. A production actively gives back. Surplus is rehomed into the communities where filming happens: food, wardrobe, sets, equipment. And more than materials, the time, the access, and the human presence a production uniquely carries. Giving has begun, whether planned or spontaneous.</p>
+      <div style="background:#EDE8DB;border:1px solid rgba(160,135,90,0.22);border-radius:3px;padding:1.75rem;">
+        <div style="height:5px;width:1.75rem;background:#B85C38;border-radius:2px;margin-bottom:1.25rem;"></div>
+        <span style="font-family:var(--mono);font-size:0.6rem;color:#B85C38;letter-spacing:0.16em;margin-bottom:0.5rem;display:block;">02</span>
+        <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#2A2520;display:block;margin-bottom:0.5rem;">Filmanthropic</span>
+        <p style="font-size:0.85rem;color:#4A3F36;line-height:1.6;">The middle, and the act the whole field is named for. A production actively gives back. Surplus is rehomed into the communities where filming happens: food, wardrobe, sets, equipment. And more than materials, the time, the access, and the human presence a production uniquely carries. Giving has begun, whether planned or spontaneous.</p>
       </div>
 
-      <div style="flex:1;background:rgba(200,168,75,0.07);border:1px solid rgba(200,168,75,0.32);border-top:3px solid var(--gold);border-radius:3px 3px 0 0;padding:1.5rem;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;">
-        <span style="font-family:var(--mono);font-size:0.6rem;color:var(--gold);letter-spacing:0.16em;margin-bottom:0.6rem;display:block;">03</span>
-        <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--paper);display:block;margin-bottom:0.4rem;">Regenerative</span>
-        <p style="font-size:0.85rem;color:rgba(247,244,239,0.72);line-height:1.55;">The summit. The production builds something permanent the community keeps. Sometimes a place, like the skatepark a Netflix production left standing in Rajasthan after Skater Girl. Sometimes a capability, a training pipeline or a mentorship structure that outlives the shoot. It leaves something behind that was not there before.</p>
+      <div style="background:#EDE8DB;border:1px solid rgba(200,168,75,0.4);border-radius:3px;padding:1.75rem;box-shadow:0 -3px 0 0 #C8A84B,0 4px 18px rgba(200,168,75,0.13);">
+        <div style="height:8px;width:1.75rem;background:#C8A84B;border-radius:2px;margin-bottom:1.25rem;"></div>
+        <span style="font-family:var(--mono);font-size:0.6rem;color:#9A7B2A;letter-spacing:0.16em;margin-bottom:0.5rem;display:block;">03</span>
+        <span style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#2A2520;display:block;margin-bottom:0.5rem;">Regenerative</span>
+        <p style="font-size:0.85rem;color:#4A3F36;line-height:1.6;">The summit. The production builds something permanent the community keeps. Sometimes a place, like the skatepark a Netflix production left standing in Rajasthan after Skater Girl. Sometimes a capability, a training pipeline or a mentorship structure that outlives the shoot. It leaves something behind that was not there before.</p>
       </div>
 
     </div>
 
-    <div style="background:rgba(200,168,75,0.07);border:1px solid rgba(200,168,75,0.28);border-left:3px solid var(--gold);border-radius:3px;padding:2rem 2.5rem;margin-bottom:2.5rem;">
-      <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,168,75,0.75);display:block;margin-bottom:0.6rem;">The Social Effects Practice</span>
-      <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--paper);margin-bottom:0.9rem;">Filmanthropy by Design</h3>
-      <p style="font-size:0.95rem;color:rgba(247,244,239,0.7);line-height:1.75;">Most giving in film, when it happens at all, happens by chance. At wrap. In the last hours. When the right person happens to ask. Filmanthropy by Design is the discipline of planning the giving in from the first day of pre-production, in materials and in people, so that what a production leaves behind is intended rather than accidental. It is the practice Social Effects is built on, and the hinge that lifts a production up the spectrum: the on-ramp from a Filmanthropic gesture to a Regenerative result.</p>
+    <div style="background:#1A1612;border-radius:3px;padding:2.25rem 2.5rem;margin-bottom:2.5rem;">
+      <span style="font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#C8A84B;display:block;margin-bottom:0.6rem;">The Social Effects Practice</span>
+      <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#F3EEE3;margin-bottom:0.9rem;">Filmanthropy by Design</h3>
+      <p style="font-size:0.95rem;color:rgba(243,238,227,0.75);line-height:1.75;">Most giving in film, when it happens at all, happens by chance. At wrap. In the last hours. When the right person happens to ask. Filmanthropy by Design is the discipline of planning the giving in from the first day of pre-production, in materials and in people, so that what a production leaves behind is intended rather than accidental. It is the practice Social Effects is built on, and the hinge that lifts a production up the spectrum: the on-ramp from a Filmanthropic gesture to a Regenerative result.</p>
     </div>
+
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:#9A7B2A;text-align:center;opacity:0.65;">What films project, communities receive.</p>
 
   </div>
 </section>
