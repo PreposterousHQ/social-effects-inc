@@ -1555,10 +1555,21 @@
 <section class="mission" id="mission">
 
   <!-- PART A: THE VISION -->
-  <div style="padding:7rem 3rem 5rem;border-bottom:1px solid rgba(200,168,75,0.1);">
-    <div style="max-width:64ch;">
-      <span class="section-tag">The Vision</span>
-      <h2 class="section-headline" style="color:var(--paper);">The world we are working toward</h2>
+  <div style="position:relative;overflow:hidden;min-height:88vh;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(200,168,75,0.1);">
+    <!-- Background image: theater interior, position top to keep screen glow, crop watermark -->
+    <div style="position:absolute;inset:0;background-image:url('theater hero.png');background-size:cover;background-position:center top;filter:brightness(0.28) saturate(0.55) sepia(0.4) contrast(1.1);z-index:0;"></div>
+    <!-- Warm near-black overlay, heavier at bottom -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,6,4,0.55) 0%,rgba(8,6,4,0.72) 50%,rgba(8,6,4,0.9) 100%);z-index:1;"></div>
+    <!-- Radial warm glow at top-center echoing screen light -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 12%,rgba(200,168,75,0.06) 0%,transparent 70%);z-index:2;pointer-events:none;"></div>
+    <!-- Scanline texture -->
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 4px);z-index:2;pointer-events:none;"></div>
+    <!-- Radial vignette -->
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.65) 100%);z-index:2;pointer-events:none;"></div>
+    <!-- Content -->
+    <div style="position:relative;z-index:5;max-width:60ch;margin:0 auto;padding:7rem 3rem 6rem;text-align:center;">
+      <span class="section-tag" style="display:block;margin-bottom:1.25rem;">The Vision</span>
+      <h2 class="section-headline" style="color:var(--paper);margin-bottom:2.5rem;">The world we are working toward</h2>
 
       <p style="font-size:1.05rem;color:rgba(247,244,239,0.72);line-height:1.8;margin-bottom:1.5rem;">Humanity has spent most of its history believing there was not enough. Not enough food, not enough time, not enough security, and so not enough room for most people to live from creativity and love rather than fear.</p>
 
