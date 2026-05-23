@@ -660,12 +660,13 @@
   .moonshot-beneficiary strong { color: var(--gold-light); font-weight: 500; }
 
   /* ── CONTACT ── */
-  .contact-section { background: var(--film); padding: 4rem 3rem; position: relative; }
+  .contact-section { background: var(--bg-light); padding: 4rem 3rem; position: relative; }
   .contact-inner { max-width: 680px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
-  .contact-inner .section-headline { max-width: none; margin-bottom: 1rem; color: var(--paper); }
+  .contact-inner .section-headline { max-width: none; margin-bottom: 1rem; color: var(--ink); }
+  .contact-inner .section-tag { color: var(--rust); }
   .contact-intro {
     font-size: 1.05rem;
-    color: rgba(247,244,239,0.65);
+    color: var(--ink-soft);
     line-height: 1.8;
     margin-bottom: 2.5rem;
   }
@@ -691,7 +692,7 @@
     font-family: var(--serif, Georgia, serif);
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--paper, #f5f0e8);
+    color: var(--ink);
     margin-bottom: 0.25rem;
   }
 
@@ -699,7 +700,7 @@
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--gold, #c66835);
+    color: var(--rust);
     margin-bottom: 1.25rem;
   }
 
@@ -711,13 +712,13 @@
 
   .contact-links a {
     font-size: 0.95rem;
-    color: rgba(247,244,239,0.7);
+    color: var(--ink-soft);
     text-decoration: none;
     transition: color 0.2s;
   }
 
   .contact-links a:hover {
-    color: var(--gold, #c8a84b);
+    color: var(--rust);
   }
 
   .contact-heading {
@@ -725,18 +726,18 @@
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     line-height: 1.2;
-    color: var(--paper, #f7f4ef);
+    color: var(--ink);
     margin-bottom: 1.25rem;
   }
 
   .contact-heading em {
     font-style: italic;
-    color: var(--gold, #c8a84b);
+    color: var(--rust);
   }
 
   .contact-sub {
     font-size: 1rem;
-    color: rgba(247,244,239,0.65);
+    color: var(--ink-soft);
     line-height: 1.8;
     max-width: 58ch;
     margin-bottom: 1rem;
@@ -744,10 +745,10 @@
 
   .contact-formation {
     font-size: 0.9rem;
-    color: rgba(247,244,239,0.55);
+    color: var(--ink-muted);
     line-height: 1.75;
     font-style: italic;
-    border-top: 0.5px solid rgba(200,168,75,0.2);
+    border-top: 0.5px solid rgba(14,13,11,0.12);
     padding-top: 1.5rem;
     margin-top: 0.5rem;
   }
@@ -1659,7 +1660,6 @@
 
 <!-- CONTACT / CTA -->
 <section class="contact-section" id="contact">
-  <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.05%22/%3E%3C/svg%3E');z-index:1;pointer-events:none;"></div>
   <div class="contact-inner">
     <span class="section-tag" style="text-align:center; display:block;">Get In Touch</span>
     <h2 class="contact-heading">Sets. Souls. <em>Stories.</em></h2>
@@ -1689,17 +1689,17 @@
 </section>
 
 <!-- SHARE STRIP -->
-<div style="background:#1a1814;padding:1.5rem 3rem;position:relative;text-align:center;">
-  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:rgba(200,168,75,0.4);"></div>
-  <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:#c8a84b;margin-bottom:1rem;">Wrap It Forward</p>
+<div style="background:var(--bg-light);padding:1.5rem 3rem;position:relative;text-align:center;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:rgba(14,13,11,0.15);"></div>
+  <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem;">Wrap It Forward</p>
   <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.9rem;">
-    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:20px;color:#c8a84b;"></i></a>
-    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialeffectsnj.com&text=Sets.%20Souls.%20Stories.%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%20%E2%80%94%20designing%20community%20benefit%20into%20every%20production." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="X"><i class="ti ti-brand-x" style="font-size:20px;color:#c8a84b;"></i></a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Facebook"><i class="ti ti-brand-facebook" style="font-size:20px;color:#c8a84b;"></i></a>
-    <a href="https://wa.me/?text=Sets.%20Souls.%20Stories.%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%20%E2%80%94%20designing%20community%20benefit%20into%20every%20production.%20https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="WhatsApp"><i class="ti ti-brand-whatsapp" style="font-size:20px;color:#c8a84b;"></i></a>
-    <a href="https://t.me/share/url?url=https%3A%2F%2Fsocialeffectsnj.com&text=Sets.%20Souls.%20Stories.%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%20%E2%80%94%20designing%20community%20benefit%20into%20every%20production." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Telegram"><i class="ti ti-brand-telegram" style="font-size:20px;color:#c8a84b;"></i></a>
-    <a href="https://mail.google.com/mail/?view=cm&fs=1&su=Social%20Effects%20Inc%20%E2%80%94%20NJ%20Filmanthropy&body=Thought%20you%27d%20find%20this%20worth%20a%20look%20%E2%80%94%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%2C%20designing%20community%20benefit%20into%20every%20production%2C%20from%20first%20scout%20to%20final%20wrap.%20https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Email"><i class="ti ti-mail" style="font-size:20px;color:#c8a84b;"></i></a>
-    <a href="#" id="copy-link-btn" class="share-btn" data-label="Copy link"><i class="ti ti-link" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:20px;color:var(--rust);"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialeffectsnj.com&text=Sets.%20Souls.%20Stories.%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%20%E2%80%94%20designing%20community%20benefit%20into%20every%20production." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="X"><i class="ti ti-brand-x" style="font-size:20px;color:var(--rust);"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Facebook"><i class="ti ti-brand-facebook" style="font-size:20px;color:var(--rust);"></i></a>
+    <a href="https://wa.me/?text=Sets.%20Souls.%20Stories.%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%20%E2%80%94%20designing%20community%20benefit%20into%20every%20production.%20https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="WhatsApp"><i class="ti ti-brand-whatsapp" style="font-size:20px;color:var(--rust);"></i></a>
+    <a href="https://t.me/share/url?url=https%3A%2F%2Fsocialeffectsnj.com&text=Sets.%20Souls.%20Stories.%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%20%E2%80%94%20designing%20community%20benefit%20into%20every%20production." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Telegram"><i class="ti ti-brand-telegram" style="font-size:20px;color:var(--rust);"></i></a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&su=Social%20Effects%20Inc%20%E2%80%94%20NJ%20Filmanthropy&body=Thought%20you%27d%20find%20this%20worth%20a%20look%20%E2%80%94%20Social%20Effects%20puts%20Filmanthropy%20and%20Regenerative%20Filmmaking%20into%20practice%20in%20New%20Jersey%2C%20designing%20community%20benefit%20into%20every%20production%2C%20from%20first%20scout%20to%20final%20wrap.%20https%3A%2F%2Fsocialeffectsnj.com" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Email"><i class="ti ti-mail" style="font-size:20px;color:var(--rust);"></i></a>
+    <a href="#" id="copy-link-btn" class="share-btn" data-label="Copy link"><i class="ti ti-link" style="font-size:20px;color:var(--rust);"></i></a>
   </div>
 </div>
 
