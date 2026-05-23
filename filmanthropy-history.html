@@ -45,29 +45,50 @@
   }
 
   /* ── NAV ── */
-  .nav-frame-link:hover {
-    background: rgba(247,244,239,0.07);
-    box-shadow: inset 0 0 18px rgba(247,244,239,0.06);
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(14,13,11,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,168,75,0.15);
   }
-  .nav-frame-link:hover .nav-frame-label {
-    color: #f7f4ef;
-    text-shadow: 0 0 12px rgba(247,244,239,0.9),
-                 0 0 24px rgba(247,244,239,0.5),
-                 0 0 40px rgba(200,168,75,0.3);
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--paper);
+    text-decoration: none;
   }
-  .nav-frame-link:hover .frame-no { color: rgba(200,168,75,0.5); }
-
-  .nav-team-link {
+  .nav-logo span { color: var(--gold); }
+  .nav-back {
     font-family: var(--mono);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(247,244,239,0.65);
+    color: rgba(247,244,239,0.55);
     text-decoration: none;
     transition: color 0.2s;
-    margin-right: 0.5rem;
   }
-  .nav-team-link:hover { color: var(--gold); }
+  .nav-back:hover { color: var(--gold); }
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0a0806;
+    background: var(--gold);
+    padding: 0.5rem 1.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
 
   /* ── HERO ── */
   .hero {
@@ -249,95 +270,6 @@
     border-radius: 2px;
     flex-shrink: 0;
   }
-
-  /* ── MOBILE NAV HAMBURGER ── */
-  .nav-mobile-btn {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px 2px;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    flex-shrink: 0;
-    margin-left: auto;
-    z-index: 10;
-  }
-  .nav-mobile-btn span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: rgba(247,244,239,0.8);
-    border-radius: 1px;
-  }
-  .nav-mobile-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: #0a0806;
-    z-index: 1100;
-    flex-direction: column;
-    padding-top: 68px;
-    overflow-y: auto;
-  }
-  .nav-mobile-overlay.open { display: flex; }
-  .nav-mobile-close {
-    position: absolute;
-    top: 18px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: rgba(247,244,239,0.6);
-    font-size: 1.3rem;
-    line-height: 1;
-    padding: 4px 8px;
-  }
-  .nav-mobile-close:hover { color: var(--paper); }
-  .nav-mobile-item {
-    display: block;
-    padding: 1.1rem 2rem;
-    font-family: var(--mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(247,244,239,0.7);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(200,168,75,0.1);
-    transition: color 0.2s, background 0.2s;
-  }
-  .nav-mobile-item:first-of-type { border-top: 1px solid rgba(200,168,75,0.1); }
-  .nav-mobile-item:hover { color: var(--paper); background: rgba(200,168,75,0.05); }
-  .nav-mobile-num {
-    font-size: 0.58rem;
-    color: rgba(200,168,75,0.45);
-    margin-right: 0.75rem;
-  }
-  .nav-mobile-cta-item {
-    display: block;
-    margin: 2rem;
-    background: var(--gold);
-    color: #0a0806;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    padding: 0.9rem 1.5rem;
-    border-radius: 2px;
-    font-weight: 700;
-    text-decoration: none;
-    text-align: center;
-  }
-
-  @media (max-width: 768px) {
-    .nav-mobile-btn { display: flex; }
-    #nav-desktop-center { display: none !important; }
-    .nav-team-link { display: none !important; }
-    .nav-cta-desktop { display: none !important; }
-    nav { overflow: hidden !important; }
-  }
-
   @media (max-width: 600px) {
     .site-footer > div[style*="position:absolute"] { display: none !important; }
     footer { padding: 0.75rem 1.25rem !important; flex-wrap: wrap; min-height: unset; }
@@ -347,60 +279,10 @@
 <body>
 
 <!-- NAV -->
-<nav style="background:#0a0806;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
-
-  <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
-    <div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div>
-  </div>
-
-  <div style="position:absolute;bottom:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
-    <div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div><div class="sprocket"></div>
-  </div>
-
-  <div style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
-  <div style="position:absolute;bottom:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
-
-  <div style="position:absolute;top:22px;bottom:22px;left:0;right:0;display:flex;align-items:center;padding:0 20px;z-index:5;">
-
-    <a href="index.html" style="display:flex;align-items:center;gap:6px;padding-right:1.25rem;border-right:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
-      <span style="font-family:var(--serif);font-size:0.95rem;font-weight:700;color:var(--paper);">Social<em style="color:var(--gold);font-style:normal;">Effects</em></span>
-      <span style="font-family:var(--mono);font-size:0.5rem;color:rgba(200,168,75,0.35);letter-spacing:0.08em;">Inc</span>
-    </a>
-
-    <div id="nav-desktop-center" style="display:flex;align-items:center;flex:1;justify-content:center;height:100%;">
-
-      <a href="index.html#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-left:1px solid rgba(200,168,75,0.1);border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">01</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Filmanthropy</span>
-      </a>
-
-      <a href="index.html#services" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">02</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Services</span>
-      </a>
-
-      <a href="index.html#mission" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">03</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Mission</span>
-      </a>
-
-      <a href="Filmanthropy_Ledger.html" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">04</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">The Ledger</span>
-      </a>
-
-    </div>
-
-    <a href="team.html" class="nav-team-link">Who We Are</a>
-
-    <a href="index.html#contact" class="nav-cta-desktop" style="display:flex;align-items:center;padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
-      <span style="background:var(--gold);color:#0a0806;font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2px;font-weight:700;">Work With Us</span>
-    </a>
-    <button class="nav-mobile-btn" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-  </div>
+<nav>
+  <a href="index.html" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.65rem;font-weight:300;color:rgba(247,244,239,0.35);letter-spacing:0.08em;font-family:var(--sans);">Inc</span></a>
+  <a href="index.html" class="nav-back">&#8592; Back to Social Effects</a>
+  <a href="index.html#contact" class="nav-cta">Work With Us</a>
 </nav>
 
 <!-- HERO -->
@@ -514,37 +396,6 @@
   </div>
 </footer>
 
-<!-- MOBILE NAV OVERLAY -->
-<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
-  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation menu">&#x2715;</button>
-  <a href="index.html#filmanthropy" class="nav-mobile-item"><span class="nav-mobile-num">01</span>Filmanthropy</a>
-  <a href="index.html#services" class="nav-mobile-item"><span class="nav-mobile-num">02</span>Services</a>
-  <a href="index.html#mission" class="nav-mobile-item"><span class="nav-mobile-num">03</span>Vision &amp; Mission</a>
-  <a href="Filmanthropy_Ledger.html" class="nav-mobile-item"><span class="nav-mobile-num">04</span>The Ledger</a>
-  <a href="team.html" class="nav-mobile-item">Who We Are</a>
-  <a href="index.html#contact" class="nav-mobile-cta-item">Work With Us</a>
-</div>
-
-<script>
-(function() {
-  var overlay = document.getElementById('nav-mobile-overlay');
-  var hamburger = document.getElementById('nav-hamburger');
-  var closeBtn = document.getElementById('nav-mobile-close');
-  function openNav() {
-    overlay.classList.add('open');
-    hamburger.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeNav() {
-    overlay.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-  hamburger.addEventListener('click', openNav);
-  closeBtn.addEventListener('click', closeNav);
-  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeNav(); });
-})();
-</script>
 
 </body>
 </html>
