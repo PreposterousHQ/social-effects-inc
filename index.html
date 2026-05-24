@@ -982,6 +982,8 @@
     .nav-team-link { display: none !important; }
     .nav-cta-desktop { display: none !important; }
     nav { overflow: hidden !important; }
+    /* Services live-service cards: collapse to single column */
+    .svc-live-grid { grid-template-columns: 1fr !important; }
   }
 
   /* ── MOBILE PHONE — D2–D5 ── */
@@ -1005,6 +1007,8 @@
 
     /* D3a — Filmanthropy Spectrum: single column */
     .filmanthropy-spectrum-grid { grid-template-columns: 1fr !important; }
+    /* Services Practice streams: single column */
+    .svc-practice-grid { grid-template-columns: 1fr !important; }
 
     /* D3b — Flagship Audit card: single column */
     .flagship-audit-inner { grid-template-columns: 1fr !important; }
@@ -1563,77 +1567,79 @@
     <p style="font-size:1.05rem;color:var(--ink-soft);line-height:1.8;max-width:62ch;margin-bottom:3rem;">Most productions begin with Discovery, open to any production, at any budget, including those for whom giving back has not yet been a thought at all.</p>
 
     <!-- THREE LIVE SERVICES -->
-    <div style="display:flex;flex-direction:column;gap:2.5rem;margin-bottom:2rem;max-width:680px;">
+    <div class="svc-live-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start;margin-bottom:2rem;">
 
       <!-- DISCOVERY -->
-      <div style="border-left:4px solid var(--rust);background:#fcf8f0;padding:2rem 2rem 2rem 2.5rem;border-radius:0 3px 3px 0;box-shadow:0 2px 14px rgba(14,13,11,0.07);">
+      <div style="border-left:4px solid var(--rust);background:#fcf8f0;padding:1.5rem 1.5rem 1.5rem 1.75rem;border-radius:0 3px 3px 0;box-shadow:0 2px 14px rgba(14,13,11,0.07);">
         <p style="font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:0 0 0.2rem;line-height:1.2;">Discovery</p>
         <p style="font-family:var(--serif);font-size:0.95rem;font-style:italic;color:var(--ink-muted);margin:0 0 1.25rem;line-height:1.3;">a pre-production session</p>
-        <p style="font-size:1rem;color:var(--ink-soft);line-height:1.8;max-width:68ch;margin:0 0 1.25rem;">Before a production decides anything, Discovery opens the question. In a working session with the film's key people, producer, director, and talent, Social Effects brings the history of Filmanthropy, the research behind the Ledger, and real examples of what productions have given the communities that hosted them. From there the conversation turns to this film: what it cares about, what it could give, and the full range of possibilities it may never have considered: material surplus, human presence, and proceeds. A production leaves with its own intention found, and the language to act on it. And because Discovery happens in pre-production, what surfaces can still shape the budget: giving designed in early costs far less than giving improvised at wrap.</p>
+        <p style="font-size:1rem;color:var(--ink-soft);line-height:1.8;margin:0 0 1.25rem;">Before a production decides anything, Discovery opens the question. In a working session with the film's key people, producer, director, and talent, Social Effects brings the history of Filmanthropy, the research behind the Ledger, and real examples of what productions have given the communities that hosted them. From there the conversation turns to this film: what it cares about, what it could give, and the full range of possibilities it may never have considered: material surplus, human presence, and proceeds. A production leaves with its own intention found, and the language to act on it. And because Discovery happens in pre-production, what surfaces can still shape the budget: giving designed in early costs far less than giving improvised at wrap.</p>
         <p style="font-family:var(--serif);font-size:0.92rem;font-style:italic;color:var(--rust);margin:0;line-height:1.5;">For any production, at any budget. The front door.</p>
       </div>
 
       <!-- DESIGN -->
-      <div style="border-left:4px solid var(--rust);background:#fcf8f0;padding:2rem 2rem 2rem 2.5rem;border-radius:0 3px 3px 0;box-shadow:0 2px 14px rgba(14,13,11,0.07);">
+      <div style="border-left:4px solid var(--rust);background:#fcf8f0;padding:1.5rem 1.5rem 1.5rem 1.75rem;border-radius:0 3px 3px 0;box-shadow:0 2px 14px rgba(14,13,11,0.07);">
         <p style="font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:0 0 0.2rem;line-height:1.2;">Design</p>
         <p style="font-family:var(--serif);font-size:0.95rem;font-style:italic;color:var(--ink-muted);margin:0 0 1.25rem;line-height:1.3;">the written plan</p>
-        <p style="font-size:1rem;color:var(--ink-soft);line-height:1.8;max-width:68ch;margin:0 0 1.25rem;">Design turns intention into a document. Social Effects writes the production's Filmanthropy by Design plan: a concrete account of what the film will give and how, across whichever of the three streams it chooses: material surplus, human presence, a share of proceeds or a cause. The plan names recommended approaches and recommended recipients, each one researched and matched to the production. Because it is written down, it can be costed, shared, and built into the production's own plan, rather than living in one person's memory.</p>
+        <p style="font-size:1rem;color:var(--ink-soft);line-height:1.8;margin:0 0 1.25rem;">Design turns intention into a document. Social Effects writes the production's Filmanthropy by Design plan: a concrete account of what the film will give and how, across whichever of the three streams it chooses: material surplus, human presence, a share of proceeds or a cause. The plan names recommended approaches and recommended recipients, each one researched and matched to the production. Because it is written down, it can be costed, shared, and built into the production's own plan, rather than living in one person's memory.</p>
         <p style="font-family:var(--serif);font-size:0.92rem;font-style:italic;color:var(--rust);margin:0;line-height:1.5;">For productions ready to move from intention to plan.</p>
       </div>
 
       <!-- LIAISON -->
-      <div style="border-left:4px solid var(--rust);background:#fcf8f0;padding:2rem 2rem 2rem 2.5rem;border-radius:0 3px 3px 0;box-shadow:0 2px 14px rgba(14,13,11,0.07);">
+      <div style="border-left:4px solid var(--rust);background:#fcf8f0;padding:1.5rem 1.5rem 1.5rem 1.75rem;border-radius:0 3px 3px 0;box-shadow:0 2px 14px rgba(14,13,11,0.07);">
         <p style="font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:0 0 0.2rem;line-height:1.2;">Liaison</p>
         <p style="font-family:var(--serif);font-size:0.95rem;font-style:italic;color:var(--ink-muted);margin:0 0 1.25rem;line-height:1.3;">outreach, coordination, and story</p>
-        <p style="font-size:1rem;color:var(--ink-soft);line-height:1.8;max-width:68ch;margin:0 0 1.25rem;">Liaison is the hands-on work. With a plan in place, Bret personally carries it forward: reaching out to the recommended nonprofits, building the relationships, and coordinating what can feasibly be done across the streams the production chose. Alongside it, Social Effects writes creative pieces on the production's giving, for its own social channels, and as the Social Effects site and channels launch, the production is featured there too. The giving can also be recorded: an honest account of what was given and received, useful to the production's community, its press, and its own reporting. Social Effects is also building a relationship with an emerging New Jersey film publication, with the aim of regular coverage of Filmanthropic work; as that develops, the productions Social Effects works with are first in line to be part of it.</p>
+        <p style="font-size:1rem;color:var(--ink-soft);line-height:1.8;margin:0 0 1.25rem;">Liaison is the hands-on work. With a plan in place, Bret personally carries it forward: reaching out to the recommended nonprofits, building the relationships, and coordinating what can feasibly be done across the streams the production chose. Alongside it, Social Effects writes creative pieces on the production's giving, for its own social channels, and as the Social Effects site and channels launch, the production is featured there too. The giving can also be recorded: an honest account of what was given and received, useful to the production's community, its press, and its own reporting. Social Effects is also building a relationship with an emerging New Jersey film publication, with the aim of regular coverage of Filmanthropic work; as that develops, the productions Social Effects works with are first in line to be part of it.</p>
         <p style="font-family:var(--serif);font-size:0.92rem;font-style:italic;color:var(--rust);margin:0;line-height:1.5;">For productions that want the giving carried out, not just planned.</p>
       </div>
 
     </div>
 
     <!-- FEE LINE -->
-    <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.7;max-width:62ch;margin-top:2rem;margin-bottom:3rem;padding:0.75rem 0 0.75rem 1.5rem;border-left:2px solid rgba(184,76,42,0.3);">Each service carries a fee. A production working with no budget can be gifted a service outright: Filmanthropy, applied to our own work.</p>
+    <div style="border-top:1px solid rgba(184,76,42,0.18);border-bottom:1px solid rgba(184,76,42,0.18);padding:1.5rem 0;margin:2.5rem 0 3rem;text-align:center;">
+      <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.7;margin:0;">Each service carries a fee. A production working with no budget can be gifted a service outright: Filmanthropy, applied to our own work.</p>
+    </div>
 
     <!-- CASE IN POINT STRIP -->
-    <div style="background:var(--film);border-radius:4px;padding:2rem 2.25rem;margin-bottom:3rem;max-width:680px;">
+    <div style="background:var(--film);border-radius:4px;padding:2rem 2.25rem;margin-bottom:3rem;">
       <span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:0.8rem;">Case in Point</span>
       <p style="font-size:0.88rem;color:rgba(247,244,239,0.78);line-height:1.75;margin:0;">The standard, already proven. When the makers of the 2021 film Skater Girl shot in rural Rajasthan, they did not wait until wrap to give back. They built a 14,500-square-foot skatepark for the community, and it was open before filming began. The film ended. The skatepark stayed. That is Regenerative Filmmaking, and it is what designing the giving in from day one makes possible. <a href="Filmanthropy_Ledger.html" style="font-family:var(--mono);font-size:0.75em;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold-light);text-decoration:underline;text-underline-offset:3px;">Read the full Skater Girl story in The Filmanthropy Ledger &rarr;</a></p>
     </div>
 
     <!-- THE PRACTICE -->
-    <div style="margin-bottom:0;max-width:680px;">
+    <div style="margin-bottom:0;">
       <div style="padding-bottom:0.75rem;margin-bottom:1.5rem;border-bottom:1px solid rgba(14,13,11,0.1);">
         <span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--ink-muted);">The Practice</span>
       </div>
-      <p style="font-size:0.95rem;color:var(--ink-soft);line-height:1.75;margin-bottom:2rem;">The three services above are running now. The Practice is the fuller operation Social Effects is built to become, mapped here in full, across the same three streams, so a production can see where the work is headed.</p>
+      <p style="font-size:0.95rem;color:var(--ink-soft);line-height:1.75;max-width:68ch;margin-bottom:2rem;">The three services above are running now. The Practice is the fuller operation Social Effects is built to become, mapped here in full, across the same three streams, so a production can see where the work is headed.</p>
 
-      <div style="display:flex;flex-direction:column;border-top:1px solid rgba(14,13,11,0.07);">
+      <div class="svc-practice-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start;">
 
-        <div style="padding:1.5rem 0;border-bottom:1px solid rgba(14,13,11,0.07);">
+        <div style="background:rgba(14,13,11,0.03);border:1px solid rgba(14,13,11,0.08);border-radius:3px;padding:1.5rem;">
           <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--ink-soft);margin:0 0 0.6rem;">Material.</p>
-          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;margin:0;">A production generates surplus across every department: set construction and lumber, wardrobe, food and craft services, equipment, props and set dressing, furniture, vehicles, flowers. The practice is built to route all of it: matched to recipients, with pickup, transfer, and intake coordinated, so that what now goes to a dumpster or a storage unit reaches the schools, shelters, pantries, and community organizations that can use it.</p>
+          <p style="font-size:0.85rem;color:var(--ink-muted);line-height:1.7;margin:0;">A production generates surplus across every department: set construction and lumber, wardrobe, food and craft services, equipment, props and set dressing, furniture, vehicles, flowers. The practice is built to route all of it: matched to recipients, with pickup, transfer, and intake coordinated, so that what now goes to a dumpster or a storage unit reaches the schools, shelters, pantries, and community organizations that can use it.</p>
         </div>
 
-        <div style="padding:1.5rem 0;border-bottom:1px solid rgba(14,13,11,0.07);">
+        <div style="background:rgba(14,13,11,0.03);border:1px solid rgba(14,13,11,0.08);border-radius:3px;padding:1.5rem;">
           <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--ink-soft);margin:0 0 0.6rem;">Human.</p>
-          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;margin:0;">The presence of cast and crew is itself a gift: workshops, set visits, apprenticeships, mentorships, screenings. The practice is built to coordinate it: matching what a production can offer to the organizations that would be changed by it, so a production can say yes without adding to its own workload.</p>
+          <p style="font-size:0.85rem;color:var(--ink-muted);line-height:1.7;margin:0;">The presence of cast and crew is itself a gift: workshops, set visits, apprenticeships, mentorships, screenings. The practice is built to coordinate it: matching what a production can offer to the organizations that would be changed by it, so a production can say yes without adding to its own workload.</p>
         </div>
 
-        <div style="padding:1.5rem 0;">
+        <div style="background:rgba(14,13,11,0.03);border:1px solid rgba(14,13,11,0.08);border-radius:3px;padding:1.5rem;">
           <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--ink-soft);margin:0 0 0.6rem;">Proceeds &amp; Cause.</p>
-          <p style="font-size:0.9rem;color:var(--ink-muted);line-height:1.7;margin:0;">The oldest form of Filmanthropy: a share of a film's proceeds, a foundation, a cause carried by the production. The practice is built to help a production design this early and structure it well, drawing on the lineage the Ledger documents.</p>
+          <p style="font-size:0.85rem;color:var(--ink-muted);line-height:1.7;margin:0;">The oldest form of Filmanthropy: a share of a film's proceeds, a foundation, a cause carried by the production. The practice is built to help a production design this early and structure it well, drawing on the lineage the Ledger documents.</p>
         </div>
 
       </div>
     </div>
 
     <!-- BENEATH STRIP -->
-    <div style="background:linear-gradient(135deg,rgba(200,168,75,0.1),rgba(232,208,138,0.06));border:1px solid rgba(200,168,75,0.22);border-radius:4px;padding:1.75rem 2rem;margin-top:1.5rem;margin-bottom:3rem;max-width:680px;">
+    <div style="background:linear-gradient(135deg,rgba(200,168,75,0.1),rgba(232,208,138,0.06));border:1px solid rgba(200,168,75,0.22);border-radius:4px;padding:1.75rem 2rem;margin-top:1.5rem;margin-bottom:3rem;">
       <p style="font-size:0.9rem;color:var(--ink-soft);line-height:1.75;margin:0;"><em style="font-style:italic;color:var(--ink);">Beneath the three streams, the operating layer that makes them repeatable:</em> a documented pipeline from first intake to final impact report; a vetted directory of New Jersey vendors, so productions can source locally and well; and a growing network of recipient organizations across the state. This is what turns single acts of generosity into something a production can count on.</p>
     </div>
 
     <!-- MUNICIPAL CLOSING BLOCK -->
-    <div style="background:var(--cream);border:1px solid rgba(200,168,75,0.32);border-top:4px solid var(--gold);border-radius:0 0 4px 4px;padding:2rem 2.25rem;max-width:680px;">
+    <div style="background:var(--cream);border:1px solid rgba(200,168,75,0.32);border-top:4px solid var(--gold);border-radius:0 0 4px 4px;padding:2rem 2.25rem;">
       <span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.25rem;">For New Jersey&#8217;s Film Ready Towns</span>
       <p style="font-size:0.92rem;color:var(--ink-soft);line-height:1.75;max-width:66ch;margin-bottom:1rem;">Social Effects also works with municipalities. New Jersey now has more than fifty Film Ready communities, towns that have opened their doors to production. Most are focused on attracting films. Fewer have asked the next question: when a production comes, how does a town receive it well, so the community gains the most from its stay?</p>
       <p style="font-size:0.92rem;color:var(--ink-soft);line-height:1.75;max-width:66ch;margin-bottom:1.25rem;">That is its own kind of design work, close to what Discovery and Design do for a production. Social Effects helps a Film Ready town shape how it welcomes, hosts, and benefits from the films it draws, building on the example of towns where local leadership has already begun to show what is possible.</p>
