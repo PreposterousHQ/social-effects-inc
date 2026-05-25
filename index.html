@@ -1011,6 +1011,11 @@
     .svc-practice-grid { grid-template-columns: 1fr !important; }
     /* The Practice — three streams stack on mobile */
     .practice-stream-grid { grid-template-columns: 1fr !important; }
+    /* The Practice — infrastructure stacks on mobile */
+    .practice-infra-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+    /* The Practice — process steps: label above description on mobile */
+    .practice-step > div { flex-direction: column !important; gap: 0.35rem !important; }
+    .practice-step p { min-width: 0 !important; }
 
     /* D3b — Flagship Audit card: single column */
     .flagship-audit-inner { grid-template-columns: 1fr !important; }
@@ -1376,19 +1381,8 @@
 </section>
 
 <!-- ============ THE PRACTICE (standalone section) ============ -->
-<!-- Film-strip divider: the connective motif from the hero nav -->
-<div style="background:#15130f;height:34px;width:100%;position:relative;z-index:3;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-  <div style="display:flex;gap:14px;opacity:0.55;">
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
-  </div>
-</div>
+<!-- Film-strip divider: a real strip — banded edges + sprocket perforations -->
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
 <section class="practice-section" id="practice" style="background:#16130f;padding:5rem 2rem 5.5rem;width:100%;position:relative;z-index:2;">
   <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22np%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23np)%22 opacity=%220.05%22/%3E%3C/svg%3E');z-index:1;pointer-events:none;"></div>
   <div style="max-width:1080px;margin:0 auto;position:relative;z-index:2;">
@@ -1430,9 +1424,69 @@
 
     </div>
 
-    <!-- Beneath strip -->
-    <div style="border-left:3px solid var(--gold);background:rgba(200,168,75,0.06);border-radius:0 4px 4px 0;padding:1.6rem 1.9rem;margin-top:1.75rem;">
-      <p style="font-size:0.92rem;color:rgba(244,241,232,0.74);line-height:1.8;margin:0;"><em style="font-style:italic;color:var(--gold-light);">Beneath the three streams, the operating layer that makes them repeatable:</em> a documented pipeline from first intake to final impact report; a vetted directory of New Jersey vendors, so productions can source locally and well; and a growing network of recipient organizations across the state. This is what turns single acts of generosity into something a production can count on.</p>
+    <!-- ===== THE PROCESS — 5-step pipeline ===== -->
+    <div style="margin-top:3rem;border-top:1px solid rgba(200,168,75,0.16);padding-top:2.5rem;">
+      <p style="font-family:var(--mono);font-size:0.66rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,168,75,0.8);margin:0 0 0.5rem;">The Process</p>
+      <h3 style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:#f4f1e8;line-height:1.3;margin:0 0 2rem;max-width:28ch;">From wrap call to community: one coordinated pipeline.</h3>
+
+      <div class="practice-process-list">
+
+        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
+          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">01</span>
+          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Production Intake</p>
+            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">Social Effects audits your surplus inventory in pre-production or at wrap. One call. No complexity on your end.</p>
+          </div>
+        </div>
+
+        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
+          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">02</span>
+          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Match &amp; Coordinate</p>
+            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">We match each category, material and human, to recipient organizations across New Jersey.</p>
+          </div>
+        </div>
+
+        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
+          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">03</span>
+          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Logistics &amp; Transfer</p>
+            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">We handle pickup, delivery, and intake coordination. Productions should not chase trucks. We do.</p>
+          </div>
+        </div>
+
+        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
+          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">04</span>
+          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Documentation</p>
+            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">Every item is tracked, every recipient confirmed, every workshop and visit logged alongside every pound of food and piece of wardrobe.</p>
+          </div>
+        </div>
+
+        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;">
+          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">05</span>
+          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
+            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Filmanthropy Impact Report</p>
+            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">Tax-ready, ESG-ready, PR-ready. We deliver your production's full community impact, material and human, quantified and clearly documented.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== STANDING INFRASTRUCTURE — the horizon, named but minor ===== -->
+    <div style="margin-top:2.5rem;border:1px solid rgba(200,168,75,0.14);border-radius:4px;padding:1.6rem 1.9rem;background:rgba(244,241,232,0.02);">
+      <p style="font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(200,168,75,0.65);margin:0 0 1.1rem;">And, On the Horizon &mdash; Two Standing Networks</p>
+      <div class="practice-infra-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+        <div>
+          <p style="font-family:var(--serif);font-size:0.98rem;font-weight:700;color:rgba(244,241,232,0.85);margin:0 0 0.3rem;">Sustainable Vendor Directory</p>
+          <p style="font-size:0.82rem;color:rgba(244,241,232,0.55);line-height:1.65;margin:0;">A vetted directory of NJ caterers, materials suppliers, local artisans, and NJ-based vendors. Productions find them; we make the connection.</p>
+        </div>
+        <div>
+          <p style="font-family:var(--serif);font-size:0.98rem;font-weight:700;color:rgba(244,241,232,0.85);margin:0 0 0.3rem;">Recipient Network Membership</p>
+          <p style="font-size:0.82rem;color:rgba(244,241,232,0.55);line-height:1.65;margin:0;">Nonprofits, schools, shelters, food banks, theaters, and community organizations join a growing network of partners. Productions find you; we coordinate intake.</p>
+        </div>
+      </div>
     </div>
 
   </div>
