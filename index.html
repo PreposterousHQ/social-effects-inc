@@ -1009,6 +1009,8 @@
     .filmanthropy-spectrum-grid { grid-template-columns: 1fr !important; }
     /* Services Practice streams: single column */
     .svc-practice-grid { grid-template-columns: 1fr !important; }
+    /* The Practice — three streams stack on mobile */
+    .practice-stream-grid { grid-template-columns: 1fr !important; }
 
     /* D3b — Flagship Audit card: single column */
     .flagship-audit-inner { grid-template-columns: 1fr !important; }
@@ -1374,39 +1376,65 @@
 </section>
 
 <!-- ============ THE PRACTICE (standalone section) ============ -->
-<section class="practice-section" id="practice" style="background:#232a20;padding:5.5rem 3rem;width:100%;position:relative;z-index:2;">
-  <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.75%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.04%22/%3E%3C/svg%3E');z-index:1;pointer-events:none;"></div>
-  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:2;">
+<!-- Film-strip divider: the connective motif from the hero nav -->
+<div style="background:#15130f;height:34px;width:100%;position:relative;z-index:3;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <div style="display:flex;gap:14px;opacity:0.55;">
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+    <span style="width:16px;height:13px;background:#2a2620;border-radius:2px;display:block;"></span>
+  </div>
+</div>
+<section class="practice-section" id="practice" style="background:#16130f;padding:5rem 2rem 5.5rem;width:100%;position:relative;z-index:2;">
+  <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22np%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23np)%22 opacity=%220.05%22/%3E%3C/svg%3E');z-index:1;pointer-events:none;"></div>
+  <div style="max-width:1080px;margin:0 auto;position:relative;z-index:2;">
 
-    <!-- THE PRACTICE -->
-    <div style="margin-bottom:0;">
-      <span style="font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem;">The Practice</span>
-      <h2 style="font-family:var(--serif);font-size:1.65rem;font-weight:700;color:#f3f1e8;line-height:1.3;margin:0 0 1.5rem;max-width:30ch;">The operation Social Effects is being built to become.</h2>
-      <p style="font-size:1rem;color:rgba(243,241,232,0.72);line-height:1.8;max-width:66ch;margin-bottom:2.75rem;">Everything above is running now. What follows is where it leads. The Practice is the full operation Social Effects is being built to become &mdash; mapped here across the same three streams, so a production can see the whole of the work, not only its first chapter.</p>
+    <!-- Section head -->
+    <span style="font-family:var(--mono);font-size:0.7rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.1rem;">The Practice &mdash; What We Are Building</span>
+    <h2 style="font-family:var(--serif);font-size:2rem;font-weight:700;color:#f4f1e8;line-height:1.25;margin:0 0 1.4rem;max-width:20ch;">The full operation, mapped.</h2>
+    <p style="font-size:1.02rem;color:rgba(244,241,232,0.72);line-height:1.8;max-width:62ch;margin:0 0 3.25rem;">Everything above is running now. What follows is where it leads &mdash; the operation Social Effects is being built to become, mapped across the same three streams, so a production can see the whole of the work, not only its first chapter.</p>
 
-      <div class="svc-practice-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start;">
+    <!-- Three streams -->
+    <div class="practice-stream-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;align-items:stretch;">
 
-        <div style="background:rgba(243,241,232,0.05);border:1px solid rgba(200,168,75,0.18);border-top:3px solid var(--gold);border-radius:0 0 3px 3px;padding:1.75rem;">
-          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold-light);margin:0 0 0.7rem;">Material</p>
-          <p style="font-size:0.86rem;color:rgba(243,241,232,0.68);line-height:1.75;margin:0;">A production generates surplus across every department: set construction and lumber, wardrobe, food and craft services, equipment, props and set dressing, furniture, vehicles, flowers. The practice is built to route all of it: matched to recipients, with pickup, transfer, and intake coordinated, so that what now goes to a dumpster or a storage unit reaches the schools, shelters, pantries, and community organizations that can use it.</p>
+      <!-- MATERIAL -->
+      <div style="background:rgba(244,241,232,0.04);border:1px solid rgba(200,168,75,0.16);border-radius:4px;padding:1.9rem 1.6rem;display:flex;flex-direction:column;">
+        <div style="width:44px;height:44px;border:1px solid rgba(200,168,75,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8d08a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
         </div>
-
-        <div style="background:rgba(243,241,232,0.05);border:1px solid rgba(200,168,75,0.18);border-top:3px solid var(--gold);border-radius:0 0 3px 3px;padding:1.75rem;">
-          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold-light);margin:0 0 0.7rem;">Human</p>
-          <p style="font-size:0.86rem;color:rgba(243,241,232,0.68);line-height:1.75;margin:0;">The presence of cast and crew is itself a gift: workshops, set visits, apprenticeships, mentorships, screenings. The practice is built to coordinate it: matching what a production can offer to the organizations that would be changed by it, so a production can say yes without adding to its own workload.</p>
-        </div>
-
-        <div style="background:rgba(243,241,232,0.05);border:1px solid rgba(200,168,75,0.18);border-top:3px solid var(--gold);border-radius:0 0 3px 3px;padding:1.75rem;">
-          <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--gold-light);margin:0 0 0.7rem;">Proceeds &amp; Cause</p>
-          <p style="font-size:0.86rem;color:rgba(243,241,232,0.68);line-height:1.75;margin:0;">The oldest form of Filmanthropy: a share of a film's proceeds, a foundation, a cause carried by the production. The practice is built to help a production design this early and structure it well, drawing on the lineage the Ledger documents.</p>
-        </div>
-
+        <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:#f4f1e8;margin:0 0 0.6rem;">Material</p>
+        <p style="font-size:0.87rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;">A production generates surplus across every department: set construction and lumber, wardrobe, food and craft services, equipment, props and set dressing, furniture, vehicles, flowers. The practice is built to route all of it &mdash; matched to recipients, with pickup, transfer, and intake coordinated &mdash; so that what now goes to a dumpster or a storage unit reaches the schools, shelters, pantries, and community organizations that can use it.</p>
       </div>
+
+      <!-- HUMAN -->
+      <div style="background:rgba(244,241,232,0.04);border:1px solid rgba(200,168,75,0.16);border-radius:4px;padding:1.9rem 1.6rem;display:flex;flex-direction:column;">
+        <div style="width:44px;height:44px;border:1px solid rgba(200,168,75,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8d08a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:#f4f1e8;margin:0 0 0.6rem;">Human</p>
+        <p style="font-size:0.87rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;">The presence of cast and crew is itself a gift: workshops, set visits, apprenticeships, mentorships, screenings. The practice is built to coordinate it &mdash; matching what a production can offer to the organizations that would be changed by it &mdash; so a production can say yes without adding to its own workload.</p>
+      </div>
+
+      <!-- PROCEEDS & CAUSE -->
+      <div style="background:rgba(244,241,232,0.04);border:1px solid rgba(200,168,75,0.16);border-radius:4px;padding:1.9rem 1.6rem;display:flex;flex-direction:column;">
+        <div style="width:44px;height:44px;border:1px solid rgba(200,168,75,0.35);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8d08a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+        </div>
+        <p style="font-family:var(--serif);font-size:1.2rem;font-weight:700;color:#f4f1e8;margin:0 0 0.6rem;">Proceeds &amp; Cause</p>
+        <p style="font-size:0.87rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;">The oldest form of Filmanthropy: a share of a film's proceeds, a foundation, a cause carried by the production. The practice is built to help a production design this early and structure it well, drawing on the lineage the Ledger documents.</p>
+      </div>
+
     </div>
-    <!-- BENEATH STRIP -->
-    <div style="border-left:3px solid var(--gold);background:rgba(200,168,75,0.07);border-radius:0 3px 3px 0;padding:1.75rem 2rem;margin-top:2rem;">
-      <p style="font-size:0.92rem;color:rgba(243,241,232,0.78);line-height:1.8;margin:0;"><em style="font-style:italic;color:var(--gold-light);">Beneath the three streams, the operating layer that makes them repeatable:</em> a documented pipeline from first intake to final impact report; a vetted directory of New Jersey vendors, so productions can source locally and well; and a growing network of recipient organizations across the state. This is what turns single acts of generosity into something a production can count on.</p>
+
+    <!-- Beneath strip -->
+    <div style="border-left:3px solid var(--gold);background:rgba(200,168,75,0.06);border-radius:0 4px 4px 0;padding:1.6rem 1.9rem;margin-top:1.75rem;">
+      <p style="font-size:0.92rem;color:rgba(244,241,232,0.74);line-height:1.8;margin:0;"><em style="font-style:italic;color:var(--gold-light);">Beneath the three streams, the operating layer that makes them repeatable:</em> a documented pipeline from first intake to final impact report; a vetted directory of New Jersey vendors, so productions can source locally and well; and a growing network of recipient organizations across the state. This is what turns single acts of generosity into something a production can count on.</p>
     </div>
+
   </div>
 </section>
 
