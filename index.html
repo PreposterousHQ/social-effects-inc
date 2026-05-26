@@ -1013,9 +1013,8 @@
     .practice-stream-grid { grid-template-columns: 1fr !important; }
     /* The Practice — infrastructure stacks on mobile */
     .practice-infra-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
-    /* The Practice — process steps: label above description on mobile */
-    .practice-step > div { flex-direction: column !important; gap: 0.35rem !important; }
-    .practice-step p { min-width: 0 !important; }
+    /* The Practice — process steps keep spine layout on mobile, just tighter */
+    .practice-step { gap: 1rem !important; }
 
     /* D3b — Flagship Audit card: single column */
     .flagship-audit-inner { grid-template-columns: 1fr !important; }
@@ -1431,43 +1430,58 @@
 
       <div class="practice-process-list">
 
-        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
-          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">01</span>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
-            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Production Intake</p>
-            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">Social Effects audits your surplus inventory in pre-production or at wrap. One call. No complexity on your end.</p>
+        <div class="practice-step" style="display:flex;gap:1.5rem;align-items:flex-start;padding-bottom:1.7rem;">
+          <div style="position:relative;flex-shrink:0;">
+            <span class="practice-spine" style="position:absolute;left:16px;top:34px;bottom:-1.4rem;width:1px;background:linear-gradient(to bottom,rgba(200,168,75,0.5),rgba(200,168,75,0.18));"></span>
+            <span style="position:relative;z-index:2;font-family:var(--mono);font-size:0.8rem;font-weight:700;color:var(--gold);width:34px;height:34px;background:#16130f;border:1px solid rgba(200,168,75,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;">01</span>
+          </div>
+          <div style="flex:1;padding-top:0.15rem;">
+            <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#f4f1e8;margin:0 0 0.35rem;">Production Intake</p>
+            <p style="font-size:0.88rem;color:rgba(244,241,232,0.62);line-height:1.72;margin:0;max-width:60ch;">Social Effects audits your surplus inventory in pre-production or at wrap. One call. No complexity on your end.</p>
           </div>
         </div>
 
-        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
-          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">02</span>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
-            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Match &amp; Coordinate</p>
-            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">We match each category, material and human, to recipient organizations across New Jersey.</p>
+        <div class="practice-step" style="display:flex;gap:1.5rem;align-items:flex-start;padding-bottom:1.7rem;">
+          <div style="position:relative;flex-shrink:0;">
+            <span class="practice-spine" style="position:absolute;left:16px;top:34px;bottom:-1.4rem;width:1px;background:linear-gradient(to bottom,rgba(200,168,75,0.5),rgba(200,168,75,0.18));"></span>
+            <span style="position:relative;z-index:2;font-family:var(--mono);font-size:0.8rem;font-weight:700;color:var(--gold);width:34px;height:34px;background:#16130f;border:1px solid rgba(200,168,75,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;">02</span>
+          </div>
+          <div style="flex:1;padding-top:0.15rem;">
+            <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#f4f1e8;margin:0 0 0.35rem;">Match &amp; Coordinate</p>
+            <p style="font-size:0.88rem;color:rgba(244,241,232,0.62);line-height:1.72;margin:0;max-width:60ch;">We match each category, material and human, to recipient organizations across New Jersey.</p>
           </div>
         </div>
 
-        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
-          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">03</span>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
-            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Logistics &amp; Transfer</p>
-            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">We handle pickup, delivery, and intake coordination. Productions should not chase trucks. We do.</p>
+        <div class="practice-step" style="display:flex;gap:1.5rem;align-items:flex-start;padding-bottom:1.7rem;">
+          <div style="position:relative;flex-shrink:0;">
+            <span class="practice-spine" style="position:absolute;left:16px;top:34px;bottom:-1.4rem;width:1px;background:linear-gradient(to bottom,rgba(200,168,75,0.5),rgba(200,168,75,0.18));"></span>
+            <span style="position:relative;z-index:2;font-family:var(--mono);font-size:0.8rem;font-weight:700;color:var(--gold);width:34px;height:34px;background:#16130f;border:1px solid rgba(200,168,75,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;">03</span>
+          </div>
+          <div style="flex:1;padding-top:0.15rem;">
+            <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#f4f1e8;margin:0 0 0.35rem;">Logistics &amp; Transfer</p>
+            <p style="font-size:0.88rem;color:rgba(244,241,232,0.62);line-height:1.72;margin:0;max-width:60ch;">We handle pickup, delivery, and intake coordination. Productions should not chase trucks. We do.</p>
           </div>
         </div>
 
-        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;border-bottom:1px solid rgba(200,168,75,0.1);">
-          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">04</span>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
-            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Documentation</p>
-            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">Every item is tracked, every recipient confirmed, every workshop and visit logged alongside every pound of food and piece of wardrobe.</p>
+        <div class="practice-step" style="display:flex;gap:1.5rem;align-items:flex-start;padding-bottom:1.7rem;">
+          <div style="position:relative;flex-shrink:0;">
+            <span class="practice-spine" style="position:absolute;left:16px;top:34px;bottom:-1.4rem;width:1px;background:linear-gradient(to bottom,rgba(200,168,75,0.5),rgba(200,168,75,0.18));"></span>
+            <span style="position:relative;z-index:2;font-family:var(--mono);font-size:0.8rem;font-weight:700;color:var(--gold);width:34px;height:34px;background:#16130f;border:1px solid rgba(200,168,75,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;">04</span>
+          </div>
+          <div style="flex:1;padding-top:0.15rem;">
+            <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#f4f1e8;margin:0 0 0.35rem;">Documentation</p>
+            <p style="font-size:0.88rem;color:rgba(244,241,232,0.62);line-height:1.72;margin:0;max-width:60ch;">Every item is tracked, every recipient confirmed, every workshop and visit logged alongside every pound of food and piece of wardrobe.</p>
           </div>
         </div>
 
-        <div class="practice-step" style="display:flex;gap:1.25rem;align-items:flex-start;padding:1.1rem 0;">
-          <span style="flex-shrink:0;font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);width:34px;height:34px;border:1px solid rgba(200,168,75,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;">05</span>
-          <div style="display:flex;flex-wrap:wrap;gap:0.3rem 1.25rem;align-items:baseline;">
-            <p style="font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#f4f1e8;margin:0;min-width:180px;">Filmanthropy Impact Report</p>
-            <p style="font-size:0.86rem;color:rgba(244,241,232,0.62);line-height:1.7;margin:0;flex:1;min-width:240px;">Tax-ready, ESG-ready, PR-ready. We deliver your production's full community impact, material and human, quantified and clearly documented.</p>
+        <div class="practice-step" style="display:flex;gap:1.5rem;align-items:flex-start;padding-bottom:1.7rem;">
+          <div style="position:relative;flex-shrink:0;">
+            
+            <span style="position:relative;z-index:2;font-family:var(--mono);font-size:0.8rem;font-weight:700;color:var(--gold);width:34px;height:34px;background:#16130f;border:1px solid rgba(200,168,75,0.5);border-radius:50%;display:flex;align-items:center;justify-content:center;">05</span>
+          </div>
+          <div style="flex:1;padding-top:0.15rem;">
+            <p style="font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#f4f1e8;margin:0 0 0.35rem;">Filmanthropy Impact Report</p>
+            <p style="font-size:0.88rem;color:rgba(244,241,232,0.62);line-height:1.72;margin:0;max-width:60ch;">Tax-ready, ESG-ready, PR-ready. We deliver your production's full community impact, material and human, quantified and clearly documented.</p>
           </div>
         </div>
 
