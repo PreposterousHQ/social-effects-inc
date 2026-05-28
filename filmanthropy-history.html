@@ -122,16 +122,12 @@
 
   /* ── ARTICLE LAYOUT ── */
   .article-wrap {
-    max-width: 1100px;
+    max-width: 760px;
     margin: 0 auto;
     padding: 5rem 3rem 6rem;
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    gap: 6rem;
-    align-items: start;
   }
   @media (max-width: 800px) {
-    .article-wrap { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 1.5rem 4rem; }
+    .article-wrap { padding: 3rem 1.5rem 4rem; }
     .hero { padding: 88px 1.5rem 3rem; }
   }
 
@@ -166,42 +162,6 @@
     margin-bottom: 0 !important;
   }
 
-  /* ── SIDEBAR ── */
-  .sidebar-card {
-    background: rgba(200,168,75,0.06);
-    border: 0.5px solid rgba(200,168,75,0.18);
-    border-radius: 3px;
-    padding: 1.75rem;
-    position: sticky;
-    top: 88px;
-  }
-  .sidebar-card h3 {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.25rem;
-  }
-  .distinction-row {
-    padding: 1rem 0;
-    border-bottom: 0.5px solid rgba(200,168,75,0.1);
-  }
-  .distinction-row:last-child { border-bottom: none; padding-bottom: 0; }
-  .distinction-row:first-of-type { padding-top: 0; }
-  .distinction-label {
-    font-family: var(--mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(200,168,75,0.55);
-    margin-bottom: 0.4rem;
-  }
-  .distinction-text {
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: rgba(247,244,239,0.65);
-  }
 
   .back-link {
     display: inline-flex;
@@ -302,7 +262,7 @@
 
   <article class="article-body">
 
-    <p>We did not coin this word. It came to us with a history, and the honest thing is to tell that history plainly, name the people who carried it before us, and be clear about the one part of the field we are here to build.</p>
+    <p>We did not coin this word. It came to us with a history, and the honest thing is to tell that history plainly, name the people who carried it before us.</p>
 
     <h2>Where the Word Began</h2>
     <p>Filmanthropy is a blend of two words, film and philanthropy, and the joining of them was deliberate. As far as the public record shows, the word was introduced around 2007 and 2008 by Ted Leonsis, a media entrepreneur and the founder of the documentary platform SnagFilms, which he built alongside Steve Case, Miles Gilburne, and chief executive Rick Allen. SnagFilms launched in the summer of 2008 with a catalog of documentaries and an invitation to audiences to become a filmanthropist by helping good films find an audience. Leonsis used the word to describe film aimed at the issues the world most needs to face. He built the word himself, and we are glad to say so plainly.</p>
@@ -344,31 +304,6 @@
 
   </article>
 
-  <!-- SIDEBAR -->
-  <aside>
-    <div class="sidebar-card">
-      <h3>The Filmanthropy Spectrum</h3>
-
-      <div class="distinction-row">
-        <div class="distinction-label">Sustainable</div>
-        <div class="distinction-text">Production works to do less harm. Reduce waste, divert materials from landfill, lighten the footprint of the shoot.</div>
-      </div>
-
-      <div class="distinction-row">
-        <div class="distinction-label">Contributive</div>
-        <div class="distinction-text">Production actively gives back to the communities it touches, in materials and in the human presence its people uniquely carry.</div>
-      </div>
-
-      <div class="distinction-row">
-        <div class="distinction-label">Regenerative</div>
-        <div class="distinction-text">Production creates something permanent the community keeps long after the cameras leave: a place, or a lasting capability that was not there before.</div>
-      </div>
-
-      <div class="distinction-row">
-        <div class="distinction-text" style="font-size:0.82rem;font-style:italic;color:rgba(247,244,239,0.42);padding-top:0.25rem;">Filmanthropy is a wide field. The practice we are working to define within it is Filmanthropy by Design.</div>
-      </div>
-    </div>
-  </aside>
 
 </div>
 
