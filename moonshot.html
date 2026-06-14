@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>The Practical Moonshot &#8212; Social Effects NJ</title>
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Social Effects NJ">
+<meta property="og:title" content="The Practical Moonshot">
+<meta property="og:description" content="What the making of a single film could build. A companion to the Filmanthropy Ledger.">
+<meta name="description" content="What the making of a single film could build. A companion to the Filmanthropy Ledger.">
+<meta property="og:url" content="https://socialeffectsnj.com/moonshot.html">
+<!-- og:image: TODO — no Moonshot-specific share image yet. Add before publishing.
+     <meta property="og:image" content="https://socialeffectsnj.com/moonshot-share.jpg">
+     <meta property="og:image:width" content="1200">
+     <meta property="og:image:height" content="630"> -->
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Practical Moonshot">
+<meta name="twitter:description" content="What the making of a single film could build. A companion to the Filmanthropy Ledger.">
+<!-- twitter:image: TODO — add when Moonshot OG image is available -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0d0b;
+    --ink-soft: #3a3832;
+    --ink-muted: #7a7568;
+    --paper: #f5f1eb;
+    --paper-warm: #ede9e2;
+    --film: #090806;
+    --gold: #c8a84b;
+    --gold-light: #e8d08a;
+    --rust: #b84c2a;
+    --cream: #faf7f2;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(26, 24, 20, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200, 168, 75, 0.2);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--paper);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-back {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--film);
+    background: var(--gold);
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ── FILM-STRIP DIVIDER ── */
+  .film-divider {
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg, var(--gold) 0px, var(--gold) 20px,
+      transparent 20px, transparent 30px
+    );
+    opacity: 0.4;
+  }
+
+  /* ── COMPANION HEADER ── */
+  .ms-header {
+    background: #16130f;
+    padding: 10rem 3rem 6rem;
+    position: relative;
+  }
+  .ms-header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .ms-overline {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    display: block;
+  }
+  .ms-overline a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+  .ms-overline a:hover { color: var(--gold-light); }
+  .ms-title {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--paper);
+    margin-bottom: 1.25rem;
+  }
+  .ms-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-style: italic;
+    color: rgba(247,244,239,0.55);
+    line-height: 1.5;
+  }
+
+  /* ── ESSAY BODY ── */
+  .essay-section { background: var(--paper-warm); padding: 6rem 3rem; }
+  .essay-inner { max-width: 720px; margin: 0 auto; }
+  .essay-p { font-size: 1.05rem; line-height: 1.9; color: var(--ink-soft); margin-bottom: 1.5rem; max-width: 66ch; }
+  .essay-h3 { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 700; color: var(--ink); margin: 2.5rem 0 1rem; line-height: 1.25; }
+  .essay-divider { height: 1px; background: var(--gold); opacity: 0.3; margin: 3rem 0 2.5rem; }
+
+  /* ── NJ LEAD SECTION ── */
+  .ledger-nj-question {
+    background: #1a1814;
+    padding: 7rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .ledger-nj-question::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      90deg, transparent, transparent 60px,
+      rgba(255,255,255,0.02) 60px, rgba(255,255,255,0.02) 61px
+    );
+  }
+  .ledger-nj-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+  }
+  .nj-stand-heading { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; font-family: var(--serif); color: var(--paper); line-height: 1.15; margin-bottom: 2rem; }
+  .ledger-nj-headline {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 2rem;
+  }
+  .ledger-nj-headline em { font-style: italic; color: var(--gold-light); }
+  .ledger-nj-body {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: rgba(250,247,242,0.72);
+    max-width: 60ch;
+    margin: 0 auto 2rem;
+  }
+
+  /* ── FINANCING STACK INSET ── */
+  .ms-stack-inset {
+    background: #1a1814;
+    border: 1px solid rgba(200,168,75,0.2);
+    border-radius: 2px;
+    padding: 3rem 2rem;
+    margin: 2.5rem 0 0;
+    text-align: center;
+  }
+  .ledger-nj-stack {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .ledger-nj-pill {
+    border: 1px solid rgba(232,208,138,0.3);
+    color: var(--gold-light);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+  }
+  .ledger-nj-pill--result {
+    border-color: rgba(200,168,75,0.6);
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ── BACK-LINK ── */
+  .ms-back {
+    background: #120e08;
+    padding: 3.5rem 3rem;
+    text-align: center;
+  }
+  .ms-back a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(200,168,75,0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,168,75,0.3);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .ms-back a:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--paper); }
+  .footer-logo span { color: var(--gold); }
+  .footer-taglines { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .footer-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: rgba(247,244,239,0.3);
+    text-transform: uppercase;
+  }
+  .footer-legal { font-size: 0.75rem; color: rgba(247,244,239,0.25); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .ms-header { padding: 8rem 1.5rem 4rem; }
+    .essay-section { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; color:rgba(247,244,239,0.4);">NJ</span></a>
+  <a href="Filmanthropy_Ledger.html" class="nav-back">&#8592; Back to the Ledger</a>
+  <a href="index.html#contact" class="nav-cta">Work With Us</a>
+</nav>
+
+<!-- COMPANION HEADER -->
+<header class="ms-header">
+  <div class="ms-header-inner">
+    <span class="ms-overline">A companion to <a href="Filmanthropy_Ledger.html">the Filmanthropy Ledger</a>.</span>
+    <h1 class="ms-title">The Practical Moonshot</h1>
+    <p class="ms-subtitle">What the making of a single film could build.</p>
+  </div>
+</header>
+
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
+
+<!-- NJ CAN DO NOW — LEAD SECTION -->
+<section class="ledger-nj-question">
+  <div class="ledger-nj-inner">
+    <h2 class="nj-stand-heading">What NJ Can Do Now</h2>
+    <h2 class="ledger-nj-headline">What if New Jersey Innovated?</h2>
+    <p class="ledger-nj-body">New Jersey is about to have more film production than at any point in its history. Netflix Fort Monmouth opens in 2028. Paramount 1888 Studios is under construction in Bayonne. Lionsgate is building in Newark. Fifty-eight Film Ready communities are waiting. What if one of those productions, stacking its budget with grants, philanthropy, government funds, and deliberate design, built something for NJ that would still be standing in 50 years?</p>
+    <div class="ledger-nj-stack">
+      <span class="ledger-nj-pill">Production Budget</span>
+      <span class="ledger-nj-pill">+ NEA / State Arts Grants</span>
+      <span class="ledger-nj-pill">+ County Economic Dev Funds</span>
+      <span class="ledger-nj-pill">+ Private Philanthropy</span>
+      <span class="ledger-nj-pill">+ Corporate Partners</span>
+      <span class="ledger-nj-pill">= Something That Stays</span>
+    </div>
+    <p class="ledger-nj-body">That&#8217;s not a fantasy. That&#8217;s a financing structure.<br>And it starts with recognizing the possibilities, daring to dream, and acting on the logic.</p>
+  </div>
+</section>
+
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
+
+<!-- ESSAY BODY -->
+<section class="essay-section">
+  <div class="essay-inner">
+
+    <p class="essay-p">The Ledger essay that this page accompanies ends on a possibility, sketched lightly, because the Ledger is a history and a history should not overpromise. This companion picks the possibility up and takes it as far as it will go, into specific numbers, in a specific state, for a specific purpose. It is an argument, not a record. It asks one question and tries to answer it without flinching: if everything in the hundred-year history were assembled at once, on purpose, at the largest scale the industry is capable of, what could the making of a single film actually build. The honest answer turns out to be: a great deal more than anyone has tried.</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">The pieces already exist</h3>
+
+    <p class="essay-p">Nothing in what follows has to be invented. Every component has already been done, once, by someone, and documented. The only thing that has never been done is to do them all together, in one production, by design.</p>
+
+    <p class="essay-p">A filmmaker has given the money back. When Steven Spielberg made Schindler&#8217;s List he forwent his salary and called the profits blood money, and his share went out into the world through the foundations he then built rather than into his own accounts. The maker treating the film&#8217;s proceeds as something owed to the world is not a hypothetical. It happened on one of the most honored films ever made.</p>
+
+    <p class="essay-p">A production has built the permanent thing first. The crew of Skater Girl poured a concrete skatepark for a village in Rajasthan before they shot a frame, the largest in India, and it still stands and is still used years after the trucks left. The set has outlived the film. Hobbiton, built for The Lord of the Rings on a New Zealand sheep farm, was rebuilt to last and became a permanent place that now supports the region on its own. The made world that survives the production, and pays its own way afterward, is not a hypothetical either.</p>
+
+    <p class="essay-p">And a production has come within a single decision of something far greater, and missed. Interstellar planted five hundred acres of real corn for the look of the thing, harvested it, sold it, and the production turned a profit on the crop, and then fed no one with it, because feeding someone was never the plan. The Robin Williams film about Patch Adams brought the world&#8217;s attention and real money to a vision of a free hospital, and the hospital was never built, because the film told the story instead of building the thing the story was about. These are the near misses, and they are the most instructive cases of all, because they show how little stood between what happened and what could have happened. A different decision, made earlier, and the corn feeds a county and the hospital gets built.</p>
+
+    <p class="essay-p">Each of these is a single instrument. What no one has done is play them as one chord.</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">The scale of the problem, and the scale of the answer</h3>
+
+    <p class="essay-p">Set the film down for a moment and look at what New Jersey already spends.</p>
+
+    <p class="essay-p">The state pours enormous public sums into its mental health crisis every year, and a great deal of it goes to the most expensive and least healing part of the system: emergency rooms holding people who should not be there, repeat hospitalizations, the revolving door between crisis and street and jail that processes human beings at great cost and leaves them no better than it found them. This is money already being spent, every year, with the meter running and nothing owned at the end of it. It is the most expensive way a society can fail to solve a problem.</p>
+
+    <p class="essay-p">Now bring the film back, at full scale. Not a modest feature but a tentpole, the kind of production that costs as much as a small city&#8217;s annual budget. Picture a billion dollars: five hundred million raised the ordinary way, from studios and financiers and distributors who expect a blockbuster and a return, and five hundred million from the State of New Jersey, not as a handout to filmmakers but as something stranger and more sensible, a capital investment in mental health infrastructure that happens to also produce a major motion picture, the jobs that come with it, and the tax revenue a billion-dollar production generates in the state that hosts it. The film is the engine. The infrastructure is the point. And the state&#8217;s half is not charity, it is the cheaper option, because owning the solution once costs less over time than renting the failure forever.</p>
+
+    <p class="essay-p">What could that build, owned outright, never to be lost?</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">What the money buys</h3>
+
+    <p class="essay-p">Begin with the crisis centers. For about four million dollars a New Jersey hospital builds an EmPATH unit, a calm, living-room-style space where a person in crisis is met by clinicians and given dignity and time instead of waiting strapped to the noise of an emergency room. The first ones in the state are opening now. At roughly that figure, and less at smaller hospitals where the unit can be smaller, the production could fund twenty-five of them across New Jersey, a standing statewide network of humane crisis care where today there are almost none.</p>
+
+    <p class="essay-p">Then the homes. A network of ordinary houses, four and five bedrooms, scattered through the towns of the state and turned into respite homes, places a person can come to stay and steady in a crisis rather than be committed, staffed by peers who have been through it themselves. Say a hundred of them. Bought outright, with the production&#8217;s capital, and placed into a community land trust so that they are owned free and clear, forever, by the public purpose they serve. Not leased. Not mortgaged. Owned. A house the trust owns cannot be foreclosed, cannot be sold out from under the people it shelters, cannot be lost to a budget cut or a change of administration. The single most radical thing the money does is also the simplest: it buys the buildings, so no one can ever take them away.</p>
+
+    <p class="essay-p">Then the teams. New Jersey&#8217;s statewide network of mobile crisis responders, the peers and counselors who come to a person in distress rather than waiting for the police to, runs the state roughly sixteen million dollars a year. The production could fund years of that coverage outright and expand it, putting more teams on the road, in more counties, around the clock.</p>
+
+    <p class="essay-p">Twenty-five crisis centers. A hundred owned homes. Mobile teams in every corner of the state, funded for years. And all of it built by, and during, the making of one film.</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">The part that compounds</h3>
+
+    <p class="essay-p">Here the argument stops being about buildings and starts being about people, because this is where a thing that looks like a cost reveals itself as an engine.</p>
+
+    <p class="essay-p">Building and running all of this is work, and work is jobs: the trades that build and retrofit the homes and the units, the clinicians and peers who staff them, the crews who maintain them. A capital project of this size is also one of the largest workforce programs a state could run. But the deeper turn is who does that work. The people who come through the system, who stay in the homes and steady in the centers, are the natural staff of the next homes and the next centers. The peer who was helped becomes the peer who helps. The person the old system would have cycled through an emergency room three times a year instead has a place to live, a reason to get up, a community that knows their name, and eventually a job inside the thing that caught them.</p>
+
+    <p class="essay-p">That is the answer to the two quiet epidemics underneath the loud one. Loneliness, because the homes and the network are a community, not a queue. And recidivism, the revolving door itself, because a person with housing they cannot lose, work that means something, and people around them does not cycle back into crisis and jail at anything like the old rate. The system stops processing people and starts enlisting them. And people who have been caught, in the experience of nearly everyone who builds these things, start giving back on their own, because that is what people do when something real was done for them. The infrastructure does not just hold; it grows its own next generation of builders.</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">Why the money does not run out</h3>
+
+    <p class="essay-p">The objection to anything this large is always the same, and it is fair: a billion dollars builds it, and then what, when the billion is gone?</p>
+
+    <p class="essay-p">The answer is that the billion is a capital event, not an operating budget, and the operating money already exists. It is being spent right now, by payers who will keep spending it, on exactly this category of need, only today they spend it on the expensive end. Health insurers already reimburse crisis stabilization and behavioral health care; a staffed crisis center and a peer respite home deliver that same reimbursable care at a fraction of what an emergency room and a hospital bed cost, which means the ongoing care is paid for by the payments that were always going to be made. Housing subsidy already flows; vouchers that today pay rent into a private landlord&#8217;s pocket can instead service the upkeep of a home the trust already owns, where the only recurring cost is maintenance, which is far cheaper than a mortgage on a building you do not own or rent on one you never will. The film itself earns for decades, the ticket sales and the streaming and the long tail of a movie millions have seen, flowing back to the purpose. And once it visibly works, the ordinary annual giving and public investment that gathers around any proven model arrives on top of all of it, the way money always finds a thing that is already working.</p>
+
+    <p class="essay-p">So the capital builds and buys the assets, once. The assets are then sustained by money that was already being spent anyway, redirected from renting failure to maintaining what is owned. This is the whole secret, and it is less a feat of finance than a shift of imagination. The instinct is to assume something this large must be impossibly complicated. It is not. Every piece of it already exists and is already funded. EmPATH units are being built. Mobile teams are contracted and running. Insurers reimburse this care. Vouchers pay this rent. Films earn for decades. No one has simply assembled the pieces with a single upfront act that buys the assets outright, so that the recurring streams stop renting and start sustaining. The innovation is the assembly and the ownership. Almost nothing else has to be newly invented.</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">Why it is worth doing even if it fails</h3>
+
+    <p class="essay-p">Let the hardest version of the objection stand: suppose it does not all work. Suppose the film underperforms, or the politics shift, or a third of the plan goes wrong the way Pitt&#8217;s houses went wrong and Radke&#8217;s warehouse ran out of money. First attempts at hard things miss, and the honest record, which named those failures plainly, will not pretend this one is exempt.</p>
+
+    <p class="essay-p">Even then, consider what a billion dollars spent this way leaves behind on its worst day. The crisis centers are built and staffed and standing. The homes are bought and owned, free and clear, and cannot be repossessed by anyone for any reason. The teams ran for years and trained a workforce that does not un-learn its skill. A billion dollars spent the ordinary way on a blockbuster leaves a film and a few good months for the towns it passed through. A billion spent this way, even failing, leaves twenty-five centers, a hundred owned houses, and thousands of people who were caught instead of dropped. The floor under this is higher than the ceiling over almost anything else a billion dollars could do. That is what it means to design the giving into the asset rather than the outcome: the outcome can disappoint, and the asset still stands.</p>
+
+    <p class="essay-p">But the reason it is unlikely to fail is the same reason it is worth attempting. The expensive, recurring failure it replaces is already being paid for. The assets, once owned, cannot be lost. The care, once delivered, is already reimbursable. The people, once caught, begin to give back. A plan whose worst case is a hundred permanently owned homes and twenty-five crisis centers, and whose ongoing costs are covered by money already being spent, is not a gamble in the way a film is a gamble. It is closer to the soundest investment a state could make, wearing the costume of the riskiest.</p>
+
+    <div class="essay-divider"></div>
+    <h3 class="essay-h3">The film at the center</h3>
+
+    <p class="essay-p">None of this works without the film, and the film has to be a real one, the kind people line up for. The story at the center could be drawn from this very subject, the long and human history of how a society learns to treat its most vulnerable with dignity, the people who dared to imagine something better and were called naive until they were called visionaries. A subject nearly every family has touched. A subject the screen has always done its best work on. Made by people at the top of the craft, with the spectacle and the scale and the stars a production of this size commands, so that the audience in the theater sees only a great movie, and never once suspects that the making of it bought a hundred houses and built twenty-five places of refuge across the state it was filmed in.</p>
+
+    <p class="essay-p">That is the trick the whole hundred-year history has been building toward without knowing it. The film is pure entertainment to the person watching and permanent infrastructure to the place that made it, and the two never touch, because they happen in different rooms. One on the screen. One on the ground.</p>
+
+    <p class="essay-p">New Jersey is where American film began, on Edison&#8217;s lots and the cliffs of Fort Lee, and it is where the cameras are returning now. It is as good a place as any to find out whether the made thing can finally feed the people who made it, and a better place than most, because it is where the story started. The pieces are all here. The money is, in the deepest sense, already being spent. What is missing is only the decision to spend it on purpose, once, on something that lasts.</p>
+
+    <p class="essay-p">The problem was never the wanting. It is the design.</p>
+
+  </div>
+</section>
+
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
+
+<!-- SLIDE DECKS -->
+<section style="background:#1a1814;padding:4rem 3rem;display:flex;flex-direction:column;gap:3rem;">
+  <h2 style="font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:700;color:var(--paper);max-width:960px;margin:0 auto;width:100%;line-height:1.25;">Another Regenerative Film Use Case for Mental Health Reformation In NJ</h2>
+  <div style="max-width:960px;margin:0 auto;width:100%;position:relative;padding-bottom:min(58.52%,calc(58.52% * 960/960));overflow:hidden;border:1px solid rgba(200,168,75,0.15);">
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSY8S9-WOEhC9vWJipfpvEQiASpPnMWRPy76itOPXo_1gT9NN6YspOa27qwfpxXzTcMBedNtlPmLsWq/pubembed?start=false&loop=false&delayms=60000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;"></iframe>
+  </div>
+  <div style="max-width:960px;margin:0 auto;width:100%;position:relative;padding-bottom:58.52%;overflow:hidden;border:1px solid rgba(200,168,75,0.15);">
+    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTU2HezXgHSnteXg-rK2jsqKAxN2g318yvNnACMjUT74qzGzTVYHW6epztvp5xH_FaB2nQnoUMjCj3f/pubembed?start=false&loop=false&delayms=60000" frameborder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="position:absolute;inset:0;width:100%;height:100%;"></iframe>
+  </div>
+</section>
+
+<!-- BACK-LINK TO LEDGER -->
+<div class="ms-back">
+  <a href="Filmanthropy_Ledger.html">&#8592; Return to the Filmanthropy Ledger</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Social<span>Effects</span> <span style="font-size:0.7rem; font-weight:300; letter-spacing:0.08em; opacity:0.5;">NJ</span></div>
+  <div class="footer-taglines">
+    <span class="footer-tag">From Special Effects to Social Effects</span>
+    <span class="footer-tag">&middot;</span>
+    <span class="footer-tag">The Filmanthropy Ledger</span>
+    <span class="footer-tag">&middot;</span>
+    <span class="footer-tag">The Practical Moonshot</span>
+  </div>
+  <p class="footer-legal">&copy; 2026 Social Effects NJ. Filmanthropy &amp; Regenerative Filmmaking.</p>
+</footer>
+
+</body>
+</html>
