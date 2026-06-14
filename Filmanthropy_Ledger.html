@@ -1,224 +1,1750 @@
 <!DOCTYPE html>
-<!-- House style: no em dashes. Use commas, colons, periods, or parens. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Filmanthropy Ledger: Social Effects Inc</title>
-<meta name="description" content="A research record of what film productions have given to the communities they touch, what more was possible, and what is beginning now in New Jersey. Coming soon from Social Effects Inc.">
+<meta name="robots" content="index, follow">
+<title>The Filmanthropy Ledger — Social Effects NJ</title>
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Social Effects NJ">
+<meta property="og:title" content="The Filmanthropy Ledger — What Productions Gave | Social Effects NJ">
+<meta property="og:description" content="What productions gave. What more was possible. A research archive documenting Filmanthropy through history, from Mary Pickford to Skater Girl.">
+<meta name="description" content="What productions gave. What more was possible. A research archive documenting Filmanthropy through history, from Mary Pickford to Skater Girl.">
+<meta property="og:image:alt" content="A vintage film projector casting a golden light beam — Social Effects NJ Filmanthropy research archive.">
+<meta property="og:url" content="https://socialeffectsnj.com/Filmanthropy_Ledger.html">
+<meta property="og:image" content="https://socialeffectsnj.com/social-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Filmanthropy Ledger — What Productions Gave">
+<meta name="twitter:description" content="What productions gave. What more was possible. Documenting Filmanthropy through history, from Mary Pickford to Skater Girl.">
+<meta name="twitter:image" content="https://socialeffectsnj.com/social-share.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --film:       #0e0d0b;
-    --paper:      #f7f4ef;
-    --paper-muted: rgba(247,244,239,0.6);
-    --paper-dim:   rgba(247,244,239,0.3);
-    --gold:       #c8a84b;
+    --ink: #0e0d0b;
+    --ink-soft: #3a3832;
+    --ink-muted: #7a7568;
+    --paper: #f5f1eb;
+    --paper-warm: #ede9e2;
+    --film: #090806;
+    --gold: #c8a84b;
     --gold-light: #e8d08a;
-    --serif:  'Playfair Display', Georgia, serif;
-    --sans:   'DM Sans', system-ui, sans-serif;
-    --mono:   'DM Mono', monospace;
+    --rust: #b84c2a;
+    --rust-light: #d4725a;
+    --moss: #4a6741;
+    --moss-light: #7a9e6e;
+    --cream: #faf7f2;
+    --sage: #8aab7e;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+    --card-bg: #131210;
+    --stats-bg: #0e0c0a;
   }
+
   html { scroll-behavior: smooth; }
   body {
     font-family: var(--sans);
-    background: var(--film);
-    color: var(--paper);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
     overflow-x: hidden;
   }
-  /* NAV */
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem 3rem;
-    border-bottom: 1px solid rgba(200,168,75,0.15);
-    flex-shrink: 0;
+
+  /* ── NAV ── */
+  .nav-frame-link:hover {
+    background: rgba(247,244,239,0.07);
+    box-shadow: inset 0 0 18px rgba(247,244,239,0.06);
   }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--paper);
-    text-decoration: none;
+  .nav-frame-link:hover .nav-frame-label {
+    color: #f7f4ef;
+    text-shadow: 0 0 12px rgba(247,244,239,0.9),
+                 0 0 24px rgba(247,244,239,0.5),
+                 0 0 40px rgba(200,168,75,0.3);
   }
-  .nav-logo span { color: var(--gold); }
-  .nav-back {
+  .nav-frame-link:hover .frame-no { color: rgba(200,168,75,0.5); }
+  .nav-team-link {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--paper-muted);
+    color: rgba(247,244,239,0.65);
     text-decoration: none;
     transition: color 0.2s;
+    margin-right: 0.5rem;
   }
-  .nav-back:hover { color: var(--gold); }
-  .nav-cta {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--film);
-    background: var(--gold);
-    padding: 0.5rem 1.2rem;
-    border-radius: 2px;
-    text-decoration: none;
-    font-weight: 700;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); }
-  /* MAIN */
-  main {
-    flex: 1;
-    display: flex;
+  .nav-team-link:hover { color: var(--gold); }
+  .nav-mobile-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 2px;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 6rem 3rem;
+    gap: 5px;
+    flex-shrink: 0;
+    margin-left: auto;
+    z-index: 10;
+  }
+  .nav-mobile-btn span { display: block; width: 22px; height: 2px; background: rgba(247,244,239,0.8); border-radius: 1px; }
+  .nav-mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0a0806;
+    z-index: 1100;
+    flex-direction: column;
+    padding-top: 68px;
+    overflow-y: auto;
+  }
+  .nav-mobile-overlay.open { display: flex; }
+  .nav-mobile-close {
+    position: absolute;
+    top: 18px; right: 20px;
+    background: none; border: none;
+    cursor: pointer;
+    color: rgba(247,244,239,0.6);
+    font-size: 1.3rem; line-height: 1;
+    padding: 4px 8px;
+  }
+  .nav-mobile-close:hover { color: var(--paper); }
+  .nav-mobile-item {
+    display: block;
+    padding: 1.1rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,168,75,0.1);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-mobile-item:first-of-type { border-top: 1px solid rgba(200,168,75,0.1); }
+  .nav-mobile-item:hover { color: var(--paper); background: rgba(200,168,75,0.05); }
+  .nav-mobile-num { font-size: 0.58rem; color: rgba(200,168,75,0.45); margin-right: 0.75rem; }
+  .nav-mobile-cta-item {
+    display: block;
+    margin: 2rem;
+    background: var(--gold);
+    color: #0a0806;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    border-radius: 2px;
+    font-weight: 700;
+    text-decoration: none;
     text-align: center;
   }
-  .cs-eyebrow {
+  @media (max-width: 768px) {
+    .nav-mobile-btn { display: flex; }
+    #nav-desktop-center { display: none !important; }
+    .nav-team-link { display: none !important; }
+    .nav-cta-desktop { display: none !important; }
+    nav { overflow: hidden !important; }
+  }
+
+  /* ── HERO ── */
+  .ledger-hero {
+    min-height: 72vh;
+    background: var(--film);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10rem 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .ledger-hero-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .ledger-hero-tag {
     font-family: var(--mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
-    opacity: 0.7;
+    margin-bottom: 1.5rem;
     display: block;
+    position: relative;
+    z-index: 5;
+  }
+  .ledger-hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--paper);
+    max-width: 16ch;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 5;
+  }
+  .ledger-hero-headline em { font-style: italic; color: var(--gold); }
+  .ledger-hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-style: italic;
+    color: rgba(247,244,239,0.55);
+    max-width: 56ch;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 5;
+  }
+  /* ── INTRO QUESTION ── */
+  .ledger-question {
+    background: var(--paper-warm);
+    padding: 6rem 3rem;
+  }
+  .ledger-question-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .ledger-question h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 20ch;
+  }
+  .ledger-question h2 em { font-style: italic; color: var(--rust); }
+  .ledger-question p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    max-width: 62ch;
     margin-bottom: 1.5rem;
   }
-  /* Subtle filmstrip decoration above the heading */
-  .cs-filmstrip {
-    display: flex;
-    gap: 4px;
-    justify-content: center;
+
+
+  /* ── CASE STUDY BLOCKS ── */
+  .case-block {
+    padding: 7rem 3rem;
+    position: relative;
+  }
+  .case-block-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .case-block.reverse .case-block-inner {
+    grid-template-columns: 1.4fr 1fr;
+  }
+  .case-block.reverse .case-meta { order: 2; }
+  .case-block.reverse .case-content { order: 1; }
+
+  /* Background variants */
+  .bg-cream { background: var(--cream); }
+  .bg-film { background: #1a1814; }
+  .bg-paper { background: #120e08; }
+  .bg-moss { background: var(--moss); }
+  .bg-rust { background: #1a1814; }
+
+
+  .case-meta { }
+  .case-film-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .case-film-title.light { color: rgba(247,244,239,0.4); }
+  .case-film-title.dark { color: rgba(247,244,239,0.4); }
+
+  .case-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .case-heading.light { color: var(--paper); }
+  .case-heading.dark { color: var(--paper); }
+  .case-heading em { font-style: italic; }
+  .case-heading.light em { color: var(--gold-light); }
+  .case-heading.dark em { color: var(--rust); }
+
+  .case-tagline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1rem;
     margin-bottom: 2rem;
   }
-  .cs-filmstrip-cell {
-    width: 18px;
-    height: 12px;
-    border: 1px solid rgba(200,168,75,0.25);
-    border-radius: 1px;
+  .case-tagline.light { color: rgba(247,244,239,0.5); }
+  .case-tagline.dark { color: rgba(247,244,239,0.5); }
+
+  .case-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-top: 2.5rem;
   }
-  .cs-filmstrip-cell:nth-child(3) {
-    border-color: rgba(200,168,75,0.55);
-    background: rgba(200,168,75,0.08);
+  .case-fact {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid;
   }
-  .cs-heading {
+  .case-fact.light { border-color: rgba(247,244,239,0.08); }
+  .case-fact.dark { border-color: rgba(247,244,239,0.1); }
+  .case-fact-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .case-fact-label.light { color: rgba(247,244,239,0.35); }
+  .case-fact-label.dark { color: rgba(247,244,239,0.35); }
+  .case-fact-value {
     font-family: var(--serif);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
-    color: var(--paper);
-    line-height: 1.1;
-    max-width: 18ch;
-    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    font-weight: 700;
   }
-  .cs-heading em {
-    font-style: italic;
-    color: var(--gold);
+  .case-fact-value.light { color: var(--gold-light); }
+  .case-fact-value.dark { color: var(--gold-light); }
+
+  .case-content { }
+  .case-body {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
   }
-  .cs-soon {
+  .case-body.light { color: rgba(247,244,239,0.7); }
+  .case-body.dark { color: rgba(247,244,239,0.7); }
+
+  .case-quote {
+    border-left: 3px solid;
+    padding-left: 1.75rem;
+    margin: 2rem 0;
+  }
+  .case-quote.gold { border-color: var(--gold); }
+  .case-quote.rust { border-color: var(--rust); }
+  .case-quote.moss { border-color: var(--moss-light); }
+  .case-quote.sage { border-color: var(--sage); }
+
+  .case-quote p {
     font-family: var(--serif);
     font-size: 1.15rem;
     font-style: italic;
-    color: var(--gold);
-    letter-spacing: 0.04em;
-    margin-bottom: 1.75rem;
-    opacity: 0.85;
+    line-height: 1.6;
   }
-  /* Thin gold rule */
-  .cs-rule {
-    width: 48px;
-    height: 1px;
-    background: rgba(200,168,75,0.4);
-    margin: 0 auto 1.75rem;
-  }
-  .cs-body {
-    font-size: 1rem;
-    color: var(--paper-muted);
-    line-height: 1.85;
-    max-width: 50ch;
-    margin-bottom: 1.5rem;
-  }
-  .cs-link {
+  .case-quote p.light { color: var(--paper); }
+  .case-quote p.dark { color: var(--paper); }
+  .case-quote cite {
+    display: block;
+    margin-top: 0.75rem;
     font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--gold);
-    text-decoration: none;
-    opacity: 0.8;
-    transition: opacity 0.2s;
+    font-style: normal;
   }
-  .cs-link:hover { opacity: 1; }
-  /* FOOTER */
+  .case-quote cite.light { color: rgba(247,244,239,0.35); }
+  .case-quote cite.dark { color: rgba(247,244,239,0.35); }
+
+  .verdict-box {
+    border-radius: 3px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+  .verdict-regen { background: rgba(74,103,65,0.15); border: 1px solid rgba(74,103,65,0.3); }
+  .verdict-film { background: rgba(200,168,75,0.1); border: 1px solid rgba(200,168,75,0.25); }
+  .verdict-sust { background: rgba(138,171,126,0.1); border: 1px solid rgba(138,171,126,0.25); }
+  .verdict-extract { background: rgba(184,76,42,0.12); border: 1px solid rgba(184,76,42,0.25); }
+  .verdict-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .verdict-regen .verdict-label { color: var(--moss-light); }
+  .verdict-film .verdict-label { color: var(--gold); }
+  .verdict-sust .verdict-label { color: var(--sage); }
+  .verdict-extract .verdict-label { color: var(--rust-light); }
+  .verdict-text {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+  .verdict-regen .verdict-text { color: rgba(247,244,239,0.7); }
+  .verdict-film .verdict-text { color: rgba(247,244,239,0.7); }
+  .verdict-sust .verdict-text { color: rgba(247,244,239,0.7); }
+  .verdict-extract .verdict-text { color: rgba(247,244,239,0.7); }
+
+  /* ── DIVIDER ── */
+  .film-divider {
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg, var(--gold) 0px, var(--gold) 20px,
+      transparent 20px, transparent 30px
+    );
+    opacity: 0.4;
+  }
+
+  /* ── FOOTER ── */
   footer {
-    border-top: 0.5px solid rgba(200,168,75,0.1);
-    padding: 2rem 3rem;
+    background: var(--ink);
+    padding: 1.25rem 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    flex-shrink: 0;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
   }
-  .footer-logo {
-    font-family: var(--serif);
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--paper);
-  }
+  .footer-film-deco { pointer-events: none; }
+  .footer-logo { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--paper); }
   .footer-logo span { color: var(--gold); }
-  .footer-legal {
+  .footer-taglines { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+  .footer-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: rgba(247,244,239,0.3);
+    text-transform: uppercase;
+  }
+  .footer-legal { font-size: 0.75rem; color: rgba(247,244,239,0.25); }
+
+  @media (max-width: 900px) {
+    .case-block-inner, .case-block.reverse .case-block-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .case-block.reverse .case-meta { order: 1; }
+    .case-block.reverse .case-content { order: 2; }
+    .ledger-hero { padding: 8rem 1.5rem 4rem; }
+    .case-block { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .footer-film-deco { display: none !important; }
+    footer { padding: 1.5rem 1.25rem !important; }
+  }
+
+  /* ── SHARE STRIP ── */
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    background: rgba(247,244,239,0.025);
+    border: 1px solid rgba(200,168,75,0.22);
+    border-radius: 3px;
+    text-decoration: none;
+    position: relative;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .share-btn:hover, .share-btn:focus {
+    background: rgba(200,168,75,0.08);
+    border-color: rgba(200,168,75,0.45);
+    outline: none;
+  }
+  .share-btn::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #252018;
+    color: #c8a84b;
     font-family: var(--mono);
     font-size: 0.6rem;
+    text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--paper-dim);
+    white-space: nowrap;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
   }
-  @media (max-width: 600px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-back { display: none; }
-    main { padding: 4rem 1.5rem; }
-    footer { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+  .share-btn:hover::after, .share-btn:focus::after {
+    opacity: 1;
   }
+
+  /* ── FORERUNNERS SECTION ── */
+  .forerunners-section { background: #1a1814; padding: 5rem 3rem; }
+  .forerunners-section-inner { max-width: 900px; margin: 0 auto; }
+  .forerunners-section-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1rem; }
+  .forerunners-section-heading { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; color: var(--paper); margin-bottom: 2rem; line-height: 1.2; }
+  .forerunners-section-heading em { font-style: italic; color: var(--gold); }
+  .forerunners-intro-body { font-size: 1rem; line-height: 1.85; color: rgba(247,244,239,0.65); margin-bottom: 1.5rem; max-width: 72ch; }
+  .forerunners-list { margin-top: 3rem; border-top: 1px solid rgba(247,244,239,0.08); }
+
+  /* ── CASE STUDIES SECTION ── */
+  .case-studies-section { background: #120e08; padding: 5rem 3rem; }
+  .case-studies-section-inner { max-width: 900px; margin: 0 auto; }
+
+  /* ── VERSION ONE LIVING RECORD ── */
+  .ledger-v1-record { background: #1a1814; padding: 5rem 3rem; }
+  .ledger-v1-record-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+  .ledger-v1-record h2 { font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; color: var(--paper); margin-bottom: 1.5rem; }
+  .ledger-v1-record p { font-size: 1rem; line-height: 1.85; color: rgba(247,244,239,0.65); margin-bottom: 1.25rem; max-width: 62ch; margin-left: auto; margin-right: auto; }
+  .ledger-v1-record a { color: var(--gold); text-decoration: underline; }
+
+  /* ── CARD GRID ── */
+  .ledger-section-hdr { max-width: 1200px; margin: 0 auto; padding: 0 0 2rem; }
+  .ledger-section-tag { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1rem; }
+  .ledger-section-heading { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--paper); line-height: 1.2; margin-bottom: 0.5rem; }
+  .ledger-section-heading em { font-style: italic; color: var(--gold); }
+  .ledger-section-sub { font-size: 0.95rem; color: rgba(247,244,239,0.5); font-family: var(--sans); }
+
+  .ledger-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 0 0 4rem; }
+  #forerunner-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (max-width: 900px) { .ledger-grid { grid-template-columns: 1fr; } #forerunner-grid { grid-template-columns: 1fr; } }
+
+  .l-card { background: var(--card-bg); border: 0.5px solid rgba(200,168,75,0.08); border-left: 3px solid var(--taxonomy-color, rgba(200,168,75,0.12)); border-radius: 6px; padding: 1.6rem 1.5rem; cursor: pointer; transition: border-color 0.18s, transform 0.15s; display: flex; flex-direction: column; gap: 6px; position: relative; }
+  .l-card:hover { border-color: rgba(200,168,75,0.20); border-left-color: var(--taxonomy-color, rgba(200,168,75,0.28)); transform: translateY(-2px); }
+  .stripe-regen, .stripe-film, .stripe-sust, .stripe-whatif, .stripe-fore { --taxonomy-color: rgba(200,168,75,0.4); }
+
+  .l-badge { display: inline-flex; align-items: center; gap: 5px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 3px 7px; border-radius: 1px; width: fit-content; align-self: flex-start; background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.55); border: 0.5px solid rgba(255,255,255,0.16); }
+  .l-badge-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; background: var(--gold); }
+
+  .l-card-year { position: absolute; top: 1.1rem; right: 1.2rem; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; color: rgba(247,244,239,0.18); text-transform: uppercase; }
+  .l-card-meta { font-family: 'DM Mono', monospace; font-size: 0.57rem; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(247,244,239,0.30); margin-top: 8px; }
+  .l-card-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: #f7f4ef; line-height: 1.18; margin-top: 8px; }
+  .l-card-editorial { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.82rem; font-style: italic; color: #A0742A; font-weight: 400; margin-top: 10px; }
+  .l-card-founder { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #c8a84b; }
+  .l-card-snippet { font-size: 0.8rem; line-height: 1.6; color: rgba(247,244,239,0.48); margin-bottom: 0.85rem; border-left: 2px solid var(--taxonomy-color, rgba(200,168,75,0.22)); padding-left: 0.75rem; margin-top: 0.5rem; }
+  .l-card-cta { font-family: var(--mono); font-size: 0.61rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+  #ledger-expanded { background: var(--stats-bg); }
+  .exp-inner { max-width: 1100px; margin: 0 auto; padding: 4rem 3rem 5rem; }
+  .exp-back { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); cursor: pointer; border: 1px solid rgba(200,168,75,0.25); padding: 0.45rem 1.1rem; border-radius: 2px; margin-bottom: 3rem; background: none; transition: all 0.2s; }
+  .exp-back:hover { background: rgba(200,168,75,0.07); border-color: rgba(200,168,75,0.5); }
+  .exp-header { padding: 2rem 2rem; border-bottom: 0.5px solid var(--taxonomy-color, rgba(200,168,75,0.12)); display: flex; flex-direction: column; gap: 13px; }
+  .exp-meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.30); margin-bottom: 0.5rem; }
+  .exp-name { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; color: #f7f4ef; line-height: 1.12; }
+  .exp-editorial { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; font-style: italic; color: #A0742A; font-weight: 400; }
+  .exp-body { display: grid; grid-template-columns: 155px minmax(0, 1fr); }
+  .exp-stats { padding: 1.4rem 1rem; background: var(--stats-bg); border-right: 0.5px solid rgba(200,168,75,0.08); min-width: 0; }
+  .exp-stat { margin-bottom: 1.1rem; }
+  .exp-stat-label { font-family: 'DM Mono', monospace; font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(247,244,239,0.28); margin-bottom: 3px; display: block; }
+  .exp-stat-value { font-size: 0.78rem; font-weight: 500; color: #f7f4ef; line-height: 1.35; display: block; }
+  @media (max-width: 900px) { .exp-body { grid-template-columns: 1fr; } .exp-inner { padding: 3rem 1.5rem; } }
+  .exp-narrative { padding: 1.4rem 2rem; }
+  .exp-narrative p { font-size: 0.975rem; color: rgba(247,244,239,0.55); line-height: 1.72; }
+  .exp-quote { border-left: 3px solid var(--taxonomy-color, var(--gold)); padding-left: 1.75rem; margin: 2rem 0; }
+  .exp-quote p { font-family: var(--serif); font-size: 1.15rem; font-style: italic; line-height: 1.6; color: var(--paper); }
+  .exp-quote cite { display: block; margin-top: 0.75rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-style: normal; color: rgba(247,244,239,0.35); }
+  .exp-verdict { padding: 1.5rem 2rem; border-top: 0.5px solid rgba(255,255,255,0.06); border-bottom: 2px solid var(--taxonomy-color, #c8a84b); background: rgba(255,255,255,0.025); }
+  .exp-verdict-label { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taxonomy-color, #c8a84b); margin-bottom: 0.7rem; display: block; }
+  .exp-verdict p { font-size: 1.05rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0; font-family: var(--sans); font-weight: 400; font-style: normal; }
+  .exp-name-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; }
+  .exp-share-cluster { display: flex; align-items: center; gap: 8px; padding-top: 8px; flex-shrink: 0; }
+  .exp-share-label { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.18); margin-right: 2px; }
+  .exp-share-btn { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 0.5px solid rgba(255,255,255,0.12); border-radius: 2px; background: rgba(255,255,255,0.03); color: rgba(255,255,255,0.38); text-decoration: none; font-size: 14px; cursor: pointer; transition: border-color 0.15s, color 0.15s, background 0.15s; font-family: var(--mono); }
+  .exp-share-btn:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.06); }
+  .exp-share-divider { width: 1px; height: 16px; background: rgba(255,255,255,0.1); }
+  @media (max-width: 600px) { .exp-name-row { flex-direction: column; gap: 1rem; } .exp-share-cluster { padding-top: 0; } .exp-share-btn { width: 28px; height: 28px; font-size: 13px; } }
+  /* ── ESSAY SECTION ── */
+  .essay-section { background: var(--paper-warm); padding: 6rem 3rem; }
+  .essay-inner { max-width: 720px; margin: 0 auto; }
+  .essay-title-block { margin-bottom: 3rem; border-left: 3px solid var(--gold); padding-left: 1.5rem; }
+  .essay-overline { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+  .essay-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 0.4rem; }
+  .essay-subtitle { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink-muted); }
+  .essay-p { font-size: 1.05rem; line-height: 1.9; color: var(--ink-soft); margin-bottom: 1.5rem; max-width: 66ch; }
+  .essay-h3 { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 700; color: var(--ink); margin: 2.5rem 0 1rem; line-height: 1.25; }
+  .essay-h4 { font-family: var(--serif); font-size: 1rem; font-weight: 700; font-style: italic; color: var(--ink-soft); margin: 2rem 0 0.75rem; }
+  .essay-divider { height: 1px; background: var(--gold); opacity: 0.3; margin: 3rem 0 2.5rem; }
+  .essay-divider-minor { height: 1px; background: rgba(0,0,0,0.08); margin: 2rem 0 1.5rem; }
+  .essay-link { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+  .essay-moonshot-link { font-size: 0.95rem; color: var(--ink-muted); font-style: italic; margin-top: 1rem; margin-bottom: 1.5rem; }
+
+  /* Essay fold mechanic */
+  .essay-fold { border: none; outline: none; }
+  .essay-fold summary { list-style: none; cursor: pointer; }
+  .essay-fold summary::-webkit-details-marker { display: none; }
+  .essay-fold summary::marker { display: none; }
+  .essay-fold-filmstrip { background: transparent; display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.4rem; margin: 2.5rem 0 0; border: 2px solid rgba(200,168,75,0.5); border-left: 5px solid var(--gold); cursor: pointer; transition: background 0.2s; }
+  .essay-fold-filmstrip:hover { background: rgba(200,168,75,0.08); }
+  .essay-fold-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #000000; }
+  .essay-fold-chevron { font-size: 1.4rem; color: #000000; line-height: 1; transition: transform 0.2s; display: inline-block; }
+  .essay-fold[open] .essay-fold-label { opacity: 0.5; }
+  .essay-fold[open] .essay-fold-chevron { transform: rotate(180deg); opacity: 0.5; }
+  .essay-expanded { padding-top: 1.5rem; }
+
+  /* ── BRIDGE BLOCK ── */
+  .bridge-block { background: var(--paper); padding: 4rem 3rem; border-top: 2px solid var(--gold); border-bottom: 2px solid rgba(200,168,75,0.2); }
+  .bridge-inner { max-width: 720px; margin: 0 auto; }
+  .bridge-title { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700; color: var(--ink); margin-bottom: 1.25rem; }
+  .bridge-p { font-size: 0.97rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 1rem; max-width: 66ch; }
+  .bridge-p:last-child { margin-bottom: 0; }
 </style>
+<link rel="canonical" href="https://socialeffectsnj.com/Filmanthropy_Ledger.html">
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.65rem;font-weight:300;color:rgba(247,244,239,0.35);letter-spacing:0.08em;font-family:var(--sans);">NJ</span></a>
-  <a href="index.html" class="nav-back">← Back to Social Effects</a>
-  <a href="index.html#contact" class="nav-cta">Work With Us</a>
+<!-- NAVIGATION -->
+<nav style="background:#0a0806;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
+
+  <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+
+  <div style="position:absolute;bottom:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+
+  <div style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;bottom:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
+
+  <div style="position:absolute;top:22px;bottom:22px;left:0;right:0;display:flex;align-items:center;padding:0 20px;z-index:5;">
+
+    <a href="index.html" style="display:flex;align-items:center;gap:6px;padding-right:1.25rem;border-right:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
+      <span style="font-family:var(--serif);font-size:0.95rem;font-weight:700;color:var(--paper);">Social<em style="color:var(--gold);font-style:normal;">Effects</em></span>
+      <span style="font-family:var(--mono);font-size:0.5rem;color:rgba(200,168,75,0.35);letter-spacing:0.08em;">NJ</span>
+    </a>
+
+    <div id="nav-desktop-center" style="display:flex;align-items:center;flex:1;justify-content:center;height:100%;">
+
+      <a href="index.html#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-left:1px solid rgba(200,168,75,0.1);border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">01</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Filmanthropy</span>
+      </a>
+
+      <a href="index.html#services" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">02</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Services</span>
+      </a>
+
+      <a href="index.html#mission" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">03</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Vision &amp; Mission</span>
+      </a>
+
+      <a href="Filmanthropy_Ledger.html" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
+        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">04</span>
+        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">The Ledger</span>
+      </a>
+
+    </div>
+
+    <a href="team.html" class="nav-team-link">Who We Are</a>
+
+    <a href="index.html#contact" class="nav-cta-desktop" style="display:flex;align-items:center;padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
+      <span style="background:var(--gold);color:#0a0806;font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2px;font-weight:700;">Work With Us</span>
+    </a>
+    <button class="nav-mobile-btn" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
 </nav>
 
-<main>
-  <div class="cs-filmstrip" aria-hidden="true">
-    <div class="cs-filmstrip-cell"></div>
-    <div class="cs-filmstrip-cell"></div>
-    <div class="cs-filmstrip-cell"></div>
-    <div class="cs-filmstrip-cell"></div>
-    <div class="cs-filmstrip-cell"></div>
-    <div class="cs-filmstrip-cell"></div>
-    <div class="cs-filmstrip-cell"></div>
-  </div>
-  <span class="cs-eyebrow">Social Effects Inc · Research</span>
-  <h1 class="cs-heading">A Social Effects Ledger of <em>Filmanthropy</em></h1>
-  <p class="cs-soon">Coming soon.</p>
-  <div class="cs-rule"></div>
-  <p class="cs-body">A research record of what film productions have given to the communities they touch, what more was possible, and what is beginning now in New Jersey. In preparation. If you would like to be notified when it is published, or you have a case it should include, we would like to hear from you.</p>
-  <a href="index.html#contact" class="cs-link">Get in touch →</a>
-</main>
+<!-- HERO -->
+<section class="ledger-hero">
+  <div style="position:absolute;inset:0;background-image:url('fort-lee-backlot.jpg');background-size:cover;background-position:center top;filter:sepia(0.8) contrast(1.2) brightness(0.3) saturate(0.5);z-index:0;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,0.98) 0%,rgba(10,8,6,0.7) 35%,rgba(10,8,6,0.3) 100%);z-index:1;"></div>
+  <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 4px);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.75) 100%);z-index:2;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(139,90,43,0.08) 100%),linear-gradient(to right,rgba(200,168,75,0.04) 0%,transparent 30%);z-index:2;pointer-events:none;"></div>
+  <div class="ledger-hero-grain"></div>
+  <span class="ledger-hero-tag">Filmanthropy Research</span>
+  <h1 class="ledger-hero-headline">The <em>Filmanthropy</em> Ledger</h1>
+  <p class="ledger-hero-sub">What productions gave. What more was possible. And what&#8217;s beginning now.</p>
+  <p style="font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(200,168,75,0.4); display: inline-block; padding: 0.5rem 1.2rem; border-radius: 2px; margin-bottom: 2.5rem; position:relative; z-index:5;">Think Outside the Frame</p>
+  <p style="position:relative;z-index:5;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(200,168,75,0.25);margin-top:1.5rem;">World Film Producing Studios &middot; Fort Lee, New Jersey &middot; c. 1914</p>
+</section>
 
+<!-- Film-strip divider: banded edges + sprocket perforations -->
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
+
+<!-- OPENING ESSAY -->
+<section class="essay-section">
+  <div class="essay-inner">
+    <div class="essay-title-block">
+      <h2 class="essay-title">The Opening</h2>
+      <p class="essay-subtitle">On the history of giving and film.</p>
+    </div>
+
+    <div class="essay-open">
+      <p class="essay-p">In 1921, on the film lots scattered across a Los Angeles that was still mostly orange groves and open light, the most famous woman in the world carried a bucket from set to set.</p>
+      <p class="essay-p">It was a small galvanized pail with a little flag on it, and Mary Pickford brought it to the people who were working that day and asked them to put in whatever they could. She did not need the money. She was the most bankable star alive, a founder of her own studio, a woman who had negotiated against the men who ran Hollywood and won. But she had watched what happened to the others when a picture wrapped and the checks stopped: the carpenters, the extras, the electricians, the people whose names the audience would never learn, who built the thing the audience came to see and then went home to nothing. So she passed the bucket. The coins inside it became a fund, and the fund became a house with a hospital, set among walnut and orange groves in Woodland Hills, where film people who had nowhere else to go could grow old among their own. It is still there, and it still takes them in. Pickford insisted it be called a House and not a Home, because actors, she said, are only ever between engagements.</p>
+      <p class="essay-p">A hundred years later, on the other side of the earth, a small crew arrived in a village in the desert of Rajasthan to make a film about a girl who wanted to skate.</p>
+      <p class="essay-p">Before they shot a single frame, they built the village a skatepark. Concrete and permanent and free, fourteen thousand square feet of it, the largest in India and the first that part of Rajasthan had ever seen. They had chosen the village partly by asking a question that film productions almost never ask: which community would still be using the thing after the trucks pulled away. The film is called <a href="#skater-girl" class="essay-link">Skater Girl</a>. It went up on Netflix in 2021, and most of the people who watched it have forgotten it by now. The trucks pulled away in 2019. The skatepark is still there, and the children of Khempur are still on it. Four of them, the first time any of them had ever left the village, went on to skate for Rajasthan at a national championship.</p>
+      <p class="essay-p">Mary Pickford and the people who made Skater Girl never knew of one another. A century stands between them, and an ocean, and almost everything else. They shared no movement, no manifesto, no word for what they were doing. One passed a bucket so that film workers would have somewhere to grow old. The other poured a slab so that children in a village would have somewhere to fly. And yet something connects them across all that distance: a love of film and a love of people, and an instinct that the making of a movie might be turned toward both at once.</p>
+      <p class="essay-p">So, it turns out, had hundreds of others, in the long century between the bucket and the slab. A star endowing a relief fund. A director turning a film&#8217;s profits into a foundation. A crew keeping a struck set out of the landfill. A production that employed a town so completely the town was never quite the same. A company built, against every incentive of the industry, on the belief that a story well told could move the world to act. Many of these people knew each other, learned from each other, gave to the same funds. What they lacked was not knowledge of one another. It was a name.</p>
+      <p class="essay-p">This is the Filmanthropy Ledger: a gathering of those scattered acts, and a question about what they share. What becomes possible when filmmaking is understood not only as the making of a thing to be watched, but as an act that can carry care into the world, to the people who make it and the places that hold it, in ways that run from the felt to the built and back again?</p>
+    </div>
+
+    <details class="essay-fold">
+      <summary class="essay-fold-trigger" aria-label="Continue the opening essay">
+        <div class="essay-fold-filmstrip">
+          <span class="essay-fold-label">Continue the opening essay</span>
+          <span class="essay-fold-chevron" aria-hidden="true">&#8964;</span>
+        </div>
+      </summary>
+
+      <div class="essay-expanded">
+
+        <div class="essay-divider-minor"></div>
+        <h3 class="essay-h3">A word about the films themselves</h3>
+        <p class="essay-p">The films are already gifts. This needs saying once, clearly, so nothing that follows is mistaken for an argument against the art. Casablanca gave the world something real simply by being made well and loved widely. So did Singin&#8217; in the Rain, and Star Wars, and ten thousand others whose fundamental gift was to be wonderful, and for whom that was more than enough. A film that moves millions of strangers to laugh in the same dark room, or to forgive someone, or to imagine a life they had not imagined, has given a gift that needs no further justification. That is the oldest generosity of cinema, and the largest, and this record takes it entirely as given. Our subject lies alongside it: the giving that happens in and around the making, the part that touches the people and places a production reaches and never appears on the screen at all. The art is one kind of gift. This is the record of the other kinds.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">The hundred years between</h3>
+        <p class="essay-p">It began not with a grand gesture but with a practical one.</p>
+
+        <h4 class="essay-h4">Mutual aid</h4>
+        <p class="essay-p">Pickford&#8217;s relief fund, incorporated in 1921, was not charity in the soft sense. It was mutual aid, built by the people of an industry for the people of that industry, in an era with no other safety net. It began, by the Fund&#8217;s own account, with a simple coin box on the studio floors, and with the flagged pail Pickford is said to have kept on her own sets, where anyone lucky enough to be working that day was expected to drop something in. By 1932, in the worst of the Depression, it had become a payroll pledge: a half of one percent of the studio paychecks of those who could spare it, set aside for those who could not. A private social security for film workers, invented by film workers, a decade before the public one existed.</p>
+        <p class="essay-p">Three years after Pickford&#8217;s first bucket, the same instinct surfaced an ocean away, with no coordination at all. British film people founded the Cinematograph Trade Benevolent Fund in London in 1924, for exactly the same reason, to care for the workers of their own young industry when hard luck took the work away. It still exists, a century on, under a newer name, and it still runs a care home. Since 1946 a single glittering night, the Royal Film Performance, has paid for it, turning the premiere of a major film into an act of giving to the people behind the scenes. Nobody in London was copying Los Angeles. The need was universal, and so was the response.</p>
+        <p class="essay-p">Then came the war. In October 1942, the actor John Garfield sat down beside Bette Davis in the Warner Bros. commissary and said something ought to be done for the servicemen pouring through Los Angeles on their way to the Pacific. Davis agreed, and the two of them built it: the Hollywood Canteen, in a converted stable on Cahuenga Boulevard, where any serviceman or woman in uniform got in free, ate for free, and might be served a sandwich by a movie star and pulled onto the dance floor by another. No officers, Garfield insisted, and no segregation by rank or race. Nearly four million came through the doors in three years. The stars washed dishes and bused tables, and the profits of two films made about the place were poured back into running it. When the Canteen closed on Thanksgiving Day of 1945, the half a million dollars left in the bank was given to the relief of the men and women it had served. It was the gift economy of the film set, opened up and pointed outward.</p>
+
+        <h4 class="essay-h4">The film becomes the gift</h4>
+        <p class="essay-p">Then the instinct learned the trick that would matter most: a film could be made into the gift itself, not merely the thing that paid for one. In 1954, at the height of his fame, the comedian Danny Kaye became the first Goodwill Ambassador for the young United Nations children&#8217;s fund, a role he held for thirty-three years, until he died. He made a film, Assignment: Children, underwritten by Paramount, every dollar of profit given to the fund, and it reached more than a hundred million people. Kaye put the spirit of it better than any definition could. Politics don&#8217;t count where children are concerned, he said. How can you love an Israeli child and not an Arab child, a North Korean child and not a South Korean child. It&#8217;s impossible.</p>
+        <p class="essay-p">What Kaye began, others took up, and the taking-up is the thread itself, because each was handed the impulse by the one before. Audrey Hepburn had been a half-starved child in occupied Holland, kept alive in part by international relief; she became the fund&#8217;s ambassador in 1988 and gave the last five years of her life to it, saying plainly that the aid she once received was why she went. And when Roger Moore, who had played James Bond, was asked what moved him to the same work, he did not reach for a grand reason. His curiosity got the better of him, he said, after his friend Audrey Hepburn introduced him to it. He went to a meeting with her and stayed for the rest of his life. Kaye to Hepburn to Moore: three actors, three decades, one thread, each pulled in by the hand of the one before. The impulse was never an abstraction. It traveled person to person, the way most true things do.</p>
+
+        <h4 class="essay-h4">Fame as an instrument</h4>
+        <p class="essay-p">It traveled into other rooms and changed shape as it went. In 1982 Paul Newman began bottling his own salad dressing as a joke and a dare, gave every cent of the profit away, and kept giving until it passed six hundred million dollars. A movie star&#8217;s hobby had become one of the quietly radical ideas in American business: a company that exists only to give itself away. He was embarrassed, he said, that the dressing was outgrossing his films. The model was good enough that more than two dozen other companies copied it outright, and a generation of his peers pointed to him as the reason they gave at all. Elizabeth Taylor took the idea somewhere harder. In 1985, watching a plague move through her own community while the country looked away, she decided her fame was the only tool equal to the silence and became the first major star to stand up for people dying of AIDS, raising money and breaking the shame around the disease at a moment when almost no one of her stature would say its name aloud. I resented my fame, she said, until I realized I could use it.</p>
+
+        <h4 class="essay-h4">Never only American</h4>
+        <p class="essay-p">None of this was only American, which is what most histories miss. In India, the actor Aamir Khan turned a television program about his country&#8217;s miseries into the Paani Foundation and sent thousands of villages into a competition to build their own watersheds, helping turn drought-cracked land green again across Maharashtra. Shah Rukh Khan built a foundation in his late father&#8217;s name for the survivors of acid attacks, women the world had taught itself not to look at. In China, the martial-arts star Jet Li nearly drowned with his small daughters in the 2004 tsunami and came out of the water changed, building what became one of the first private charitable foundations his country had ever allowed, on the arithmetic that one person and one dollar and one month could add up to one enormous family. Jackie Chan, who had wanted only to be famous and rich, said his friends taught him to give and now he could not stop; he built schools across the remote interior of China. In Britain, a screenwriter came home from the 1985 Ethiopian famine and founded Comic Relief, and over forty years the comedians and filmmakers of one country made the public laugh into giving more than a billion and a half pounds. The thread ran through every film culture on earth, under a hundred flags, almost never under a shared name.</p>
+
+        <h4 class="essay-h4">When it did not work</h4>
+        <p class="essay-p">It did not always work, and the honest record says so.</p>
+        <p class="essay-p">Brad Pitt set out after Hurricane Katrina to rebuild the homes of the Lower Ninth Ward in New Orleans. He meant it with his whole heart, and he hired great architects, and the houses began to rot and leak and fail, and the families he meant to help ended up in court, and a promised settlement collapsed when the money behind it proved not to be there. We went into it incredibly naive, he said, years later. He had asked the right question and gotten the answer terribly wrong.</p>
+        <p class="essay-p">When the Brazilian film City of God cast the real young people of a real Rio favela and made them stars for a season, it changed some of their lives and left others almost exactly where it found them. One of them said plainly that the film had brought the favela no good at all.</p>
+        <p class="essay-p">These are not failures of instinct. They are failures of execution, and they belong here as surely as the triumphs, because a field that cannot look honestly at its near misses and its collapses is not a field. It is a brochure. The problem is never the wanting. It is the design.</p>
+        <p class="essay-p">So the stretch that looks, from a distance, like an empty gap between Pickford and the present was never empty. A relief fund in 1921, a benevolent fund in 1924, a wartime canteen in 1942, a film made to give in 1954 and the long human chain that followed it, a company built to give itself away in 1982, a star who broke a silence in 1985, a whole world of givers who never knew they belonged to anything. The thread was there the whole time. But without a name it could not be seen, and what each generation learned was lost before the next could build on it.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">The modern renaissance</h3>
+        <p class="essay-p">By the end of the twentieth century the scattered instinct began to organize into something more deliberate, a renaissance of about thirty years in which people began not only to do this work but to build it into the machinery of production, to study it as a subject, and at last to give a piece of it a name. Three things were happening at once, and Social Effects exists to celebrate all three and to build on them.</p>
+
+        <h4 class="essay-h4">The operators</h4>
+        <p class="essay-p">The first was a new kind of operator, who looked at the sheer physical wreckage of a production, the tons of material and food and the built worlds struck and dumped the moment the camera stopped, and asked whether the making itself could be turned toward good. They worked out the answers with their own hands, and they are the forerunners of this whole field.</p>
+        <p class="essay-p">In 1991, Syd Mandelbaum, the son of Holocaust survivors, stood backstage at a concert and watched untouched food thrown away by the ton while people went hungry a few miles down the road. He had come home from the first World Gathering of Jewish Holocaust Survivors with something burning in him that would not go out, a sense that he had to do something to change the world. His answer was <a href="#rock-and-wrap-it-up" class="essay-link">Rock and Wrap It Up</a>. It began with concert food and grew into a discipline: the contractual rider that says prepared food which was never served does not go to the landfill, it goes to people. He took it to film and television sets, to sports arenas, to hotels and schools. Over the decades his model has recovered, by the organization's own count, the equivalent of more than a billion meals, and the language he drafted became the basis of a 2008 federal law encouraging the government to donate its own surplus food rather than throw it away.</p>
+        <p class="essay-p">Eva Radke took up the next part of the problem in a Brooklyn warehouse in 2008. She had worked in the art departments of productions and could not stop seeing what got thrown away when a set came down, the lumber and the furniture and the paint, whole rooms of usable material dumped because no one had made the place that would catch it. So she made it. <a href="#film-biz-recycling" class="essay-link">Film Biz Recycling</a>, eleven thousand square feet, where productions could send their struck sets instead of the dump, and most of what came in went back out to charities, schools, and theater companies. She diverted six hundred tons over seven years and won an Environmental Protection Agency award for it. Then, in 2015, she closed, because she could not raise the money to keep the doors open, and the foundation world did not yet know how to fund a thing that looked like a thrift store and acted like a public utility. She called the closing watching a unicorn die. But she also said something truer, that Obi-Wan and Dumbledore were stronger in death, and that maybe her impact would be felt more once the thing itself was gone. She was right. The people who came after learned from what she made, and from what it cost her.</p>
+        <p class="essay-p">Others turned the same instinct into something that could last. In 2009, out of a film shoot in Minnesota where she and a colleague diverted eleven tons of waste in ten weeks, Shannon Schaefer Bart founded <a href="#ecoset" class="essay-link">EcoSet</a> and created the on-set role that had never quite existed, the person whose whole job is to make sure the production gives back what it cannot use. With Kris Barberg, who now runs it, EcoSet turned set surplus into a standing operation: a Los Angeles warehouse where nonprofits and families take what they need for free, diversion rates that reach into the high nineties, and millions of dollars of reusable goods moved out of the waste stream and back into the community. Bart&#8217;s work was so thoroughly the future that the future hired her; she is now at Netflix, helping make production sustainability the default across one of the largest content engines on earth. On the East Coast, beginning in 2013, Emellie O&#8217;Brien and <a href="#earth-angel" class="essay-link">Earth Angel</a> made the same case in the same years, turning the greening of a film set from a footnote into a profession. Their full records open this Ledger&#8217;s entries below.</p>
+
+        <h4 class="essay-h4">The scholars</h4>
+        <p class="essay-p">The second thing was that serious people began to study film-for-good as a field rather than a scatter of one-off projects. The most careful of that work came out of UCLA, at the Skoll Center, endowed in 2014 by a ten-million-dollar gift from Jeff Skoll, who had founded Participant Media on the conviction that a well-told story could be a force in the world. In 2019 the Center published The State of Social Impact Entertainment, a rigorous attempt to map the narrative film, documentary, television, and theater that engage audiences in the world&#8217;s problems, and to give that work a history and a set of best practices. It called itself the field&#8217;s first such report and promised others; none has yet followed, which leaves it standing, years on, as the one serious map of its kind. It charts that ground with care, the ground of what a finished film says to the people who watch it. This Ledger travels a second axis.</p>
+
+        <h4 class="essay-h4">The word</h4>
+        <p class="essay-p">The third thing was that a piece of the field finally got a name. The word is Filmanthropy, film and philanthropy joined on purpose. As far as the public record shows, it was introduced around 2007 and 2008 by Ted Leonsis, the media entrepreneur behind the documentary platform SnagFilms, who used it for films aimed at the causes the world most needs to face. He built the word, and the credit is his. Others picked it up and carried it, each in a different place and for a different reason: a festival in Los Angeles that took the name in 2009 to honor filmmakers working for a better world, a producer in Dallas who used it for films made to raise money for a cause, a social enterprise in London that took it in 2017 for its work teaching participatory filmmaking, a foundation in Burbank that took it in 2020 to support people in the industry. Each was a real effort by real people, and each gave the word meaning long before the field these pages describe had been seen whole.</p>
+        <p class="essay-p">These are the shoulders this Ledger stands on: the operators who built the infrastructure, the scholars who studied the work, the namers who gave a piece of it a word. The renaissance was real, and Social Effects claims none of it as its own invention. But it happened in three separate rooms, each largely unaware of the others.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">The thing no one named</h3>
+        <p class="essay-p">Stand back far enough and the pattern is undeniable. A relief fund in 1921 and a skatepark in 2019 are the same gesture, made a century and an ocean apart. And yet no account had ever drawn the full line between them, because the people best placed to draw it were each looking at a different part.</p>
+        <p class="essay-p">The scholars charted what a finished film says to its audience: the documentary that changes a law, the drama that shifts a public mood. The word, in nearly every hand that held it, meant the same thing, film as advocacy, the finished film pointed at a cause. That is a true and valuable axis, and it names one real strand of everything in these pages. But it does not reach the bucket on Pickford&#8217;s set, or the half a million dollars left in the Canteen&#8217;s bank, or the six hundred tons Eva Radke kept out of the landfill, or the skatepark left standing in the desert. None of those is a message. They are gifts the making left behind, in the people and the places a production touches, whether or not the finished film ever says a word. That is the second axis, and it had no map.</p>
+        <p class="essay-p">That is not a small oversight. A practice that cannot see itself cannot improve itself, cannot teach itself to the next generation, cannot become a discipline with standards and a memory. The thread existed. The tradition did not.</p>
+        <p class="essay-p">What this record sets out to do is modest and specific, and worth stating without inflation. Not to invent a word, because the word already exists and is good, and inventing a replacement would only hide the debt owed to everyone who carried it first. The work is to take the existing word and widen it to fit the whole field at last, to say that Filmanthropy is not only film as advocacy but every way the love of film and the love of humanity meet, whether proceeds, materials, presence, equity, the change a story works in the people who watch it, or something permanent left behind. And then to name the cutting edge the word had never reached, the part the rest of these pages are really about: not the giving a production remembers on its way out, but the giving it is built around from the start.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">Why now</h3>
+        <p class="essay-p">This Ledger arrives now, and not ten years ago or ten years from now, for two reasons. The first is that the founding era of the field is ending in plain sight, just as it becomes visible. The second is harder to see, and it changes everything.</p>
+
+        <h4 class="essay-h4">An era closing</h4>
+        <p class="essay-p">Participant, which carried Filmanthropy in its advocacy sense further than any company before it, and proved along the way that conscience and a balance sheet could coexist, closed in 2024 after twenty years and a wall of Academy Awards. Some of the founding generation of practitioners, the people who built the first recycling warehouses and the first on-set sustainability crews, are still alive and still working, and have never once been interviewed as part of a connected story, because the connected story did not exist to interview them for. The institution that grew from Pickford&#8217;s bucket has just passed its hundredth birthday. The founding chapter is closing at the very moment the book about it can finally be written. That window is open now, and it will not stay open.</p>
+
+        <h4 class="essay-h4">The artifact and the event</h4>
+        <p class="essay-p">For the entire century this record describes, one thing was always true and never had to be said: to get the film, you had to make it. You had to go somewhere real, with real people, and do the thing. The finished film was the visible part, the artifact that streamed and was reviewed and won or lost a weekend. But the artifact was never the whole of it. The work was also the months an actor spent becoming someone else, the town that hosted the shoot, the village a crew built on location, the people changed by having been in the room. The film was the artifact. The making was the event. And you could not have the first without the second.</p>
+        <p class="essay-p">That assumption is now coming loose. Artificial intelligence has begun to produce the artifact without the event. A feature-length film generated almost entirely by AI, with no cast and no crew and no cameras, has been accepted into a major festival for the first time. Synthetic performers are being built and marketed as the next generation of movie stars. Some of the most serious filmmakers alive are split clean down the middle over what to make of it, one of them answering that he would rather die than use the tools, another, who has chased every new technology to its edge, calling a performance conjured from a prompt horrifying and predicting in the same breath that live human work will only become more sacred for the contrast.</p>
+        <p class="essay-p">The question the next century of filmmaking has to answer, then, is no longer how to make the artifact. The machine can produce the artifact. The question is what, in the making of films, cannot be generated, and the honest answer runs in two directions at once.</p>
+        <p class="essay-p">Outward, toward the world the film passes through. A model can produce a convincing image of a place, but it cannot give anything back to one, because it was never in one. It cannot employ a town, or spend an afternoon with a community, or leave a skatepark behind. Everything this record has gathered, the relief fund and the recovered meal and the diverted tons and the skatepark in the desert, lives in that direction, and none of it can be simulated, because all of it depends on having actually happened, somewhere, to someone.</p>
+        <p class="essay-p">Inward, toward the people who do the making. A model can produce a performance, but it cannot undergo one. It was never on the set before dawn, never afraid, never changed by the months of work alongside other people. You do not simply make a film, you go through one, and the people who go through it come out altered. That, too, is a kind of giving, the kind a production makes to its own, and it is as far beyond a prompt as the skatepark is, for the same reason. The model has no afternoon to spend and no self to transform.</p>
+        <p class="essay-p">As the artifact becomes abundant and instant, then, the worth of a film does not vanish. It moves toward the event the artifact was only ever the trace of, toward everything that had to actually happen, to real people in a real place, before there was anything to watch at all.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">The next hundred years</h3>
+        <p class="essay-p">The future of this field is not a defense against the machine. It is something more hopeful, a clarification, forced into the open by the very technology that seemed to threaten it.</p>
+
+        <h4 class="essay-h4">Regenerative</h4>
+        <p class="essay-p">There is a word, borrowed from agriculture and design and economics, that names the shape of the hope. Regenerative. It was coined by people who found sustainable too small for what they meant. To sustain is to maintain, to do less harm, to leave a system no worse than you found it. To regenerate is to leave it actively better, more alive than before. One of the farmers who helped coin the term put it plainly: people do not want a world that is merely sustained, they want one that is getting better.</p>
+        <p class="essay-p">Read as a brief for a film shoot, that becomes a definition worth keeping: a regenerative production is one that leaves the people and the place that hosted it better off than if the film had never come. A traditional production arrives, takes what it needs, and leaves, and what it leaves behind is an afterthought at best, a row of full dumpsters at worst. A regenerative production designs the giving in from the first day, before a frame is shot. Surplus is rehomed, skills are shared, the young people of the place are brought onto a real set, and the cast and crew are given a real stake in the thing they made. The material that would have been wasted becomes something the community keeps. At its furthest reach, the production leaves something permanent, the way a skatepark was left in a desert and a relief fund was left to a century of film workers. The giving is built into the making, with intention, from the start.</p>
+        <p class="essay-p">This is why the arrival of AI, which frightens so many, may be the moment the field comes into its own. When the artifact is free, the event is everything. When anyone can generate the image of a town, the production that actually employed one, fed one, and built something lasting in one becomes not the old way of doing things but the valuable way, the human way, rooted in the physical and social world and impossible to copy out of it. The tools will keep getting better, and they should. The work of making a film with other people, in a real place, for the lasting good of that place and the people in it, will keep being something only people can do.</p>
+        <p class="essay-p">There is an older idea underneath all of this. You do not change the world by fighting the thing you want to replace. You change it by building a new model that makes the old one obsolete. This record is not an argument against the way films have always been made. It is the account of a better way that has been building itself for a hundred years, in scattered pieces, under no single name, and an invitation to see those pieces as one thing at last, and to build the next hundred years of it on purpose.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">New Jersey, and the open hand</h3>
+        <p class="essay-p">A field has to take root somewhere first, in some actual place, with people willing to go before the rest.</p>
+
+        <h4 class="essay-h4">Where American film began</h4>
+        <p class="essay-p">American film did not begin in Hollywood. It began in New Jersey, in Thomas Edison&#8217;s studios just west of New York and then on the cliffs of Fort Lee, the country&#8217;s first film town, where the studios clustered before the industry chased the sun west and forgot the place it came from. A hundred years later the cameras are coming back, drawn by new studios and soundstages and incentives into towns that have not hosted a production in generations. The industry is returning to its birthplace with a chance to decide, this time, at the beginning, what kind of industry to build.</p>
+        <p class="essay-p">That opportunity is not only New Jersey&#8217;s. The cases in these pages were built in Los Angeles and London, in Rajasthan and New Zealand, in a Brooklyn warehouse and a Minnesota winter, in Mumbai and Rio and the interior of China. Each time, the work was done and then forgotten, and had to be done again elsewhere by someone who did not know it had a lineage. The task now is to stop the forgetting: to gather the lineage, name it, and hand it to whoever comes next. And then to plant a flag somewhere willing to be first.</p>
+
+        <h4 class="essay-h4">The open hand</h4>
+        <p class="essay-p">New Jersey can be the place that goes first. A production arriving in a New Jersey town is a temporary institution of real wealth and real power, landing in a community, employing it, using its spaces, and then leaving. The only question, the one this whole record has circled, is what it leaves, and whether the leaving was designed or left to chance. It can leave the town as it found it. It can leave it a little worse. Or it can be built so that the making itself is a gift, the town left more whole than the production found it, and the people who made the film left changed by having made it that way. That choice is in front of New Jersey now, and in front of every place the cameras go.</p>
+
+        <h4 class="essay-h4">What it could look like</h4>
+        <p class="essay-p">So picture the largest version of it, because the largest version is the one that makes the case.</p>
+        <p class="essay-p">A major film comes to New Jersey. Not a modest independent feature but a tentpole, the kind of production that costs as much as a small city&#8217;s annual budget, half a billion dollars, with the spectacle and the stars and the opening weekend that a number like that demands. By any ordinary measure it is one of the largest economic events the region will host that year. The ordinary measure is also the whole problem. A production that size moves through a place like weather: it rents what it needs, hires for the duration, spends enormous sums in a few months, and then the trucks pull away and the place settles back to what it was, a little richer for a season and otherwise unchanged. The money was real. It simply passed through.</p>
+        <p class="essay-p">Now imagine the same half a billion dollars, the same movie, every spectacular frame of it intact, with one decision made before the first day of construction: that the budget would be routed, wherever it could be, so that spending it built something that stayed. This is not a smaller film or a worthier one. It is the same blockbuster, run through a different plumbing.</p>
+        <p class="essay-p">The sets are the clearest case. A production of this scale builds whole worlds and, by long habit, sends them to the landfill at wrap. Designed the other way, the structures go up to last, engineered from the first blueprint to become buildings the place will keep, on land held by a community land trust so the value cannot be quietly bought out from under it a decade later, the way value usually is. What the production needed anyway, walls and roofs and power and people who know how to use them, is simply built to code instead of built to be thrown away.</p>
+        <p class="essay-p">The crew follows the same logic. A film this size employs thousands, and staffed the ordinary way the skilled people are flown in and flown out and the town waves at the lights. Staffed the other way, much of the crew is hired local and trained on the job, so the shoot doubles as the largest vocational program the county has run, and the week the film wraps there is a trained workforce standing in a place that did not have one before.</p>
+        <p class="essay-p">None of this is visible from a seat in the theater, and that is the part worth saying plainly, because it is the part that makes the whole thing work. The audience sees a great movie, the same great movie they would have seen anyway, with no idea that the building in the establishing shot is now in use or that the extras in the crowd scene now hold the jobs the production trained them for. The regeneration takes nothing from the screen. A film can be pure entertainment to the person watching and pure infrastructure to the place that made it, at the same time, with no contradiction between the two, because they happen in different places: one on the screen, one on the ground.</p>
+        <p class="essay-p">Now point that whole engine at a single problem, because a vague gift to a town is weaker than a real one aimed at something specific. Take the film&#8217;s subject and let it choose the target. Say the story concerns mental health, a subject nearly every family touches and the screen has always done well by. New Jersey already spends enormous public sums on its mental health crisis, much of it on the most expensive and least healing parts of the system: emergency rooms, repeat hospitalizations, the revolving door that holds people without ever leaving them better. That money is mostly rented. It buys a bed for a night and the night ends.</p>
+        <p class="essay-p">A film budget is spent once, and it can buy rather than rent. For four million dollars a New Jersey hospital builds an EmPATH unit, a calm, living-room-style space where a person in crisis is met by clinicians instead of waiting on a gurney in a hallway; the first ones in the state are opening now. A statewide network of mobile crisis teams, the peers and counselors who come to a person rather than waiting for the police to, runs the state about sixteen million dollars a year. Against numbers like these, a single half-billion-dollar production reads differently. The same sum that buys one weekend of spectacle could, routed the regenerative way, stand up a dozen of those crisis units across the state, fund years of mobile teams, and buy outright, into a land trust, a network of ordinary houses turned into respite homes, places to stay and steady rather than be committed, owned free and clear so no landlord and no budget cut can take them back. And then the film opens. The thing that makes this more than a one-time grant is that the production is also a product: the ticket sales, the streaming, the long tail of a movie that millions watch, flowing back to keep the houses open and the teams on the road, so the gift sustains itself instead of running out the way Radke&#8217;s warehouse ran out. Culture pays for care, and the care, captured on film, pays for more culture.</p>
+        <p class="essay-p">What it asks in return is the hard part, and the honest record has to say so. It costs more at the front, before a frame is shot, when a production is least inclined to spend on anything but the picture. It asks a studio to decide a year early what most studios decide late or never, and a state to treat its film incentives as an investment in what gets left behind rather than a discount on what passes through. The first production to try it at this scale will get pieces of it wrong, the way Pitt got the houses wrong and Radke ran out of money, because first attempts at hard things miss. But the miss is in the execution, never in the idea, and the idea is simply this: a sum of money that large, spent in one place over one year, is going to change that place either way. The only question is whether anyone designed the change.</p>
+        <p class="essay-p">That is the moonshot. Not only a film about a better world, though it can be that too, but a film whose own making leaves a measurably better place behind it, on purpose, at the largest scale the industry is capable of. New Jersey, where the cameras first turned and are turning again, is as good a place as any to find out whether it can be done, and a better place than most, because it is where the story started.</p>
+        <p class="essay-moonshot-link">The full argument, with the New Jersey numbers, is laid out in the <a href="moonshot.html" class="essay-link">Moonshot companion</a>.</p>
+
+        <div class="essay-divider"></div>
+        <h3 class="essay-h3">Author&#8217;s note</h3>
+        <p class="essay-p">A note on how I came to this. I did not find this pattern in an archive. I found it because I was trying to build it, and discovered that others had been building pieces of it for a hundred years before me. I am forming a company in New Jersey whose whole purpose is to make this kind of giving a designed part of how films get made, and the more of the work I did, the more I saw that I was not first, and that the people who were first had never been gathered into a single story or even told they belonged to one. This Ledger is my attempt to gather them. It is history and reportage and argument at once, and unapologetically hopeful, because the work itself has made me so. I offer it not as the last word but as the first draft of a record that I hope a great many other people will spend the next hundred years correcting and continuing.</p>
+
+      </div><!-- .essay-expanded -->
+    </details><!-- .essay-fold -->
+
+  </div><!-- .essay-inner -->
+</section><!-- .essay-section -->
+
+<!-- HOW TO READ THIS LEDGER -->
+<section class="bridge-block">
+  <div class="bridge-inner">
+    <h2 class="bridge-title">How to read this Ledger</h2>
+    <p class="bridge-p">Production giving rises through three levels. The floor: a production does less harm and keeps waste from the landfill (Sustainable). The middle: it actively gives back, rehoming surplus and offering the presence of its people (Contributive). The summit: it leaves something permanent the community keeps (Regenerative). The discipline that carries a production up that ladder, by designing the giving in from the start rather than improvising it at wrap, is Filmanthropy by Design.</p>
+    <p class="bridge-p">That ladder is one road. A production can also give through its proceeds, a foundation, or a cause. Those cases belong here too, and a number of them follow below.</p>
+  </div>
+</section>
+
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
+
+<!-- LEDGER MAIN -->
+<div id="ledger-main">
+
+<section class="forerunners-section" style="padding-top:4rem;padding-bottom:2rem;">
+  <div class="ledger-section-hdr">
+    <h2 class="ledger-section-heading"><em>Forerunners</em></h2>
+    <p class="ledger-section-sub">Some of the modern operators who built production's waste and surplus into a working practice.</p>
+  </div>
+  <div class="ledger-grid" id="forerunner-grid">
+
+    <div class="l-card stripe-fore" id="rock-and-wrap-it-up" data-entry="rawk" onclick="expandEntry('rawk')">
+      <span class="l-card-year">1991</span>
+      <div style="display:flex;align-items:center;gap:9px;">
+        <span class="l-card-founder">Syd Mandelbaum</span>
+      </div>
+      <div>
+        <div class="l-card-name">Rock and Wrap It Up!</div>
+        <div class="l-card-meta">Cedarhurst, NY &middot; Founded 1991</div>
+      </div>
+      <div class="l-card-editorial">The Senior Operator</div>
+      <div class="l-card-snippet">In 1991, Syd Mandelbaum watched food go to trash backstage at a rock concert and built the contractual mechanism to stop it. More than a billion meals recovered since. Thirty-five years. Still running.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-fore" id="film-biz-recycling" data-entry="fbr" onclick="expandEntry('fbr')">
+      <span class="l-card-year">2008</span>
+      <div style="display:flex;align-items:center;gap:9px;">
+        <span class="l-card-founder">Eva Radke</span>
+      </div>
+      <div>
+        <div class="l-card-name">Film Biz Recycling</div>
+        <div class="l-card-meta">Brooklyn &middot; Founded 2008 &middot; Closed 2015</div>
+      </div>
+      <div class="l-card-editorial">The Cautionary Pioneer</div>
+      <div class="l-card-snippet">Eva Radke opened the first dedicated production-surplus redistribution operation in the United States, ran it for seven years in Brooklyn, won the EPA&rsquo;s highest business honor, and could not raise the money to keep the doors open.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-fore" id="ecoset" data-entry="ecoset" onclick="expandEntry('ecoset')">
+      <span class="l-card-year">2009</span>
+      <div style="display:flex;align-items:center;gap:9px;">
+        <span class="l-card-founder">Shannon Bart &amp; Kris Barberg</span>
+      </div>
+      <div>
+        <div class="l-card-name">EcoSet</div>
+        <div class="l-card-meta">Los Angeles &middot; Founded 2009</div>
+      </div>
+      <div class="l-card-editorial">The Proof of Durability</div>
+      <div class="l-card-snippet">Two women. No studio backing. Showing up since 2009. 2,973 tons diverted from landfill. More than $11 million in donated reusable resources as of May 2026. Still running.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-fore" id="earth-angel" data-entry="earth-angel" onclick="expandEntry('earth-angel')">
+      <span class="l-card-year">2013</span>
+      <div style="display:flex;align-items:center;gap:9px;">
+        <span class="l-card-founder">Emellie O&rsquo;Brien</span>
+      </div>
+      <div>
+        <div class="l-card-name">Earth Angel</div>
+        <div class="l-card-meta">Brooklyn &middot; Founded 2013, merged 2024</div>
+      </div>
+      <div class="l-card-editorial">The East Coast Pioneer</div>
+      <div class="l-card-snippet">Emellie O&rsquo;Brien built the East Coast&rsquo;s leading production sustainability consultancy from a film degree and a walkie-talkie nickname. 180-plus productions serviced. Standalone brand retired in 2024. O&rsquo;Brien continues in the field.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+  </div>
+</section>
+
+<div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
+
+<section class="case-studies-section" style="padding-top:4rem;padding-bottom:2rem;">
+  <div class="ledger-section-hdr">
+    <h2 class="ledger-section-heading">The Case <em>Studies</em></h2>
+    <p class="ledger-section-sub">What productions gave, and what more was possible.</p>
+  </div>
+  <div class="ledger-grid" id="case-grid">
+
+    <div class="l-card stripe-regen" id="skater-girl" data-entry="skater-girl" onclick="expandEntry('skater-girl')">
+      <span class="l-card-year">2021</span>
+      <div>
+        <div class="l-card-name">Skater Girl</div>
+        <div class="l-card-meta">Netflix &middot; 2021 &middot; Dir. Manjari Makijany</div>
+      </div>
+      <div class="l-card-editorial">The Gold Standard</div>
+      <div class="l-card-snippet">The clearest documented example of a production building its centerpiece community asset before a single frame was shot. The production paid reportedly several times what a studio build would have cost. The park was not a prop.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-regen" id="sing-sing" data-entry="sing-sing" onclick="expandEntry('sing-sing')">
+      <span class="l-card-year">2024</span>
+      <div>
+        <div class="l-card-name">Sing Sing</div>
+        <div class="l-card-meta">A24 &middot; 2024 &middot; Dir. Greg Kwedar</div>
+      </div>
+      <div class="l-card-editorial">The Equity Model</div>
+      <div class="l-card-snippet">Every cast and crew member received a pro-rata share of the producers&rsquo; equity. Formerly incarcerated collaborators held literal ownership over their own story. 80-plus profit participants.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-film" id="motion-picture-relief-fund" data-entry="mptf" onclick="expandEntry('mptf')">
+      <span class="l-card-year">1921</span>
+      <div>
+        <div class="l-card-name">Motion Picture Relief Fund</div>
+        <div class="l-card-meta">Founded 1921</div>
+      </div>
+      <div class="l-card-editorial">The Century of Care</div>
+      <div class="l-card-snippet">In 1921, Mary Pickford was twenty-nine years old when she and her partners put collection boxes on studio floors and built the infrastructure that would carry the industry&rsquo;s own for a hundred years.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-sust" id="lord-of-the-rings" data-entry="hobbiton" onclick="expandEntry('hobbiton')">
+      <span class="l-card-year">2001</span>
+      <div>
+        <div class="l-card-name">Hobbiton / Lord of the Rings</div>
+        <div class="l-card-meta">New Line &middot; 2001&ndash;2003 &middot; Dir. Peter Jackson</div>
+      </div>
+      <div class="l-card-editorial">The Set That Became a Country</div>
+      <div class="l-card-snippet">The largest accidental residual community asset in modern film history. The Alexander family engineered every bit of the benefit themselves, across two decades, with no production support.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-sust" id="field-of-dreams" data-entry="field-of-dreams" onclick="expandEntry('field-of-dreams')">
+      <span class="l-card-year">1989</span>
+      <div>
+        <div class="l-card-name">Field of Dreams</div>
+        <div class="l-card-meta">Universal &middot; 1989 &middot; Dir. Phil Alden Robinson</div>
+      </div>
+      <div class="l-card-editorial">The Accidental Asset</div>
+      <div class="l-card-snippet">Universal left a baseball diamond in a cornfield in Dyersville, Iowa, and drove away. The community spent three decades figuring out what to do with it. By May 2026, more than $93 million in investment had been committed to the site.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-sust" id="wicked" data-entry="wicked" onclick="expandEntry('wicked')">
+      <span class="l-card-year">2024</span>
+      <div>
+        <div class="l-card-name">Wicked</div>
+        <div class="l-card-meta">Universal &middot; 2024 &middot; Dir. Jon M. Chu</div>
+      </div>
+      <div class="l-card-editorial">The Ecological Choice</div>
+      <div class="l-card-snippet">Nine million real tulips. A living set. After wrap, the farmer replanted the bulbs and opened the farm for a hospice charity. The ecological instinct was right. It stopped one question short of the community question.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-whatif" id="interstellar" data-entry="interstellar" onclick="expandEntry('interstellar')">
+      <span class="l-card-year">2014</span>
+      <div>
+        <div class="l-card-name">Interstellar</div>
+        <div class="l-card-meta">Warner Bros. &middot; 2014 &middot; Dir. Christopher Nolan</div>
+      </div>
+      <div class="l-card-editorial">The Harvest That Fed No One</div>
+      <div class="l-card-snippet">500 acres of real corn in Alberta. A film about a starving humanity. The production sold the crop and kept the proceeds. The community question was one step away from being asked.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-whatif" id="patch-adams" data-entry="patch-adams" onclick="expandEntry('patch-adams')">
+      <span class="l-card-year">1998</span>
+      <div>
+        <div class="l-card-name">Patch Adams</div>
+        <div class="l-card-meta">Universal &middot; 1998 &middot; Dir. Tom Shadyac</div>
+      </div>
+      <div class="l-card-editorial">The Broken Promise</div>
+      <div class="l-card-snippet">$202 million at the box office and a forty-four-bed free community hospital still unbuilt as of 2026. The most painful What If in the modern record.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-film" id="black-panther" data-entry="black-panther" onclick="expandEntry('black-panther')">
+      <span class="l-card-year">2018</span>
+      <div>
+        <div class="l-card-name">Black Panther</div>
+        <div class="l-card-meta">Marvel / Disney &middot; 2018 &middot; Dir. Ryan Coogler</div>
+      </div>
+      <div class="l-card-editorial">Wakanda in the Real World</div>
+      <div class="l-card-snippet">While the film was still in theaters, Disney donated $1 million to twelve STEM centers in cities chosen to mirror the film&rsquo;s themes. Oakland named in the film. Oakland received one of the twelve.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-film" id="schindlers-list" data-entry="schindlers-list" onclick="expandEntry('schindlers-list')">
+      <span class="l-card-year">1993</span>
+      <div>
+        <div class="l-card-name">Schindler&rsquo;s List</div>
+        <div class="l-card-meta">Universal / Amblin &middot; 1993 &middot; Dir. Spielberg</div>
+      </div>
+      <div class="l-card-editorial">Blood Money Into the World</div>
+      <div class="l-card-snippet">Spielberg refused every dollar of personal profit, called it blood money, and used his entire share to found the Righteous Persons Foundation. As of May 2026, more than $160 million in grants distributed.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-film" id="slumdog-millionaire" data-entry="slumdog" onclick="expandEntry('slumdog')">
+      <span class="l-card-year">2008</span>
+      <div>
+        <div class="l-card-name">Slumdog Millionaire</div>
+        <div class="l-card-meta">Fox Searchlight &middot; 2008 &middot; Dir. Danny Boyle</div>
+      </div>
+      <div class="l-card-editorial">The Trust That Wasn&rsquo;t Enough</div>
+      <div class="l-card-snippet">A well-structured trust and a documented donation. Careful and deliberate by production standards. The lived outcomes for the two child actors remained closer to where the film found them than the world had hoped.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+    <div class="l-card stripe-film" id="braddock-free-store" data-entry="braddock" onclick="expandEntry('braddock')">
+      <span class="l-card-year">2009</span>
+      <div>
+        <div class="l-card-name">Braddock Free Store</div>
+        <div class="l-card-meta">Pennsylvania &middot; 2009&ndash;2014 &middot; Multiple productions</div>
+      </div>
+      <div class="l-card-editorial">Five Times. No System. Then Silence.</div>
+      <div class="l-card-snippet">Five productions donated to Gisele Fetterman&rsquo;s community free store because she asked and they said yes. When the productions stopped coming to Pittsburgh, the donations stopped too. There was no system.</div>
+      <div class="l-card-cta"><i class="ti ti-arrow-right"></i> read full entry</div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- end #ledger-main -->
+
+<!-- EXPANDED PANEL -->
+<section id="ledger-expanded" style="display:none;">
+  <div class="exp-inner exp-card">
+    <button class="exp-back" onclick="closeExpanded()">&#8592; Back to entries</button>
+    <div class="exp-header">
+      <div id="exp-badge" class="l-badge" style="display:none"></div>
+      <div class="exp-name-row">
+        <div id="exp-name" class="exp-name"></div>
+        <div class="exp-share-cluster">
+          <span class="exp-share-label">Share</span>
+          <a class="exp-share-btn" id="share-twitter"
+             href="#" target="_blank" rel="noopener"
+             title="Share on X / Twitter">
+            <i class="ti ti-brand-x" aria-hidden="true"></i>
+          </a>
+          <a class="exp-share-btn" id="share-linkedin"
+             href="#" target="_blank" rel="noopener"
+             title="Share on LinkedIn">
+            <i class="ti ti-brand-linkedin" aria-hidden="true"></i>
+          </a>
+          <a class="exp-share-btn" id="share-facebook"
+             href="#" target="_blank" rel="noopener"
+             title="Share on Facebook">
+            <i class="ti ti-brand-facebook" aria-hidden="true"></i>
+          </a>
+          <a class="exp-share-btn" id="share-instagram"
+             href="#" target="_blank" rel="noopener"
+             title="Share on Instagram">
+            <i class="ti ti-brand-instagram" aria-hidden="true"></i>
+          </a>
+          <a class="exp-share-btn" id="share-threads"
+             href="#" target="_blank" rel="noopener"
+             title="Share on Threads">
+            <i class="ti ti-brand-threads" aria-hidden="true"></i>
+          </a>
+          <a class="exp-share-btn" id="share-whatsapp"
+             href="#" target="_blank" rel="noopener"
+             title="Share on WhatsApp">
+            <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+          </a>
+          <div class="exp-share-divider"></div>
+          <button class="exp-share-btn" id="share-copy"
+                  title="Copy link to this entry"
+                  onclick="copyEntryLink()">
+            <i class="ti ti-link" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      <div id="exp-editorial" class="exp-editorial"></div>
+      <div id="exp-meta" class="exp-meta"></div>
+    </div>
+    <div id="exp-verdict-container" class="exp-verdict">
+      <span class="exp-verdict-label" id="exp-verdict-label"></span>
+      <p id="exp-verdict-text"></p>
+    </div>
+    <div class="exp-body">
+      <div class="exp-stats" id="exp-stats"></div>
+      <div class="exp-narrative" id="exp-narrative"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSION ONE LIVING RECORD -->
+<section class="ledger-v1-record">
+  <div class="ledger-v1-record-inner">
+    <h2>Version One, Living Record</h2>
+    <p>This is Version One of the Filmanthropy Ledger, which intends to be a long-running reference work. Sixteen entries to begin, four Forerunners and twelve case studies, drawn from across the span of cinema history. The numbers are date-tagged. The quotes are sourced to their originating outlets. The cases that carry a shadow have been named as cases that carry a shadow. A future version, likely co-authored with a working film historian and an entertainment journalist, will carry the fully cited burden and the longer roster. This version is what the field looks like when someone sits down to put it on the map.</p>
+    <p><em>A note on authorship.</em> This Ledger, essay and entries alike, was co-created by Bret Warshawsky and Claude, an AI system from Anthropic. I want to be plain about how. The insight at the center of this work, that 130 years of scattered generosity in filmmaking add up to a single field nobody had named, is mine, and so is the argument built on it, the angle of every entry, and the obsession that made the whole thing worth doing. I decided what belonged here and what it meant. The prose was built in a long back-and-forth with the model: it threw sparks, drafted passages, and helped me cut and shape, and I read and rewrote every line to my own ear. The historical research and fact-checking were done the same way, across several deep passes, each chasing down sources, dates, and quotes. That work made these pages far more accurate than one person could have made them alone. It did not make them flawless. Any error that remains is mine to own, and yours, gladly, to catch.</p>
+    <p>If you have a case the Ledger should know about, a correction it should make, a quote we have wrong, or a source we have missed, we would like to hear from you. The people whose work is described in these pages are especially invited. So is the next operator building the next thing. Write to <a href="mailto:bret@socialeffectsnj.com">bret@socialeffectsnj.com</a>.</p>
+    <a href="index.html">Learn About Social Effects</a>
+  </div>
+</section>
+
+<!-- SHARE STRIP -->
+<div style="background:#1a1814;padding:1.5rem 3rem;position:relative;text-align:center;">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:1px;background:rgba(200,168,75,0.4);"></div>
+  <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:#c8a84b;margin-bottom:1rem;">Wrap It Forward</p>
+  <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.9rem;">
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html&text=130%20years%20of%20cinema.%20What%20productions%20gave.%20What%20more%20was%20possible.%20A%20Social%20Effects%20Ledger%20of%20Filmanthropy." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="X"><i class="ti ti-brand-x" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Facebook"><i class="ti ti-brand-facebook" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://wa.me/?text=A%20Social%20Effects%20Ledger%20of%20Filmanthropy%20%E2%80%94%2030%20years%20of%20cinema%2C%20what%20productions%20gave%2C%20what%20more%20was%20possible.%20https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="WhatsApp"><i class="ti ti-brand-whatsapp" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://t.me/share/url?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html&text=A%20Social%20Effects%20Ledger%20of%20Filmanthropy%20%E2%80%94%20130%20years%20of%20what%20cinema%20gave%20back." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Telegram"><i class="ti ti-brand-telegram" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="https://mail.google.com/mail/?view=cm&fs=1&su=A%20Social%20Effects%20Ledger%20of%20Filmanthropy%20%E2%80%94%20130%20Years%20of%20What%20Cinema%20Gave%20Back&body=Worth%20reading%20%E2%80%94%20a%20research%20archive%20documenting%20what%20film%20productions%20have%20given%20back%20through%20history%2C%20and%20what%20more%20was%20possible.%20https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Email"><i class="ti ti-mail" style="font-size:20px;color:#c8a84b;"></i></a>
+    <a href="#" id="copy-link-btn-ledger" class="share-btn" data-label="Copy link"><i class="ti ti-link" style="font-size:20px;color:#c8a84b;"></i></a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Social<span>Effects</span> Inc</div>
-  <p class="footer-legal">© 2026 Social Effects Inc. · Filmanthropy &amp; Regenerative Filmmaking.</p>
+  <div class="footer-film-deco" style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+  <div class="footer-film-deco" style="position:absolute;bottom:24px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+    <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
+  </div>
+  <div class="footer-film-deco" style="position:absolute;top:21px;left:0;right:0;height:1px;background:rgba(200,168,75,0.06);z-index:2;pointer-events:none;"></div>
+  <div class="footer-taglines">
+    <span class="footer-tag">From Special Effects to Social Effects</span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag">Sets. Souls. Stories.</span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag">Wrap It Forward</span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag"><a href="Filmanthropy_Ledger.html" style="color: inherit; text-decoration: none;">The Filmanthropy Ledger</a></span>
+    <span class="footer-tag">·</span>
+    <span class="footer-tag" style="font-family:var(--mono);font-size:0.52rem;letter-spacing:0.08em;color:rgba(247,244,239,0.4);">&copy; 2026 Social Effects &middot; Filmanthropy &amp; Regenerative Filmmaking.</span>
+  </div>
+  <div style="padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.12);flex-shrink:0;height:100%;display:flex;align-items:center;">
+    <img src="social-effects-logo.png" alt="Social Effects" style="height:180px;width:180px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(200,168,75,0.2));">
+  </div>
 </footer>
+
+<script>
+const entries = {
+  'ecoset': {
+    bCls: 'badge-fore', bLabel: 'Forerunner',
+    meta: 'Los Angeles · Founded 2009',
+    name: 'EcoSet',
+    editorial: 'The Proof of Durability',
+    stats: [
+      ['Founded','2009, from a 2008 prototype on a Coen Brothers feature, A Serious Man, in Minneapolis'],
+      ['Founder','Shannon Schaefer Bart (now Senior Manager, Global Production Sustainability, Netflix)'],
+      ['Executive Director','Kris Barberg (joined 2009, partner since 2012)'],
+      ['Headquarters','Materials Oasis, 3019 Andrita St, Glassell Park, Los Angeles 90065'],
+      ['Waste diverted','2,973 tons (EcoSet dashboard, May 2026)'],
+      ['Resources donated','$11+ million in reusable materials (May 2026)'],
+      ['Bottles avoided','682,000+ (May 2026)'],
+      ['Status','Active. Women-owned. WBENC-certified since 2013.']
+    ],
+    body: [
+      `What Shannon Schaefer Bart saw on film sets had no department name in 2008. There was no Eco Crew function, no sustainability protocol, no standard procedure for what happened to the materials a production left behind at wrap. Sets went to dumpsters. Food went to trash. Office supplies, furniture, lumber, and costumes went wherever the art department could arrange in the final chaotic days of a shoot, which usually meant nowhere useful. The industry had no mechanism to ask the question, because the question had never been made part of the job.`,
+      `What Bart and Barberg built on A Serious Man in Minneapolis was a proof of concept for something that did not yet have a name. Over ten production weeks, the experiment diverted eleven tons of waste from incineration. Office supplies and furniture went to schools and nonprofits across the Twin Cities. Sets and construction materials went to independent filmmakers rather than into the waste stream. What they built next, in Los Angeles starting in 2009, was a new on-set department: not a consulting add-on, not a green initiative handed down from the studio, but an Eco Crew embedded in the production itself, working from pre-production planning through the final wrap day.`,
+      `The years since have produced a particular kind of operational wisdom. The company survived COVID, when zero-waste targets that had reached ninety-percent landfill diversion dropped to fifty or seventy percent almost overnight as health rules pushed single-use plastics back across the industry. The adaptation, per Barberg's account to Sustainable Brands in July 2024, was to add logistics capabilities, diversify revenue, rent out warehouse space, and stay nimble. The Materials Oasis, EcoSet's physical reuse center in Glassell Park, is what the circular-economy idea looks like made concrete: nonprofits, schools, artists, theaters, and filmmakers come in by appointment and browse production discards at no cost. It won the Los Angeles County Board of Supervisors Green Leadership Award in 2017. Partnerships include TreePeople, with five trees planted per commercial shoot, and the Boys &amp; Girls Club.`,
+      `There is a vindication in where the founder went next. Bart created a role that did not exist, and the industry's largest engines came looking for it. She built the NBCUniversal Sustainable Production Program, implementing it across film and television worldwide, and is now Senior Manager of Global Production Sustainability at Netflix. The function she invented in a Minneapolis production office in 2008, the one with no name and no precedent, is now staffed at the top of the industry by the person who named it.`
+    ],
+    quote: { text: `"2024 marks 15 years in business. We've honed our resilient business model based on adaptation and diversification, staying nimble and pivoting quickly. We survived 2020 by adding more logistics capabilities to our wheelhouse and renting out space."`, attr: 'Kris Barberg, Executive Director, EcoSet, Sustainable Brands, July 2024', color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Why this matters', text: `Two women, with no studio behind them, built one of the first real operations for reclaiming what a film production throws away, an embedded crew, a warehouse, a standing department where before there had only been a dumpster. Anyone can found a good idea. The rare thing, the thing that makes EcoSet the proof, is that they kept it running, through a pandemic that gutted the industry overnight, since 2009. Almost no one in this field has earned that word the way they have.` }
+  },
+  'earth-angel': {
+    bCls: 'badge-fore', bLabel: 'Forerunner',
+    meta: 'Brooklyn · Founded 2013, merged 2024',
+    name: 'Earth Angel',
+    editorial: 'The East Coast Pioneer',
+    stats: [
+      ['Founded',"2013, Brooklyn, by Emellie O'Brien"],
+      ['Acquired by','TheGreenShot (Brussels-based, founded 2021), May 29, 2024'],
+      ['Current status','Standalone Earth Angel brand retired; O\'Brien now Chief Impact Manager of the merged group'],
+      ['Productions','180+ (2013-2024 standalone era)'],
+      ['Carbon avoided','29,000+ metric tons (Earth Angel\'s own figure, through 2024)'],
+      ['Bottles avoided','6 million+ single-use plastic (Earth Angel\'s own figure, through 2024)'],
+      ['Notable work','The Amazing Spider-Man 2 (2014), Noah (2014), The Whale (2022)'],
+      ['Recognition','Tory Burch Foundation Fellow 2016; Inc. 30 Under 30 2018']
+    ],
+    body: [
+      `Emellie O'Brien graduated from NYU's Tisch film program and walked onto her first professional film set in 2011. What she saw there, the cases of single-use plastic water bottles, the dumpsters full of struck set at wrap, the food going straight from craft services to the garbage, became the rest of her career. She took her first sustainability role with Big Beach Films that same year, a job that mostly meant sixteen-hour days digging through set trash. The crew, watching her sort recycling from compost over the walkie, started calling her Earth Angel. In 2013 she turned the nickname into a company.`,
+      `The engagement that made the company's reputation came in 2014. Earth Angel's sustainability leadership on The Amazing Spider-Man 2 helped earn Sony Pictures recognition for the most eco-friendly blockbuster in the studio's history, and the production became the first to carry the Sony Pictures a Greener World end credit. Doug Belgrad, then president of Columbia Pictures, said the team's practices saved more than four hundred thousand dollars. The work was specific and measurable: nearly fifty tons of material kept for donation or reuse, a hundred ninety thousand disposable water bottles avoided, a fifty-two percent landfill diversion rate, thousands of meals donated, and tree planting in a Sandy-damaged stretch of New York's East River Park.`,
+      `Darren Aronofsky worked with Earth Angel on Noah the same year and put it in a filmmaker's terms: 'When we did Noah, we knew we were making a film about the first steward of the earth, so we wanted to be good stewards ourselves. There's so much waste on film sets, and because of groups like Earth Angel, we were able to change that a little bit.' He came back to work with her on The Whale in 2022, where the production diverted eighty-two percent of its waste and gifted its stage flats to a local performing-arts academy.`,
+      `In May 2014, one year into Earth Angel's existence, Eva Radke of Film Biz Recycling presented O'Brien with the Founder's Award for an Individual Displaying Utter Greatness, at the first Golden Dumpster Awards in Brooklyn. Film Biz Recycling's own Brooklyn warehouse would close in less than twelve months. The torch was moving between two Brooklyn operators, visibly, in public, in front of the people who had built this field. O'Brien had in fact discovered Film Biz Recycling a few years earlier, while researching a green initiative for Focus Features, the older operation teaching the newer one before either had a name for what they shared.`,
+      `On May 29, 2024, after eleven years and more than a hundred eighty productions, Earth Angel was acquired by TheGreenShot, a Brussels-based company, founded 2021, that folds financial, operational, and environmental tracking for productions into a single platform. The standalone Earth Angel brand was retired. The site that once booked its work now reads, simply, that after an incredible journey to make productions more sustainable, Earth Angel has closed. O'Brien continues inside the merged group as its Chief Impact Manager. The work she built goes on. The name does not, and she chose that trade herself.`
+    ],
+    quote: { text: `"I knew what a powerful medium this was and really wanted to help leverage it toward educating folks on these important issues. It wasn't until I got onto my first professional film set where my eyes were really opened to the amount of resource inefficiency that was happening."`, attr: "Emellie O'Brien, Earth Angel founder, Deadline, May 2024", color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Why this matters', text: `Emellie O'Brien walked onto a film set, saw the waste no one was accounting for, and did the rarest thing in this lineage: she invented the job that did not exist, then built the company around it, and became the East Coast's defining operator in a field she helped name. What makes her story unusual is its ending. Earth Angel did not collapse, and its founder was not quietly hired away. After more than a decade of proving the work, O'Brien folded it into something larger by choice, trading a beloved brand for a longer reach. Lasting a decade is harder than shining for a few years, and choosing your own ending is its own kind of achievement.` }
+  },
+  'rawk': {
+    bCls: 'badge-fore', bLabel: 'Forerunner',
+    meta: 'Cedarhurst, New York · Founded 1991',
+    name: 'Rock and Wrap It Up!',
+    editorial: 'The Senior Operator',
+    stats: [
+      ['Founded','1991 informally (food recovery at Jones Beach Theatre); launched nationally 1994 via MTV'],
+      ['Founders','Syd Mandelbaum and Diane Mandelbaum'],
+      ['Founder & CEO','Syd Mandelbaum (still active, age 75)'],
+      ['COO','Diane Mandelbaum (co-founder; runs operations, finance, and fundraising)'],
+      ['Type','501(c)(3) anti-poverty think tank'],
+      ['Headquarters','405 Oceanpoint Ave, Cedarhurst, NY (Long Island)'],
+      ['Impact',"Organization states 1 billion+ fed since 1991 (RWU's own framing); EPA documented 100M+ lbs to 200M+ people as of 2009"],
+      ['Donor categories','Touring bands, 70+ pro sports franchises, schools, hospitals, hospitality, TV/film including NBCUniversal'],
+      ['Motivation',"To honor Mandelbaum's parents, Holocaust survivors"],
+      ['Federal law','Drafted language that became the basis of the Federal Food Donation Act of 2008'],
+      ['Status','Active']
+    ],
+    body: [
+      `Syd Mandelbaum is a scientist by profession. He earned a BS and an MA from Brooklyn College and an MBA from Hofstra, served on the Lawrence school board and as a Nassau County Human Rights Commissioner, and built a career in DNA and genetics research. In 1994 he headed the American team that used DNA to disprove a claim to be the lost Grand Duchess Anastasia, described as the first use of DNA for a historical question. He later co-founded the DNA Shoah Project, which uses forensic DNA to reconnect families separated by the Holocaust, and in the early 1980s was among the first to videotape Holocaust survivor testimony. Rock and Wrap It Up! is the work he is best known for, and he and his wife Diane started it to honor his parents, both survivors. The specific spark was a June 1981 trip to Jerusalem with his father Joseph for the first World Gathering of Jewish Holocaust Survivors, after which, he has said, he felt he had to go home and change something.`,
+      `It began with a phone call and a soup kitchen. In 1991 Mandelbaum was president of the Claddagh Inn soup kitchen in Rockaway Beach when the concert promoter Ron Delsener told him there was untouched food at the Jones Beach Theatre every summer and he was welcome to it. That first summer they recovered more than four thousand pounds. The insight that followed was logistical, not moral: the impulse to donate surplus food already existed everywhere, but it depended on the right person being in the room. A contractual mechanism could make it happen reliably, at every show, even when no one in the room thought to ask.`,
+      `That mechanism became the contractual rider, and the organization launched nationally in 1994. The artists who signed first, among them Bruce Hornsby and the Range, the Rolling Stones, Aerosmith, Phish, and Michael Bolton, were not writing checks. They were signing contracts that obligated the venues to release prepared but unserved food at the end of each show. Goodwill was replaced with obligation. Over the following decades the model extended outward from music to professional sports, more than seventy franchises now, and to the hospitality industry, schools, hospitals, and film and television productions, with NBCUniversal among the named entertainment partners. The organization's film and television work runs under Project: It's a Wrap!, which began in 1997, the first film being The Devil's Own.`,
+      `How much the model has recovered is harder to state cleanly than the organization's headline suggests. Rock and Wrap It Up! says it has fed more than a billion people since 1991, a figure it frames inconsistently across its own materials as people, meals, and pounds. The most recent independently documented numbers are the Environmental Protection Agency's, which in 2009 credited the organization with more than a hundred million pounds of food delivered to more than two hundred million people across five hundred cities, run by roughly six employees on a budget under half a million dollars a year. The Whole Earth Calculator, launched with the NFL at the 2014 Super Bowl, converts pounds of food diverted into meals served and greenhouse gas emissions avoided in a single calculation. Mandelbaum, now in his seventies, is still CEO. He was photographed in 2020 personally unloading food at a Long Island community center during the worst of the COVID year. His reach went past the loading dock and into the law: the language he drafted, working with Representative Jo Ann Emerson and Senator Chuck Schumer, became the basis of the Federal Food Donation Act of 2008, which pushed the federal government to give away its own surplus food rather than trash it.`,
+      `The lineage shows up on film sets directly. Earth Angel, Emellie O'Brien's sustainability company, partnered with Rock and Wrap It Up! on the set of Annie in 2014, redistributing thousands of pounds of catering food through the model Mandelbaum had spent two decades building. In Los Angeles today, EcoSet channels craft services and catering food through Every Day Action, a separate operation reaching the same end by the same logic. The organizations are not linked, but the instinct is one and the same: build the mechanism, and the food finds the people who need it.`
+    ],
+    quote: { text: `"I came up with something called contractual obligation, which is still used today. We thought that a band's management could put a stipulation in their rider, saying that all edible leftover food, prepared but not served, cannot go into a landfill. It must feed the hungry."`, attr: 'Syd Mandelbaum, Founder and CEO, Rock and Wrap It Up!, MUSE (Members United for Sustainable Events), 2022', color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Why this matters', text: `Surplus food was always being given away here and there, whenever the right person happened to be in the room. Syd Mandelbaum's contribution was to remove the chance. He turned goodwill into a contractual obligation: a rider that requires a venue to release its uneaten food, every show, whether or not anyone thinks to ask. That single move is what made food recovery a system instead of a favor, and thirty-five years on, every operator doing this work on a film set is still building inside what he proved. The impulse was never rare. The mechanism was.` }
+  },
+  'fbr': {
+    bCls: 'badge-fore', bLabel: 'Forerunner',
+    meta: 'Brooklyn · Founded 2008 · Closed 2015',
+    name: 'Film Biz Recycling',
+    editorial: 'The Cautionary Pioneer',
+    stats: [
+      ['Founded','May 2008 by Eva Radke (Fort Greene, then Long Island City, then Gowanus)'],
+      ['Location','11,000 sq ft warehouse, Gowanus, Brooklyn (from ~2010)'],
+      ['Type','501(c)(3) nonprofit prop house and creative reuse center'],
+      ['Material diverted','600+ tons over its lifetime (closure statement, 2015)'],
+      ['Peak intake','~10 tons per month'],
+      ['To charities','~60% of all intake redistributed'],
+      ['EPA award','2014 U.S. EPA Region 2 Environmental Quality Award'],
+      ['Closure','June 2015. Cause: inability to secure adequate sustained funding (~$100K/year gap)'],
+      ['Founder\'s next','ArtCube Nation (worldwide art-department network); Eva Radke still founder and CEO'],
+      ['Brand continues','Savannah, GA, as a separate 501(c)(3) under Samita Wolfe']
+    ],
+    body: [
+      `Eva Radke spent fifteen years in production, the last ten in the art department, working as a freelance coordinator on New York commercials, television, and film. She had grown up in a conservative Texas oil family and left for New York at twenty-two, funding her film books by selling her business textbooks back to the University of Texas. The irony was not lost on her later: an oil heiress who built a warehouse to keep things out of the ground. The dumpsters started bothering her in a specific and irresolvable way. On a January 2007 wrap, forced to throw out a mid-century credenza nobody would take, the waste and the work she loved collapsed into one another, and she could not separate them again.`,
+      `What she built was eleven thousand square feet of counter-argument, though it did not start that big. Film Biz Recycling opened in 2008 in a Fort Greene apartment, moved to a small Long Island City space, and only around 2010 reached the Gowanus warehouse it became known for. The model was simple and unglamorous: a one-stop drop-off for the paint, furniture, wardrobe, set dressing, and raw materials that productions sent to the dump. A retail floor that worked like the most thoughtfully curated thrift store in the borough, because everything in it had come from a film set. Workshops, green-production seminars, a staff of about a dozen. Roughly sixty percent of everything through the loading dock found its way to local charities, arts programs, and reuse centers, and only two or three percent ever reached a landfill. At peak, ten tons arrived every month.`,
+      `In May 2014, six years in, Film Biz Recycling held the first Golden Dumpster Awards at the warehouse. The Founder's Award for an Individual Displaying Utter Greatness went to Emellie O'Brien of Earth Angel. Radke had opened one of the first operations of its kind on the East Coast, and she was now publicly honoring the person who would carry the category forward. That same spring, the U.S. EPA gave Film Biz Recycling its 2014 Region 2 Environmental Quality Award.`,
+      `The closure, when it came, was about money and not relevance. The prop floor covered roughly eighty percent of the budget, but the remaining twenty, about a hundred thousand dollars a year, was nowhere to be found, and a state development grant that had carried the gap for a while ran out. Film Biz Recycling did not fit the traditional charity funding model: it looked like a thrift store and acted like a public utility, and the institutions that might have funded it did not know which one they were looking at. The MPAA, in Radke's account, told her they already had a carting company. They thought she was a garbage operation groveling for a contract. She had spent seven years working every address in her book. The warehouse was vacated by late June 2015.`,
+      `Radke was clear that the loss was the field's and not only hers. 'It's like watching a unicorn die,' she said of the closing. But she also said the thing that turned out to be true: that Obi-Wan and Dumbledore were stronger in death, and that maybe her impact would be felt more once the thing itself was gone. The people who came after learned from what she built and from what it cost her. She is still in the industry, running ArtCube Nation, the worldwide professional network for art-department, fabrication, and design crews that she grew out of a Google group she had started back in 2007. And the Film Biz Recycling name still does the work it was built for, in Savannah, Georgia, as a separate nonprofit under Samita Wolfe, a former Navy sailor Radke mentored, who reopened the doors on Earth Day in 2017.`
+    ],
+    quote: { text: `"Obi-Wan and Dumbledore were stronger in death, so maybe my impact will be felt even more now."`, attr: 'Eva Radke, founder, Film Biz Recycling, on its closing, Brokelyn, April 2015', color: 'rust' },
+    verdict: { cls: 'verdict-extract', label: 'Why this matters', text: `Eva Radke built one of the first creative-reuse centers of its kind on the East Coast and ran it for seven years, turning what film sets threw away into a warehouse the whole borough could shop for free. The work was excellent, and the model genuinely new. It eventually closed, as operations do, when the funding could not match the mission. That ending is part of the story, not the measure of it. What she pioneered outlived the doors she had to shut, and everyone doing this work today is downstream of it.` }
+  },
+  'skater-girl': {
+    bCls: 'badge-regen', bLabel: 'Regenerative',
+    meta: 'Netflix · 2021 · Dir. Manjari Makijany',
+    name: 'Skater Girl',
+    editorial: 'The Gold Standard',
+    stats: [
+      ['What was built','Desert Dolphin Skatepark, 14,500 sq ft, Khempur, Rajasthan'],
+      ['Scale','One of India\'s largest; Rajasthan\'s first (per filmmakers)'],
+      ['Built in','45 days during monsoon season, 2018'],
+      ['Park opened','October 2018, before filming began (wrap April 2019)'],
+      ['Children impacted','Hundreds trained, including 35 girls (2021); foundation reports thousands since 2018'],
+      ['National championship','Four Khempur skaters carried Rajasthan, April 2021'],
+      ['Stewarded by','Living Grace Foundation (Vinati Makijany, Founder &amp; Managing Trustee)'],
+      ['Production company','Skatepark Films, in association with Mac Prods.']
+    ],
+    body: [
+      `In 2017, director Manjari Makijany and her producers made an unusual decision. The film's centerpiece would not be a set. It would be a real skatepark, on real land, in a real village, and it would outlive the production.`,
+      `The proof that this was designed in sits in how they chose the village. Makijany told the Free Press Journal the team had three requirements for a location. It needed a rustic backdrop. It needed concrete roads kids could skate. And, in her words, 'there had to be over a thousand kids in and around the village so the skate park could be beneficial to the local community after the film.'`,
+      `The build was real construction. The production brought in 100 Ramps, the Bengaluru company led by pioneering Indian skater Darius Bharucha, assembled a crew from across India and Europe, and poured 14,500 square feet of reinforced concrete over 45 days in the monsoon. It was one of India's largest skateparks and the first that part of Rajasthan had ever seen. Permanent costs more than temporary, and on a small indie film the filmmakers paid the difference on purpose. Workshops opened the park in October 2018. The cameras did not roll until the following spring. By then the children of Khempur had been skating it for months. It was already theirs.`,
+      `The park never closed. Skateboards and safety gear are still free, the Living Grace Foundation still keeps the lights on, and in April 2021 four of its young skaters, the youngest around ten, carried Rajasthan's colors to the national championship in Mohali. The producers had said from the start that this was the point.`
+    ],
+    quote: { text: `"We wanted to make clear that we're not coming here just to make a movie and go away. We were creating something that was going to live beyond the film."`, attr: `Vinati Makijany, Producer, Skater Girl, Women's Media Center, June 2021`, color: 'moss' },
+    verdict: { cls: 'verdict-regen', label: 'Our Take', text: `Skater Girl did not give back what was left over. It built the community asset first, then made the film around it. The cleanest evidence the Ledger has found that community benefit was designed in, not added on, sits in the site-selection criteria: before a location was chosen, the production required that the village have over a thousand local children, so the skatepark would serve the community long after the cameras left. That is not a scouting note. It is a community-benefit requirement, named in the same breath as the film's visual and logistical needs, and given equal weight. Every other case in this Ledger is measured, in some sense, against the simple fact that this one production set out to leave a real place permanently better off, and then did.` }
+  },
+  'sing-sing': {
+    bCls: 'badge-regen', bLabel: 'Regenerative',
+    meta: 'A24 · 2024 · Dir. Greg Kwedar',
+    name: 'Sing Sing',
+    editorial: 'The Equity Model',
+    stats: [
+      ['Director','Greg Kwedar'],
+      ['Screenplay','Kwedar & Clint Bentley; story also by Clarence Maclin & John Whitfield'],
+      ['Lead actor','Colman Domingo'],
+      ['Pay structure','Same SAG scale rate for all cast and crew, star included'],
+      ['Equity structure','Pro-rata profit participation for entire cast and crew (80+ people)'],
+      ['The waterfall','60/40 cast-crew split from first dollar; 50/50 after investors recoup 120%'],
+      ['Cast','Formerly incarcerated alumni of Rehabilitation Through the Arts (RTA), as themselves'],
+      ['Prison release','First film released to theaters and prisons at once (A24/RTA/Edovo, Jan 17, 2025)']
+    ],
+    body: [
+      `What makes Sing Sing belong in the Regenerative category of the Ledger is not why Greg Kwedar and Clint Bentley made the film. The question is why they structured it the way they did. The film, which premiered at Toronto in 2023 and reached theaters through A24 in 2024, is built around the real Rehabilitation Through the Arts program at Sing Sing Correctional Facility, and its cast is almost entirely formerly incarcerated alumni of that program, playing versions of themselves alongside Colman Domingo in the lead.`,
+      `Years of development produced a film with a specific, unusual deal structure. Everyone on set, from the lead actor to the production assistants, was paid the same SAG scale day rate. And everyone, cast and crew, received a pro-rata share of the producers' equity. Not a charitable gesture, not a nominal points deal, but a real ownership pool: more than eighty people with a stake in the outcome. The mechanics were deliberate. Bentley has described a waterfall in which cast and crew share from the first dollar, and once investors recoup their capital and then some, the split moves to fifty-fifty in perpetuity. Ownership, structured to last beyond the box office.`,
+      `The structure only held because the top of the call sheet agreed to it. Domingo, an Academy Award nominee, took the same rate as a first-day production assistant. Kwedar was blunt about why that mattered: the model does not function unless the number one on the call sheet buys in. He did. And the deeper point was never only about money. Clarence Maclin and John Whitfield, two of the formerly incarcerated men the film is about, share its story credit, and when Sing Sing was nominated for Best Adapted Screenplay, they became the first RTA alumni ever nominated for an Academy Award. The men were not subjects of the story. They were authors of it, and owners of it.`,
+      `Kwedar said as much to Variety at the Brooklyn Academy of Music premiere in June 2024: in a story built around people who had had ownership stripped from them, the whole cast and crew would have literal ownership of their own story. The commitment extended past the deal memo. On January 17, 2025, A24 and Rehabilitation Through the Arts, working with the prison-education platform Edovo, made Sing Sing the first film released to theaters and to prisons at the same time, so that men currently incarcerated could see the work that men formerly incarcerated had made.`
+    ],
+    quote: { text: `"We have over 80 profit participants in our half of the business. That's our whole cast and crew. In a story like this, which centers formerly incarcerated men who have been taken advantage of by systems, they have literal ownership over their own story."`, attr: 'Greg Kwedar, Director, Sing Sing, Variety, June 30, 2024', color: 'moss' },
+    verdict: { cls: 'verdict-regen', label: 'Our Take', text: `Skater Girl built permanent physical infrastructure for the community its story was about. Sing Sing built permanent equity infrastructure for the people its story was about. Both asked the same question in different registers. Skater Girl: what does this community need that we could also use? Sing Sing: what do these men need, after a lifetime of being taken from, that we could also use? The answer in both cases was ownership. Not gratitude. Not charity. Ownership, designed in from day one. In a film about men whom every system had stripped of agency, the cast did not merely appear in the story. They were paid as equals in it, held equity in it, and in two cases were nominated for an Academy Award for writing it.` }
+  },
+  'mptf': {
+    bCls: 'badge-film', bLabel: 'Filmanthropic',
+    meta: 'Founded 1921',
+    name: 'Motion Picture Relief Fund',
+    editorial: 'The Century of Care',
+    stats: [
+      ['Founded','1921'],
+      ['Prime mover','Mary Pickford (age 29), founding vice-president'],
+      ['First president','Joseph M. Schenck; Rev. Neal Dodd, administrator'],
+      ['1932 innovation','Payroll Pledge Program: 0.5% of wages over $200/week'],
+      ['Screen Guild Theatre','1939-1952; star fees funded the campus ($5.2M raised)'],
+      ['Campus','Woodland Hills (Wasserman Campus), land bought 1940, dedicated 1942'],
+      ['Helped (2020)','Nearly 10,000 (MPTF CEO Bob Beitcher, Variety, 2022)'],
+      ['Recognition','Jean Hersholt Humanitarian Award, 2021, the first ever given to an organization'],
+      ['Renamed','Motion Picture &amp; Television Fund, 1971']
+    ],
+    body: [
+      `The American film industry of 1921 was making a handful of its biggest names extraordinarily wealthy and leaving the rest of its workforce with almost nothing when things went wrong. A worker hurt on set had no compensation. A performer whose career ended had no pension. The industry had the money, the talent, and the audience. It had no mechanism to care for its own.`,
+      `Mary Pickford decided that gap was hers to close. She was twenty-nine, and two years earlier she had co-founded United Artists with Chaplin, Fairbanks, and Griffith, on the conviction that the most powerful people in an industry could remake its economics if they chose to. The Motion Picture Relief Fund was that same conviction turned from the industry's ownership to its welfare. She drove it as its founding vice-president; Joseph Schenck served as its first president and the Reverend Neal Dodd, an Episcopal priest who played clergymen in hundreds of films, ran its day to day.`,
+      `What Pickford built was not a donation. It was a mechanism. The Fund began with coin boxes set out on studio floors, money dropped by the people working that day for the people who weren't. As MPTF still tells it, Pickford kept a little galvanized bucket on her own sets, and if you were lucky enough to be working, she expected you to put something in. By 1932 she had formalized it: the Payroll Pledge Program, under which everyone earning more than two hundred dollars a week gave half of one percent of their wages, automatically. In a single month of 1933, the Fund bought groceries for more than two thousand five hundred film workers and kept seventy-five families from eviction.`,
+      `In 1939 the actor Jean Hersholt, by then the Fund's president, helped launch the Screen Guild Theatre, a weekly radio program on which the biggest names in Hollywood performed and donated their fees. It ran until 1952 and raised more than five million dollars, and that money bought land. In Woodland Hills, on what had been forty-odd acres of walnut and orange groves, the Fund broke ground in 1941 and dedicated the Motion Picture Country House in 1942: a place for the industry's elders and most vulnerable to grow old among their own. It operates still, today the Wasserman Campus, under the name the Fund took in 1971, the Motion Picture &amp; Television Fund. Per Variety's centennial reporting, nearly ten thousand people received its help in 2020 alone.`,
+      `There is a circle worth closing here. The Academy's award for humanitarian work is named for Jean Hersholt, the man who ran this Fund for eighteen years and raised the money that built its campus. In 2021, for the first time in its history, the Academy gave that award not to a person but to an organization: to the Motion Picture Relief Fund itself. The honor named for the man came home to the institution he had built. A hundred years after a twenty-nine-year-old passed a bucket on a silent-film set, the industry's own highest body of recognition bent its rules to say that the care had been worth as much as the art.`
+    ],
+    quote: { text: `"Actors are only ever between engagements."`, attr: "Mary Pickford's reported insistence that the Woodland Hills home be called a House, not a Home (MPTF history)", color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Our Take', text: `In 1921 the question was not what the industry should do for itself. It was what one of its most powerful people could build with the leverage she had while she had it. Mary Pickford answered with infrastructure that has now lasted a century: a working campus that still takes people in, a payroll pledge that made giving a normal line on the check, and, in 2021, an Academy Award given for the first time not to a person but to the institution she founded. The Motion Picture Relief Fund is proof that philanthropy designed in early enough, and backed by enough power to stick, can outlast everyone who built it.` }
+  },
+  'hobbiton': {
+    bCls: 'badge-sust', bLabel: 'Sustainable / Adjacent',
+    meta: 'New Line Cinema · 2001–2003 / The Hobbit · Warner Bros. · 2012–2014',
+    name: 'The Lord of the Rings',
+    editorial: 'The Set That Became a Country',
+    stats: [
+      ['Site','Alexander family farm, Matamata, Waikato, NZ (approx. 1,250 acres)'],
+      ['Set area','Approx. 12 acres'],
+      ['Site discovered','Aerial location search, 1998'],
+      ['Original Hobbiton','37-39 temporary hobbit holes (1999); mostly cleared after filming'],
+      ['Facades left','~17 bare plywood facades survived (rain halted demolition)'],
+      ['Tours began','2002 (Russell Alexander, son of original owner Ian)'],
+      ['Permanent rebuild','2010-2011 for The Hobbit; 44 permanent hobbit holes today'],
+      ['Ownership today','Alexander family and Peter Jackson, roughly 50/50'],
+      ['Visitors in 2019','650,000 (pre-Covid peak)'],
+      ['Tourism value','~$630M NZD/yr film-influenced visitor spend (Tourism NZ, 2019)']
+    ],
+    body: [
+      `When the Lord of the Rings crew finished filming the Shire and moved on, they left behind, on the Alexander family's working sheep and beef farm in Matamata, the bones of Hobbiton. The set had been built of plywood and polystyrene, meant to be temporary. An attempt to clear it was halted by heavy rain, and roughly seventeen bare hobbit-hole facades were left standing in the paddock, with the understanding that the crew would return to finish the job. The film was done. The lease was satisfied. The Alexanders were left with seventeen movie-set remnants and a decision.`,
+      `They kept them. Russell Alexander, a son of the farmer the location scouts had first approached in 1998, opened tours in 2002 and spent years turning curious foot traffic into a working tourism business, through the family's own initiative. The production that had found the farm by air, sent the New Zealand Army to build a 1.5-kilometer access road, and raised the most beloved set in modern cinema on a sheep paddock had left with no obligation to the family's economic future. The family engineered that future themselves.`,
+      `Then the value the family had proven drew the production back. When Peter Jackson returned in 2009 to prepare The Hobbit, Hobbiton was rebuilt, this time in stone and timber, meant to last. Construction across 2010 and 2011 produced the forty-four permanent hobbit holes and the Green Dragon Inn that visitors see today. And the deal had changed: Jackson became a fifty-percent partner in the tourism operation. The set that a production had once walked away from was now one the filmmaker co-owned. By 2019, Hobbiton drew 650,000 visitors, and Tourism New Zealand estimated that film-influenced travel was worth around 630 million New Zealand dollars a year to the country.`,
+      `There is a shadow on the case, and it has been named on the record. Scholars including Misha Kavka, Stephen Turner, and Alice Te Punga Somerville have argued that the Tolkien-tourism wave rebranded the New Zealand landscape as Middle-earth and, in doing so, overwrote the land's own history, including its precolonial Maori history, in the story sold to visitors. The critique is documented in the academic literature. It is not fringe, and it is not the Ledger's place to adjudicate it. The reader who wants to follow the thread can. The Ledger owes the reader the sentence.`
+    ],
+    quote: null,
+    verdict: { cls: 'verdict-sust', label: 'Our Take', text: `Name the good first: a working sheep farm became one of the most beloved destinations in the Southern Hemisphere, raised from the plywood bones a film crew left in a paddock, because one family decided the leftover scenery was worth keeping. It now employs hundreds and draws visitors from every continent. Hobbiton is the largest residual community asset in modern film history, and it became one almost by accident, so completely that once the family had proven the value, the production came back to buy in, with Peter Jackson taking a fifty-percent stake in the business itself. None of this is a failure. It is a measure of how much was always sitting in the land, and of how much further it might have gone had anyone seen it there at the start, the way Skater Girl did, rather than twenty years later.` }
+  },
+  'field-of-dreams': {
+    bCls: 'badge-sust', bLabel: 'Sustainable / Adjacent',
+    meta: 'Universal Pictures · 1989 · Dir. Phil Alden Robinson · Dyersville, Iowa',
+    name: 'Field of Dreams',
+    editorial: 'The Accidental Asset',
+    stats: [
+      ['Production','Field of Dreams, Universal Pictures, 1989'],
+      ['Director','Phil Alden Robinson'],
+      ['Location','Dyersville, Iowa (Lansing and Ameskamp family farms)'],
+      ['What was left','A baseball diamond, kept at wrap with no community-benefit agreement'],
+      ['Design intent','None. The benefit was not designed in.'],
+      ['Family-run era','~1989-2011, free public access, owner-run'],
+      ['2021-2022','MLB \'Field of Dreams\' games (White Sox/Yankees 2021; Cubs/Reds 2022)'],
+      ['2022 plan','$80M private expansion announced under Frank Thomas (later refocused)'],
+      ['2024-2026','Site bought by a local nonprofit ($27M); ~$120M civic campaign underway'],
+      ['May 2026','$13M committed: $10M from three Iowa families/firms + $3M state (Telegraph Herald)']
+    ],
+    body: [
+      `Universal Pictures built a baseball diamond in the middle of a cornfield outside Dyersville, Iowa, in 1988, because Phil Alden Robinson's film needed one. The diamond straddled two farms: the infield and right field on Don Lansing's land, the rest of the outfield on the neighboring Ameskamp property. When filming ended, the production left the field behind. Not as a planned gift, not as a contractual obligation, simply because it was there and the studio had no reason to remove it. The families owned the land. The diamond sat on it. They had to decide what to do.`,
+      `What they did, over the next three decades, is the entire argument for this entry. They kept it. They opened it to visitors, free, and for years the two families ran competing little attractions a few feet apart, each with its own gift shop, before the land was finally united under one owner in 2007. They managed a slow swell of baseball pilgrims with no production support and no blueprint for turning a leftover set into something lasting. Don Lansing simply left bats and balls and gloves out for whoever came. By the film's twentieth anniversary the site drew around 65,000 people a year, on word of mouth alone.`,
+      `Then the value the families had proven began drawing everyone else in. The property sold in 2011, and in 2021 a group led by the Hall of Famer Frank Thomas took control and, in April 2022, announced an eighty-million-dollar private plan for youth fields, dormitories, and a hotel. That plan stalled and was scaled back, and in 2024 the site passed to a local nonprofit for twenty-seven million dollars, much of it state money, now pursuing a roughly hundred-and-twenty-million-dollar campaign to build a permanent ballpark and a year-round youth complex. Major League Baseball had already come, playing regular-season games beside the cornfield in 2021 and 2022, with another set for 2026. In May 2026, three Iowa families and businesses pledged ten million dollars and the state of Iowa added three more.`,
+      `One detail closes the circle better than any figure. The youth fields now rising next to the movie diamond are being lit, in part, by Musco Lighting, the Iowa company that lit the original film set in 1988. The same hands that lit it for the cameras are lighting it for the children. The benefit arrived, real and large and still growing. It simply took thirty-five years and a great many people other than the studio to build what the studio left in a field.`
+    ],
+    quote: null,
+    verdict: { cls: 'verdict-sust', label: 'Our Take', text: `Begin with the thing itself, because it is genuinely lovely. A studio built a baseball diamond in a cornfield and went home, and two Iowa farm families decided to keep it, mowed it, opened it, and let anyone who needed to walk into the corn do exactly that, free, for thirty years. It became one of the few places in American life where grown men weep in public and no one thinks it strange. The Ledger honors that without reservation, and lingers only on the timing. What the families proved, and others later arrived to build on, a single line in a production plan could have begun on day one, the way Skater Girl did. The benefit was always sitting in the cornfield, waiting to be designed for.` }
+  },
+  'wicked': {
+    bCls: 'badge-sust', bLabel: 'Sustainable / Adjacent',
+    meta: 'Universal Pictures · 2024 · Dir. Jon M. Chu',
+    name: 'Wicked',
+    editorial: 'The Ecological Choice',
+    stats: [
+      ['Designer','Nathan Crowley (won the 2025 Oscar for this work)'],
+      ['Farm','The Eves family nursery (Belmont Nurseries / Norfolk Tulips), Norfolk, England'],
+      ['Owners','Mark and Susanne Eves'],
+      ['Tulips planted','9 million (Crowley asked for 1 million; the farmer said 9)'],
+      ['Field size','Around 20-25 acres'],
+      ['Used as','Cut heads used as decorative roof material on Munchkin homes (per design press)'],
+      ['Cost','~0.25% of the $145M budget; comparable to the VFX alternative'],
+      ['Post-wrap','Bulbs replanted; fields reopened for The Norfolk Hospice Tapping House'],
+      ['Charity result','‘Tulips for Tapping’ (begun 2021); over GBP 1M raised cumulatively']
+    ],
+    body: [
+      `For Wicked, production designer Nathan Crowley insisted on real tulips. Not CGI, not silk, not painted backdrops. He told Variety he knew it could work because he had already grown five hundred acres of corn for Christopher Nolan's Interstellar a decade earlier. The principle was the same: real beats manufactured when a team is willing to do the work, and find the right farmer. His reasons, on the record, were craft and vision, not charity. What the choice flowed into afterward was something he could not have planned.`,
+      `How many tulips became a small accident of its own. Crowley has said he asked for a million. Mark and Susanne Eves, the Norfolk growers he found, told him the number he actually wanted was nine million, and nine million is what arrived: reds, pinks, and whites planted across some twenty-odd acres to become Munchkinland's fields. The image that defines the film was partly a misunderstanding, grown real. And it was not the extravagance it looks like. At roughly four cents a bulb, nine million tulips came to about a quarter of one percent of the hundred-and-forty-five-million-dollar budget, on the order of what rendering them would have cost. The cut heads, once filming was done, were used as decorative roofing on the Munchkin houses.`,
+      `Then the flowers did something the production never scripted. The Eves family replanted the bulbs and reopened the fields to the public, and the proceeds went to The Norfolk Hospice Tapping House, which provides free end-of-life care across West Norfolk. The openings, 'Tulips for Tapping,' had begun back in 2021, three years before Wicked, and the film's fame poured into them: record crowds, and across its run more than a million pounds for the hospice, roughly two months of everything it costs to keep the place running. A commercial flower farm and a charity it already loved were lifted by a film that simply chose to shoot among real things. None of that was designed. All of it was good. That is precisely why it is worth noticing.`
+    ],
+    quote: { text: `"I knew it could work because I grew 500 acres of corn on Interstellar. I knew I could, with the right farmer."`, attr: 'Nathan Crowley, Production Designer, Wicked, Variety', color: 'sage' },
+    verdict: { cls: 'verdict-sust', label: 'Our Take', text: `Start with what is simply good: nine million tulips, grown for a film, went on to raise more than a million pounds for a hospice that cares for the dying. The Ledger says that plainly, and it also notices how little it cost. Doing it for real ran to roughly what rendering it digitally would have. The ecological choice was not the expensive, sacrificial one; it was the equal one, and it still ended in mercy. That is exactly why it is worth looking past such a lovely outcome: the good here arrived by happy accident, downstream of a farm that already gave. Imagine the same instinct aimed on purpose, nine million tulips chosen on day one for the garden of a hospital, a school, a food desert. Same budget, by design. The flowers proved the principle; the next production gets to author it.` }
+  },
+  'interstellar': {
+    bCls: 'badge-whatif', bLabel: 'What If',
+    meta: 'Warner Bros. / Paramount · 2014 · Dir. Christopher Nolan',
+    name: 'Interstellar',
+    editorial: 'The Harvest That Fed No One',
+    stats: [
+      ['Location','500 acres near Longview, Alberta, ~35 mi south of Calgary'],
+      ['Designer','Nathan Crowley'],
+      ['Film budget','Approx. $165 million'],
+      ['Worldwide gross','~$773 million (with re-releases)'],
+      ['Harvest fate','Sold at a profit that offset production costs'],
+      ['People fed','Zero'],
+      ['Nearby need (2013)','Calgary Food Bank: $43M of food, 136,000 client visits, demand doubled since 2008'],
+      ['Also nearby','~60% of Alberta First Nations households food insecure (Treaty 7 land)']
+    ],
+    body: [
+      `Christopher Nolan's conviction on Interstellar was that the farmland had to be real. Five hundred acres of corn, planted near Longview, Alberta, on rolling land beneath the Rockies where corn is not usually grown, which was the point: the film needed a crop struggling where it did not belong. Nathan Crowley, who would later grow nine million tulips for Wicked, was the production designer. He knew the tulips were possible partly because Interstellar had already proved that real agriculture at film scale could be done when a team committed to it.`,
+      `The corn grew, through a cold snap and the catastrophic Alberta floods of June 2013. At a Hollywood Reporter directors' roundtable, Nolan described its fate plainly: a good crop, sold at a profit that helped offset the budget. The film went on to gross around three-quarters of a billion dollars.`,
+      `Hold that against what the film is about. Interstellar imagines a near future in which blight has killed humanity's crops one by one until corn is nearly the last thing that will still grow, and the survival of the species depends on whether the next generation can be fed. To tell that story, the production grew five hundred acres of food, real food, on real Alberta soil, and harvested it in a year when the Calgary Food Bank an hour up the road was distributing forty-three million dollars of food across a hundred and thirty-six thousand client visits, its demand doubled since 2008 and a flood deepening the need. The land they grew it on is Treaty 7 territory, where roughly sixty percent of First Nations households were food insecure. A film about feeding a starving world grew a field of grain beside hungry people and sent it to market.`,
+      `The industry already had the means. Groups like Rock and Wrap It Up, EcoSet, and Earth Angel have moved millions of meals and tons of material out of productions and into communities for years. What a film like this one could use is someone in pre-production whose job is to spot the opening, design the give-back in, and put it before the director and producers early enough to act on. With a crop, that window is the planting, not the wrap. When the role exists, a harvest like this feeds someone. When it does not, the default takes over, and a field of food becomes a line item.`
+    ],
+    quote: { text: `"In the end, we got a pretty good crop, and we actually made money on this."`, attr: 'Christopher Nolan, on the Interstellar corn harvest, The Hollywood Reporter', color: 'rust' },
+    verdict: { cls: 'verdict-extract', label: 'Our Take', text: `Nolan had exactly the creative conviction Filmanthropy is built on: real over digital, five hundred living acres rather than a green screen. The instinct could not have been more right, and it stopped one question short of something extraordinary. Who could this harvest feed? That the question went unanswered is not a knock on Nolan, who is owed his due, and not a charge of greed. It is the whole argument of this Ledger in a single field: when giving is not designed into a production, even a film about feeding a starving world will grow real food beside real hunger and send it to market.` }
+  },
+  'patch-adams': {
+    bCls: 'badge-whatif', bLabel: 'What If',
+    meta: 'Universal Pictures · 1998 · Dir. Tom Shadyac',
+    name: 'Patch Adams',
+    editorial: 'The Broken Promise',
+    stats: [
+      ['Global gross','$202.3 million worldwide'],
+      ['Williams salary',"Reportedly $21M (Adams's claim; trade estimates nearer $10M, unconfirmed)"],
+      ['Adams received','Fees that built three structures: a farmhouse, workshop, and dacha (per Gesundheit!)'],
+      ["Universal's closing card",'Per the Institute, stated the hospital was built; it was not'],
+      ['Hospital planned','44-bed free care facility, Pocahontas County, West Virginia'],
+      ['Hospital status','Still unbuilt as of 2026 (sought since 1971)'],
+      ['The film itself','Commercial hit, critically panned (RT 21%); Adams felt reduced to a \'funny doctor\'']
+    ],
+    body: [
+      `When Universal Pictures approached Hunter 'Patch' Adams about a film based on his life, he understood it, in his own telling, as the thing that would finally build his hospital. He had been working toward a free care facility in rural West Virginia since 1971, the central purpose of the Gesundheit Institute he founded. The film, from Adams's perspective, was the chance to fund the work of his life.`,
+      `The film was made, and it was a phenomenon: a two-hundred-and-two-million-dollar worldwide gross, Robin Williams in the title role. What came back to the Institute, per its own published history, were fees enough to build three structures on its land, a farmhouse, a workshop, and a dacha that still host its courses and workshops. Real buildings, real and ongoing programs. Not a hospital. And, by the Institute's account, Universal closed the film with a card stating the hospital had been built, which it had not. Donors who saw it assumed the work was done, and the fundraising grew harder in the years that followed.`,
+      `Adams has never hidden what the film cost him beyond the money. He told Roger Ebert, who recounted it, 'I hate that movie,' and explained elsewhere that it flattened a life of systemic critique into something smaller: 'I would become a funny doctor. Imagine how shallow that is relative to who I am.' His sharpest words have been about the economics, repeated publicly for years: that Williams was paid a fortune to play him and not a dollar of it reached the free hospital. It is worth being careful here, because the figure Adams cites has never been confirmed by any studio or trade outlet, and because the implication, taken alone, would be deeply unfair to the man who played him.`,
+      `Robin Williams was, by nearly every account, extraordinarily generous. He supported dozens of causes, gave a decade to St. Jude without a fee, raised tens of millions through Comic Relief, and entertained close to ninety thousand service members for the USO. No record shows a gift to Gesundheit specifically, and Adams's frustration on that narrow point is his to voice. But Adams himself has been just as clear about the larger truth. After Williams died in 2014, he wrote that he was 'enormously grateful for his wonderful performance of my early life, which has allowed the Gesundheit Institute to continue and expand our work.' The quarrel was never with the actor. It was with a process that built a film about a free hospital and never built the hospital. Now in his eighties, Adams is still working. The hospital is still unbuilt.`
+    ],
+    quote: { text: `"Robin Williams made $21 million for four months of pretending to be me, in a very simplistic version, and did not give $10 to my free hospital. Patch Adams, the person, would have, if I had Robin's money, given all $21 million to a free hospital in a country where 80 million cannot get care."`, attr: `Dr. Hunter "Patch" Adams, in public statements (in print by 2009 and repeated since). The $21M figure is Adams's own and is not independently confirmed.`, color: 'rust' },
+    verdict: { cls: 'verdict-extract', label: 'Our Take', text: `The film did real good: its fees built three working structures for the Gesundheit Institute and helped launch a decade of its teaching and outreach. But the man at its center understood it as the thing that would finally build his free hospital, and twenty-eight years and two hundred million dollars later, that hospital is still unbuilt. The story had the subject, the star, and the audience. What it never had was anyone building the hospital into the production the way Skater Girl built its skatepark first. That is the broken promise, and it is the Ledger's clearest proof that a film can be about a thing and still fail to make the thing, when no one designs the giving in.` }
+  },
+  'black-panther': {
+    bCls: 'badge-film', bLabel: 'Filmanthropic',
+    meta: 'Marvel Studios / Walt Disney Studios · 2018 · Dir. Ryan Coogler',
+    name: 'Black Panther',
+    editorial: 'Wakanda in the Real World',
+    stats: [
+      ['Worldwide gross','$1.347 billion (2018); Wakanda Forever $859M (2022)'],
+      ['2018 Disney gift','$1M to Boys &amp; Girls Clubs of America: 12 STEM Centers of Innovation'],
+      ['The 12 cities','Atlanta, Baltimore, Chicago, Harlem, Hartford, Memphis, New Orleans, Oakland, Orlando, Philadelphia, Washington DC, Watts'],
+      ['2022 Disney gift','$1M to Girls Who Code, Ghetto Film School, Hidden Genius Project, DonorsChoose + international'],
+      ['Grassroots','#BlackPantherChallenge raised ~$1M, sent 75,000+ kids to the film free'],
+      ['Cast scholarship','$250,000 full-ride scholarship presented by the cast (2018)'],
+      ['Boseman','Visited St. Jude child cancer patients while privately battling cancer; gave $10K to the campaign'],
+      ['Local economic impact','~$84M (2018) and ~$314M (2022) in Georgia wages and activity'],
+      ['Oakland connection',"Coogler's hometown; T'Challa opens an outreach center there in the film"]
+    ],
+    body: [
+      `What Black Panther gave back is usually told as a single number, and the single number undersells it. Begin instead with the range. Days into the film's run, while it was still the number one movie in the country and the cultural conversation was at full volume, The Walt Disney Company announced a million-dollar gift to the Boys and Girls Clubs of America to build twelve STEM Centers of Innovation. The timing was deliberate, made while the film's moment was alive rather than after the receipts were counted, and so was the design.`,
+      `The twelve cities were not chosen at random. They map onto the communities of the film's most invested audience and the places where investment in young Black students of science was most overdue. One of them is Oakland, which carries the full weight of the film's intent. Oakland is Ryan Coogler's hometown, and Oakland is where T'Challa, in the film's closing scenes, opens an outreach center so that the technology of a fictional nation might lift real children. The donation and the story named the same city, on purpose. Four years later the studio did it again: a second million, for the sequel, to Girls Who Code, the Ghetto Film School, the Hidden Genius Project, and others at home and abroad.`,
+      `But the studio's gift was only one current in a much wider flood, and not the largest. A young marketer named Frederick Joseph started a campaign to buy theater tickets for children who could not afford them; it spread to more than six hundred fundraisers and raised close to a million dollars, sending over seventy-five thousand kids to see themselves on the screen. The cast presented a quarter-million-dollar college scholarship. Chadwick Boseman, who was privately fighting the cancer that would take his life in 2020, spent time with young cancer patients at St. Jude and quietly added his own money to the ticket campaign. And the productions themselves poured roughly eighty-four million dollars into Georgia in 2018, and three hundred million more for the sequel, in wages and local work.`,
+      `Set those side by side and a quiet truth appears: the fans who gave five dollars, and the actor who gave his hours while sick, reached deeper into what they had than the company with the most to give did. That is the question the whole Ledger asks, and Black Panther asks it more gently than most, because here the giving was genuine. When a studio decides early how far it will reach, and reaches as far as the people around it already do, a film like this one does not just inspire a generation of young scientists. It funds them at the scale of its own success.`
+    ],
+    quote: { text: `"It is thrilling to see how inspired young audiences were by the spectacular technology in the film, so it's fitting that we show our appreciation by helping advance STEM programs for youth, especially in underserved areas of the country, to give them the knowledge and tools to build the future they want."`, attr: 'Bob Iger, Walt Disney Company, Disney press release, Feb 26, 2018', color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Our Take', text: `Black Panther gave generously, and in more ways than the headlines caught. What stays with you, once all of it is counted, is a single quiet asymmetry: of everyone who reached toward the communities this film was made for, the studio that earned the most reached, proportionally, the least. That is not a charge of greed. The giving was real, early, and well aimed, which is exactly why the case belongs among the better ones. It is an invitation. A studio sets the ceiling on what a film can leave behind, and this one had room to set it higher.` }
+  },
+  'schindlers-list': {
+    bCls: 'badge-film', bLabel: 'Filmanthropic',
+    meta: 'Universal / Amblin · 1993 · Dir. Steven Spielberg',
+    name: 'Schindler\'s List',
+    editorial: 'Blood Money Into the World',
+    stats: [
+      ["Spielberg's personal profit","Zero, refused as 'blood money'"],
+      ['Decided','Before filming, that no profit could go to him or his family'],
+      ['Foundation founded','Righteous Persons Foundation, 1994, from his profit share'],
+      ['Cumulative grants','$160M+ to date (RPF, 2026)'],
+      ['Also founded 1994',"USC Shoah Foundation, now the world's largest survivor-testimony archive"],
+      ['Recent','$30M endowment to the USC Shoah Foundation, late 2024'],
+      ['Early grant',"$100,000 to Sussex University's Centre for German-Jewish Studies, 1996"],
+      ['Note','Contemporary RPF grantmaking is the subject of contested reporting; this entry covers the founding act']
+    ],
+    body: [
+      `For Steven Spielberg, Schindler's List was never only a film. He has said the making of it changed him, that Jewish life came pouring back into his heart on that set, that he cried through much of the shoot. It was a reckoning, and the refusal of the money was part of the reckoning, not a footnote to it. The profit, he said, had to go back out into the world.`,
+      `So in 1994 it did. Spielberg put his entire share into a new body, the Righteous Persons Foundation, which by its own count has given more than a hundred and sixty million dollars in the three decades since, from a hundred thousand dollars to a German-Jewish studies center at the University of Sussex in 1996 to a thirty-million-dollar endowment delivered to the USC Shoah Foundation in late 2024. That second institution he founded the same year, and it now holds the largest archive of Holocaust survivor testimony in the world. Two institutions, born of one film and one conscience, in a single year.`,
+      `For honesty's sake, the Ledger notes that the foundation's recent grantmaking has drawn contested coverage, much of it from opinion and advocacy outlets, with figures that have not been independently audited. That dispute is not this entry's subject, and the reader who wishes to follow it can. What is not in dispute is the founding act, and what it set in motion: a filmmaker who would not profit from his people's destruction, and turned that refusal into thirty years of building.`
+    ],
+    quote: { text: `"It is blood money. Let's call it what it is. I didn't take a single dollar from the profits I received from Schindler's List because I did consider it blood money."`, attr: 'Steven Spielberg, TODAY with Katie Couric (NBC), 2004', color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Our Take', text: `Most of the giving in this Ledger is institutional: a studio's gift, a production's surplus, a set left standing. This one was a person's reckoning. A Jewish filmmaker who had been beaten as a child for being Jewish made a film about the murder of his own people, and decided, before a frame was shot, that he could not keep a dollar of what it earned. He called it blood money and meant it literally. What makes the act belong at the top of the Filmanthropic record is not the foundation that followed, remarkable as it is. It is that the giving was settled at the moment of decision, as a condition of the work rather than a reward for it. That is what designed-in looks like when conscience, not strategy, does the designing.` }
+  },
+  'slumdog': {
+    bCls: 'badge-film', bLabel: 'Filmanthropic',
+    meta: 'Fox Searchlight · 2008 · Dir. Danny Boyle',
+    name: 'Slumdog Millionaire',
+    editorial: 'The Trust That Could Only Do So Much',
+    stats: [
+      ['Donation','$747,500 to the charity Plan (Feb 2009, before the Oscars)'],
+      ['Stated goal','Educate 5,000 Mumbai slum children over five years'],
+      ['For the two child actors',"The Jai Ho Trust, named for the film's song, set up by Danny Boyle and producer Christian Colson"],
+      ['Trust terms','Schooling, housing held in trust, a monthly stipend tied to 70% attendance, assets transferred at age 18; three trustees'],
+      ['Beneficiaries','Rubina Ali and Azharuddin Mohammed Ismail, found in the Mumbai slums for the film'],
+      ['2009 disruptions',"Both families' slum homes demolished in city clearances; a now-defunct tabloid's allegation against Ali's father was denied, unevidenced, never charged"],
+      ['Rubina Ali, now','Studied fashion design; opened a beauty salon (2022); married (Nov 2023)'],
+      ['Azharuddin Ismail, now','Left school; a business failed; sold the trust apartment (~2019) and returned to slum, then village, life'],
+      ['Source','AP, Feb 2009; trust outcome per Mumbai Mirror, 2020, and later reporting']
+    ],
+    body: [
+      `The giving here was not improvised after the Oscars. In February 2009, before the Academy Awards the film would go on to sweep, Danny Boyle and the producers announced a donation of seven hundred and forty-seven thousand dollars to the children's charity Plan, aimed at educating five thousand Mumbai slum children over five years. Boyle put it simply: a film that had taken so much from the city owed something back to it.`,
+      `The more intimate instrument was the Jai Ho Trust, named for the film's Oscar-winning song and set up for the two child actors the production had found in the slums, Rubina Ali and Azharuddin Mohammed Ismail. It was a careful design: school fees, an apartment held in trust for each child, a monthly stipend that the trustees could cut if attendance fell below seventy percent, and the assets signed over to each child at eighteen. Three trustees were appointed to hold the line. By the standard of how productions usually treat children cast out of real poverty, who are usually thanked and forgotten, this was rare and serious. The filmmakers understood that the film had used these children's actual lives as its material, and that something was owed.`,
+      `What the trust could not govern was everything around it. In May 2009, weeks after the film won eight Academy Awards, Mumbai authorities bulldozed the slum shanties both families lived in, part of a clearance drive, and the cruelty of the timing drew the world's press to their doorsteps. A British tabloid, since shut down, ran a sting alleging that Ali's father would sell her; he denied it, the police found no evidence, and no charge was ever brought, but the story chased the family anyway. The father died of tuberculosis in 2020. The attention that the film brought was supposed to be a blessing. Much of it landed as a weight.`,
+      `The trust held to its terms. When each child turned eighteen, the apartments were handed over and the trust was closed, exactly as designed. From there the two lives moved apart. Rubina Ali kept her footing: she studied fashion design, opened a beauty salon near Mumbai in 2022, and married in 2023, a modest and self-made adulthood, not the stardom the headlines once imagined, but hers. Azharuddin Mohammed Ismail did not find the same ground. He left school, a business venture failed, and around 2019 he sold the apartment the trust had given him and moved back into a slum, and later to his family's village. The same gift, structured the same way, carried one child to steadiness and could not hold the other.`,
+      `Neither outcome was the trust's to dictate. A trust can buy an apartment and pay a school. It cannot reach into a family, a neighborhood, or the gravity of poverty that pulls at a child long after the cameras leave. The production did more than almost any production does, and it was still not enough to settle how two lives would turn out. That is not an argument against giving carefully. It is the reason giving has to be designed not only into the production, but into the years that follow it, with people whose job is to stay.`
+    ],
+    quote: { text: `"Having benefited so much from the hospitality of the people of Mumbai it is only right that some of the success of the movie be plowed back into the city."`, attr: 'Danny Boyle, Director, Associated Press, February 2009', color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Our Take', text: `This is not a story about a production that failed to give. The giving was real and unusually careful: a donation to educate thousands of Mumbai children, and a trust built to carry two of them, the child actors found in the slums, into safe and schooled adult lives. Most productions in this position give nothing. These filmmakers thought hard about the gift. And still, years later, the two children it was built for had arrived at opposite ends of the same hope. One built a modest, steady life. The other sold what the trust had given him and went back to where the film had found him. The trust did everything a trust can do. What it could not do was reach past the apartment and the school fees into the family, the neighborhood, and the poverty that were always going to decide the rest. That is the hard lesson of this case, and the Ledger keeps it in: giving designed in at the production level is necessary, and it is not always enough.` }
+  },
+  'braddock': {
+    bCls: 'badge-film', bLabel: 'Filmanthropic',
+    meta: 'Pennsylvania · 2009–2014 · Multiple Productions',
+    name: 'Braddock Free Store',
+    editorial: 'The Proof of Demand',
+    stats: [
+      ['Location','Braddock, Pennsylvania, a steel town outside Pittsburgh'],
+      ['Operator',"Gisele Fetterman, founder of the Free Store (2012); then wife of Braddock's mayor, John Fetterman, later U.S. Senator"],
+      ['Productions that donated',"Several; by WPXI's 2014 count, the Fathers &amp; Daughters gift was the fifth (the earlier four are not named in the record)"],
+      ['Best-documented donation',"Fathers &amp; Daughters (Russell Crowe drama): ~400 boxes of children's clothing, furniture, and set items (WPXI, May 2014)"],
+      ['Physical setup','Repurposed shipping containers'],
+      ['The pattern','Each film donation was ad hoc, arranged when an individual made the connection; no standing program linked productions to the store'],
+      ['Context',"Pittsburgh-area film activity rose and fell with Pennsylvania's film tax credit; production traffic is transient"],
+      ['Still operating','Yes, as Free Store 15104 (freestore15104.org), confirmed active 2025']
+    ],
+    body: [
+      `Braddock is a steel town outside Pittsburgh that lost most of its industrial base across the late twentieth century, and in the years when western Pennsylvania's film tax credit drew productions to the region, it often stood in as the backdrop for stories about working-class American decline. Several of those productions, when they wrapped, gave their surplus to a small local operation that handed it straight to people who needed it: the Free Store, founded in 2012 by Gisele Fetterman, then the wife of Braddock's mayor, John Fetterman, and run out of repurposed shipping containers.`,
+      `The best-documented of those gifts came in May 2014. When the crew of Fathers and Daughters, the Russell Crowe drama, finished shooting around Pittsburgh, they delivered roughly four hundred boxes of children's clothing, along with furniture and an entire set's worth of material, to the Free Store. A volunteer, Shiane Prunty, described keeping the boxes moving as fast as families could empty them. Fetterman's point about it was simple and the opposite of how this usually goes: the production had found a way to turn what a film leaves behind into something useful, rather than letting it be destroyed.`,
+      `By the local station's count, that was the fifth time a production had given its surplus to the store. The earlier four are not named in the record, which is itself part of the lesson: each donation happened because a particular person, on a particular wrap day, thought to make the call. There was no standing arrangement, no role whose job was to ensure it happened, nothing that would catch the next production automatically. The giving was real every time. It was also, every time, a coincidence of the right person being in the right place.`,
+      `That is why it did not last. Film production in the region rises and falls with the tax credit that draws it, and when the productions came through town less often, the donations thinned with them. The Free Store itself survived, and operates still as Free Store 15104. The production pipeline into it did not, because nothing had been built to hold it open. This is the exact problem the Forerunners solved in their own corners: Mandelbaum with a contractual rider, the reuse operators with standing departments and warehouses. Braddock proves the demand is there and the generosity is there. What it shows, by their absence, is how much the mechanism matters, and why a field like this one has to be designed, not left to whoever happens to be in the room.`
+    ],
+    quote: { text: `"I think they found another way now to take these items and do something great with them."`, attr: 'Gisele Fetterman, founder, the Free Store, WPXI, May 2014', color: 'gold' },
+    verdict: { cls: 'verdict-film', label: 'Our Take', text: `Braddock is the proof of demand. The productions were willing. The community need was real and right there. By a local station's count, surplus from several films reached the Free Store, each time because one person happened to make the connection at the right moment. What was missing was the thing the Forerunners spent decades building: a coordinating layer that makes the giving reliable and repeatable, so it does not depend on the right person being in the right room on the right day. When the productions stopped coming through town, the donations stopped with them, while the need stayed exactly where it was. That gap, between a generosity that clearly exists and a mechanism to make it dependable, is the whole reason this field has to be built on purpose.` }
+  }
+};
+
+function expandEntry(id) {
+  const e = entries[id];
+  if (!e) return;
+  const card = document.querySelector('.exp-card');
+  if (card) card.style.setProperty('--taxonomy-color', 'rgba(200,168,75,0.4)');
+  const badge = document.getElementById('exp-badge');
+  badge.className = 'l-badge ' + e.bCls;
+  badge.innerHTML = '<span class="l-badge-dot"></span> ' + e.bLabel;
+  document.getElementById('exp-name').textContent = e.name;
+  document.getElementById('exp-editorial').textContent = e.editorial;
+  document.getElementById('exp-meta').innerHTML = e.meta;
+  const verdictLabel = e.verdict ? e.verdict.label : '';
+  const verdictText = e.verdict ? e.verdict.text : '';
+  document.getElementById('exp-verdict-label').textContent = verdictLabel;
+  document.getElementById('exp-verdict-text').textContent = verdictText;
+  const vc = document.getElementById('exp-verdict-container');
+  if (vc) vc.style.display = (verdictLabel || verdictText) ? 'block' : 'none';
+  let sHtml = '';
+  for (const [l, v] of e.stats) {
+    sHtml += `<div class="exp-stat"><span class="exp-stat-label">${l}</span><span class="exp-stat-value">${v}</span></div>`;
+  }
+  document.getElementById('exp-stats').innerHTML = sHtml;
+  let nHtml = '';
+  for (const p of e.body) { nHtml += `<p class="case-body light">${p}</p>`; }
+  if (e.quote) {
+    nHtml += `<div class="exp-quote"><p>${e.quote.text}</p><cite>${e.quote.attr}</cite></div>`;
+  }
+  document.getElementById('exp-narrative').innerHTML = nHtml;
+  document.getElementById('ledger-main').style.display = 'none';
+  if (history.pushState) history.pushState(null, '', '#' + id);
+  const shareUrl = encodeURIComponent(window.location.href);
+  const shareText = encodeURIComponent(e.name + ' — A Social Effects Ledger of Filmanthropy · Social Effects NJ.');
+  const tw = document.getElementById('share-twitter');
+  if (tw) tw.href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareText;
+  const li = document.getElementById('share-linkedin');
+  if (li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl;
+  const fb = document.getElementById('share-facebook');
+  if (fb) fb.href = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
+  const wa = document.getElementById('share-whatsapp');
+  if (wa) wa.href = 'https://wa.me/?text=' + shareText + '%20' + shareUrl;
+  const th = document.getElementById('share-threads');
+  if (th) th.href = 'https://www.threads.net/intent/post?text=' + shareText + '%20' + encodeURIComponent(decodeURIComponent(shareUrl));
+  const ig = document.getElementById('share-instagram');
+  if (ig) {
+    ig.href = 'https://www.instagram.com';
+    ig.setAttribute('title', 'Open Instagram to share this entry');
+  }
+  const panel = document.getElementById('ledger-expanded');
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function closeExpanded() {
+  document.getElementById('ledger-expanded').style.display = 'none';
+  document.getElementById('ledger-main').style.display = '';
+  if (history.pushState) history.pushState(null, '', window.location.pathname);
+}
+
+function copyEntryLink() {
+  const url = window.location.href;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(function() {
+      const btn = document.getElementById('share-copy');
+      if (btn) {
+        const icon = btn.querySelector('i');
+        if (icon) {
+          icon.className = 'ti ti-check';
+          setTimeout(function() { icon.className = 'ti ti-link'; }, 2000);
+        }
+      }
+    });
+  }
+}
+
+(function() {
+  var btn = document.getElementById('copy-link-btn-ledger');
+  if (!btn) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigator.clipboard.writeText('https://socialeffectsnj.com/Filmanthropy_Ledger.html').then(function() {
+      var icon = btn.querySelector('i');
+      icon.className = 'ti ti-check';
+      setTimeout(function() { icon.className = 'ti ti-link'; }, 1500);
+    });
+  });
+})();
+</script>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation menu">&#x2715;</button>
+  <a href="index.html#filmanthropy" class="nav-mobile-item"><span class="nav-mobile-num">01</span>Filmanthropy</a>
+  <a href="index.html#services" class="nav-mobile-item"><span class="nav-mobile-num">02</span>Services</a>
+  <a href="index.html#mission" class="nav-mobile-item"><span class="nav-mobile-num">03</span>Vision &amp; Mission</a>
+  <a href="Filmanthropy_Ledger.html" class="nav-mobile-item"><span class="nav-mobile-num">04</span>The Ledger</a>
+  <a href="team.html" class="nav-mobile-item">Who We Are</a>
+  <a href="index.html#contact" class="nav-mobile-cta-item">Work With Us</a>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('nav-mobile-overlay');
+  var hamburger = document.getElementById('nav-hamburger');
+  var closeBtn = document.getElementById('nav-mobile-close');
+  function openNav() {
+    overlay.classList.add('open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  hamburger.addEventListener('click', openNav);
+  closeBtn.addEventListener('click', closeNav);
+  overlay.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', closeNav);
+  });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeNav(); });
+})();
+</script>
 
 </body>
 </html>
