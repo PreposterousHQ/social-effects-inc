@@ -563,7 +563,7 @@
   .essay-inner { max-width: 720px; margin: 0 auto; }
   .essay-title-block { margin-bottom: 3rem; border-left: 3px solid var(--gold); padding-left: 1.5rem; }
   .essay-overline { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 0.75rem; }
-  .essay-title { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 0.4rem; }
+  .essay-title { font-family: var(--serif); font-size: clamp(1.6rem, 3.2vw, 2.35rem); font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 0.75rem; }
   .essay-subtitle { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--ink-muted); }
   .essay-p { font-size: 1.05rem; line-height: 1.9; color: var(--ink-soft); margin-bottom: 1.5rem; max-width: 66ch; }
   .essay-h3 { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.45rem); font-weight: 700; color: var(--ink); margin: 2.5rem 0 1rem; line-height: 1.25; }
@@ -592,6 +592,95 @@
   .bridge-title { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700; color: var(--ink); margin-bottom: 1.25rem; }
   .bridge-p { font-size: 0.97rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 1rem; max-width: 66ch; }
   .bridge-p:last-child { margin-bottom: 0; }
+
+  /* ── IN SHORT BAND ── */
+  .inshort-band {
+    background: var(--paper-warm);
+    border-bottom: 2px solid rgba(200,168,75,0.22);
+  }
+  .inshort-band-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 3rem 0;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3.5rem;
+    align-items: center;
+    border-top: 3px solid var(--gold);
+  }
+  .inshort-band-footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 3rem 2.5rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    margin-top: 1.5rem;
+  }
+  .inshort-band-right {
+    border-left: 1px solid rgba(200,168,75,0.2);
+    padding-left: 3.5rem;
+  }
+  .inshort-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.9rem;
+  }
+  .inshort-blurb {
+    font-family: var(--serif);
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    margin-bottom: 0;
+  }
+  .inshort-quote {
+    margin: 0;
+    border-left: 2px solid var(--gold);
+    padding-left: 0.85rem;
+  }
+  .inshort-quote p {
+    font-family: var(--serif);
+    font-size: 0.97rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .inshort-quote cite {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-style: normal;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .inshort-share {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+  .inshort-band .exp-share-label { color: var(--ink-muted); }
+  .inshort-band .exp-share-btn {
+    border-color: rgba(200,168,75,0.28);
+    background: transparent;
+    color: var(--ink-muted);
+  }
+  .inshort-band .exp-share-btn:hover {
+    border-color: rgba(200,168,75,0.65);
+    color: var(--ink);
+    background: rgba(200,168,75,0.07);
+  }
+  .inshort-band .exp-share-divider { background: rgba(14,13,11,0.12); }
+  @media (max-width: 768px) {
+    .inshort-band-inner { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem 0; }
+    .inshort-band-right { border-left: none; padding-left: 0; }
+    .inshort-band-footer { padding: 1.25rem 1.5rem 2rem; }
+  }
 </style>
 <link rel="canonical" href="https://socialeffectsnj.com/Filmanthropy_Ledger.html">
 </head>
@@ -700,20 +789,57 @@
   <h1 class="ledger-hero-headline">The <em>Filmanthropy</em> Ledger</h1>
   <p class="ledger-hero-sub">What filmmaking has given for a hundred years. And what it could build in the next.</p>
   <p style="font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(200,168,75,0.55); margin-bottom: 1.25rem; position:relative; z-index:5;">Think Outside the Frame</p>
-  <a href="#opening-essay" aria-label="Scroll to opening essay" style="display:inline-block;position:relative;z-index:5;color:rgba(200,168,75,0.38);text-decoration:none;font-size:1.3rem;line-height:1;margin-bottom:2rem;">&#8964;</a>
+  <a href="#essay-title" aria-label="Scroll to essay" style="display:inline-block;position:relative;z-index:5;color:rgba(200,168,75,0.38);text-decoration:none;font-size:1.3rem;line-height:1;margin-bottom:2rem;">&#8964;</a>
   <p style="position:relative;z-index:5;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(200,168,75,0.25);margin-top:1.5rem;">World Film Producing Studios &middot; Fort Lee, New Jersey &middot; c. 1914</p>
 </section>
 
 <!-- Film-strip divider: banded edges + sprocket perforations -->
 <div style="background:#0d0b08;height:30px;width:100%;position:relative;z-index:3;border-top:1px solid #2a2620;border-bottom:1px solid #2a2620;background-image:repeating-linear-gradient(to right, transparent 0, transparent 22px, #1c1915 22px, #1c1915 34px);background-position:center;"></div>
 
-<!-- OPENING ESSAY -->
-<section class="essay-section" id="opening-essay">
+<!-- ESSAY TITLE -->
+<div id="essay-title" style="background:var(--paper-warm);padding:2.5rem 3rem 2.5rem;scroll-margin-top:80px;">
   <div class="essay-inner">
-    <div class="essay-title-block">
+    <div class="essay-title-block" style="margin-bottom:1rem;">
       <h2 class="essay-title">The Gift in the Making</h2>
       <p class="essay-subtitle">A hundred years of giving in film, and the hundred to come</p>
     </div>
+  </div>
+</div>
+
+<!-- IN SHORT BAND -->
+<section class="inshort-band">
+  <div class="inshort-band-inner">
+    <div class="inshort-band-left">
+      <span class="inshort-label">In Short</span>
+      <p class="inshort-blurb">A hundred years ago, the most famous woman in the world passed a bucket around a film set so the people who built the movies would have somewhere to grow old. A century later, a crew poured a skatepark into a desert village before they shot a single frame. This is the first attempt to gather the thread that connects them, every way the making of a film gives something back, and to ask what it could build in the next hundred years, now that a machine can make the movie but never the giving.</p>
+    </div>
+    <div class="inshort-band-right">
+      <blockquote class="inshort-quote">
+        <p>&#8220;We wanted to make clear that we&#8217;re not coming here just to make a movie and go away. We were creating something that was going to live beyond the film.&#8221;</p>
+        <cite>Vinati Makijany, Producer, Skater Girl<br>Women&#8217;s Media Center, June 2021</cite>
+      </blockquote>
+    </div>
+  </div>
+  <div class="inshort-band-footer">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <a href="#forerunners" style="display:inline-flex;align-items:center;gap:0.45rem;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(200,168,75,0.28);border-radius:50px;padding:0.5rem 1.25rem;background:rgba(200,168,75,0.04);transition:background 0.2s,border-color 0.2s;flex-shrink:0;">Browse the cases ↓</a>
+      <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+        <span style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-muted);margin-right:2px;">Share</span>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="LinkedIn"><i class="ti ti-brand-linkedin" style="font-size:20px;color:#c8a84b;"></i></a>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html&text=A%20hundred%20years%20of%20giving%20in%20film.%20The%20Filmanthropy%20Ledger%20by%20Social%20Effects%20NJ." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="X"><i class="ti ti-brand-x" style="font-size:20px;color:#c8a84b;"></i></a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Facebook"><i class="ti ti-brand-facebook" style="font-size:20px;color:#c8a84b;"></i></a>
+        <a href="https://wa.me/?text=A%20hundred%20years%20of%20giving%20in%20film.%20The%20Filmanthropy%20Ledger%20by%20Social%20Effects%20NJ.%20https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="WhatsApp"><i class="ti ti-brand-whatsapp" style="font-size:20px;color:#c8a84b;"></i></a>
+        <a href="https://t.me/share/url?url=https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html&text=A%20hundred%20years%20of%20giving%20in%20film.%20The%20Filmanthropy%20Ledger%20by%20Social%20Effects%20NJ." target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Telegram"><i class="ti ti-brand-telegram" style="font-size:20px;color:#c8a84b;"></i></a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&su=The%20Filmanthropy%20Ledger%20%E2%80%94%20Social%20Effects%20NJ&body=A%20hundred%20years%20of%20giving%20in%20film.%20The%20Filmanthropy%20Ledger%20by%20Social%20Effects%20NJ.%20https%3A%2F%2Fsocialeffectsnj.com%2FFilmanthropy_Ledger.html" target="_blank" rel="noopener noreferrer" class="share-btn" data-label="Email"><i class="ti ti-mail" style="font-size:20px;color:#c8a84b;"></i></a>
+        <button class="share-btn" id="inshort-copy-btn" onclick="copyInShortLink()" data-label="Copy link"><i class="ti ti-link" style="font-size:20px;color:#c8a84b;" id="inshort-copy-icon"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPENING ESSAY -->
+<section class="essay-section" id="opening-essay">
+  <div class="essay-inner">
 
     <div class="essay-open">
       <p class="essay-p">In 1921, on the film lots scattered across a Los Angeles that was still mostly orange groves and open light, the most famous woman in the world carried a bucket from set to set.</p>
@@ -862,7 +988,7 @@
 <!-- LEDGER MAIN -->
 <div id="ledger-main">
 
-<section class="forerunners-section" style="padding-top:4rem;padding-bottom:2rem;">
+<section class="forerunners-section" id="forerunners" style="padding-top:4rem;padding-bottom:2rem;">
   <div class="ledger-section-hdr">
     <h2 class="ledger-section-heading"><em>Forerunners</em></h2>
     <p class="ledger-section-sub">Some of the modern operators who built production's waste and surplus into a working practice.</p>
@@ -1680,6 +1806,15 @@ function closeExpanded() {
   document.getElementById('ledger-expanded').style.display = 'none';
   document.getElementById('ledger-main').style.display = '';
   if (history.pushState) history.pushState(null, '', window.location.pathname);
+}
+
+function copyInShortLink() {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText('https://socialeffectsnj.com/Filmanthropy_Ledger.html').then(function() {
+      var icon = document.getElementById('inshort-copy-icon');
+      if (icon) { icon.className = 'ti ti-check'; setTimeout(function(){ icon.className = 'ti ti-link'; }, 1500); }
+    });
+  }
 }
 
 function copyEntryLink() {
