@@ -29,6 +29,10 @@ html,body{margin:0;height:100%;background:#0f0c1a;color:var(--cream);font-family
 .card .sn{font-size:11px;color:#c9c3d8;margin-top:4px;line-height:1.3;font-style:italic}
 .star{font-size:18px;color:#4a4466;cursor:pointer;padding:0 4px;flex:none}
 .star.on{color:var(--gold)}
+.ord{background:#15121f;border:1px solid var(--line);color:var(--mute);border-radius:5px;width:22px;height:22px;cursor:pointer;font-size:11px;padding:0;flex:none}
+.ord:hover{border-color:var(--gold)}
+#resetOrder{background:none;border:none;color:var(--mute);font-size:12px;cursor:pointer;padding:0 0 0 6px;text-decoration:underline}
+#resetOrder:hover{color:var(--cream)}
 /* RIGHT: presenter */
 #stage{flex:1;display:flex;flex-direction:column;background:#0f0c1a}
 #deck{flex:1;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
@@ -55,7 +59,7 @@ html,body{margin:0;height:100%;background:#0f0c1a;color:var(--cream);font-family
        <button id="tOrder" class="on">Original order</button>
        <button id="tReg">By register</button>
      </div>
-     <span class="hint">★ = on deck</span>
+     <span class="hint">★ = on deck</span><button id="resetOrder">Reset order</button>
    </div>
   </div>
   <div id="list"></div>
@@ -78,6 +82,20 @@ let mode="order"; // or "reg"
 let stars = new Set();
 let current = CARDS[0].n;
 let filtered = CARDS.slice();
+const cardMap=new Map(CARDS.map(c=>[c.n,c]));
+function defaultOrder(){return CARDS.slice().sort((a,b)=>a.n-b.n).map(c=>c.n);}
+function saveOrder(){localStorage.setItem("genius_order",JSON.stringify(order));}
+function loadOrder(){
+  try{
+    const s=JSON.parse(localStorage.getItem("genius_order")||"null");
+    if(Array.isArray(s)){
+      const ns=new Set(CARDS.map(c=>c.n));
+      if(s.length===ns.size&&s.every(n=>ns.has(n)))return s;
+    }
+  }catch(e){}
+  return defaultOrder();
+}
+let order=loadOrder();
 
 const $=s=>document.querySelector(s);
 const listEl=$("#list"), bigEl=$("#big"), vidEl=$("#bigvid"), counter=$("#counter"), ondeck=$("#ondeck");
@@ -87,11 +105,12 @@ function snippet(c,q){ if(!q)return ""; const t=c.text||""; const i=t.toLowerCas
 
 function render(){
   const q=$("#search").value.trim();
-  filtered = CARDS.filter(c=>matches(c,q));
   listEl.innerHTML="";
   if(mode==="order"){
+    filtered=order.map(n=>cardMap.get(n)).filter(c=>c&&matches(c,q));
     filtered.forEach(c=>listEl.appendChild(cardRow(c)));
   } else {
+    filtered=CARDS.filter(c=>matches(c,q));
     REG_ORDER.forEach(r=>{
       const inreg=filtered.filter(c=>c.reg===r);
       if(!inreg.length)return;
@@ -108,6 +127,17 @@ function cardRow(c){
   d.querySelector("img").onclick=()=>show(c.n);
   d.querySelector(".meta").onclick=()=>show(c.n);
   d.querySelector(".star").onclick=e=>{e.stopPropagation(); stars.has(c.n)?stars.delete(c.n):stars.add(c.n); render();};
+  if(mode==="order"){
+    const idx=order.indexOf(c.n);
+    const btnU=document.createElement("button"); btnU.className="ord"; btnU.textContent="▲"; btnU.title="Move up";
+    const btnD=document.createElement("button"); btnD.className="ord"; btnD.textContent="▼"; btnD.title="Move down";
+    if(idx===0)btnU.style.visibility="hidden";
+    if(idx===order.length-1)btnD.style.visibility="hidden";
+    btnU.onclick=e=>{e.stopPropagation();if(idx>0){[order[idx-1],order[idx]]=[order[idx],order[idx-1]];saveOrder();render();}};
+    btnD.onclick=e=>{e.stopPropagation();if(idx<order.length-1){[order[idx+1],order[idx]]=[order[idx],order[idx+1]];saveOrder();render();}};
+    d.appendChild(btnU);
+    d.appendChild(btnD);
+  }
   return d;
 }
 function show(n){ current=n; const c=CARDS.find(x=>x.n===n); if(c.video){bigEl.style.display="none";vidEl.style.display="";vidEl.src=c.video;vidEl.play();}else{if(vidEl.src){vidEl.pause();vidEl.src="";}vidEl.style.display="none";bigEl.style.display="";bigEl.src=c.img;} const existingRow=document.getElementById("imgrow"); if(existingRow)existingRow.remove(); if(c.imgs){bigEl.style.display="none"; const row=document.createElement("div"); row.id="imgrow"; row.style.cssText="display:flex;gap:12px;align-items:center;justify-content:center;width:100%;"; c.imgs.forEach(src=>{const im=document.createElement("img");im.src=src;im.style.cssText="max-height:80vh;max-width:33%;object-fit:contain;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.5);";row.appendChild(im);}); document.getElementById("deck").appendChild(row);} counter.textContent="card "+n+"  ·  "+c.title; const ob=$("#openbtn"); if(c.url){ob.style.display="block";ob.onclick=()=>window.open(c.url,"_blank");}else{ob.style.display="none";ob.onclick=null;} const cl=document.getElementById("cardlink"); if(c.link){cl.textContent="Open "+new URL(c.link).hostname+" ↗";cl.style.display="block";cl.onclick=()=>window.open(c.link,"_blank");}else{cl.style.display="none";cl.onclick=null;}
@@ -123,6 +153,7 @@ $("#search").addEventListener("input",render);
 $("#search").addEventListener("keydown",e=>{ if(e.key==="Enter"&&filtered[0]){show(filtered[0].n);} });
 $("#tOrder").onclick=()=>{mode="order";$("#tOrder").classList.add("on");$("#tReg").classList.remove("on");render();};
 $("#tReg").onclick=()=>{mode="reg";$("#tReg").classList.add("on");$("#tOrder").classList.remove("on");render();};
+document.getElementById("resetOrder").onclick=()=>{localStorage.removeItem("genius_order");order=defaultOrder();render();};
 function emergent(){
   const pool = (filtered && filtered.length) ? filtered : CARDS;
   let pick = pool[Math.floor(Math.random()*pool.length)];
