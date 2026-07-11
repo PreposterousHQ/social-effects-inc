@@ -38,112 +38,6 @@
     overflow-x: hidden;
   }
 
-  /* ── PASSWORD OVERLAY ── */
-  #pw-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 999;
-    background: #0a0908;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    transition: opacity 0.4s ease;
-  }
-  #pw-overlay.fade-out {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .pw-logo {
-    font-family: var(--serif);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.02em;
-  }
-  .pw-logo span { color: var(--gold); }
-  .pw-tag {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 3rem;
-    opacity: 0.7;
-  }
-  .pw-box {
-    background: var(--card-bg);
-    border: 1px solid rgba(200,168,75,0.2);
-    border-radius: 6px;
-    padding: 2.5rem 2.5rem 2rem;
-    width: 100%;
-    max-width: 380px;
-    text-align: center;
-  }
-  .pw-heading {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--paper);
-    margin-bottom: 0.5rem;
-  }
-  .pw-sub {
-    font-size: 0.875rem;
-    color: var(--paper-muted);
-    margin-bottom: 1.75rem;
-    line-height: 1.6;
-  }
-  .pw-input {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(200,168,75,0.25);
-    border-radius: 3px;
-    padding: 0.75rem 1rem;
-    font-family: var(--mono);
-    font-size: 0.9rem;
-    color: var(--paper);
-    outline: none;
-    transition: border-color 0.2s;
-    margin-bottom: 1rem;
-    text-align: center;
-    letter-spacing: 0.1em;
-  }
-  .pw-input:focus { border-color: rgba(200,168,75,0.6); }
-  .pw-input::placeholder { color: var(--paper-dim); letter-spacing: 0.05em; }
-  .pw-btn {
-    width: 100%;
-    background: var(--gold);
-    color: var(--ink);
-    border: none;
-    border-radius: 3px;
-    padding: 0.75rem 1.5rem;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .pw-btn:hover { background: var(--gold-light); }
-  .pw-error {
-    font-size: 0.8rem;
-    color: #d4725a;
-    margin-top: 0.75rem;
-    min-height: 1.2em;
-    font-family: var(--mono);
-    letter-spacing: 0.05em;
-  }
-  .pw-footer-note {
-    margin-top: 2rem;
-    font-size: 0.72rem;
-    color: var(--paper-dim);
-    font-family: var(--mono);
-    letter-spacing: 0.06em;
-  }
-
   /* ── NAV ── */
   nav {
     position: fixed;
@@ -448,27 +342,6 @@
 </head>
 <body>
 
-<!-- PASSWORD OVERLAY -->
-<div id="pw-overlay" role="dialog" aria-modal="true" aria-label="Access required">
-  <div class="pw-logo">Social<span>Effects</span> <span style="font-size:0.7rem;font-weight:300;opacity:0.4;">NJ</span></div>
-  <div class="pw-tag">Advisor Preview</div>
-  <div class="pw-box">
-    <h1 class="pw-heading">Who We Are</h1>
-    <p class="pw-sub">This page is in active development. Enter the preview password to continue.</p>
-    <input
-      type="password"
-      id="pw-input"
-      class="pw-input"
-      placeholder="Enter password"
-      autocomplete="off"
-      aria-label="Preview password"
-    />
-    <button class="pw-btn" onclick="checkPassword()">Enter</button>
-    <div class="pw-error" id="pw-error" aria-live="polite"></div>
-    <p class="pw-footer-note">Sets. Souls. Stories.</p>
-  </div>
-</div>
-
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">Social<span>Effects</span> <span style="font-size:0.7rem;font-weight:300;letter-spacing:0.08em;color:rgba(247,244,239,0.35);">NJ</span></a>
@@ -505,7 +378,7 @@
       <p class="founder-title">Founder &amp; Chief Filmanthropist</p>
       <div class="founder-bio">
         <p>Bret Warshawsky is a polymath founder, speaker, and futurist working at the intersection of consciousness, storylivingry, evolutionary and spiritual philanthropy, mental health reform, and Filmanthropy. His body of work spans more than a decade of practical co-creation and systems-design across Europe, Asia, and the Americas, including direct collaboration with the late futurist Barbara Marx Hubbard, co-founding Symphonics with creative partner Andrea Harding, co-creating Synergy Hub 1.0 in Rotterdam with the Meesteren Foundation and United Earth, contributing a chapter to Lisa Nichols's Amazon best-seller <em>Unbreakable Spirit</em>, and more than three hundred published essays at The Syntony Times Substack.</p>
-        <p>Today he is the founder of Social Effects Inc., the New Jersey startup pioneering Filmanthropy, the practice of making philanthropy a featured, designed-in outcome of the filmmaking process itself. He is the co-visionary behind the Mental Health Reformation with business partner Janet Werner, leading development of the AWARE App for first responders and serving as an AWARE New Jersey Representative. He is currently writing an article for SOCKO! Magazine on the live emergence of Filmanthropy in New Jersey, anchored by Middletown's coordination of the Netflix series <em>Rabbit Rabbit</em>, which wraps June 26, 2026.</p>
+        <p>Today he is the founder of Social Effects Inc., the New Jersey startup pioneering Filmanthropy, the practice of making philanthropy a featured, designed-in outcome of the filmmaking process itself. He is the co-visionary behind the Mental Health Reformation with business partner Janet Werner, leading development of the AWARE App for first responders and serving as an AWARE New Jersey Representative.</p>
       </div>
     </div>
   </div>
@@ -572,43 +445,6 @@
   <div class="footer-logo">Social<span>Effects</span> <span style="font-size:0.7rem;font-weight:300;opacity:0.4;">Inc</span></div>
   <p class="footer-legal">© 2026 Social Effects Inc. &middot; Filmanthropy &amp; Regenerative Filmmaking.</p>
 </footer>
-
-<script>
-// ── PASSWORD LOGIC ──
-// Change the password below before sharing with advisors.
-// This is a light-touch preview gate, not a security system.
-// Anyone who views the page source can find the password.
-const PREVIEW_PASSWORD = 'filmanthropy2026';
-
-function checkPassword() {
-  const input = document.getElementById('pw-input').value.trim();
-  const error = document.getElementById('pw-error');
-  if (input === PREVIEW_PASSWORD) {
-    // Store auth in sessionStorage so it persists on refresh
-    sessionStorage.setItem('team-auth', '1');
-    const overlay = document.getElementById('pw-overlay');
-    overlay.classList.add('fade-out');
-    setTimeout(() => { overlay.style.display = 'none'; }, 420);
-  } else {
-    error.textContent = 'Incorrect password.';
-    document.getElementById('pw-input').value = '';
-    document.getElementById('pw-input').focus();
-  }
-}
-
-// Allow Enter key to submit
-document.getElementById('pw-input').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') checkPassword();
-});
-
-// Check sessionStorage on load: skip the prompt if already authenticated
-(function() {
-  if (sessionStorage.getItem('team-auth') === '1') {
-    const overlay = document.getElementById('pw-overlay');
-    overlay.style.display = 'none';
-  }
-})();
-</script>
 
 </body>
 </html>
