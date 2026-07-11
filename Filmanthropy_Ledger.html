@@ -548,6 +548,9 @@
   .exp-quote { border-left: 3px solid var(--taxonomy-color, var(--gold)); padding-left: 1.75rem; margin: 2rem 0; }
   .exp-quote p { font-family: var(--serif); font-size: 1.15rem; font-style: italic; line-height: 1.6; color: var(--paper); }
   .exp-quote cite { display: block; margin-top: 0.75rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-style: normal; color: rgba(247,244,239,0.35); }
+  .exp-links { margin: 2.25rem 0 0.25rem; padding-top: 1.5rem; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 0.85rem; }
+  .exp-links a { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.03em; color: var(--gold); text-decoration: none; display: inline-flex; align-items: center; gap: 0.55rem; transition: color 0.2s; }
+  .exp-links a:hover { color: var(--gold-light); text-decoration: underline; text-underline-offset: 3px; }
   .exp-verdict { padding: 1.5rem 2rem; border-top: 0.5px solid rgba(255,255,255,0.06); border-bottom: 2px solid var(--taxonomy-color, #c8a84b); background: rgba(255,255,255,0.025); }
   .exp-verdict-label { font-family: var(--sans); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taxonomy-color, #c8a84b); margin-bottom: 0.7rem; display: block; }
   .exp-verdict p { font-size: 1.05rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin: 0; font-family: var(--sans); font-weight: 400; font-style: normal; }
@@ -1456,6 +1459,10 @@ const entries = {
       { text: `"Obi-Wan and Dumbledore were stronger in death, so maybe my impact will be felt even more now."`, attr: 'Eva Radke, founder, Film Biz Recycling, on its closing, Brokelyn, April 2015', color: 'rust' },
       { text: `"It moved. It didn't go out of business."`, attr: 'Eva Radke, correcting the record, 2026', color: 'rust' }
     ],
+    links: [
+      { label: 'Find Eva on LinkedIn', url: 'https://www.linkedin.com/in/eva-radke-45a1777/' },
+      { label: 'See what Eva is up to now with ArtCube', url: 'https://artcubenation.com/blog/' }
+    ],
     verdict: { cls: 'verdict-extract', label: 'Why this matters', text: `Eva Radke built one of the first creative-reuse centers of its kind on the East Coast and ran it for seven years, turning what film sets threw away into a warehouse the whole borough could shop for free. The work was excellent, and the model genuinely new. What is easy to get wrong is the ending: the Brooklyn warehouse closed, but the work did not stop and the mission did not fail. The name still operates today in Savannah, Georgia, and Radke herself is still at it, approaching twenty years, running a worldwide art-department network she grew alongside it. As she puts it, she was "the lightning point," the most visible spark in a movement that had been waiting for someone loud enough to make people see it. Nearly everyone doing this work today is downstream of that spark.` }
   },
   'skater-girl': {
@@ -1784,6 +1791,14 @@ function expandEntry(id) {
     for (const q of quotes) {
       nHtml += `<div class="exp-quote"><p>${q.text}</p><cite>${q.attr}</cite></div>`;
     }
+  }
+  if (e.links && e.links.length) {
+    let lHtml = '<div class="exp-links">';
+    for (const link of e.links) {
+      lHtml += `<a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.label} <i class="ti ti-arrow-right"></i></a>`;
+    }
+    lHtml += '</div>';
+    nHtml += lHtml;
   }
   document.getElementById('exp-narrative').innerHTML = nHtml;
   document.getElementById('ledger-main').style.display = 'none';
