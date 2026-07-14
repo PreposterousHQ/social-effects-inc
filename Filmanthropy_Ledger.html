@@ -529,7 +529,7 @@
   .l-card-snippet { font-size: 0.8rem; line-height: 1.6; color: rgba(247,244,239,0.48); margin-bottom: 0.85rem; border-left: 2px solid var(--taxonomy-color, rgba(200,168,75,0.22)); padding-left: 0.75rem; margin-top: 0.5rem; }
   .l-card-cta { font-family: var(--mono); font-size: 0.61rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
-  #ledger-expanded { background: var(--stats-bg); }
+  #ledger-expanded { background: var(--stats-bg); scroll-margin-top: 110px; }
   .exp-inner { max-width: 1100px; margin: 0 auto; padding: 4rem 3rem 5rem; }
   .exp-back { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); cursor: pointer; border: 1px solid rgba(200,168,75,0.25); padding: 0.45rem 1.1rem; border-radius: 2px; margin-bottom: 3rem; background: none; transition: all 0.2s; }
   .exp-back:hover { background: rgba(200,168,75,0.07); border-color: rgba(200,168,75,0.5); }
@@ -1206,7 +1206,10 @@
 <!-- EXPANDED PANEL -->
 <section id="ledger-expanded" style="display:none;">
   <div class="exp-inner exp-card">
-    <button class="exp-back" onclick="closeExpanded()">&#8592; Back to entries</button>
+    <div style="display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap;">
+      <a class="exp-back" href="Filmanthropy_Ledger.html" style="text-decoration:none;margin-bottom:0;">&#8592; The Filmanthropy Ledger</a>
+      <button class="exp-back" onclick="closeExpanded()" style="margin-bottom:0;">&#8592; Back to entries</button>
+    </div>
     <div class="exp-header">
       <div id="exp-badge" class="l-badge" style="display:none"></div>
       <div class="exp-name-row">
@@ -1803,7 +1806,7 @@ function expandEntry(id) {
   document.getElementById('exp-narrative').innerHTML = nHtml;
   document.getElementById('ledger-main').style.display = 'none';
   if (history.pushState) history.pushState(null, '', '#' + id);
-  const shareUrl = encodeURIComponent(window.location.href);
+  const shareUrl = encodeURIComponent('https://socialeffectsnj.com/entry-' + id + '.html');
   const shareText = encodeURIComponent(e.name + ' — A Social Effects Ledger of Filmanthropy · Social Effects NJ.');
   const tw = document.getElementById('share-twitter');
   if (tw) tw.href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareText;
@@ -1830,6 +1833,19 @@ function closeExpanded() {
   document.getElementById('ledger-main').style.display = '';
   if (history.pushState) history.pushState(null, '', window.location.pathname);
 }
+
+// Auto-open entry if page loaded with a hash (e.g. arriving from a shared stub link)
+(function() {
+  var hash = window.location.hash ? window.location.hash.slice(1) : '';
+  if (hash && entries[hash]) {
+    history.scrollRestoration = 'manual';
+    expandEntry(hash);
+    setTimeout(function() {
+      var panel = document.getElementById('ledger-expanded');
+      if (panel) panel.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }, 50);
+  }
+})();
 
 function copyInShortLink() {
   if (navigator.clipboard && navigator.clipboard.writeText) {
