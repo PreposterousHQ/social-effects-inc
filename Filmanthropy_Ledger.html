@@ -535,6 +535,9 @@
   .exp-back:hover { background: rgba(200,168,75,0.07); border-color: rgba(200,168,75,0.5); }
   .exp-header { padding: 2rem 2rem; border-bottom: 0.5px solid var(--taxonomy-color, rgba(200,168,75,0.12)); display: flex; flex-direction: column; gap: 13px; }
   .exp-meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,244,239,0.30); margin-bottom: 0.5rem; }
+  .exp-provenance { display: inline-flex; flex-direction: column; gap: 3px; width: fit-content; align-self: flex-start; padding: 5px 9px; border: 0.5px solid rgba(200,168,75,0.32); border-radius: 1px; background: transparent; margin-top: -4px; }
+  .exp-provenance-label { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(200,168,75,0.80); }
+  .exp-provenance-note { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.7rem; font-style: italic; color: rgba(247,244,239,0.40); letter-spacing: 0; text-transform: none; }
   .exp-name { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 700; color: #f7f4ef; line-height: 1.12; }
   .exp-editorial { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1rem; font-style: italic; color: #A0742A; font-weight: 400; }
   .exp-body { display: grid; grid-template-columns: 155px minmax(0, 1fr); }
@@ -1256,6 +1259,7 @@
       </div>
       <div id="exp-editorial" class="exp-editorial"></div>
       <div id="exp-meta" class="exp-meta"></div>
+      <div id="exp-provenance" class="exp-provenance" style="display:none"></div>
     </div>
     <div id="exp-verdict-container" class="exp-verdict">
       <span class="exp-verdict-label" id="exp-verdict-label"></span>
@@ -1437,6 +1441,7 @@ const entries = {
     meta: 'Brooklyn · Founded 2008 · Moved 2015 (still running today)',
     name: 'Film Biz Recycling',
     editorial: 'The Lightning Point',
+    provenance: 'Built from a conversation with Eva Radke, July 2026.',
     stats: [
       ['Founded','May 2008 by Eva Radke (Fort Greene, then Long Island City, then Gowanus)'],
       ['Location','11,000 sq ft warehouse, Gowanus, Brooklyn (from ~2010)'],
@@ -1473,6 +1478,7 @@ const entries = {
     meta: 'Rajasthan, India · Independent, 2019 · Acquired by Netflix, 2021 · Dir. Manjari Makijany · Prod. Vinati Makijany, Emmanuel Pappas',
     name: 'Skater Girl',
     editorial: 'The Gold Standard',
+    provenance: 'Built from a conversation with Vinati Makijany, August 2026.',
     stats: [
       ['What was built','Desert Dolphin Skatepark &mdash; 14,500 sq ft, reinforced concrete, Khempur, Rajasthan'],
       ['Scale','One of India\'s largest; the first that part of Rajasthan had ever seen (per filmmakers)'],
@@ -1799,6 +1805,15 @@ function expandEntry(id) {
   document.getElementById('exp-name').textContent = e.name;
   document.getElementById('exp-editorial').textContent = e.editorial;
   document.getElementById('exp-meta').innerHTML = e.meta;
+  const prov = document.getElementById('exp-provenance');
+  if (prov) {
+    if (e.provenance) {
+      prov.innerHTML = '<span class="exp-provenance-label">In their own words</span><span class="exp-provenance-note">' + e.provenance + '</span>';
+      prov.style.display = 'inline-flex';
+    } else {
+      prov.style.display = 'none';
+    }
+  }
   const verdictLabel = e.verdict ? e.verdict.label : '';
   const verdictText = e.verdict ? e.verdict.text : '';
   document.getElementById('exp-verdict-label').textContent = verdictLabel;
