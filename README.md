@@ -15,6 +15,9 @@ A Central New Jersey startup coordinating production surplus — sets, wardrobe,
 - **Demo:** `index.html` at repo root
 - **Live URL:** Not yet deployed. GitHub Pages to be enabled when ready.
 
+## Short links
+Short links use a folder with an `index.html`, such as `eva/index.html`. To add one, copy an existing short-link page, reuse the matching entry share page metadata, and update the canonical URL, `og:url`, meta refresh, JavaScript redirect, and fallback link. The redirect target should be the absolute Ledger URL with a hash that matches a key in the Ledger's `entries` object.
+
 ## Ecosystem Links
 - Sponsored beneficiary: [Mental Health Reformation Consortium](https://www.stonesynergysoup.com)
 - Parent ontology: PreposterousHQ/00-preposterous
