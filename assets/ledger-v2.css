@@ -49,6 +49,23 @@
   padding-bottom: 2.5rem;
 }
 
+.ledger-hero-photo {
+  display: none;
+}
+
+@media (min-width: 601px) {
+  .ledger-hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    background-image: url("../fort-lee-backlot.jpg");
+    background-position: center top;
+    background-size: cover;
+    filter: sepia(0.8) contrast(1.2) brightness(0.3) saturate(0.5);
+  }
+}
+
 .ledger-hub {
   background: var(--cream);
   padding: clamp(4rem, 8vw, 7rem) 1.25rem;
