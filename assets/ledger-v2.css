@@ -17,6 +17,18 @@
   outline-offset: 4px;
 }
 
+.ledger-v2 nav > div > a > span[style*="rgba(200,168,75,0.35)"] {
+  color: #b89d50 !important;
+}
+
+.ledger-v2 .footer-tag {
+  color: rgba(247, 244, 239, 0.62);
+}
+
+.ledger-v2 .footer-tag[style] {
+  color: rgba(247, 244, 239, 0.62) !important;
+}
+
 .reading-progress {
   position: fixed;
   inset: 68px auto auto 0;
@@ -155,13 +167,13 @@
   top: 1.55rem;
   right: 1.5rem;
   max-width: 56%;
-  color: var(--ink-muted);
+  color: #666157;
   text-align: right;
   letter-spacing: 0.08em;
 }
 
 .hub-card-cases .hub-status {
-  color: rgba(247, 244, 239, 0.48);
+  color: rgba(247, 244, 239, 0.72);
 }
 
 .hub-card h3 {
@@ -198,7 +210,7 @@
   line-height: 1.7;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(247, 244, 239, 0.3);
+  color: rgba(247, 244, 239, 0.62);
 }
 
 .hub-card blockquote {
@@ -272,7 +284,7 @@
   font-family: var(--sans);
   font-size: 0.72rem;
   font-weight: 400;
-  color: var(--ink-muted);
+  color: #666157;
 }
 
 .ladder-sustainable {
@@ -295,7 +307,7 @@
 .hub-framework {
   margin-top: 1.25rem;
   font-size: 0.88rem;
-  color: var(--ink-muted);
+  color: #666157;
 }
 
 .hub-framework a {

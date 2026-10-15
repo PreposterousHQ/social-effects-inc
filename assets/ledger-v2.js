@@ -151,6 +151,14 @@
     });
   }
 
+  function labelShareControls() {
+    document.querySelectorAll('.share-btn[data-label]').forEach(function (control) {
+      if (!control.hasAttribute('aria-label')) {
+        control.setAttribute('aria-label', control.dataset.label);
+      }
+    });
+  }
+
   function setBackgroundAccessibility(isHidden) {
     [
       document.querySelector('body > nav'),
@@ -487,6 +495,7 @@
 
   buildEssayChapters();
   enhanceCaseCards();
+  labelShareControls();
   document.getElementById('entry-previous').addEventListener('click', function () { moveEntry(-1); });
   document.getElementById('entry-next').addEventListener('click', function () { moveEntry(1); });
   document.addEventListener('keydown', trapEntryFocus);
