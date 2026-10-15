@@ -247,8 +247,8 @@
     entryPanel.classList.add('is-open');
     entryPanel.scrollTop = 0;
     document.body.classList.add('entry-open');
+    entryPanel.focus({ preventScroll: true });
     setBackgroundAccessibility(true);
-    window.setTimeout(function () { entryPanel.focus(); }, 0);
   }
 
   window.expandEntry = function (id) {
