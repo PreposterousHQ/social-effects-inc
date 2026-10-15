@@ -1,0 +1,72 @@
+{
+  "updated": "2026-10-15",
+  "prototype": true,
+  "items": [
+    {
+      "id": "clean-hands-brookes-house",
+      "date": "2026-10-14",
+      "place": "DALLAS, TEXAS, USA",
+      "production": "Clean Hands",
+      "who": "Margate House Films · Dir. Jake Allyn",
+      "summary": "The production has committed one-third of the film’s profits to Brooke’s House, the Hagerstown, Maryland recovery center whose founding inspired the film. The pledge needs a follow-up after release: whether profits arrived, and how much reached Brooke’s House.",
+      "tag": "Second road: Proceeds → Cause",
+      "verification": {
+        "label": "Reported · 1 source",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "We Are Healthy",
+          "date": "Oct. 14, 2026",
+          "url": "https://wearehealthy.org/world/us/tx/dallas/2026/10/14/film-spotlights-opioid-recovery-efforts"
+        }
+      ],
+      "followUp": "Pledge of profits · follow up after release"
+    },
+    {
+      "id": "balan-bus-stop",
+      "date": "2026-06-26",
+      "place": "WAYANAD, KERALA, INDIA",
+      "production": "Balan: The Boy",
+      "who": "Art director Ajayan Chalissery · Dir. Chidambaram",
+      "summary": "After filming wrapped, residents of Kunduvadi asked the crew to leave a bus stop built as a set. Nearly a year later, the shelter remains in daily use by residents and schoolchildren across the tribal hamlet’s seven settlements.",
+      "tag": "Regenerative by accident",
+      "verification": {
+        "label": "Reported · 1 source",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "The New Indian Express",
+          "date": "June 26, 2026",
+          "url": "https://www.newindianexpress.com/states/kerala/2026/Jun/26/balan-movie-set-repurposed-for-residents-comes-to-life-in-keralas-chekadi"
+        }
+      ],
+      "related": {
+        "label": "Related case: Field of Dreams · The Accidental Asset",
+        "anchor": "field-of-dreams"
+      }
+    },
+    {
+      "id": "last-of-us-high-river",
+      "date": "2021-10-13",
+      "place": "HIGH RIVER, ALBERTA, CANADA",
+      "production": "The Last of Us",
+      "who": "HBO production · Town of High River",
+      "summary": "The production paid the town $100,000 for a youth legacy project: 80 percent for a bike park and pump track, and 20 percent for the Spitzee School playground. It separately paid $15,000 for three removed trees. Current status of the park still needs confirmation.",
+      "tag": "Contributive · Still standing?",
+      "verification": {
+        "label": "Reported · 1 source",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "HighRiverOnline.com",
+          "date": "Oct. 13, 2021",
+          "url": "https://www.highriveronline.com/articles/movie-company-donates-100-000-for-legacy-project-in-high-river"
+        }
+      ],
+      "followUp": "Newly surfaced older report · confirm whether the pump track was built and is open"
+    }
+  ]
+}
