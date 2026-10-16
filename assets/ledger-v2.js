@@ -241,9 +241,7 @@
     }
     document.getElementById('exp-narrative').innerHTML = narrative;
 
-    var shareUrlObject = new URL(window.location.href);
-    shareUrlObject.hash = id;
-    var shareUrl = encodeURIComponent(shareUrlObject.toString());
+    var shareUrl = encodeURIComponent(window.ledgerShareUrl(id));
     var shareText = encodeURIComponent(entry.name + ' — A Social Effects Ledger of Filmanthropy · Social Effects NJ.');
     document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareText;
     document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl;

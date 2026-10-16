@@ -1,5 +1,34 @@
 # Ledger note and mobile refinement handoff
 
+## Follow-up: cached navigation correction, 2026-10-16
+
+After PR #9 was published, Bret reported that the note menu returned to the
+opening. The same result was reproduced at 1440px and 390px by serving the
+previous router under the unchanged `assets/ledger-v2.js` URL. That router
+does not recognize `#note-on-the-ledger` and falls back to the hub. The live
+asset response advertises `Cache-Control: max-age=600`. This reproduces a
+cache-related failure path; Bret's individual browser cache was not inspected.
+
+Branch `codex/ledger-note-link-cache`, based on merged main
+`d3d8733639c6621c0e8faa5777c7532d8a8c1692`, versions the current Ledger CSS and
+router URLs with twelve characters of their normalized-content SHA-256. No
+article, menu target, router logic or stylesheet content changes. A page reload
+then requests the matching current assets instead of the older cached URL.
+
+`tests/ledger-note-cache.cjs` reproduced the fallback before the fix and passes
+afterward at both sizes while the old unversioned router remains available.
+It checks desktop/mobile note clicks, direct reload at the note, return to the
+Ledger and content-matching version tokens. Keep these tokens current when
+editing either asset; the regression fails if they no longer match. External
+resources are substituted in this deterministic test. The earlier fresh-session
+checks below did not cover this upgrade path. No publication of this follow-up
+is claimed until a new merge instruction and deployment verification.
+
+Changed files in this follow-up: `Filmanthropy_Ledger_v2.html`,
+`tests/ledger-note-cache.cjs` and this handoff. The PR description carries the
+verified preview and current review/publication status. The PR #9 preparation
+record below is historical.
+
 Author: Filmanthropy Ledger / Codex
 Date: 2026-10-16, New York time
 Base: main `baeb532eaed6a2028630b12928970b6fc946785f` (merged PR #8).
