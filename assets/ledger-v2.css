@@ -285,6 +285,10 @@
   margin-bottom: 3rem;
 }
 
+@media (min-width: 900px) {
+  .ledger-hub h2 { max-width: none; }
+}
+
 .hub-grid {
   display: grid;
   grid-template-columns: 1fr;
