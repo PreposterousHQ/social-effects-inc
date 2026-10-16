@@ -10,9 +10,11 @@ The current Ledger footer now places “The Filmanthropy Ledger” immediately
 below “From Special Effects to Social Effects.” “Wrap It Forward” and
 “Sets. Souls. Stories.” are removed from that footer; the share-strip heading
 becomes “Share the Ledger.” Copyright and the existing illustration are
-centered on phone and desktop. Bret asked to refine new artwork after the
-other changes, so the generated concept is held outside the public repository
-and the existing image remains in this review.
+centered on phone and desktop. Bret clarified that he does the artwork and
+wants the existing image only. The original `social-effects-logo.png` remains
+byte-unchanged; a restrained CSS gold edge/glow makes its existing ring clearer,
+and a centered “Social Effects NJ” caption sits directly underneath. No
+generated replacement artwork is included or used.
 
 All page/essay/footer share controls in the current and archival Ledger now
 use `https://socialeffectsnj.com/filmanthropyledger`. Entry shares and copy
@@ -51,7 +53,8 @@ The sharing regression validates page controls and all 16 entries in both
 Ledger renderers, including clipboard values and Instagram-copy feedback.
 Composer launches are intercepted before contacting social services; nothing
 is posted. Footer hierarchy, centering, image decode and horizontal overflow
-are checked at 360px, 390px and 1440px. Screenshots were visually inspected.
+are checked at 360px, 390px and 1440px, including the exact brand caption below
+the original artwork and its ring treatment. Screenshots were visually inspected.
 The final run validates 208 sharing links, 34 intercepted composer launches
 and 68 clipboard actions, with zero site JavaScript errors.
 The stale-router regression also passes at 1440px and 390px. JavaScript
@@ -102,7 +105,9 @@ and [WhatsApp click-to-chat documentation](https://faq.whatsapp.com/591339899867
 - `docs/ledger-footer-sharing-handoff.md`: this checkpoint.
 
 These additions are kept in the already-open PR #10 rather than creating a
-dependent second PR. No merge or production publication is authorized by the
-new copy/footer instructions. The review description carries the current
-preview, commit and final evidence. Shared TODO records the review checkpoint
-and the separate private Google Doc for company-site editing.
+dependent second PR. Bret's latest instruction authorizes merging the complete
+PR once the original-image ring and “Social Effects NJ” caption check out.
+The PR description and shared TODO carry the exact merge/deployment and live
+verification checkpoint after publication, plus the separate private Google
+Doc for company-site editing. Future company architecture and metadata copy
+remain outside this prepared change.

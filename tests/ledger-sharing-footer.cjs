@@ -85,7 +85,10 @@ function sharedDestination(href){
    }
    assert.equal(await page.locator('.ledger-footer-copyright').evaluate(e=>getComputedStyle(e).textAlign),'center');
    await page.locator('.ledger-footer-art').evaluate(e=>e.decode());
-   assert.equal(await page.locator('.ledger-footer-art').getAttribute('src'),'social-effects-logo.png','Existing art retained until Bret reviews the new direction');
+   assert.equal(await page.locator('.ledger-footer-art').getAttribute('src'),'social-effects-logo.png','Use Bret’s existing image only');
+   assert.equal(await page.locator('.ledger-footer-brand figcaption').textContent(),'Social Effects NJ');
+   assert.ok(await page.locator('.ledger-footer-brand').evaluate(e=>{const image=e.querySelector('img').getBoundingClientRect();const caption=e.querySelector('figcaption').getBoundingClientRect();return caption.top>=image.bottom && Math.abs(image.x+image.width/2-(caption.x+caption.width/2))<2;}),'Brand caption centered below original image');
+   assert.match(await page.locator('.ledger-footer-art').evaluate(e=>getComputedStyle(e).filter),/drop-shadow/,'Original ring has a visible warm edge treatment');
    assert.ok(await page.locator('.ledger-footer-art').evaluate(e=>e.naturalWidth>0));
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    if(process.env.LEDGER_SCREENSHOTS){fs.mkdirSync(process.env.LEDGER_SCREENSHOTS,{recursive:true});await footer.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'footer-'+width+'.png')});}
