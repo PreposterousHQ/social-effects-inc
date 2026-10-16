@@ -308,7 +308,7 @@
 
   function scrollToHash(hash, initial) {
     var target;
-    if (!hash) {
+    if (!hash || hash === 'hub') {
       target = document.documentElement;
     } else if (hash === 'essay') {
       target = document.getElementById('essay-view');
@@ -318,6 +318,8 @@
       target = document.getElementById('happening-now-view');
     } else if (hash === 'stories-from-the-field') {
       target = document.getElementById('stories-from-the-field-view');
+    } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story') {
+      target = document.getElementById(hash + '-view');
     } else {
       target = document.getElementById(hash);
     }
@@ -347,7 +349,7 @@
 
     closeEntryPanel(!initial);
 
-    if (!hash || hash === 'hub' || hash === 'watch') {
+    if (!hash || hash === 'hub' || hash === 'paths' || hash === 'watch') {
       showView('hub');
       loadFeed();
     } else if (
@@ -365,6 +367,8 @@
       loadFeed();
     } else if (hash === 'stories-from-the-field') {
       showView('stories-from-the-field');
+    } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story') {
+      showView(hash);
     } else {
       showView('hub');
     }
@@ -527,6 +531,14 @@
   buildEssayChapters();
   enhanceCaseCards();
   labelShareControls();
+  // The Ledger identity always returns to the opening, even when #hub is current.
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest('a[href="#hub"]');
+    if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    if (window.location.hash !== '#hub') history.pushState(null, '', '#hub');
+    routeHash(false);
+  });
   document.getElementById('entry-previous').addEventListener('click', function () { moveEntry(-1); });
   document.getElementById('entry-next').addEventListener('click', function () { moveEntry(1); });
   document.addEventListener('keydown', trapEntryFocus);

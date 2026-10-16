@@ -1,5 +1,11 @@
 # Ledger content and navigation checkpoint
 
+Latest checkpoint: follow `docs/ledger-homepage-redesign-handoff.md` for the
+new introduction, six main choices, AI article transfer and Ledger-specific
+menu. The How giving rises/information-box placement below records the prior
+PR #7 layout and is superseded on this new review branch. The future root
+migration and submission-workflow boundaries below still apply.
+
 Author: Filmanthropy Ledger / Codex
 Date: 2026-10-15, New York time
 Base: main `9015ddb60b23b1db6a305c3cb802f3e529a96ae3`, after published PR #6.
