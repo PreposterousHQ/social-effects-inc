@@ -1,0 +1,28 @@
+// Page-origin back links, native Back/Forward and reading-position restoration.
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {chromium}=require('playwright'),root=path.resolve(__dirname,'..');
+const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://localhost');let file=path.resolve(root,'.'+u.pathname);if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}if(fs.existsSync(file)&&fs.statSync(file).isDirectory())file=path.join(file,'index.html');fs.readFile(file,(error,data)=>{if(error){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':{'.html':'text/html','.js':'text/javascript','.css':'text/css','.jpg':'image/jpeg','.png':'image/png','.json':'application/json'}[path.extname(file)]||'application/octet-stream'}).end(data);});});
+(async()=>{await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const origin=process.env.COMPANY_ORIGIN||'http://127.0.0.1:'+server.address().port;const browser=await chromium.launch({channel:'chrome',headless:true});try{
+ const page=await browser.newPage({reducedMotion:'no-preference'});page.setDefaultTimeout(10000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ async function ready(){await page.evaluate(()=>document.fonts.ready);await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));}
+ async function atPosition(y){try{await page.waitForFunction(y=>Math.abs(scrollY-y)<3,y,{timeout:3000});}catch(e){throw Error('Expected scroll '+y+', received '+await page.evaluate(()=>scrollY)+' at '+page.url());}}
+ for(const width of [1366,390,320]){
+  await page.setViewportSize({width,height:900});
+  await page.goto(origin+'/new/our-practice.html',{waitUntil:'load'});await ready();const historyLink=page.locator('.route-card a[href="/new/filmanthropy-history.html"]');await historyLink.scrollIntoViewIfNeeded();await ready();const aY=await page.evaluate(()=>scrollY);assert.ok(aY>1000);
+  await historyLink.click();await page.waitForURL('**/new/filmanthropy-history.html');await ready();assert.equal(await page.locator('.return-strip a').textContent(),'← Back to Our Practice');
+  // A second page lets the test verify a complete return chain, not a single Home link.
+  await page.locator('.site-footer a[href="/new/contact.html"]').scrollIntoViewIfNeeded();const bY=await page.evaluate(()=>scrollY);await page.locator('.site-footer a[href="/new/contact.html"]').click();await page.waitForURL('**/new/contact.html');await ready();assert.equal(await page.locator('.return-strip a').textContent(),'← Back to the History of Filmanthropy');
+  await page.locator('.return-strip a').click();await page.waitForURL('**/new/filmanthropy-history.html');await ready();await atPosition(bY);
+  await page.locator('.return-strip a').click();await page.waitForURL('**/new/our-practice.html');await ready();await atPosition(aY);
+  await page.goForward({waitUntil:'load'});await ready();await atPosition(bY);assert.equal(await page.locator('.return-strip a').textContent(),'← Back to Our Practice');
+  await page.goBack({waitUntil:'load'});await ready();await atPosition(aY);
+  await page.reload({waitUntil:'load'});await ready();await atPosition(aY);
+  if(width!==1366){await page.locator('.site-menu-open').click();await page.locator('#site-menu a[href="/new/offerings.html"]').click();await page.waitForURL('**/new/offerings.html');await ready();assert.equal(await page.locator('.return-strip a').textContent(),'← Back to Our Practice');await page.locator('.return-strip a').click();await page.waitForURL('**/new/our-practice.html');await ready();await atPosition(aY);assert.equal(await page.locator('#site-menu').evaluate(e=>e.open),false);}
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  await page.goto(origin+'/new/',{waitUntil:'load'});await ready();assert.match(await page.locator('.hero-subhead').textContent(),/generosity and community social impact/);await page.locator('.hero-actions .button-gold').click();await page.waitForURL('**/new/contact.html#exploration-call');await ready();await page.waitForFunction(()=>{const y=document.getElementById('exploration-call').getBoundingClientRect().top;return y>=130&&y<170;});assert.equal(await page.locator('.return-strip a').textContent(),'← Back to Home');assert.equal(await page.locator('#exploration-booking').getAttribute('target'),'_blank');assert.equal(await page.locator('#exploration-booking').getAttribute('href'),'https://calendly.com/bret-bretwarshawsky/20-minute-exploratory-call');assert.match(await page.locator('#exploration-call h2').textContent(),/20-minute/);
+  if(process.env.COMPANY_SCREENSHOTS){fs.mkdirSync(process.env.COMPANY_SCREENSHOTS,{recursive:true});await page.screenshot({path:path.join(process.env.COMPANY_SCREENSHOTS,'return-booking-'+width+'.png')});}
+  console.log(width+'px: two-level contextual Back, native Back/Forward, exact reading positions/reload, menu closure and homepage-to-booking route pass.');
+ }
+ const direct=await browser.newContext({javaScriptEnabled:false});const p=await direct.newPage();await p.goto(origin+'/new/filmanthropy-history.html',{waitUntil:'domcontentloaded'});assert.equal(await p.locator('.return-strip a').getAttribute('href'),'/new/our-practice.html');await direct.close();
+ assert.deepEqual(errors,[]);console.log('Direct links have a safe parent-page fallback without JavaScript. No site JS errors.');
+}finally{await browser.close();server.close();}})().catch(e=>{console.error(e);server.close();process.exitCode=1;});
