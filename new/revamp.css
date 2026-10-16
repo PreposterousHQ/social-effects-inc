@@ -138,3 +138,11 @@ body:has(.site-menu[open]) { overflow: hidden; }
 @media(max-width:1000px) { .practice-intro { grid-template-columns: 1fr; } .practice-intro-copy { grid-column: auto; } .word-history { max-width: 600px; } }
 @media(max-width:520px) { .company-revamp #home { padding-top: 2.5rem; padding-bottom: 3rem; } .conversation-actions { max-width: none; } }
 @media(min-width:1001px) and (max-height:700px) { .company-revamp #home { padding-top: 2rem; padding-bottom: 2rem; } .company-revamp #home .hero-headline { font-size: clamp(2.9rem,5.1vw,4.7rem); } .company-revamp #home .hero-subhead { margin-top: 1rem; } .company-revamp #home .hero-actions { margin-top: 1.5rem; } }
+
+/* A compact, consistent homepage contact row. */
+.conversation-actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; margin-top: 1.5rem; }
+.conversation-messages { display: contents; }
+.company-revamp .conversation-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .75rem 1rem; font: .78rem/1.5 var(--mono); border: 1px solid #8a702e; color: var(--ink); text-decoration: none; }
+.company-revamp .conversation-actions .button-outline { flex-direction: row; }
+.contact-page .page-hero { min-height: calc(100svh - 84px); }
+@media(max-width:520px) { .conversation-actions { display: grid; grid-template-columns: 1fr 1fr; } .conversation-actions .button-gold { grid-column: 1/-1; } }
