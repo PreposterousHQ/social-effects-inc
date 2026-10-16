@@ -19,7 +19,7 @@
   var configPromise = get('/new/decks/config.json').then(function (r) { return r.json(); }).then(function (data) { config = data; return data; });
   configPromise.catch(function () { error.textContent = 'The presentations could not load. Please reload the page to try again.'; });
   async function get(url) {
-    var response = await fetch(url, {credentials:'omit', referrerPolicy:'no-referrer'});
+    var response = await fetch(url, {credentials:'omit', referrerPolicy:'no-referrer', cache:'no-store'});
     if (!response.ok) throw new Error('Could not load the presentation. Please try again.');
     return response;
   }
