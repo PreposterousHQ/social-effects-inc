@@ -195,6 +195,13 @@ const server = http.createServer((req,res) => {
       } else assert.ok(cards.every((card,i)=>i===0 || card.y > cards[i-1].y),'Six cards stack in reading order');
       assert.equal(await page.locator('.hub-case-features a[href="/eva"]').count(),1);
       assert.equal(await page.locator('.hub-case-features a[href="/vinati"]').count(),1);
+      assert.equal((await page.locator('.hub-case-browse').textContent()).replace(/\s+/g,' ').trim(),'Read all 16 entries →');
+      assert.equal(await page.locator('.hub-case-provenance p').textContent(),'These two entries are based on Bret Warshawsky’s conversations with Eva Radke and Vinati Makijany in 2026.');
+      assert.ok(await page.locator('.hub-case-provenance').evaluate(e=>e.previousElementSibling.classList.contains('hub-case-features')));
+      await page.locator('.hub-case-browse').click();
+      await landing();
+      await page.locator('.ledger-brand').click();
+      await page.waitForSelector('#hub:visible');
       for (const [route,id] of [['/eva','fbr'],['/vinati','skater-girl']]) {
         await page.locator('.hub-case-features a[href="'+route+'"]').click();
         await page.waitForSelector('#ledger-expanded.is-open');
