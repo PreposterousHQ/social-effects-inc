@@ -57,6 +57,61 @@
   var currentEntry = null;
   var lastEntryTrigger = null;
   var feedPromise = null;
+  var feedItemsByHash = Object.create(null);
+
+  var SHARE_SECTIONS = {
+    hub: { hash: '', title: 'The Filmanthropy Ledger', label: 'Share the Ledger' },
+    essay: { hash: 'essay', title: 'The Essay: The Gift in the Making', label: 'Share the essay' },
+    'case-studies': { hash: 'case-studies', title: 'The Case Studies', label: 'Share the Case Studies' },
+    'filmanthropy-and-ai': { hash: 'filmanthropy-and-ai', title: 'Filmanthropy and AI', label: 'Share Filmanthropy and AI' },
+    'happening-now': { hash: 'happening-now', title: 'Happening Now', label: 'Share Happening Now' },
+    'stories-from-the-field': { hash: 'stories-from-the-field', title: 'Stories from the Sets', label: 'Share Stories from the Sets' },
+    'submit-your-story': { hash: 'submit-your-story', title: 'Submit Your Story', label: 'Share Submit Your Story' },
+    'note-on-the-ledger': { hash: 'note-on-the-ledger', title: 'A Note on the Ledger', label: 'Share this note' }
+  };
+
+  function pageShareContext() {
+    var hash = window.location.hash.slice(1);
+    if (ENTRY_ORDER.includes(hash)) return { hash: hash, title: entries[hash].name, label: 'Share this entry' };
+    if (document.body.dataset.ledgerView === 'happening-now' && feedItemsByHash[hash]) {
+      return { hash: hash, title: feedItemsByHash[hash].production, label: 'Share this report' };
+    }
+    return SHARE_SECTIONS[document.body.dataset.ledgerView] || SHARE_SECTIONS.hub;
+  }
+
+  window.ledgerPageShareUrl = function () {
+    return window.ledgerShareUrl(pageShareContext().hash);
+  };
+
+  function shareHref(service, url, title) {
+    var encodedUrl = encodeURIComponent(url);
+    var text = title === 'The Filmanthropy Ledger' ? title + ' — Social Effects NJ.' : title + ' — The Filmanthropy Ledger · Social Effects NJ.';
+    var encodedText = encodeURIComponent(text);
+    if (service === 'LinkedIn') return 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodedUrl;
+    if (service === 'X') return 'https://twitter.com/intent/tweet?url=' + encodedUrl + '&text=' + encodedText;
+    if (service === 'Facebook') return 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl;
+    if (service === 'WhatsApp') return 'https://wa.me/?text=' + encodedText + '%20' + encodedUrl;
+    if (service === 'Telegram') return 'https://t.me/share/url?url=' + encodedUrl + '&text=' + encodedText;
+    if (service === 'Email') return 'https://mail.google.com/mail/?view=cm&fs=1&su=' + encodeURIComponent(title) + '&body=' + encodedText + '%20' + encodedUrl;
+    return null;
+  }
+
+  function updateShareGroup(group, context) {
+    if (!group) return;
+    var url = window.ledgerShareUrl(context.hash);
+    group.querySelectorAll('.share-btn[data-label]').forEach(function (control) {
+      var href = shareHref(control.dataset.label, url, context.title);
+      if (href) control.href = href;
+    });
+  }
+
+  function updatePageShares() {
+    var strip = document.querySelector('.ledger-share-strip');
+    var context = pageShareContext();
+    updateShareGroup(strip, context);
+    if (strip) strip.querySelector('p').textContent = context.label;
+    updateShareGroup(document.querySelector('.inshort-band-footer'), SHARE_SECTIONS.essay);
+  }
 
   function chapterKey(text) {
     return text.replace(/\u2019/g, '’').trim();
@@ -254,6 +309,7 @@
     document.body.classList.add('entry-open');
     entryPanel.focus({ preventScroll: true });
     setBackgroundAccessibility(true);
+    updatePageShares();
   }
 
   window.expandEntry = function (id) {
@@ -294,6 +350,7 @@
       view.hidden = view.dataset.view !== name;
     });
     document.body.dataset.ledgerView = name;
+    updatePageShares();
   }
 
   function openChapterIfNeeded(hash) {
@@ -313,6 +370,8 @@
       target = document.getElementById('forerunners');
     } else if (hash === 'happening-now') {
       target = document.getElementById('happening-now-view');
+    } else if (hash.indexOf('now-') === 0) {
+      target = document.getElementById(hash) || document.getElementById('happening-now-view');
     } else if (hash === 'stories-from-the-field') {
       target = document.getElementById('stories-from-the-field-view');
     } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story' || hash === 'note-on-the-ledger') {
@@ -359,9 +418,11 @@
       openChapterIfNeeded(hash);
     } else if (hash === 'case-studies' || LEGACY_CASE_ANCHORS.has(hash)) {
       showView('case-studies');
-    } else if (hash === 'happening-now') {
+    } else if (hash === 'happening-now' || hash.indexOf('now-') === 0) {
       showView('happening-now');
-      loadFeed();
+      loadFeed().then(function () {
+        if (window.location.hash.slice(1) === hash) scrollToHash(hash, initial);
+      });
     } else if (hash === 'stories-from-the-field') {
       showView('stories-from-the-field');
     } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story' || hash === 'note-on-the-ledger') {
@@ -407,6 +468,7 @@
 
   function renderFeed(data) {
     var items = orderedFeedItems(data.items);
+    feedItemsByHash = Object.create(null);
     var updated = 'Updated ' + formatDate(data.updated);
     document.getElementById('feed-updated').textContent = updated;
     document.getElementById('hub-feed-updated').textContent = updated;
@@ -426,6 +488,7 @@
     items.forEach(function (item) {
       var article = makeElement('article', 'feed-item');
       article.id = 'now-' + item.id;
+      feedItemsByHash[article.id] = item;
       article.appendChild(makeElement('p', 'feed-dateline', item.place + ' · ' + formatDate(item.date)));
       article.appendChild(makeElement('h3', '', item.production));
       article.appendChild(makeElement('p', 'feed-byline', item.who));
@@ -454,8 +517,54 @@
         links.appendChild(related);
       }
       article.appendChild(links);
+      article.appendChild(makeReportShares(article.id, item.production));
       feed.appendChild(article);
     });
+    updatePageShares();
+  }
+
+  function makeReportShares(hash, title) {
+    var group = makeElement('div', 'feed-share');
+    group.setAttribute('role', 'group');
+    group.setAttribute('aria-label', 'Share report: ' + title);
+    group.appendChild(makeElement('span', 'feed-share-label', 'Share this report'));
+    [
+      ['LinkedIn', 'brand-linkedin'], ['X', 'brand-x'], ['Facebook', 'brand-facebook'],
+      ['WhatsApp', 'brand-whatsapp'], ['Telegram', 'brand-telegram'], ['Email', 'mail']
+    ].forEach(function (service) {
+      var link = makeElement('a', 'share-btn');
+      link.dataset.label = service[0];
+      link.setAttribute('aria-label', 'Share ' + title + ' via ' + service[0]);
+      link.href = shareHref(service[0], window.ledgerShareUrl(hash), title);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      var icon = makeElement('i', 'ti ti-' + service[1]);
+      icon.setAttribute('aria-hidden', 'true');
+      link.appendChild(icon);
+      group.appendChild(link);
+    });
+    var copy = makeElement('button', 'share-btn feed-share-copy');
+    copy.type = 'button';
+    copy.dataset.label = 'Copy link';
+    copy.setAttribute('aria-label', 'Copy link to ' + title);
+    var icon = makeElement('i', 'ti ti-link');
+    icon.setAttribute('aria-hidden', 'true');
+    copy.appendChild(icon);
+    var feedback = makeElement('p', 'share-feedback');
+    feedback.setAttribute('role', 'status');
+    copy.addEventListener('click', function () {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) {
+        feedback.textContent = 'Copy this report link: ' + window.ledgerShareUrl(hash);
+        return;
+      }
+      navigator.clipboard.writeText(window.ledgerShareUrl(hash)).then(function () {
+        feedback.textContent = 'Report link copied.';
+      }).catch(function () {
+        feedback.textContent = 'Copy this report link: ' + window.ledgerShareUrl(hash);
+      });
+    });
+    group.append(copy, feedback);
+    return group;
   }
 
   function loadFeed() {
