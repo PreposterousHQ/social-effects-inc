@@ -101,3 +101,20 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .outcome-panel li + li { margin-top: .5rem; }
 .company-revamp :is(#discovery,#design,#liaison,#story,#organization,#people) { scroll-margin-top: 150px; }
 @media(max-width:800px) { .feature-grid { grid-template-columns: 1fr; gap: 2rem; } .page-hero { min-height: 400px; } }
+
+/* The whole enterprise leads; programs and further reading remain available. */
+.hero-activities { position: relative; z-index: 3; color: var(--gold-light); font: 700 clamp(1rem,1.8vw,1.4rem)/1.5 var(--mono); margin: 1.2rem 0; }
+.activity-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1.25rem; margin: 2.5rem 0; }
+.activity-card { padding: 1.75rem; border: 1px solid #9a7b2a55; border-top: 3px solid var(--gold); background: #fbf8f1; }
+.activity-number { color: var(--rust); font: .65rem var(--mono); letter-spacing: .12em; }
+.activity-card h3 { font: 700 1.8rem/1.2 var(--serif); margin: 1rem 0; }
+.activity-card p { line-height: 1.8; margin-bottom: 1rem; }
+.cycle-note { max-width: 75ch; line-height: 1.85; margin: 2rem 0 1.5rem; }
+.menu-more { border-top: 1px solid #c8a84b55; margin-top: 1.5rem; padding-top: 1.5rem; }
+.menu-more summary,.footer-more summary { color: var(--gold-light); cursor: pointer; font: .8rem/1.7 var(--mono); min-height: 44px; }
+.menu-more nav { margin-top: 1rem; }
+.footer-more div { display: grid; gap: .65rem; padding: .5rem 0; }
+@media(max-width:1000px) { .activity-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px) { .activity-grid { grid-template-columns: 1fr; } .activity-card { padding: 1.5rem; } .hero-activities { font-size: .93rem; } }
+
+.activity-card svg { display: block; width: 56px; height: 56px; color: var(--rust); margin: 1rem 0; }

@@ -9,13 +9,13 @@
 
   var pageNames = {
     '/new/': 'Home',
-    '/new/our-practice.html': 'Our Practice',
+    '/new/our-practice.html': 'What We Do',
     '/new/offerings.html': 'Presentations & Labs',
     '/new/production-services.html': 'Production Services',
     '/new/film-biz-recycling.html': 'Production Reuse',
     '/new/values.html': 'Values & Vision',
     '/new/team.html': 'About Social Effects NJ',
-    '/new/contact.html': 'Contact',
+    '/new/contact.html': 'Work With Us',
     '/new/moonshot.html': 'the Practical Moonshot',
     '/new/filmanthropy-history.html': 'the History of Filmanthropy',
     '/new/why-filmmaking-is-civic.html': 'Filmmaking & AI',
