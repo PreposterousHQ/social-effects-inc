@@ -19,17 +19,29 @@
   function savePosition() {
     remember({position:{x:window.scrollX, y:window.scrollY}});
   }
+  var leavingViaLink = false;
+  // A new interaction cancels a previous link departure that did not navigate.
+  ['wheel','touchstart','pointerdown','keydown'].forEach(function (type) {
+    window.addEventListener(type, function () { leavingViaLink = false; }, {passive:true});
+  });
   document.addEventListener('click', function (event) {
     var link = event.target.closest('a[href]');
     if (!link || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || link.target === '_blank') return;
     savePosition();
+    // Preserve the stable click position: page exit can reflow fonts before pagehide.
+    try {
+      var destination = new URL(link.href, location.href);
+      leavingViaLink = /^https?:$/.test(destination.protocol) &&
+        (destination.origin !== location.origin || destination.pathname !== location.pathname || destination.search !== location.search);
+    } catch (e) { leavingViaLink = false; }
     if (menu.open) menu.close();
   });
   window.addEventListener('pagehide', function () {
-    savePosition();
+    if (!leavingViaLink) savePosition();
     if (menu.open) menu.close();
   });
   window.addEventListener('pageshow', function (event) {
+    leavingViaLink = false;
     var navigation = performance.getEntriesByType('navigation')[0];
     var saved = state().socialEffectsNJ && state().socialEffectsNJ.position;
     if (!saved || !(event.persisted || navigation && (navigation.type === 'back_forward' || navigation.type === 'reload'))) return;

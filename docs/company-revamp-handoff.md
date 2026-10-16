@@ -125,3 +125,8 @@ The existing company suites now check absent panels and native browser returns i
 ### Copy and hero follow-up
 
 While the approved palette batch was publishing, Bret asked to remove the Work With Us paragraph beginning “Social Effects is a Central New Jersey startup in active formation.” The entire paragraph and empty wrapper are removed; booking and contact choices remain. He also requested taller heroes on What We Do and About / Who We Are. Those two banners now have a 640px desktop minimum and a 480px smaller-screen minimum with additional lower padding. Longer content can still grow. Existing imagery retains cover sizing without distortion. Styles use cache version 10; no other page banners are lengthened.
+
+
+### Live reading-position acceptance follow-up
+
+Final live acceptance reproduced a footer return at 1,937px after leaving at 1,973px. Instrumentation showed the link click saved 1,973px correctly, then the late page-exit save replaced it with the shifted position. Preserve the stable click position for cross-document HTTP(S) links instead of overwriting it during pagehide. New wheel/touch/pointer/key interaction and pageshow clear the pending departure flag, so an interrupted link does not retain authority over later reading. Direct reload/browser-history departures still save their current position; same-document anchors and mail/phone links do not set the departure flag. Existing real-font Back/Forward tests cover the complete footer return chain. Shared script references use version 10. This fixes an observed live behavior; it does not reintroduce removed Back panels.
