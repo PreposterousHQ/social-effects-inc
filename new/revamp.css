@@ -30,7 +30,7 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .button-gold, .button-outline { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .85rem 1.3rem; text-decoration: none; font: .74rem var(--mono); border: 1px solid var(--gold); }
 .button-gold { background: var(--gold); color: #17130d; }.button-gold:hover { background: var(--gold-light); }.button-outline { background: transparent; color: var(--gold-light); }
 .company-revamp .hero-actions .button-outline { background: #17130d88; }
-.definition-lede { font: italic clamp(1.3rem,2.2vw,1.7rem)/1.55 var(--serif); color: #2a2520; }
+.definition-lede { font: normal clamp(1.3rem,2.2vw,1.7rem)/1.55 var(--serif); color: #2a2520; }
 .definition-copy { max-width: 73ch; margin: 0 auto; color: #3a3028; }.definition-copy p { line-height: 1.85; margin-bottom: 1.25rem; }
 .definition-copy a { color: var(--rust); }.company-revamp .fa-spectrum-headline { white-space: normal !important; }
 .page-hero { position: relative; padding: clamp(4rem,8vw,7rem) 1.5rem; color: var(--paper); background: linear-gradient(90deg,#100d0aee,#100d0a77),url('projector-heart.jpg') 75% 45%/cover; border-bottom: 1px solid #c8a84b55; }
