@@ -78,7 +78,7 @@ function sharedDestination(href){
    await page.goto(origin+'/Filmanthropy_Ledger_v2.html#hub',{waitUntil:'load'});
    const footer=page.locator('.ledger-footer');await footer.scrollIntoViewIfNeeded();
    const text=await footer.textContent();assert.ok(!/Wrap It Forward|Sets\. Souls\. Stories\./.test(text));
-   assert.deepEqual(await page.locator('.ledger-footer-heading').evaluate(e=>[...e.children].map(e=>e.textContent)),['From Special Effects to Social Effects','The Filmanthropy Ledger']);
+   assert.deepEqual(await page.locator('.ledger-footer-heading').evaluate(e=>[...e.children].map(e=>e.textContent)),['From Special Effects to Social Effects','The Filmanthropy Ledger','© 2006 Social Effects NJ']);
    assert.equal(await page.locator('.ledger-share-strip > p').textContent(),'Share the Ledger');
    for(const selector of ['.ledger-footer-art','.ledger-footer-copyright']){
     assert.ok(await page.locator(selector).evaluate(e=>{const r=e.getBoundingClientRect();const p=e.closest('footer').getBoundingClientRect();return Math.abs(r.x+r.width/2-(p.x+p.width/2))<2;}),selector+' centered');
