@@ -183,8 +183,10 @@ const server = http.createServer((req,res) => {
       assert.deepEqual(await page.locator('.hub-grid > .hub-card .hub-number').allTextContents(),['01','02','03','04','05','06']);
       assert.deepEqual(await page.locator('#nav-desktop-center a').evaluateAll(els=>els.slice(0,3).map(e=>e.getAttribute('href'))),['#case-studies','#essay','#filmanthropy-and-ai']);
       assert.deepEqual(await page.locator('#nav-mobile-overlay .nav-mobile-item').evaluateAll(els=>els.slice(1,4).map(e=>e.textContent.trim())),['01Case Studies','02Essay','03Filmanthropy and AI']);
-      assert.deepEqual(await page.locator('a[href="/socialeffects"]').allTextContents(),['Social Effects NJ','Social Effects NJ','Social Effects NJ','07Social Effects NJ']);
+      assert.deepEqual(await page.locator('a[href="/socialeffects"]').allTextContents(),['Social Effects NJ','Social Effects NJ','07Social Effects NJ']);
       assert.equal(await page.locator('.ledger-brand small').textContent(),'by Social Effects NJ');
+      assert.equal(await page.locator('.ledger-byline').textContent(),'by Social Effects NJ');
+      assert.equal(await page.locator('.ledger-byline a, .ledger-hero-tag').count(),0);
       const cards = await page.locator('.hub-grid > .hub-card').evaluateAll(els => els.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width};}));
       if (viewport.width >= 720) {
         assert.equal(cards[0].y,cards[1].y,'Case Studies and Essay in first row');
@@ -206,7 +208,7 @@ const server = http.createServer((req,res) => {
       assert.match(await page.locator('#ai-heading').textContent(), /Human and Civic/);
       assert.equal(await page.locator('.ai-inner a[href="#essay-why-now"], .ai-inner a[href="why-filmmaking-is-civic.html"]').count(),0);
       assert.equal(await page.locator('.ledger-v1-record').isVisible(),false,'No repeated record below AI');
-      if (viewport.width <= 1250) {
+      if (await page.locator('#nav-hamburger').isVisible()) {
         await page.locator('#nav-hamburger').click();
         await page.locator('#nav-mobile-overlay a[href="#note-on-the-ledger"]').click();
         assert.equal(await page.locator('#nav-mobile-overlay').getAttribute('aria-hidden'),'true');
@@ -259,7 +261,7 @@ const server = http.createServer((req,res) => {
       await page.waitForSelector('#hub:visible');
       await page.locator('.hub-card-submit').click();
       await page.waitForSelector('#submit-your-story-view:visible');
-      if (viewport.width <= 1250) {
+      if (await page.locator('#nav-hamburger').isVisible()) {
         await page.locator('#nav-hamburger').click();
         await page.waitForSelector('#nav-mobile-overlay.open');
         assert.equal(await page.locator('#nav-hamburger').getAttribute('aria-expanded'),'true');

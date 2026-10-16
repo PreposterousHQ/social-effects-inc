@@ -45,7 +45,7 @@ const server = http.createServer((req, res) => {
       }
       const errors=[];
       page.on('pageerror', error=>errors.push(error.message));
-      if (width===390) {
+      if (await page.locator('#nav-hamburger').isVisible()) {
         await page.locator('#nav-hamburger').click();
         await page.locator('#nav-mobile-overlay a[href="#note-on-the-ledger"]').click();
       } else await page.locator('#nav-desktop-center a[href="#note-on-the-ledger"]').click();
