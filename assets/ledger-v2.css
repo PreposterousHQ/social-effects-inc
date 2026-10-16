@@ -869,6 +869,7 @@
 }
 
 .feed-item {
+  scroll-margin-top: calc(var(--ledger-nav-height, 68px) + 1rem);
   display: grid;
   gap: 1rem;
   padding: clamp(1.25rem, 4vw, 2rem);
@@ -886,6 +887,11 @@
   text-transform: uppercase;
   color: var(--gold-light);
 }
+
+.feed-share { display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.5rem; }
+.feed-share-label { flex-basis: 100%; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); }
+.feed-share .share-btn { flex-shrink: 0; color: var(--gold); font-size: 20px; cursor: pointer; }
+.feed-share .share-feedback { flex-basis: 100%; }
 
 .feed-item h3 {
   font-family: var(--serif);

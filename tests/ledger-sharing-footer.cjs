@@ -49,7 +49,7 @@ function sharedDestination(href){
   };
   for(const file of ['filmanthropyledger/index.html','Filmanthropy_Ledger.html']){
    await page.goto(origin+'/'+file+'?from=preview#hub',{waitUntil:'load'});
-   await checkLinks('.share-btn[href^="https:"]',canonical,false);
+   await checkLinks('.ledger-share-strip .share-btn[href^="https:"]',canonical,false);
    await checkLinks('.ledger-share-strip .share-btn[href^="https:"]',canonical,true);
    await page.locator('#copy-link-btn-ledger').click();copies++;
    assert.equal(await page.evaluate(()=>window.__copied.at(-1)),canonical);
@@ -57,9 +57,10 @@ function sharedDestination(href){
     await page.locator('.hub-card-essay').click();
     await page.waitForSelector('#essay-view:visible');
    }
-   await checkLinks('.inshort-band-footer .share-btn[href^="https:"]',canonical,true);
+   const essayDestination=file.includes('filmanthropyledger')?canonical+'#essay':canonical;
+   await checkLinks('.inshort-band-footer .share-btn[href^="https:"]',essayDestination,true);
    await page.locator('#inshort-copy-btn').click();copies++;
-   assert.equal(await page.evaluate(()=>window.__copied.at(-1)),canonical);
+   assert.equal(await page.evaluate(()=>window.__copied.at(-1)),essayDestination);
    for(const id of entryIds){
     await page.evaluate(id=>window.expandEntry(id),id);
     await page.waitForSelector('#ledger-expanded:visible');
