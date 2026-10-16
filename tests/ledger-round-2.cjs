@@ -125,8 +125,16 @@ const server = http.createServer((req,res) => {
       }
       await page.goto(origin + '/ledger');
       await page.waitForURL('**/Filmanthropy_Ledger.html');
+      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
+      assert.equal(await page.locator('#hub .playlist-card').count(),2);
+      assert.ok(await page.locator('#watch').evaluate(e => e.previousElementSibling.classList.contains('hub-ladder')));
+      await page.locator('.hub-card-now').click();
+      await page.waitForSelector('#happening-feed .feed-item');
+      assert.equal(await page.locator('#happening-now-view iframe').count(),0);
+      assert.equal(await page.locator('#watch').isVisible(),false);
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#watch');
       await page.waitForSelector('#watch:visible');
+      assert.equal(await page.locator('body').getAttribute('data-ledger-view'),'hub');
       const players = await page.locator('.playlist-player iframe').evaluateAll(els => els.map(e => ({src:e.src,lazy:e.loading,title:e.title,ratio:e.clientWidth/e.clientHeight})));
       assert.equal(players.length,2);
       assert.deepEqual(players.map(p => new URL(p.src).searchParams.get('list')),['PLaxLcyba8hZw','PLapgW1onHz3c']);

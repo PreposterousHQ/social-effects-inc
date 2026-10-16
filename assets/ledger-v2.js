@@ -347,7 +347,7 @@
 
     closeEntryPanel(!initial);
 
-    if (!hash || hash === 'hub') {
+    if (!hash || hash === 'hub' || hash === 'watch') {
       showView('hub');
       loadFeed();
     } else if (
@@ -360,7 +360,7 @@
       openChapterIfNeeded(hash);
     } else if (hash === 'case-studies' || LEGACY_CASE_ANCHORS.has(hash)) {
       showView('case-studies');
-    } else if (hash === 'happening-now' || hash === 'watch') {
+    } else if (hash === 'happening-now') {
       showView('happening-now');
       loadFeed();
     } else if (hash === 'stories-from-the-field') {

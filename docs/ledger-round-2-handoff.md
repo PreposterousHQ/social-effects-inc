@@ -22,13 +22,21 @@ reviews and merges this PR. No deployment, main push or merge is part of this wo
   `/eva` targets `#fbr`; `/vinati` targets `#skater-girl` on the same new route.
 - `/ledger` still leads to the original `Filmanthropy_Ledger.html`. The original
   page and its `#fbr` and `#skater-girl` behavior remain available.
-- Happening Now includes a Watch section with two clearly labeled,
+- The main Ledger hub includes two playlist boxes directly below “How giving rises,”
+  in a Watch section. Happening Now retains only its existing feed. The boxes use clearly labeled,
   responsive 16:9, lazy YouTube privacy-enhanced players. They sit side by side
   above 700px and stack at smaller widths. Each has a direct YouTube fallback link.
 - Optional tweak 4 is deferred: existing `social-share.jpg` remains on both
   `/filmanthropyledger` and v2. Core work does not depend on a new image.
 - Canonical essay, case cards, full entry data and authorship copy are unchanged.
   `Filmanthropy by Design and Regenerative Filmmaking` is preserved exactly.
+
+Placement correction, 2026-10-15: Bret requested the two playlist boxes on the
+main hub below “How giving rises,” with Happening Now showing only the feed.
+This replaces the earlier Happening Now placement; all other Round 2 fixes remain.
+Verified 2026-10-16 00:46 UTC: both desktop and mobile checks pass with the two
+playlist boxes immediately after the main-page ladder. Clicking Happening Now
+loads the feed, has no iframe inside its view, and hides the main-page playlists.
 
 ## Review previews
 
