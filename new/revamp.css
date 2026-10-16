@@ -236,3 +236,15 @@ body:has(.site-menu[open]) { overflow: hidden; }
 @media(max-width:600px) { .argument-grid { grid-template-columns: 1fr; } .argument-grid li { padding: 1.25rem; } }
 
 .vision-reading h2 { margin: 0 0 2rem; }
+
+/* Give each visitor choice a distinct landing and one useful next action. */
+.session-options { display: grid; gap: 2rem; margin-top: 2rem; }
+.session-option { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: 2rem; scroll-margin-top: 110px; }
+.session-option .reading { margin: 0; }
+.session-option .reading p:first-child { margin-top: 0; }
+.deck-access { max-width: 70ch; line-height: 1.8; margin: 1rem 0; }
+.deck-access a { color: var(--rust); text-decoration: underline; text-underline-offset: .2em; }
+.article-next { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+.article-next h2 { font-size: clamp(1.5rem,3vw,2rem); }
+.article-next p { margin-bottom: 1.25rem; }
+@media(max-width:800px) { .session-option { grid-template-columns: 1fr; gap: 1rem; } }
