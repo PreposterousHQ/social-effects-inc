@@ -1,5 +1,15 @@
 .company-revamp { background: var(--film); }
 .company-revamp main { padding-top: 84px; }
+.return-strip { position: sticky; top: 84px; z-index: 900; margin-top: 84px; padding: .45rem 1.5rem; border-bottom: 1px solid #c8a84b44; background: #100d0af5; }
+.return-strip:not([hidden]) + main { padding-top: 0; }
+.return-strip-inner,.return-bottom-inner { width: min(1180px,100%); margin: auto; }
+.return-strip a,.return-bottom a { display: inline-flex; align-items: center; min-height: 36px; color: var(--gold-light); font: .75rem/1.6 var(--mono); text-decoration: none; }
+.return-strip a:hover,.return-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.return-bottom { padding: 1.25rem 1.5rem; background: var(--film); border-top: 1px solid #c8a84b44; }
+.company-revamp section[id] { scroll-margin-top: 100px; }
+.company-revamp:has(.return-strip:not([hidden])) :is(section[id],main[id]) { scroll-margin-top: 140px; }
+.company-revamp .hero-opening { display: block; margin-bottom: 1rem; color: var(--paper); font: 700 1.35rem/1.45 var(--serif); }
+.booking-intro { max-width: 60ch; line-height: 1.8; margin-bottom: 1.5rem; }
 .company-revamp a:focus-visible, .company-revamp button:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
 .skip-link { position: fixed; left: 1rem; top: -100px; z-index: 3000; padding: 1rem; background: var(--gold); color: var(--film); }
 .skip-link:focus { top: 1rem; }
