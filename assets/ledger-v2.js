@@ -389,14 +389,30 @@
     return element;
   }
 
+  function isNewJerseyStory(item) {
+    return (Array.isArray(item.regions) && item.regions.includes('US-NJ')) ||
+      /\b(?:new jersey|nj)\b/i.test(item.place || '');
+  }
+
+  function orderedFeedItems(items) {
+    return items.map(function (item, index) {
+      return { item: item, index: index, newJersey: isNewJerseyStory(item) };
+    }).sort(function (a, b) {
+      return Number(b.newJersey) - Number(a.newJersey) ||
+        String(b.item.date || '').localeCompare(String(a.item.date || '')) ||
+        a.index - b.index;
+    }).map(function (record) { return record.item; });
+  }
+
   function renderFeed(data) {
+    var items = orderedFeedItems(data.items);
     var updated = 'Updated ' + formatDate(data.updated);
     document.getElementById('feed-updated').textContent = updated;
     document.getElementById('hub-feed-updated').textContent = updated;
 
     var hubTeasers = document.getElementById('hub-happening-teasers');
     hubTeasers.replaceChildren();
-    data.items.slice(0, 3).forEach(function (item) {
+    items.slice(0, 3).forEach(function (item) {
       hubTeasers.appendChild(makeElement('span', 'hub-headline', formatDate(item.date, {
         month: 'short',
         day: 'numeric',
@@ -406,7 +422,7 @@
 
     var feed = document.getElementById('happening-feed');
     feed.replaceChildren();
-    data.items.forEach(function (item) {
+    items.forEach(function (item) {
       var article = makeElement('article', 'feed-item');
       article.id = 'now-' + item.id;
       article.appendChild(makeElement('p', 'feed-dateline', item.place + ' · ' + formatDate(item.date)));
