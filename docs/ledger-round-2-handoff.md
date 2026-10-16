@@ -6,6 +6,12 @@ Scope: attached Round 2 brief, tweaks 1–4, including its second-playlist updat
 Base: `main` at `67dd537a31f91ff0fcb994f3de5654f41f953d7d`.
 Branch: `codex/ledger-round-2`.
 
+For the later playlist-title, NJ-first feed, information-link and story-submission
+changes, follow `docs/ledger-content-and-navigation-plan.md`. It also records
+Bret's future homepage/menu direction and the form → alert → approval → automatic
+publication workflow. Earlier Round 2 preparation and deployment statements
+below are historical checkpoints; current PRs record their actual merge status.
+
 Latest layout correction, 2026-10-15 New York time: Bret expected “How giving
 rises” near the top, as previously recommended. The follow-up branch
 `codex/ledger-giving-rises-top`, based on merged PR #5 at main `ab5c912`, moves
