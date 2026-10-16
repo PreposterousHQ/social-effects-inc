@@ -29,6 +29,25 @@
   color: rgba(247, 244, 239, 0.62) !important;
 }
 
+.ledger-v2 .ledger-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2.5rem 1.25rem;
+  text-align: center;
+}
+.ledger-footer-heading { display: grid; gap: 0.65rem; justify-items: center; }
+.ledger-footer-heading p { font-family: var(--mono); font-size: 0.7rem; line-height: 1.7; letter-spacing: 0.1em; text-transform: uppercase; color: #c8c1b6; }
+.ledger-footer-heading a { color: var(--gold-light); font-family: var(--serif); font-size: clamp(1.35rem, 4vw, 1.7rem); min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.ledger-footer-heading a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.ledger-footer-copyright { max-width: 52ch; font-family: var(--mono); font-size: 0.65rem; line-height: 1.8; color: #aaa296; }
+.ledger-footer-art { display: block; width: min(260px, 100%); height: auto; margin: 0 auto; }
+.share-feedback { color: var(--gold-light); font-size: 0.75rem; line-height: 1.5; }
+.share-feedback:empty { display: none; }
+.exp-share-btn { cursor: pointer; }
+
 .reading-progress {
   position: fixed;
   inset: 68px auto auto 0;

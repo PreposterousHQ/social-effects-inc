@@ -84,7 +84,8 @@ const server = http.createServer((req,res) => {
     }, {before:original('Filmanthropy_Ledger_v2.html'),after:fs.readFileSync(path.join(root,'Filmanthropy_Ledger_v2.html'),'utf8'),selectors:protectedSelectors});
     assert.ok(preserved,'Canonical essay, cards, bridge and authorship wording unchanged');
     assert.equal(fs.readFileSync(path.join(root,'assets/ledger-entries.js'),'utf8').replace(/\r\n/g,'\n'),original('assets/ledger-entries.js'));
-    assert.equal(fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/\r\n/g,'\n'),original('index.html','9015ddb60b23b1db6a305c3cb802f3e529a96ae3'));
+    const approvedCompanyCopy = original('index.html','9015ddb60b23b1db6a305c3cb802f3e529a96ae3').replace('every production leaves its community more whole than it found it','every production gifts its communities as much as possible and leaves them more whole than it found it');
+    assert.equal(fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/\r\n/g,'\n'),approvedCompanyCopy,'Only the exact approved company sentence changes');
     assert.equal(fs.readFileSync(path.join(root,'data/happening-now.json'),'utf8').replace(/\r\n/g,'\n'),original('data/happening-now.json'));
     assert.ok((await page.locator('.hub-framework').textContent()).includes('Filmanthropy by Design and Regenerative Filmmaking'));
     const aiPreserved = await page.evaluate(source => {
@@ -283,7 +284,7 @@ const server = http.createServer((req,res) => {
     }
     await page.goto(origin+'/socialeffects?source=ledger#services');
     await page.waitForURL('**/index.html?source=ledger#services');
-    report.push('/socialeffects opens the unchanged current homepage and preserves query/hash');
+    report.push('/socialeffects opens the approved company homepage and preserves query/hash');
 
     // Synthetic cases exercise future NJ prioritization without publishing invented news.
     const sample = JSON.parse(fs.readFileSync(path.join(root,'data/happening-now.json'),'utf8')).items[0];
