@@ -164,7 +164,6 @@
       document.querySelector('body > nav'),
       hero,
       hub,
-      document.querySelector('.ledger-v1-record'),
       document.querySelector('body > footer')
     ].concat(views).filter(Boolean).forEach(function (element) {
       if (element === entryPanel) return;
@@ -318,7 +317,7 @@
       target = document.getElementById('happening-now-view');
     } else if (hash === 'stories-from-the-field') {
       target = document.getElementById('stories-from-the-field-view');
-    } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story') {
+    } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story' || hash === 'note-on-the-ledger') {
       target = document.getElementById(hash + '-view');
     } else {
       target = document.getElementById(hash);
@@ -367,7 +366,7 @@
       loadFeed();
     } else if (hash === 'stories-from-the-field') {
       showView('stories-from-the-field');
-    } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story') {
+    } else if (hash === 'filmanthropy-and-ai' || hash === 'submit-your-story' || hash === 'note-on-the-ledger') {
       showView(hash);
     } else {
       showView('hub');

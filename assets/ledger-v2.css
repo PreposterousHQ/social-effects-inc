@@ -85,7 +85,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 0.65rem;
+  padding: 0 0.5rem;
   color: var(--paper);
   font-size: 0.72rem;
   text-decoration: none;
@@ -113,6 +113,9 @@
   color: var(--gold-light);
   font-size: 0.62rem;
 }
+
+.ledger-v2 .nav-mobile-close { min-width: 44px; min-height: 44px; }
+.ledger-v2 .nav-mobile-overlay > a { flex-shrink: 0; }
 
 @media (max-width: 1250px) {
   .ledger-v2 #nav-desktop-center,
@@ -164,11 +167,21 @@
   gap: 1rem;
   min-height: 44px;
   margin-top: 1.5rem;
-  color: var(--gold-light);
+  padding: 0.75rem 1.1rem;
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  background: var(--gold);
+  color: var(--ink);
   font-family: var(--mono);
   font-size: 0.75rem;
+  font-weight: 700;
   text-decoration: none;
 }
+
+.welcome-explore:hover { background: var(--gold-light); }
+
+.note-view .ledger-v1-record { padding: clamp(2rem, 6vw, 4rem) 1.25rem; }
+.note-view .ledger-v1-record-inner { text-align: left; }
 
 .ledger-photo-credit { margin-top: 1.5rem; font-family: var(--mono); font-size: 0.6rem; color: #b3a995; }
 
@@ -490,6 +503,7 @@
 }
 
 .ledger-view {
+  padding-top: var(--ledger-nav-height, 68px);
   scroll-margin-top: 68px;
 }
 
@@ -1041,12 +1055,20 @@
 @media (max-width: 600px) {
   .ledger-v2 .ledger-hero {
     min-height: 0;
-    padding-top: 7rem;
+    padding-top: 6rem;
+    padding-bottom: 2rem;
   }
 
   .ledger-v2 .ledger-hero-headline {
-    font-size: clamp(2.25rem, 10vw, 3.5rem);
+    font-size: clamp(2rem, 9vw, 3rem);
   }
+
+  .ledger-v2 .ledger-hero-tag { margin-bottom: 1rem; }
+  .ledger-byline { margin-bottom: 1.25rem; }
+  .ledger-introduction h2 { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .ledger-introduction p { margin-top: 0.75rem; line-height: 1.6; }
+  .welcome-explore { margin-top: 1.1rem; }
+  .ledger-photo-credit { display: none; }
 
   .hub-card {
     min-height: 285px;

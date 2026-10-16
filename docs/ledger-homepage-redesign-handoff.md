@@ -1,5 +1,9 @@
 # Ledger introduction, navigation and AI handoff
 
+Later refinement: see [Ledger note and mobile handoff](ledger-note-mobile-handoff.md)
+for the menu-only version/authorship note, removal of the AI article's extra
+links and the subsequent mobile adjustments. The milestone below records PR #8.
+
 Author: Filmanthropy Ledger / Codex
 Date: 2026-10-15, New York time
 Base: main `4131839f2e65e4a8cdb64f0069564afef86e2741` (merged PR #7).
