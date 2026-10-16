@@ -701,7 +701,7 @@
 <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
 
 <!-- NAVIGATION -->
-<nav style="background:#0a0806;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
+<nav aria-label="Ledger navigation" style="background:#0a0806;position:fixed;top:0;left:0;right:0;height:68px;z-index:1000;overflow:hidden;border-bottom:1px solid rgba(200,168,75,0.1);">
 
   <div style="position:absolute;top:5px;left:0;right:0;display:flex;align-items:center;padding:0 20px;pointer-events:none;z-index:1;justify-content:space-between;">
     <div style="width:14px;height:11px;background:#252018;border-radius:2px;flex-shrink:0;"></div>
@@ -750,41 +750,20 @@
 
   <div style="position:absolute;top:22px;bottom:22px;left:0;right:0;display:flex;align-items:center;padding:0 20px;z-index:5;">
 
-    <a href="index.html" style="display:flex;align-items:center;gap:6px;padding-right:1.25rem;border-right:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
-      <span style="font-family:var(--serif);font-size:0.95rem;font-weight:700;color:var(--paper);">Social<em style="color:var(--gold);font-style:normal;">Effects</em></span>
-      <span style="font-family:var(--mono);font-size:0.5rem;color:rgba(200,168,75,0.35);letter-spacing:0.08em;">NJ</span>
+    <a class="ledger-brand" href="#hub" aria-label="The Filmanthropy Ledger opening view">
+      <span>The Filmanthropy Ledger</span>
+      <small>by Social Effects</small>
     </a>
-
-    <div id="nav-desktop-center" style="display:flex;align-items:center;flex:1;justify-content:center;height:100%;">
-
-      <a href="index.html#filmanthropy" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-left:1px solid rgba(200,168,75,0.1);border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">01</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Filmanthropy</span>
-      </a>
-
-      <a href="index.html#services" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">02</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Services</span>
-      </a>
-
-      <a href="index.html#mission" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">03</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">Vision &amp; Mission</span>
-      </a>
-
-      <a href="/filmanthropyledger" class="nav-frame-link" style="display:flex;align-items:center;justify-content:center;height:100%;padding:0 1.1rem;border-right:1px solid rgba(200,168,75,0.1);text-decoration:none;position:relative;transition:background 0.2s;">
-        <span class="frame-no" style="position:absolute;top:1px;left:4px;font-family:var(--mono);font-size:6px;color:rgba(200,168,75,0.18);">04</span>
-        <span class="nav-frame-label" style="font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(247,244,239,0.55);transition:color 0.2s,text-shadow 0.2s;">The Ledger</span>
-      </a>
-
+    <div id="nav-desktop-center" class="ledger-menu">
+      <a href="#essay" class="nav-frame-link">Essay</a>
+      <a href="#filmanthropy-and-ai" class="nav-frame-link">Filmanthropy and AI</a>
+      <a href="#case-studies" class="nav-frame-link">Case Studies</a>
+      <a href="#happening-now" class="nav-frame-link">Happening Now</a>
+      <a href="#stories-from-the-field" class="nav-frame-link">Stories from the Field</a>
+      <a href="/socialeffects" class="nav-frame-link">Social Effects</a>
     </div>
-
-    <a href="team.html" class="nav-team-link">Who We Are</a>
-
-    <a href="index.html#contact" class="nav-cta-desktop" style="display:flex;align-items:center;padding-left:1.25rem;border-left:1px solid rgba(200,168,75,0.15);text-decoration:none;flex-shrink:0;height:100%;">
-      <span style="background:var(--gold);color:#0a0806;font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:2px;font-weight:700;">Work With Us</span>
-    </a>
-    <button class="nav-mobile-btn" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <a href="#submit-your-story" class="nav-cta-desktop ledger-submit-link">Submit a Story</a>
+    <button class="nav-mobile-btn" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span></span><span></span><span></span>
     </button>
 
@@ -799,12 +778,19 @@
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.75) 100%);z-index:2;pointer-events:none;"></div>
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(139,90,43,0.08) 100%),linear-gradient(to right,rgba(200,168,75,0.04) 0%,transparent 30%);z-index:2;pointer-events:none;"></div>
   <div class="ledger-hero-grain"></div>
-  <span class="ledger-hero-tag">A Living Record</span>
-  <h1 class="ledger-hero-headline">The <em>Filmanthropy</em> Ledger</h1>
-  <p class="ledger-hero-sub">What filmmaking has given for a hundred years. And what it could build in the next.</p>
-  <p style="font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(200,168,75,0.55); margin-bottom: 1.25rem; position:relative; z-index:5;">Think Outside the Frame</p>
-  <a href="#hub" aria-label="Explore the Ledger" style="display:inline-block;position:relative;z-index:5;color:rgba(200,168,75,0.38);text-decoration:none;font-size:1.3rem;line-height:1;margin-bottom:2rem;">&#8964;</a>
-  <p style="position:relative;z-index:5;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(200,168,75,0.25);margin-top:1.5rem;">World Film Producing Studios &middot; Fort Lee, New Jersey &middot; c. 1914</p>
+  <div class="ledger-welcome">
+    <span class="ledger-hero-tag">A Living Record · Think Outside the Frame</span>
+    <h1 class="ledger-hero-headline"><a href="#hub">The <em>Filmanthropy</em> Ledger</a></h1>
+    <p class="ledger-byline">by <a href="/socialeffects">Social Effects</a></p>
+    <div class="ledger-introduction" aria-labelledby="welcome-heading">
+      <h2 id="welcome-heading">How far can the gift of a film reach?</h2>
+      <p>The story it tells. The love that brings it into being. How it is made, who it benefits, and what it makes possible for people, communities and places.</p>
+      <p>The Filmanthropy Ledger explores those possibilities through real examples, news and firsthand stories, including the questions and possibilities at the intersection of filmmaking and AI.</p>
+      <p class="ledger-intro-link">For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our work and offerings, visit <a href="/socialeffects">Social Effects</a>.</p>
+    </div>
+    <a class="welcome-explore" href="#paths">Explore the Ledger <span aria-hidden="true">↓</span></a>
+    <p class="ledger-photo-credit">World Film Producing Studios · Fort Lee, New Jersey · c. 1914</p>
+  </div>
 </section>
 
 <!-- Film-strip divider: banded edges + sprocket perforations -->
@@ -813,22 +799,11 @@
 <!-- PHASE 1 HUB -->
 <main class="ledger-hub" id="hub" aria-labelledby="hub-heading">
   <div class="hub-inner">
-    <div class="hub-ladder" aria-label="How giving rises">
-      <span class="hub-ladder-label">How giving rises</span>
-      <span class="ladder-step ladder-sustainable">Sustainable<small>Do less harm</small></span>
-      <span class="ladder-arrow" aria-hidden="true">→</span>
-      <span class="ladder-step ladder-contributive">Contributive<small>Actively give back</small></span>
-      <span class="ladder-arrow" aria-hidden="true">→</span>
-      <span class="ladder-step ladder-regenerative">Regenerative<small>Leave something lasting</small></span>
-    </div>
-    <aside class="hub-social-effects" aria-label="More about Social Effects">
-      <p>For more info on Social Effects, Filmanthropy and Our Offerings Please Visit <a href="/socialeffects">www.socialeffectsnj.com/socialeffects</a></p>
-    </aside>
-    <span class="hub-kicker">Version One · Living Record</span>
+    <span class="hub-kicker">A Living Record · Six Ways In</span>
     <h2 id="hub-heading">Choose where to enter.</h2>
-    <p class="hub-intro">The Filmanthropy Ledger gathers a century of giving in film and asks what the next hundred years could build. Read the argument, explore the record, or follow the living work as it grows.</p>
+    <p class="hub-intro">Explore the ideas, see them in practice, and contribute a story from the field.</p>
 
-    <div class="hub-grid">
+    <div class="hub-grid" id="paths">
       <a class="hub-card hub-card-essay" href="#essay" data-section-link="essay">
         <span class="hub-number">01</span>
         <span class="hub-status">About 25 min</span>
@@ -838,32 +813,48 @@
         <span class="hub-cta">Read the essay <span aria-hidden="true">→</span></span>
       </a>
 
-      <a class="hub-card hub-card-cases" href="#case-studies" data-section-link="case-studies">
+      <a class="hub-card hub-card-ai" href="#filmanthropy-and-ai" data-section-link="filmanthropy-and-ai">
         <span class="hub-number">02</span>
-        <span class="hub-status">1921 → today</span>
-        <h3>The Case Studies</h3>
-        <p>Sixteen entries: four Forerunners and twelve case studies, from the century of care to the gold standard.</p>
-        <span class="hub-texture" aria-hidden="true">Pickford · Radke · EcoSet · Skater Girl · Sing Sing · Hobbiton</span>
-        <span class="hub-cta">Explore the record <span aria-hidden="true">→</span></span>
+        <span class="hub-status">The questions ahead</span>
+        <h3>Filmanthropy and AI</h3>
+        <p>The possibilities of AI, and the human relationships, shared experience and lasting community benefit of making a film.</p>
+        <span class="hub-cta">Read the AI perspective <span aria-hidden="true">→</span></span>
       </a>
 
-      <a class="hub-card hub-card-now" href="#happening-now" data-section-link="happening-now">
+      <article class="hub-card hub-card-cases" aria-labelledby="hub-cases-heading">
         <span class="hub-number">03</span>
-        <span class="hub-status" id="hub-feed-updated">Updated Oct. 15, 2026</span>
-        <h3>Happening Now</h3>
-        <p>Current Filmanthropy news, dated, sourced and labeled by verification status.</p>
-        <span class="hub-headlines" id="hub-happening-teasers" aria-live="polite">
-          <span>Loading the latest reports…</span>
-        </span>
-        <span class="hub-cta">See the feed <span aria-hidden="true">→</span></span>
-      </a>
+        <span class="hub-status">1921 → today</span>
+        <h3 id="hub-cases-heading"><a href="#case-studies" data-section-link="case-studies">The Case Studies</a></h3>
+        <p>Sixteen entries, from the pioneers and Forerunners who helped shape the field to productions that leave something lasting.</p>
+        <div class="hub-case-features">
+          <a href="/eva"><strong>Eva Radke · Film Biz Recycling</strong><span>Turning production surplus into a resource for communities and the creative reuse movement.</span></a>
+          <a href="/vinati"><strong>Vinati Makijany · Skater Girl</strong><span>A skatepark built for a film became a lasting community space, with a commitment that continued after filming.</span></a>
+        </div>
+        <a class="hub-cta" href="#case-studies" data-section-link="case-studies">Explore all entries <span aria-hidden="true">→</span></a>
+      </article>
 
       <a class="hub-card hub-card-stories" href="#stories-from-the-field" data-section-link="stories-from-the-field">
         <span class="hub-number">04</span>
-        <span class="hub-status">Submissions by email</span>
+        <span class="hub-status">Personal perspectives</span>
         <h3>Stories from the Field</h3>
-        <p>First-hand accounts from crews, communities and the people a production touched.</p>
-        <blockquote>“I love these stories. I love these efforts.”</blockquote>
+        <p>Personal, firsthand accounts of Filmanthropy from the people putting it into practice: crews, communities and the people a production touched.</p>
+        <span class="hub-cta">Explore firsthand stories <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="hub-card hub-card-now" href="#happening-now" data-section-link="happening-now">
+        <span class="hub-number">05</span>
+        <span class="hub-status" id="hub-feed-updated">Updated Oct. 15, 2026</span>
+        <h3>Happening Now</h3>
+        <p>News reports and developments in Filmanthropy and regenerative filmmaking, with New Jersey stories featured first.</p>
+        <span class="hub-headlines" id="hub-happening-teasers" aria-live="polite"><span>Loading the latest reports…</span></span>
+        <span class="hub-cta">Read the news <span aria-hidden="true">→</span></span>
+      </a>
+
+      <a class="hub-card hub-card-submit" href="#submit-your-story" data-section-link="submit-your-story">
+        <span class="hub-number">06</span>
+        <span class="hub-status">Email submissions open</span>
+        <h3>Submit Your Story</h3>
+        <p>Have an experience of Filmanthropy to share? Tell us what happened and what you learned. Stories are reviewed before publication.</p>
         <span class="hub-cta">Submit your stories here <span aria-hidden="true">→</span></span>
       </a>
     </div>
@@ -887,13 +878,13 @@
         </article>
       </div>
     </section>
-    <p class="hub-framework">The larger work is <a href="index.html#filmanthropy">Filmanthropy by Design and Regenerative Filmmaking</a>, from Social Effects NJ, a startup and foundation in its early stages.</p>
+    <p class="hub-framework">The larger work is <a href="/socialeffects#filmanthropy">Filmanthropy by Design and Regenerative Filmmaking</a>, from Social Effects NJ, a startup and foundation in its early stages.</p>
   </div>
 </main>
 
 <div id="essay-view" class="ledger-view" data-view="essay" hidden>
 <div class="view-mast">
-  <a class="view-back" href="#hub">← The four paths</a>
+  <a class="view-back" href="#hub">← Back to the Ledger</a>
   <span>01 · The Essay</span>
 </div>
 
@@ -1088,8 +1079,8 @@
 
 <div id="case-studies-view" class="ledger-view" data-view="case-studies" hidden>
 <div class="view-mast view-mast-dark">
-  <a class="view-back" href="#hub">← The four paths</a>
-  <span>02 · The Case Studies</span>
+  <a class="view-back" href="#hub">← Back to the Ledger</a>
+  <span>03 · The Case Studies</span>
 </div>
 <!-- HOW TO READ THIS LEDGER -->
 <section class="bridge-block">
@@ -1322,7 +1313,7 @@
 <section id="ledger-expanded" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="exp-name" tabindex="-1">
   <div class="exp-inner exp-card">
     <div style="display:flex;gap:1rem;margin-bottom:3rem;flex-wrap:wrap;">
-      <a class="exp-back" href="#hub" style="text-decoration:none;margin-bottom:0;">&#8592; The four paths</a>
+      <a class="exp-back" href="#hub" style="text-decoration:none;margin-bottom:0;">&#8592; Back to the Ledger</a>
       <button class="exp-back" onclick="closeExpanded()" style="margin-bottom:0;">&#8592; Back to entries</button>
     </div>
     <div class="exp-header">
@@ -1390,15 +1381,15 @@
 
 <section id="happening-now-view" class="ledger-view live-feed-view" data-view="happening-now" hidden aria-labelledby="happening-now-heading">
   <div class="view-mast view-mast-dark">
-    <a class="view-back" href="#hub">← The four paths</a>
-    <span>03 · Happening Now</span>
+    <a class="view-back" href="#hub">← Back to the Ledger</a>
+    <span>05 · Happening Now</span>
   </div>
   <div class="live-feed-inner">
     <span class="ledger-section-tag">A curated living record</span>
     <div class="live-feed-heading-row">
       <div>
         <h2 id="happening-now-heading">Happening Now</h2>
-        <p>Recent and newly surfaced reports of productions giving something concrete back to the people and places they touch.</p>
+        <p>News reports of productions giving something concrete back to the people and places they touch, gathered from reporting across the field.</p>
       </div>
       <span class="feed-updated" id="feed-updated">Updated Oct. 15, 2026</span>
     </div>
@@ -1412,21 +1403,68 @@
 
 <section id="stories-from-the-field-view" class="ledger-view stories-view" data-view="stories-from-the-field" hidden aria-labelledby="stories-heading">
   <div class="view-mast view-mast-dark">
-    <a class="view-back" href="#hub">← The four paths</a>
+    <a class="view-back" href="#hub">← Back to the Ledger</a>
     <span>04 · Stories from the Field</span>
   </div>
   <div class="stories-inner">
     <span class="ledger-section-tag">First-hand accounts · Share your story</span>
-    <h2 id="stories-heading">The field will write back.</h2>
-    <p class="stories-lede">This section will hold first-hand accounts from crew members, local hosts and neighbors, recipients of donated sets and materials, producers, film office staff and students.</p>
+    <h2 id="stories-heading">Stories from the Field</h2>
+    <p class="stories-lede">Personal, firsthand accounts of Filmanthropy: what people experienced, what they gave, and what a production made possible in their lives and communities.</p>
     <div class="stories-placeholder">
       <span class="stories-mark" aria-hidden="true">“</span>
       <p>Happening Now reports what outlets say. Stories from the Field will record what people say happened to them.</p>
       <span class="coming-soon-pill">Email submissions open</span>
     </div>
-    <p>Email your story for review. Include your name, role, location, what happened, and any production or source links. Please say whether you give permission to publish it. Nothing is published automatically from an email submission.</p>
-    <a class="stories-submit" href="mailto:bret@socialeffectsnj.com?subject=Story%20for%20the%20Filmanthropy%20Ledger">Submit your stories here</a>
-    <p>Have a case the Ledger should know about in the meantime? Write to <a href="mailto:bret@socialeffectsnj.com">bret@socialeffectsnj.com</a>.</p>
+    <p>We’re gathering accounts from crew members, local hosts and neighbors, recipients of donated sets and materials, producers, film office staff and students.</p>
+    <a class="stories-submit" href="#submit-your-story">Submit your stories here</a>
+  </div>
+</section>
+
+
+<section id="filmanthropy-and-ai-view" class="ledger-view stories-view" data-view="filmanthropy-and-ai" hidden aria-labelledby="ai-heading">
+  <div class="view-mast view-mast-dark"><a class="view-back" href="#hub">← Back to the Ledger</a><span>02 · Filmanthropy and AI</span></div>
+  <div class="stories-inner ai-inner">
+    <span class="ledger-section-tag">Filmanthropy and AI · A Social Effects Note</span>
+    <h2 id="ai-heading">Why Filmmaking&rsquo;s Future Is <em style="color:var(--gold);">Human and Civic</em></h2>
+    <p class="stories-lede">Artificial intelligence is changing what a film costs, how fast it is made, and what a screen can show. It is worth being clear, then, about the part of filmmaking that does not change, and why that part is the one with a future.</p>
+    <article class="ai-article" aria-labelledby="ai-heading">
+
+    <h3>The Artifact Was Never the Whole Point</h3>
+    <p>There is an old confusion worth naming. We tend to call the finished film "the work," the thing that streams, the thing that is reviewed, the thing that wins or loses a weekend. But anyone who has been inside a production knows the finished film is only the visible part. The work was also the three months an actor spent learning a craft, the village a crew built on location, the town that hosted them, the people who were changed by having been there. The film is the artifact. The making was the event.</p>
+    <p>For most of the industry's history this distinction did not matter much, because you could not have the artifact without the event. To get the film you had to actually make it, somewhere, with people. That is the assumption now coming loose.</p>
+
+    <h3>What AI Changes, and What It Does Not</h3>
+    <p>Artificial intelligence is a genuine and remarkable tool. It can translate a film into forty languages, edit and pace and color, generate imagery, and let collaborators across the world build on each other's work. Used well, it expands what filmmakers can do. Social Effects uses it daily, for matching, logistics, and documentation. We are not against it, and this is not a complaint about it.</p>
+    <p>But it is worth being precise about what it does. AI is becoming very good at producing the artifact, the images on the screen. It is not becoming, and is not meant to become, the event. It cannot employ a town. It cannot spend an afternoon with a community. It cannot leave a building behind. A model can generate a convincing image of a place. It cannot give back to one, because it was never in one.</p>
+
+    <h3>The Line Worth Drawing</h3>
+    <p>This is not a fear that AI will hollow out film. It is a clearer thought than that. Every powerful tool has a domain where it serves and a domain where it is not the point. As the artifact becomes cheaper and faster to generate, the artifact becomes less of where a film's value lives. What rises in value, by simple contrast, is everything AI cannot touch: a production that physically happened, in a real place, employing real people, leaving real things behind.</p>
+    <p>That is not nostalgia. It is where the durable worth is moving. A film shot in a real town is an economic event for that town, a civic moment, sometimes a piece of lasting infrastructure. None of that can be simulated, because all of it depends on having actually occurred.</p>
+
+    <h3>Filmmaking as a Civic Act</h3>
+    <p>This is the reframe Social Effects is built on. A film is not only a story told on a screen. A production is a temporary institution that arrives in a community, employs its people, uses its spaces, and then leaves. The only question is what it leaves.</p>
+    <p>It can leave a town as it found it, or a little worse, the dumpsters full. Or it can be designed so that the making itself is a gift: surplus rehomed, skills shared, young people brought onto real sets, and at its furthest reach something permanent built that the community keeps. That is Filmanthropy, and it is also, not by accident, the part of filmmaking that AI cannot replicate and cannot replace. A production designed to give back to the place it was made is a production whose value is rooted in the physical world.</p>
+
+    <h3>Why This Is a Future, Not a Defense</h3>
+    <p>So the case for Filmanthropy is not only ethical. It is strategic. As the screen-artifact becomes abundant and cheap, the productions that still matter will be the ones that were also events: that happened somewhere, meant something to the place they happened, and left it more whole. Filmmaking earns its future as a civic and creative and infrastructural act, not merely as a supplier of images.</p>
+    <p>The tools will keep getting better. They should. And the work of making a film with other people, in a real place, for the lasting good of that place, will keep being something only people can do. Knowing the difference is not a limitation. It is the whole strategy.</p>
+
+  </article>
+    <a class="stories-submit" href="#essay-why-now">Read “Why now” in the Ledger essay</a>
+    <p><a href="why-filmmaking-is-civic.html">Read the standalone Social Effects note</a></p>
+  </div>
+</section>
+
+<section id="submit-your-story-view" class="ledger-view stories-view" data-view="submit-your-story" hidden aria-labelledby="submit-heading">
+  <div class="view-mast view-mast-dark"><a class="view-back" href="#hub">← Back to the Ledger</a><span>06 · Submit Your Story</span></div>
+  <div class="stories-inner">
+    <span class="ledger-section-tag">Your experience · For review</span>
+    <h2 id="submit-heading">Submit Your Story</h2>
+    <p class="stories-lede">Have an experience of Filmanthropy to share? Tell us what happened and what you learned.</p>
+    <p>For now, email Bret your story. Include your name, role, location, what happened, and any production or source links. Please say whether you give permission to publish it.</p>
+    <p>Bret reviews submissions before publication. Sending a story does not publish it automatically.</p>
+    <a class="stories-submit" href="mailto:bret@socialeffectsnj.com?subject=Story%20for%20the%20Filmanthropy%20Ledger">Email your story to Bret</a>
+    <p>Write to <a href="mailto:bret@socialeffectsnj.com">bret@socialeffectsnj.com</a>. You can also suggest a case or news report for the Ledger.</p>
   </div>
 </section>
 
@@ -1650,14 +1688,16 @@ function copyEntryLink() {
 </script>
 
 <!-- MOBILE NAV OVERLAY -->
-<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Ledger navigation" aria-hidden="true" inert>
   <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Close navigation menu">&#x2715;</button>
-  <a href="index.html#filmanthropy" class="nav-mobile-item"><span class="nav-mobile-num">01</span>Filmanthropy</a>
-  <a href="index.html#services" class="nav-mobile-item"><span class="nav-mobile-num">02</span>Services</a>
-  <a href="index.html#mission" class="nav-mobile-item"><span class="nav-mobile-num">03</span>Vision &amp; Mission</a>
-  <a href="/filmanthropyledger" class="nav-mobile-item"><span class="nav-mobile-num">04</span>The Ledger</a>
-  <a href="team.html" class="nav-mobile-item">Who We Are</a>
-  <a href="index.html#contact" class="nav-mobile-cta-item">Work With Us</a>
+  <a href="#hub" class="nav-mobile-item">The Filmanthropy Ledger <small>by Social Effects</small></a>
+  <a href="#essay" class="nav-mobile-item"><span class="nav-mobile-num">01</span>Essay</a>
+  <a href="#filmanthropy-and-ai" class="nav-mobile-item"><span class="nav-mobile-num">02</span>Filmanthropy and AI</a>
+  <a href="#case-studies" class="nav-mobile-item"><span class="nav-mobile-num">03</span>Case Studies</a>
+  <a href="#happening-now" class="nav-mobile-item"><span class="nav-mobile-num">04</span>Happening Now</a>
+  <a href="#stories-from-the-field" class="nav-mobile-item"><span class="nav-mobile-num">05</span>Stories from the Field</a>
+  <a href="/socialeffects" class="nav-mobile-item"><span class="nav-mobile-num">06</span>Social Effects</a>
+  <a href="#submit-your-story" class="nav-mobile-cta-item">Submit a Story</a>
 </div>
 
 <script>
@@ -1665,22 +1705,44 @@ function copyEntryLink() {
   var overlay = document.getElementById('nav-mobile-overlay');
   var hamburger = document.getElementById('nav-hamburger');
   var closeBtn = document.getElementById('nav-mobile-close');
+  var background = Array.from(document.body.children).filter(function(el) {
+    return el !== overlay && !['SCRIPT', 'STYLE'].includes(el.tagName);
+  });
   function openNav() {
+    overlay.removeAttribute('inert');
+    overlay.setAttribute('aria-hidden', 'false');
     overlay.classList.add('open');
     hamburger.setAttribute('aria-expanded', 'true');
+    background.forEach(function(el) { el.inert = true; });
     document.body.style.overflow = 'hidden';
+    closeBtn.focus();
   }
-  function closeNav() {
+  function closeNav(restoreFocus) {
     overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.inert = true;
     hamburger.setAttribute('aria-expanded', 'false');
+    background.forEach(function(el) { el.inert = false; });
     document.body.style.overflow = '';
+    if (restoreFocus) hamburger.focus();
   }
   hamburger.addEventListener('click', openNav);
-  closeBtn.addEventListener('click', closeNav);
+  closeBtn.addEventListener('click', function() { closeNav(true); });
   overlay.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', closeNav);
+    a.addEventListener('click', function() { closeNav(false); });
   });
-  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeNav(); });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeNav(true); });
+  overlay.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { e.preventDefault(); closeNav(true); }
+    if (e.key !== 'Tab') return;
+    var controls = Array.from(overlay.querySelectorAll('button, a[href]'));
+    var first = controls[0], last = controls[controls.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 1250 && overlay.classList.contains('open')) closeNav(false);
+  });
 })();
 </script>
 <script src="assets/ledger-entries.js" defer></script>

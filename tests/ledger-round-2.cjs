@@ -32,15 +32,33 @@ const server = http.createServer((req,res) => {
   try {
     console.log('Starting browser checks');
     browser = await chromium.launch({headless:true, ...(process.env.LEDGER_BROWSER ? {channel:process.env.LEDGER_BROWSER} : {})});
-    const context = await browser.newContext();
+    const context = await browser.newContext({reducedMotion:process.env.LEDGER_MOTION || 'reduce'});
     const page = await context.newPage();
+    const watchdog = setTimeout(async () => {
+      console.error('Browser regression exceeded fifteen minutes at', page.url());
+      setTimeout(() => process.exit(1), 3000).unref();
+      await browser.close();
+      server.close();
+      process.exitCode = 1;
+    }, 900000);
+    watchdog.unref();
     page.setDefaultTimeout(10000);
+    page.setDefaultNavigationTimeout(30000);
     const goto = page.goto.bind(page);
-    page.goto = (url, options = {}) => goto(url, {waitUntil:'domcontentloaded', ...options});
+    page.goto = async (url, options = {}) => {
+      console.log('Navigate', new URL(url).pathname + new URL(url).hash);
+      const response = await goto(url, {waitUntil:'domcontentloaded', ...options});
+      console.log('Loaded', new URL(page.url()).pathname + new URL(page.url()).hash);
+      return response;
+    };
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
-    // External player availability is reported separately; navigation tests stay deterministic.
+    // Third-party resources are checked separately; navigation/layout use fallbacks
+    // so a slow font CDN or player cannot hold the local regression open.
     await page.route('https://www.youtube-nocookie.com/**', r => r.fulfill({status:200,contentType:'text/html',body:'<p>External player</p>'}));
+    for (const host of ['fonts.googleapis.com', 'fonts.gstatic.com', 'cdn.jsdelivr.net']) {
+      await page.route('https://' + host + '/**', r => r.fulfill({status:200,contentType:'text/css',body:''}));
+    }
     for (const route of ['/ledger', '/eva', '/vinati', '/filmanthropyledger', '/socialeffects', '/Filmanthropy_Ledger.html', ...entries.map(f => '/' + f)]) {
       assert.equal((await fetch(origin + route)).status, 200, route);
     }
@@ -48,15 +66,15 @@ const server = http.createServer((req,res) => {
     console.log(report.at(-1));
     const htmlFiles = execFileSync('git', ['ls-files','*.html'], {cwd:root,encoding:'utf8'}).trim().split('\n');
     for (const file of htmlFiles) {
-      const bad = await page.evaluate(html => {
+      const bad = await page.evaluate(({html, ledgerPage}) => {
         const doc = new DOMParser().parseFromString(html,'text/html');
         return [...doc.querySelectorAll('nav a, .nav-mobile-overlay a, footer a')]
-          .filter(a => /ledger/i.test(a.textContent) && a.getAttribute('href') !== '/filmanthropyledger')
+          .filter(a => /ledger/i.test(a.textContent) && a.getAttribute('href') !== '/filmanthropyledger' && !(ledgerPage && a.getAttribute('href') === '#hub'))
           .map(a => a.outerHTML);
-      }, fs.readFileSync(path.join(root,file),'utf8'));
+      }, {html:fs.readFileSync(path.join(root,file),'utf8'), ledgerPage:file === 'Filmanthropy_Ledger_v2.html'});
       assert.deepEqual(bad,[],file + ' navigation');
     }
-    report.push('Every existing desktop, mobile and footer Ledger navigation link uses /filmanthropyledger');
+    report.push('Companion Ledger links use /filmanthropyledger; the Ledger identity returns to its opening view');
     console.log(report.at(-1));
     await page.goto(origin + '/Filmanthropy_Ledger_v2.html');
     const protectedSelectors = '.essay-p, .essay-h3, .l-card, .bridge-p, .ledger-v1-record';
@@ -69,14 +87,22 @@ const server = http.createServer((req,res) => {
     assert.equal(fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/\r\n/g,'\n'),original('index.html','9015ddb60b23b1db6a305c3cb802f3e529a96ae3'));
     assert.equal(fs.readFileSync(path.join(root,'data/happening-now.json'),'utf8').replace(/\r\n/g,'\n'),original('data/happening-now.json'));
     assert.ok((await page.locator('.hub-framework').textContent()).includes('Filmanthropy by Design and Regenerative Filmmaking'));
+    const aiPreserved = await page.evaluate(source => {
+      const doc = new DOMParser().parseFromString(source, 'text/html');
+      return JSON.stringify([...doc.querySelectorAll('.article-body p')].map(e=>e.textContent)) ===
+        JSON.stringify([...document.querySelectorAll('.ai-article p')].map(e=>e.textContent));
+    }, original('why-filmmaking-is-civic.html', '4131839f2e65e4a8cdb64f0069564afef86e2741'));
+    assert.ok(aiPreserved, 'Existing AI article paragraphs preserved verbatim');
+    assert.equal(fs.readFileSync(path.join(root,'why-filmmaking-is-civic.html'),'utf8').replace(/\r\n/g,'\n'), original('why-filmmaking-is-civic.html', '4131839f2e65e4a8cdb64f0069564afef86e2741'));
     report.push('Canonical prose and all entry data unchanged; exact required framework phrase preserved');
     console.log(report.at(-1));
-    for (const viewport of [{width:1440,height:1000},{width:390,height:844}]) {
+    for (const viewport of [{width:1440,height:1000},{width:390,height:844}].filter(v=>!process.env.LEDGER_WIDTH || String(v.width)===process.env.LEDGER_WIDTH)) {
       console.log('Checking viewport',viewport.width);
       await page.setViewportSize(viewport);
       const landing = async () => {
+        console.log('Check Forerunners landing');
         await page.waitForLoadState('load');
-        await page.evaluate(() => document.fonts.ready);
+        await page.evaluate(() => Promise.race([document.fonts.ready, new Promise(resolve => setTimeout(resolve, 5000))]));
         await page.waitForFunction(() => {
           const h=document.getElementById('forerunners').getBoundingClientRect();
           const nav=document.querySelector('body > nav').getBoundingClientRect();
@@ -89,14 +115,16 @@ const server = http.createServer((req,res) => {
         assert.equal(await page.locator('#forerunner-grid .l-card').count(),4);
         assert.deepEqual(await page.locator('#forerunner-grid .l-card-name').allTextContents(),['Rock and Wrap It Up!','Film Biz Recycling','EcoSet','Earth Angel']);
         assert.equal((await page.locator('.forerunners-section .ledger-section-sub').textContent()).trim(),"Some of the modern operators who built production's waste and surplus into a working practice.");
+        console.log('Forerunners landing passed');
       };
+      if (!process.env.LEDGER_FOCUS_NEW) {
       await page.goto(origin + '/filmanthropyledger?check=round2#case-studies');
       await landing();
       assert.ok(page.url().includes('?check=round2#case-studies'));
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#forerunners');
       await landing();
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
-      await page.locator('.hub-card-cases').click();
+      await page.locator('.hub-card-cases [data-section-link]').first().click();
       await landing();
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#essay');
       await page.getByRole('link',{name:'Browse the Case Studies'}).click();
@@ -127,24 +155,84 @@ const server = http.createServer((req,res) => {
       }
       await page.goto(origin + '/ledger');
       await page.waitForURL('**/Filmanthropy_Ledger.html');
+      }
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
       assert.equal(await page.locator('#hub .playlist-card').count(),2);
-      assert.ok(await page.locator('.hub-inner').evaluate(e => e.firstElementChild.classList.contains('hub-ladder')));
-      assert.ok(await page.locator('.hub-social-effects').evaluate(e => e.previousElementSibling.classList.contains('hub-ladder')));
-      assert.equal(await page.locator('.hub-social-effects a').getAttribute('href'),'/socialeffects');
-      assert.equal((await page.locator('.hub-social-effects').textContent()).replace(/\s+/g,' ').trim(),'For more info on Social Effects, Filmanthropy and Our Offerings Please Visit www.socialeffectsnj.com/socialeffects');
+      assert.equal(await page.locator('#hub .hub-ladder, .hub-social-effects').count(),0);
+      assert.equal(await page.locator('#welcome-heading').textContent(), 'How far can the gift of a film reach?');
+      assert.equal(await page.locator('.ledger-intro-link a').getAttribute('href'),'/socialeffects');
+      assert.equal((await page.locator('.ledger-intro-link').textContent()).replace(/\s+/g,' ').trim(),'For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our work and offerings, visit Social Effects.');
+      assert.deepEqual(await page.locator('.hub-grid > .hub-card h3').allTextContents(), ['The Essay','Filmanthropy and AI','The Case Studies','Stories from the Field','Happening Now','Submit Your Story']);
+      const cards = await page.locator('.hub-grid > .hub-card').evaluateAll(els => els.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width};}));
+      if (viewport.width >= 720) {
+        assert.equal(cards[0].y,cards[1].y,'AI in first row');
+        assert.equal(cards[3].x,cards[5].x,'Submission directly under firsthand stories');
+        assert.equal(cards[4].y,cards[5].y,'Aligned last row');
+      } else assert.ok(cards.every((card,i)=>i===0 || card.y > cards[i-1].y),'Six cards stack in reading order');
+      assert.equal(await page.locator('.hub-case-features a[href="/eva"]').count(),1);
+      assert.equal(await page.locator('.hub-case-features a[href="/vinati"]').count(),1);
+      for (const [route,id] of [['/eva','fbr'],['/vinati','skater-girl']]) {
+        await page.locator('.hub-case-features a[href="'+route+'"]').click();
+        await page.waitForSelector('#ledger-expanded.is-open');
+        assert.equal(new URL(page.url()).hash,'#'+id);
+        await page.locator('#ledger-expanded a.exp-back[href="#hub"]').click();
+        await page.waitForSelector('#ledger-top:visible');
+      }
+      await page.locator('.hub-card-ai').click();
+      await page.waitForSelector('#filmanthropy-and-ai-view:visible');
+      assert.equal(await page.locator('.ai-article p').count(),10);
+      assert.match(await page.locator('#ai-heading').textContent(), /Human and Civic/);
+      console.log('Check AI article link to essay');
+      await page.locator('.ai-inner .stories-submit').scrollIntoViewIfNeeded();
+      await page.locator('.ai-inner .stories-submit').click();
+      await page.waitForSelector('#essay-why-now[open]');
+      await page.locator('.ledger-brand').click();
+      await page.waitForFunction(()=>document.body.dataset.ledgerView==='hub' && scrollY < 2);
+      await page.locator('#watch').scrollIntoViewIfNeeded();
+      await page.locator('.ledger-brand').click();
+      await page.waitForFunction(()=>scrollY < 2);
       assert.ok(await page.locator('#watch').evaluate(e => e.previousElementSibling.classList.contains('hub-grid')));
       if (process.env.LEDGER_SCREENSHOTS) {
         fs.mkdirSync(process.env.LEDGER_SCREENSHOTS,{recursive:true});
-        await page.locator('.hub-ladder').scrollIntoViewIfNeeded();
+        await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
         await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'main-top-'+viewport.width+'.png')});
+        await page.locator('body > nav').evaluate(e => { e.style.visibility = 'hidden'; });
+        try {
+          await page.locator('.hub-grid').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'six-paths-'+viewport.width+'.png')});
+        } finally {
+          await page.locator('body > nav').evaluate(e => { e.style.visibility = ''; });
+        }
       }
-      assert.match(await page.locator('.hub-card-stories .hub-cta').textContent(),/Submit your stories here/);
+      assert.match(await page.locator('.hub-card-stories p').textContent(),/Personal, firsthand accounts/);
       await page.locator('.hub-card-stories').click();
-      await page.waitForSelector('.stories-submit:visible');
-      assert.equal(await page.locator('.stories-submit').textContent(),'Submit your stories here');
-      assert.equal(await page.locator('.stories-submit').getAttribute('href'),'mailto:bret@socialeffectsnj.com?subject=Story%20for%20the%20Filmanthropy%20Ledger');
-      if (process.env.LEDGER_SCREENSHOTS) await page.locator('.stories-inner').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'stories-'+viewport.width+'.png')});
+      await page.waitForSelector('#stories-from-the-field-view:visible');
+      await page.locator('#stories-from-the-field-view .stories-submit').click();
+      await page.waitForSelector('#submit-your-story-view:visible');
+      assert.equal(await page.locator('#submit-your-story-view .stories-submit').getAttribute('href'),'mailto:bret@socialeffectsnj.com?subject=Story%20for%20the%20Filmanthropy%20Ledger');
+      if (process.env.LEDGER_SCREENSHOTS) await page.locator('#submit-your-story-view .stories-inner').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'submit-'+viewport.width+'.png')});
+      await page.locator('.ledger-brand').click();
+      await page.waitForSelector('#hub:visible');
+      await page.locator('.hub-card-submit').click();
+      await page.waitForSelector('#submit-your-story-view:visible');
+      if (viewport.width <= 1250) {
+        await page.locator('#nav-hamburger').click();
+        await page.waitForSelector('#nav-mobile-overlay.open');
+        assert.equal(await page.locator('#nav-hamburger').getAttribute('aria-expanded'),'true');
+        await page.keyboard.press('Shift+Tab');
+        assert.ok(await page.locator('.nav-mobile-cta-item').evaluate(e=>e===document.activeElement),'Mobile focus stays inside menu');
+        await page.keyboard.press('Escape');
+        assert.equal(await page.locator('#nav-hamburger').getAttribute('aria-expanded'),'false');
+        assert.ok(await page.locator('#nav-hamburger').evaluate(e=>e===document.activeElement));
+        await page.locator('#nav-hamburger').click();
+        await page.locator('#nav-mobile-overlay a[href="#filmanthropy-and-ai"]').click();
+        await page.waitForSelector('#filmanthropy-and-ai-view:visible');
+        assert.equal(await page.locator('#nav-mobile-overlay').getAttribute('aria-hidden'),'true');
+        assert.equal(await page.locator('body').evaluate(e=>e.style.overflow),'');
+        if (process.env.LEDGER_SCREENSHOTS) await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'ai-'+viewport.width+'.png')});
+      } else {
+        await page.locator('#nav-desktop-center a[href="#filmanthropy-and-ai"]').click();
+        await page.waitForSelector('#filmanthropy-and-ai-view:visible');
+      }
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
       await page.locator('.hub-card-now').click();
       await page.waitForSelector('#happening-feed .feed-item');
@@ -168,7 +256,7 @@ const server = http.createServer((req,res) => {
         await landing();
         await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'forerunners-'+viewport.width+'.png')});
       }
-      report.push(viewport.width + 'px: redirects, all 16 entry hashes, legacy hashes, Case Studies/Forerunners, keyboard entry/return, responsive 16:9 lazy players pass');
+      report.push(viewport.width + 'px: ' + (process.env.LEDGER_FOCUS_NEW ? 'focused new paths, menus and article navigation' : 'redirects, all 16 entry hashes, legacy hashes, Case Studies/Forerunners, keyboard entry/return') + ', responsive 16:9 lazy players pass');
     }
     await page.goto(origin+'/socialeffects?source=ledger#services');
     await page.waitForURL('**/index.html?source=ledger#services');
@@ -194,7 +282,7 @@ const server = http.createServer((req,res) => {
     assert.ok(teasers[0].includes('TEST NJ named') && teasers[1].includes('TEST NJ tagged') && teasers[2].includes('TEST NJ old'));
     report.push('Synthetic NJ-priority cases pass: explicit name, NJ abbreviation and US-NJ metadata; newest first within groups; matching hub teasers; source JSON unchanged');
     assert.deepEqual(errors,[],'No site JavaScript errors');
-    report.push('No site JavaScript errors. YouTube playback is external and is not asserted by these tests.');
+    report.push('No site JavaScript errors. External players/font CDNs are substituted; live playback/font delivery is not asserted by these tests.');
     console.log(report.join('\n'));
   } finally {if(browser)await browser.close();server.close();}
 })().catch(err => {console.error(err);process.exitCode=1;});
