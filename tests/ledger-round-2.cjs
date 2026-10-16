@@ -179,7 +179,7 @@ const server = http.createServer((req,res) => {
       assert.equal(await page.locator('.ledger-intro-link a').getAttribute('href'),'/socialeffects');
       assert.equal((await page.locator('.ledger-introduction > p').nth(1).textContent()).trim(),'The Filmanthropy Ledger explores those possibilities through real examples, an essay documenting 100 years of giving in film, news and firsthand stories—including the questions and possibilities at the intersection of filmmaking and AI.');
       assert.equal((await page.locator('.ledger-intro-link').textContent()).replace(/\s+/g,' ').trim(),'For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our educational and creative offerings, as well as our business services, visit Social Effects NJ.');
-      assert.deepEqual(await page.locator('.hub-grid > .hub-card h3').allTextContents(), ['The Case Studies','The Essay','Filmanthropy and AI','Stories from the Field','Happening Now','Submit Your Story']);
+      assert.deepEqual(await page.locator('.hub-grid > .hub-card h3').allTextContents(), ['Read the Case Studies','The Essay','Filmanthropy and AI','Happening Now','Stories from the Sets','Submit Your Story']);
       assert.deepEqual(await page.locator('.hub-grid > .hub-card .hub-number').allTextContents(),['01','02','03','04','05','06']);
       assert.deepEqual(await page.locator('#nav-desktop-center a').evaluateAll(els=>els.slice(0,3).map(e=>e.getAttribute('href'))),['#case-studies','#essay','#filmanthropy-and-ai']);
       assert.deepEqual(await page.locator('#nav-mobile-overlay .nav-mobile-item').evaluateAll(els=>els.slice(1,4).map(e=>e.textContent.trim())),['01Case Studies','02Essay','03Filmanthropy and AI']);
@@ -190,15 +190,19 @@ const server = http.createServer((req,res) => {
       const cards = await page.locator('.hub-grid > .hub-card').evaluateAll(els => els.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width};}));
       if (viewport.width >= 720) {
         assert.equal(cards[0].y,cards[1].y,'Case Studies and Essay in first row');
-        assert.equal(cards[3].x,cards[5].x,'Submission directly under firsthand stories');
-        assert.equal(cards[4].y,cards[5].y,'Aligned last row');
+        assert.equal(cards[2].y,cards[3].y,'AI and Happening Now in second row');
+        assert.equal(cards[4].y,cards[5].y,'Stories and submission aligned in last row');
       } else assert.ok(cards.every((card,i)=>i===0 || card.y > cards[i-1].y),'Six cards stack in reading order');
       assert.equal(await page.locator('.hub-case-features a[href="/eva"]').count(),1);
       assert.equal(await page.locator('.hub-case-features a[href="/vinati"]').count(),1);
-      assert.equal((await page.locator('.hub-case-browse').textContent()).replace(/\s+/g,' ').trim(),'Read All 16 Entries');
+      assert.equal(await page.locator('.hub-case-browse').count(),0);
+      assert.equal(await page.locator('#hub-cases-heading a').textContent(),'Read the Case Studies');
+      assert.ok(await page.locator('#hub-cases-heading a').evaluate(e=>getComputedStyle(e).textDecorationLine.includes('underline')));
+      assert.equal(await page.locator('#happening-now-view .view-mast span').textContent(),'04 · Happening Now');
+      assert.equal(await page.locator('#stories-from-the-field-view .view-mast span').textContent(),'05 · Stories from the Sets');
       assert.equal(await page.locator('.hub-case-provenance p').textContent(),'These two entries are based on Bret Warshawsky’s conversations with Eva Radke and Vinati Makijany during Summer 2026.');
       assert.ok(await page.locator('.hub-case-provenance').evaluate(e=>e.previousElementSibling.classList.contains('hub-case-features')));
-      await page.locator('.hub-case-browse').click();
+      await page.locator('#hub-cases-heading a').click();
       await landing();
       await page.locator('.ledger-brand').click();
       await page.waitForSelector('#hub:visible');

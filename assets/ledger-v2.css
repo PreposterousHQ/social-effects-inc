@@ -352,10 +352,8 @@
 .hub-card-ai { --card-accent: #475b78; background: #e7edf5; }
 .hub-card-submit { --card-accent: #856414; background: #f3ead3; }
 
-.hub-card-cases h3 a { color: inherit; text-decoration: none; }
+.hub-card-cases h3 a { color: inherit; text-decoration: underline; text-underline-offset: 0.14em; text-decoration-thickness: 0.055em; }
 .hub-card-cases a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.hub-card-cases .hub-case-browse { display: block; width: fit-content; margin-top: 0.25rem; color: var(--gold-light); font: inherit; font-weight: 800; text-decoration: none; }
-.hub-card-cases .hub-case-browse:hover { color: var(--gold); text-decoration: underline; }
 .hub-case-features { display: grid; gap: 1rem; margin-top: 0.5rem; }
 .hub-case-provenance { margin-top: 1.25rem; padding: 1rem; border: 1px solid var(--v2-line); }
 .hub-case-provenance > span { color: var(--gold-light); font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
