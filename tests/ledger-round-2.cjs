@@ -69,7 +69,7 @@ const server = http.createServer((req,res) => {
       const bad = await page.evaluate(({html, ledgerPage}) => {
         const doc = new DOMParser().parseFromString(html,'text/html');
         return [...doc.querySelectorAll('nav a, .nav-mobile-overlay a, footer a')]
-          .filter(a => /ledger/i.test(a.textContent) && a.getAttribute('href') !== '/filmanthropyledger' && !(ledgerPage && a.getAttribute('href') === '#hub'))
+          .filter(a => /ledger/i.test(a.textContent) && a.getAttribute('href') !== '/filmanthropyledger' && !(ledgerPage && ['#hub','#note-on-the-ledger'].includes(a.getAttribute('href'))))
           .map(a => a.outerHTML);
       }, {html:fs.readFileSync(path.join(root,file),'utf8'), ledgerPage:file === 'Filmanthropy_Ledger_v2.html'});
       assert.deepEqual(bad,[],file + ' navigation');
@@ -182,10 +182,31 @@ const server = http.createServer((req,res) => {
       await page.waitForSelector('#filmanthropy-and-ai-view:visible');
       assert.equal(await page.locator('.ai-article p').count(),10);
       assert.match(await page.locator('#ai-heading').textContent(), /Human and Civic/);
-      console.log('Check AI article link to essay');
-      await page.locator('.ai-inner .stories-submit').scrollIntoViewIfNeeded();
-      await page.locator('.ai-inner .stories-submit').click();
-      await page.waitForSelector('#essay-why-now[open]');
+      assert.equal(await page.locator('.ai-inner a[href="#essay-why-now"], .ai-inner a[href="why-filmmaking-is-civic.html"]').count(),0);
+      assert.equal(await page.locator('.ledger-v1-record').isVisible(),false,'No repeated record below AI');
+      if (viewport.width <= 1250) {
+        await page.locator('#nav-hamburger').click();
+        await page.locator('#nav-mobile-overlay a[href="#note-on-the-ledger"]').click();
+        assert.equal(await page.locator('#nav-mobile-overlay').getAttribute('aria-hidden'),'true');
+      } else await page.locator('#nav-desktop-center a[href="#note-on-the-ledger"]').click();
+      await page.waitForSelector('#note-on-the-ledger-view:visible');
+      assert.equal(await page.locator('.ledger-v1-record').isVisible(),true);
+      assert.match(await page.locator('.ledger-v1-record').textContent(),/A note on authorship/);
+      assert.equal(await page.locator('#filmanthropy-and-ai-view').isVisible(),false);
+      if (process.env.LEDGER_SCREENSHOTS) {
+        fs.mkdirSync(process.env.LEDGER_SCREENSHOTS,{recursive:true});
+        await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'note-'+viewport.width+'.png')});
+      }
+      await page.goBack();
+      await page.waitForSelector('#filmanthropy-and-ai-view:visible');
+      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#note-on-the-ledger');
+      await page.waitForSelector('#note-on-the-ledger-view:visible');
+      assert.ok(await page.locator('#note-on-the-ledger-view .view-back').evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('body > nav').getBoundingClientRect().bottom),'Back link clears fixed header');
+      await page.locator('#note-on-the-ledger-view .view-back').click();
+      await page.waitForFunction(()=>document.body.dataset.ledgerView==='hub');
+      assert.equal(await page.locator('.ledger-v1-record').isVisible(),false,'No repeated record below hub');
+      assert.ok(await page.locator('.welcome-explore').evaluate(e=>e.getBoundingClientRect().height>=44));
+      assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Opening fits viewport');
       await page.locator('.ledger-brand').click();
       await page.waitForFunction(()=>document.body.dataset.ledgerView==='hub' && scrollY < 2);
       await page.locator('#watch').scrollIntoViewIfNeeded();
@@ -208,6 +229,7 @@ const server = http.createServer((req,res) => {
       await page.waitForSelector('#stories-from-the-field-view:visible');
       await page.locator('#stories-from-the-field-view .stories-submit').click();
       await page.waitForSelector('#submit-your-story-view:visible');
+      assert.equal(await page.locator('.ledger-v1-record').isVisible(),false);
       assert.equal(await page.locator('#submit-your-story-view .stories-submit').getAttribute('href'),'mailto:bret@socialeffectsnj.com?subject=Story%20for%20the%20Filmanthropy%20Ledger');
       if (process.env.LEDGER_SCREENSHOTS) await page.locator('#submit-your-story-view .stories-inner').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'submit-'+viewport.width+'.png')});
       await page.locator('.ledger-brand').click();
@@ -236,6 +258,7 @@ const server = http.createServer((req,res) => {
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
       await page.locator('.hub-card-now').click();
       await page.waitForSelector('#happening-feed .feed-item');
+      assert.equal(await page.locator('.ledger-v1-record').isVisible(),false);
       assert.equal(await page.locator('#happening-now-view iframe').count(),0);
       assert.equal(await page.locator('#watch').isVisible(),false);
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#watch');
