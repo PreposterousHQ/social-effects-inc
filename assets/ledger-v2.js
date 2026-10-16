@@ -307,14 +307,13 @@
   }
 
   function scrollToHash(hash, initial) {
-    if (initial && window.scrollY > 0) return;
     var target;
     if (!hash) {
       target = document.documentElement;
     } else if (hash === 'essay') {
       target = document.getElementById('essay-view');
-    } else if (hash === 'case-studies') {
-      target = document.getElementById('case-studies-view');
+    } else if (hash === 'case-studies' || hash === 'forerunners') {
+      target = document.getElementById('forerunners');
     } else if (hash === 'happening-now') {
       target = document.getElementById('happening-now-view');
     } else if (hash === 'stories-from-the-field') {
@@ -324,8 +323,16 @@
     }
     if (target && target.scrollIntoView) {
       window.requestAnimationFrame(function () {
-        target.scrollIntoView({ behavior: initial ? 'auto' : 'smooth', block: 'start' });
+        target.scrollIntoView({ behavior: initial ? 'instant' : 'smooth', block: 'start' });
       });
+      // Web fonts can change the height of the introduction above this anchor.
+      if (document.fonts && document.fonts.status === 'loading') {
+        document.fonts.ready.then(function () {
+          if (window.location.hash.slice(1) === hash) {
+            target.scrollIntoView({ behavior: 'instant', block: 'start' });
+          }
+        });
+      }
     }
   }
 
@@ -340,7 +347,7 @@
 
     closeEntryPanel(!initial);
 
-    if (!hash || hash === 'hub') {
+    if (!hash || hash === 'hub' || hash === 'watch') {
       showView('hub');
       loadFeed();
     } else if (
@@ -493,6 +500,14 @@
     }
   }
 
+  // Keep anchor landings clear of the fixed navigation at any viewport size.
+  function updateNavHeight() {
+    var nav = document.querySelector('body > nav');
+    if (nav) document.body.style.setProperty('--ledger-nav-height', nav.getBoundingClientRect().height + 'px');
+  }
+  updateNavHeight();
+  window.addEventListener('resize', updateNavHeight);
+
   buildEssayChapters();
   enhanceCaseCards();
   labelShareControls();
@@ -503,6 +518,9 @@
   window.addEventListener('popstate', function () { routeHash(false); });
   window.addEventListener('scroll', updateReadingProgress, { passive: true });
   window.addEventListener('resize', updateReadingProgress);
+  window.addEventListener('load', function () {
+    if (!currentEntry) scrollToHash(window.location.hash.slice(1), true);
+  }, { once: true });
   history.scrollRestoration = 'manual';
   routeHash(true);
 })();
