@@ -19,6 +19,12 @@ viewport and aligns its content at the top so the extension does not push the
 whole introduction down. Phone Explore moves down about 22px; its already-hidden
 photo credit stays hidden. No requirement to cram every element into the fold.
 
+Final menu refinement: enlarge the Menu label to 13.6px and hamburger to 24px,
+with more space between its lines. Remove the rectangular button border.
+Keyboard focus uses a label underline instead of a box; the 44px target,
+Escape/focus return and resize behavior remain. Actual-font checks passed at
+1366/390/360/320px and the 1600px resize transition, after layout settles.
+
 The gold **Read all 16 entries →** button now follows that sentence, flowing
 beside its final words when room permits and wrapping normally on narrow views.
 It replaces the old bottom action and uses the existing `#case-studies` route,
@@ -55,4 +61,7 @@ Changed: `filmanthropyledger/index.html`, `assets/ledger-v2.css`, the existing
 navigation regression and this handoff. CSS version follows final bytes.
 No router, entry data, canonical essay/AI/case narrative, company-page, image,
 metadata or share-destination change. Review PR has the tested commit; production
-remains PR #14 until Bret authorizes merging this new adjustment.
+remains PR #14 until deployment. Bret explicitly instructed “Merge and make all
+live,” authorizing the combined case, opening and menu changes in PR #15.
+Verify the exact merge deployment and live behavior before claiming publication.
+The separate company wording proposal remains pending.
