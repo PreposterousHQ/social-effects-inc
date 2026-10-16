@@ -1,4 +1,4 @@
-# Ledger choice order and company labels
+# Ledger choice order, company labels and opening copy
 
 2026-10-16 — Filmanthropy Ledger / Codex
 
@@ -16,7 +16,15 @@ byline, company-information link, AI note label and learn-about action now use
 **Social Effects NJ**. The established footer tagline “From Special Effects to
 Social Effects” and canonical article prose are preserved. This change does not
 rewrite the older company site; Bret's branding direction also applies to its
-future rewrite. Opening paragraph revisions remain pending Bret's copy review.
+future rewrite.
+
+Bret approved the two revised opening paragraphs and explicitly authorized
+adding them to PR #12 and merging/publishing the complete change. The introduction
+now names an essay documenting 100 years of giving in film and points to Social
+Effects NJ for educational and creative offerings and business services. The
+opening question and first paragraph remain unchanged. Preserve the exact
+phrase “Filmanthropy by Design and Regenerative Filmmaking.” Broader biography,
+company-site, services and educational-page work remains saved for later.
 
 Changed files: `Filmanthropy_Ledger_v2.html`, `tests/ledger-round-2.cjs`, and this
 handoff. No CSS, JavaScript, route, image, metadata, news data or company-page
@@ -25,7 +33,7 @@ ledger, rather than copying private business source material into this repo.
 
 Validation: existing focused regression with normal scrolling motion at
 1440×1000 and 390×844 passed. Checks include exact card/menu order and numbers,
-company labels, stacked phone cards, desktop alignment, Eva/Vinati navigation,
+company labels and exact approved opening copy, stacked phone cards, desktop alignment, Eva/Vinati navigation,
 Case Studies/Forerunners landing, AI and menu-note navigation, mobile keyboard
 focus/closing, submission email destination, feed-only Happening Now, lazy
 16:9 playlist embeds and NJ feed-priority fixtures. Legacy/alias/16 entry URLs
@@ -36,6 +44,7 @@ third-party delivery and physical-phone behavior are not claimed. Whitespace
 checks pass. The existing test now waits for normal scrolling to finish before
 checking note-page header clearance.
 
-Use a normal PR for review. Publication is not included until Bret authorizes
-merging this change. The PR supplies the pinned review preview and current
-implementation commit; main remains the production source.
+PR #12 supplies the pinned review preview and current implementation commit.
+Bret's explicit authorization covers merging and publishing this combined
+update. Verify the exact merge's Pages deployment and the live opening/card/menu
+behavior before claiming publication. Main remains the production source.

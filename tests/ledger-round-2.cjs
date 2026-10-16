@@ -26,7 +26,7 @@ const server = http.createServer((req,res) => {
 });
 (async () => {
   await new Promise(r => server.listen(0, '127.0.0.1', r));
-  const origin = 'http://127.0.0.1:' + server.address().port;
+    const origin = process.env.LEDGER_ORIGIN || 'http://127.0.0.1:' + server.address().port;
   let browser;
   const report = [];
   try {
@@ -162,7 +162,8 @@ const server = http.createServer((req,res) => {
       assert.equal(await page.locator('#hub .hub-ladder, .hub-social-effects').count(),0);
       assert.equal(await page.locator('#welcome-heading').textContent(), 'How far can the gift of a film reach?');
       assert.equal(await page.locator('.ledger-intro-link a').getAttribute('href'),'/socialeffects');
-      assert.equal((await page.locator('.ledger-intro-link').textContent()).replace(/\s+/g,' ').trim(),'For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our work and offerings, visit Social Effects NJ.');
+      assert.equal((await page.locator('.ledger-introduction > p').nth(1).textContent()).trim(),'The Filmanthropy Ledger explores those possibilities through real examples, an essay documenting 100 years of giving in film, news and firsthand stories—including the questions and possibilities at the intersection of filmmaking and AI.');
+      assert.equal((await page.locator('.ledger-intro-link').textContent()).replace(/\s+/g,' ').trim(),'For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our educational and creative offerings, as well as our business services, visit Social Effects NJ.');
       assert.deepEqual(await page.locator('.hub-grid > .hub-card h3').allTextContents(), ['The Case Studies','The Essay','Filmanthropy and AI','Stories from the Field','Happening Now','Submit Your Story']);
       assert.deepEqual(await page.locator('.hub-grid > .hub-card .hub-number').allTextContents(),['01','02','03','04','05','06']);
       assert.deepEqual(await page.locator('#nav-desktop-center a').evaluateAll(els=>els.slice(0,3).map(e=>e.getAttribute('href'))),['#case-studies','#essay','#filmanthropy-and-ai']);
