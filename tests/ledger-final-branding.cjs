@@ -36,22 +36,22 @@ const server=http.createServer((req,res)=>{
     return ['meta[property="og:image"]','meta[name="twitter:image"]'].every(s=>doc.querySelector(s)?.content===newImage)&&doc.querySelector('meta[property="og:image:width"]')?.content==='1200'&&doc.querySelector('meta[property="og:image:height"]')?.content==='630';
    },{html:await response.text(),newImage});
    assert.ok(checks,file+' social metadata');metaPages++;
-   if(!['Filmanthropy_Ledger_v2.html','Filmanthropy_Ledger.html'].includes(file))assert.equal(html.replace(/\r\n/g,'\n'),before.replaceAll(oldImage,newImage),'Only metadata image changes in '+file);
+   if(!['Filmanthropy_Ledger_v2.html','filmanthropyledger/index.html','Filmanthropy_Ledger.html'].includes(file))assert.equal(html.replace(/\r\n/g,'\n'),before.replaceAll(oldImage,newImage),'Only metadata image changes in '+file);
   }
   assert.equal(metaPages,22);
   assert.ok(fs.readFileSync(path.join(root,'social-share.jpg')).equals(fs.readFileSync(path.join(root,'social-share-nj-v2.jpg'))),'Legacy image path serves same corrected artwork');
   for(const file of ['social-share.jpg','social-share-nj-v2.jpg']){const image=await fetch(origin+'/'+file);assert.equal(image.status,200);assert.ok(Buffer.from(await image.arrayBuffer()).equals(fs.readFileSync(path.join(root,file))),file+' served bytes match corrected image');}
-  for(const file of ['Filmanthropy_Ledger_v2.html','Filmanthropy_Ledger.html']){
-   const before=execFileSync('git',['show',baseline+':'+file],{cwd:root,encoding:'utf8',maxBuffer:2e6});
+  for(const file of ['filmanthropyledger/index.html','Filmanthropy_Ledger.html']){
+   const before=execFileSync('git',['show',baseline+':'+(file==='filmanthropyledger/index.html'?'Filmanthropy_Ledger_v2.html':file)],{cwd:root,encoding:'utf8',maxBuffer:2e6});
    const after=fs.readFileSync(path.join(root,file),'utf8');
-   const preserved=await page.evaluate(({before,after})=>{const texts=html=>[...new DOMParser().parseFromString(html,'text/html').querySelectorAll('.essay-p,.essay-h3,.l-card,.bridge-p,.ledger-v1-record,.ai-article')].map(e=>e.textContent);return JSON.stringify(texts(before))===JSON.stringify(texts(after));},{before,after});
+   const preserved=await page.evaluate(({before,after})=>{const texts=html=>[...new DOMParser().parseFromString(html,'text/html').querySelectorAll('.essay-p,.essay-h3,.l-card,.bridge-p,.ledger-v1-record,.ai-article')].map(e=>e.textContent);return JSON.stringify(texts(before))===JSON.stringify(texts(after));},{before:file==='filmanthropyledger/index.html'?before.replace('>Learn About Social Effects</a>','>Learn About Social Effects NJ</a>'):before,after});
    assert.ok(preserved,'Protected prose unchanged in '+file);
   }
   const dimensions=await page.evaluate(async url=>{const img=new Image();img.src=url;await img.decode();return {width:img.naturalWidth,height:img.naturalHeight};},origin+'/social-share-nj-v2.jpg');
   assert.deepEqual(dimensions,{width:1200,height:630});
   for(const width of [360,390,1440]){
    await page.setViewportSize({width,height:900});
-   await page.goto(origin+'/Filmanthropy_Ledger_v2.html#hub',{waitUntil:'load'});
+   await page.goto(origin+'/filmanthropyledger/index.html#hub',{waitUntil:'load'});
    await page.locator('.ledger-footer').scrollIntoViewIfNeeded();
    const copyright=page.locator('.ledger-footer-copyright');
    assert.equal(await copyright.textContent(),'© 2006 Social Effects NJ');
@@ -59,7 +59,7 @@ const server=http.createServer((req,res)=>{
    assert.ok(await copyright.evaluate(e=>{const p=e.getBoundingClientRect();const t=e.previousElementSibling.getBoundingClientRect();return p.top>=t.bottom&&p.top-t.bottom<18&&Math.abs((p.x+p.width/2)-(t.x+t.width/2))<2;}),'Copyright directly under title and centered');
    assert.equal(await copyright.evaluate(e=>getComputedStyle(e).textTransform),'none');
    assert.equal(await page.locator('.ledger-footer-brand figcaption').textContent(),'Social Effects NJ');
-   assert.equal(await page.locator('.ledger-footer-art').getAttribute('src'),'social-effects-logo.png');
+   assert.equal(await page.locator('.ledger-footer-art').getAttribute('src'),'/social-effects-logo.png');
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
    if(process.env.LEDGER_SCREENSHOTS){fs.mkdirSync(process.env.LEDGER_SCREENSHOTS,{recursive:true});await page.locator('.ledger-footer').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'footer-'+width+'.png')});}
    console.log(width+'px: exact 2006 copyright directly under Ledger title, centered; original footer artwork preserved');
