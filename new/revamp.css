@@ -212,7 +212,7 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .company-revamp .degree-status { color: var(--ink-soft); }
 .company-revamp .deck-viewer { color: var(--paper); }
 .company-revamp .rev-section.vision-screen { background: linear-gradient(#09080666,#090806ee 70%),url('/new/theater-hero.png') center top/cover; color: var(--paper); }
-.company-revamp .vision-screen :is(.eyebrow,h2 em) { color: var(--gold-light); }
+.company-revamp .rev-section.vision-screen :is(.eyebrow,h2 em) { color: var(--gold-light); }
 
 
 .company-revamp :is(.deck-switcher button,.deck-actions a,.materials-invite a) { color: var(--rust); }
