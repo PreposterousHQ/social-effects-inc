@@ -1,4 +1,4 @@
-# Clear case-study entry point and shared conversation note
+# Clear case-study entry point and a more relaxed opening
 
 2026-10-16 — Filmanthropy Ledger / Codex
 
@@ -6,6 +6,18 @@ Base main: `9f8f8fb66090dc016432d39d334623edc42bdb66` (published PR #14).
 Bret requested a clearer all-cases action immediately after “something lasting”
 in the home Case Studies box, slightly more room before Eva's feature, and a
 shared conversation-source box below both Eva and Vinati.
+
+His follow-up laptop photo requested more breathing room in the opening:
+move Explore and the photo attribution downward, add a little room between the
+question and first paragraph, and allow the first desktop screen to end in dark
+background rather than forcing the lower film-strip divider into view. The
+opening title/question stay in place; copy, body widths/font sizes/line heights
+and spacing between body paragraphs are preserved. An 8px larger gap before the
+first paragraph produces ordinary 8px flow below it. Explore moves down 40px on
+desktop and the credit down 48px. The desktop hero extends beyond the initial
+viewport and aligns its content at the top so the extension does not push the
+whole introduction down. Phone Explore moves down about 22px; its already-hidden
+photo credit stays hidden. No requirement to cram every element into the fold.
 
 The gold **Read all 16 entries →** button now follows that sentence, flowing
 beside its final words when room permits and wrapping normally on narrow views.
@@ -34,6 +46,10 @@ Broad navigation uses substituted external fonts/icons/players. Separate
 button target and note below both features, content bounds and viewport fit
 passed; screenshots visually reviewed. The existing clipped decorative ring is
 excluded from content-overflow measurements. Whitespace passes.
+Actual-font before/after opening checks passed at 1366×600, 1440×700, 1920×900
+and 390×844: unchanged title/question coordinates and body text/dimensions,
+requested gap/action/credit movement, no horizontal overflow, and the desktop
+divider below the initial viewport. Laptop screenshot visually reviewed.
 
 Changed: `filmanthropyledger/index.html`, `assets/ledger-v2.css`, the existing
 navigation regression and this handoff. CSS version follows final bytes.
