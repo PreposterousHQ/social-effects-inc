@@ -22,7 +22,7 @@ const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://local
   for(const width of [1366,390,320]){
     await page.setViewportSize({width,height:900});await page.goto(origin+'/new/offerings.html',{waitUntil:'domcontentloaded'});await page.evaluate(()=>document.fonts.ready);
     assert.equal(await page.locator('iframe').count(),0);assert.equal(await page.locator('#deck-unlock').isVisible(),true);assert.equal(await page.locator('#deck-controls').isVisible(),false);
-    assert.ok(await page.locator('.services').isVisible(),'Page outside viewer is public');
+    assert.ok(await page.locator('#presentation-overview').isVisible(),'Page outside viewer is public');
     for(const id of ['education','corporate','lab']){await page.locator('[data-deck="'+id+'"]').click();await page.waitForFunction(()=>!document.querySelector('[data-deck]').disabled);assert.equal(await page.locator('#deck-heading').textContent(),config.decks[id].title);assert.equal(await page.locator('#deck-slide').getAttribute('src'),config.decks[id].cover);assert.equal(await page.locator('#deck-slide-text').textContent(),'');}
     assert.ok(!sent.some(r=>r.url.endsWith('.bin')),'No encrypted content requested before password');
     await page.locator('#deck-password').fill('deliberately-wrong-password');await page.locator('#deck-unlock button').click();await page.waitForFunction(()=>!document.querySelector('#deck-unlock button').disabled);assert.match(await page.locator('#deck-error').textContent(),/password did not unlock/);assert.equal(await page.locator('#deck-controls').isVisible(),false);assert.equal(await page.locator('#deck-password').inputValue(),'');

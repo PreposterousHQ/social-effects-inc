@@ -8,18 +8,19 @@ This is the separate-page reading draft requested by Bret, based on his edited [
 
 | Page | Contents |
 | --- | --- |
-| `/new/` | Revised introduction and definition, three connected approaches to giving, New Jersey collaboration and routes into the new pages |
-| `/new/our-practice.html` | Filmanthropy by Design, regenerative filmmaking, the human gift, links to history and AI |
-| `/new/offerings.html` | Document, Present, Teach, Do; proposed Foundation and LLC; educational/creative offerings; three protected decks; Discovery, Design, Liaison, Story; Film Ready towns and fees |
+| `/new/` | Short introduction, Presentation and Lab invitation, real examples, four service routes, New Jersey collaboration and booking |
+| `/new/our-practice.html` | Definition and connected approaches to giving, Filmanthropy by Design, regenerative filmmaking, human gift, history and AI |
+| `/new/offerings.html` | Presentations & Labs: audience, presentation/conversation/lab, intended takeaways, booking and three protected decks |
+| `/new/production-services.html` | Discovery, Design, Liaison, Story; Film Ready towns and fees; route to proposed Production Reuse operation |
 | `/new/film-biz-recycling.html` | The proposed reuse operation, material/human/proceeds streams and future pipeline |
 | `/new/values.html` | Edited principles, vision, mission and Moonshot invitation |
-| `/new/team.html` | Bret and Andrew; “More to come soon.” |
+| `/new/team.html` | About: Bret and Andrew, “More to come soon,” proposed Foundation/LLC structure and wider operating scope |
 | `/new/contact.html` | Existing public email, phone, WhatsApp and Telegram routes |
 | `/new/filmanthropy-history.html` | Companion history copy from the master |
 | `/new/why-filmmaking-is-civic.html` | Companion AI/civic filmmaking copy from the master |
 | `/new/moonshot.html` | Companion Moonshot copy from the master |
 
-Navigation, responsive menu, footer, assets and styles live within `/new`. Existing projector/theater/Fort Lee imagery and portraits are copied byte for byte. The established cream, dark, gold and rust palette and type families are retained. All ten draft pages carry `noindex,follow`; that is an indexing preference, not access control.
+Navigation, responsive menu, footer, assets and styles live within `/new`. Existing projector/theater/Fort Lee imagery and portraits are copied byte for byte. The established cream, dark, gold and rust palette and type families are retained. All eleven draft pages carry `noindex,follow`; that is an indexing preference, not access control.
 
 ## Deck viewer
 
@@ -43,7 +44,7 @@ The packager defaults to a 20-character minimum. Bret requested a shorter, memor
 
 ## Editorial boundaries
 
-The Doc remains the creative master. Subsequent homepage wording follows Bret’s direct approval: explain the idea briefly, include generosity and community social impact, then invite booking. The original long Foundation/LLC opening is no longer the homepage introduction; detailed entity information remains on Offerings. The Doc itself has not been overwritten. Company legal structures, recycling operations, academic credentials and unconfirmed affiliations remain proposed/intended where the source identifies them that way. The public team is only Bret and Andrew. Informal editorial instructions and unconfirmed private partnership speculation were not turned into public commitments. The practice page includes a concise regenerative synthesis with a link to the canonical Ledger. Statistics and historical assertions carried over from the source are editorial material, not newly certified facts. No final homepage migration or new legal structure is established by this draft.
+The Doc remains the creative master. Subsequent homepage wording follows Bret’s direct approval: explain the idea briefly, include generosity and community social impact, then invite booking. The original long Foundation/LLC opening is no longer the homepage introduction; detailed entity information now follows the people on About. The Doc itself has not been overwritten. Company legal structures, recycling operations, academic credentials and unconfirmed affiliations remain proposed/intended where the source identifies them that way. The public team is only Bret and Andrew. Informal editorial instructions and unconfirmed private partnership speculation were not turned into public commitments. The practice page includes a concise regenerative synthesis with a link to the canonical Ledger. Statistics and historical assertions carried over from the source are editorial material, not newly certified facts. No final homepage migration or new legal structure is established by this draft.
 
 ## Return navigation and booking refinement
 
@@ -66,3 +67,13 @@ Publication and exact live acceptance are recorded in the PR after deployment. R
 Bret directed a refinement of the site’s position within New Jersey’s film community. The revision celebrates New Jersey film growth and existing production, crew, municipal, educational and nonprofit work. It removes claims that most of the industry stops at a floor, that earlier giving could not last, or that few towns have considered community benefit. Sustainability, contribution and regenerative outcomes remain distinct, connected practices. Early planning, a responsible person, production feasibility and community priorities clarify the service offered. The presentation/lab description gives a concrete learning outcome.
 
 The [official NJ Take 2 page](https://www.nj.gov/njfilm/nj-take-2.shtml) supports the linked program description. Unverified operational claims about universal intake lists, and promises to become the statewide coordinating layer, were replaced with the proposed operation’s specific intended contribution. This is independent work; no government affiliation or endorsement is implied. Canonical Ledger essay/entries, original homepage, deck files, booking event and navigation behavior are unchanged. Native Google Docs/Slides were not edited.
+
+## Clearer visitor paths and hero proportions, 16 October 2026
+
+Following Bret’s instruction to restructure, the homepage now moves from a short orientation to the Presentation and Lab invitation, real examples, practical services, New Jersey collaboration and booking. Detailed definition/history/three connected approaches move to Our Practice. The primary menu is Presentations & Labs, Production Services, Our Practice, About and The Ledger, with Book a Call alongside. Production Reuse, Values & Vision and companion essays remain available in the full menu and footer. Existing page addresses remain usable.
+
+Presentations & Labs retains /new/offerings.html and #presentations, the original encrypted deck assets, password flow and three-deck switcher. It now explains the audience, activities and practical takeaways before the slides. Production Services is a new page with the existing four-service detail, four methodology icons, town offering and reuse invitation. The old #services anchor on Offerings remains as a route to that page. About retains /new/team.html, both existing biographies and the unconfirmed-team boundary, with the proposed legal/operating information moved below the people. Original company homepage and Ledger content remain unchanged.
+
+Page-hero images were already full width but some short headings made the banners shallow, especially Who We Are on phones. Shared minimum heights now give desktop banners 520px and smaller-screen banners at least 400px, while longer content can grow. Background cover sizing retains the image aspect ratio and existing imagery; no image was regenerated or distorted. Hero jump links use the established gold on dark backgrounds. Shared CSS/JS references are versioned.
+
+A one-minute Grok video script and six-shot production brief are delivered separately to Bret. Recommended placement is click-to-play after the homepage opening, before the main presentation invitation, with a poster, captions and a booking route. No video has been generated, no public player or placeholder has been added, and no paid generation has been started.

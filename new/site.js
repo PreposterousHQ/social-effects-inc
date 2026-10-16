@@ -10,10 +10,11 @@
   var pageNames = {
     '/new/': 'Home',
     '/new/our-practice.html': 'Our Practice',
-    '/new/offerings.html': 'Offerings',
+    '/new/offerings.html': 'Presentations & Labs',
+    '/new/production-services.html': 'Production Services',
     '/new/film-biz-recycling.html': 'Production Reuse',
     '/new/values.html': 'Values & Vision',
-    '/new/team.html': 'Who We Are',
+    '/new/team.html': 'About Social Effects NJ',
     '/new/contact.html': 'Contact',
     '/new/moonshot.html': 'the Practical Moonshot',
     '/new/filmanthropy-history.html': 'the History of Filmanthropy',
