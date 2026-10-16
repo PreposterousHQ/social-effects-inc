@@ -89,3 +89,15 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .deck-switcher button[aria-pressed="true"] { background: var(--gold); color: var(--film); }
 .deck-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-top: 1rem; font-size: .8rem; line-height: 1.7; }
 .deck-actions a { color: var(--gold-light); }.degree-status { margin-top: 1rem; color: #d2c9b7; font-size: .85rem; line-height: 1.8; }
+
+/* Give shorter page banners the same breathing room as longer introductions. */
+.page-hero { min-height: 520px; display: flex; align-items: center; background-position: center,75% 45%; }
+.page-hero-inner { width: min(1180px,100%); }
+.page-hero .text-link { color: var(--gold-light); }
+.feature-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 3rem; align-items: start; }
+.outcome-panel { padding: 2rem; border: 1px solid #9a7b2a55; background: #fbf8f1; }
+.outcome-panel h3 { font: 700 1.7rem/1.3 var(--serif); margin-bottom: 1.25rem; }
+.outcome-panel ul { padding-left: 1.25rem; line-height: 1.9; }
+.outcome-panel li + li { margin-top: .5rem; }
+.company-revamp :is(#discovery,#design,#liaison,#story,#organization,#people) { scroll-margin-top: 150px; }
+@media(max-width:800px) { .feature-grid { grid-template-columns: 1fr; gap: 2rem; } .page-hero { min-height: 400px; } }
