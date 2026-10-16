@@ -43,3 +43,5 @@ Keep black for hero/footer, use one warm ivory for reading surfaces and gold for
 ## Validation
 
 Company checks cover eleven routes at 1366/1024/390/320px: layout/menu, About order/anchors, absent duplicate practice blocks, contacts, reading-position restoration and direct-entry fallbacks. Actual-font desktop/phone screenshots cover About, spectrum/human gift and the homepage closing section. Third-party players are isolated for routing tests; messaging delivery and native-deck editing are outside this pass. Publication and live verification are recorded in the PR and shared TODO.
+
+Final consistency follow-up: the word-history page no longer quotes a superseded homepage definition. Its One Wide Field paragraph now links directly to the current definition and the Ledger, avoiding another repeated definition. The remaining origin narrative is preserved.
