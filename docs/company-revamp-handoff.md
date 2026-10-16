@@ -8,7 +8,7 @@ This is the separate-page reading draft requested by Bret, based on his edited [
 
 | Page | Contents |
 | --- | --- |
-| `/new/` | Revised introduction and definition, three levels of practice, routes into the new pages |
+| `/new/` | Revised introduction and definition, three connected approaches to giving, New Jersey collaboration and routes into the new pages |
 | `/new/our-practice.html` | Filmanthropy by Design, regenerative filmmaking, the human gift, links to history and AI |
 | `/new/offerings.html` | Document, Present, Teach, Do; proposed Foundation and LLC; educational/creative offerings; three protected decks; Discovery, Design, Liaison, Story; Film Ready towns and fees |
 | `/new/film-biz-recycling.html` | The proposed reuse operation, material/human/proceeds streams and future pipeline |
@@ -60,3 +60,9 @@ The homepage gives the short invitation Bret approved and leads to the contact/b
 - Follow-up return tests: `tests/company-return.cjs` checks two-level contextual returns, browser Back/Forward, exact reading positions, reload, mobile menu closure, direct-link fallback without JavaScript and the homepage-to-booking route at 1366/390/320 pixels. The return strip sits outside `main` so it remains available while the footer is in view. All ten pages also pass the layout/menu suite after the shared header/return changes.
 
 Publication and exact live acceptance are recorded in the PR after deployment. Remaining work is Bret’s reading/design pass, future copy/services refinement, future team decisions, and refreshing exported decks as their sources evolve.
+
+## New Jersey collaboration copy refinement, 16 October 2026
+
+Bret directed a refinement of the site’s position within New Jersey’s film community. The revision celebrates New Jersey film growth and existing production, crew, municipal, educational and nonprofit work. It removes claims that most of the industry stops at a floor, that earlier giving could not last, or that few towns have considered community benefit. Sustainability, contribution and regenerative outcomes remain distinct, connected practices. Early planning, a responsible person, production feasibility and community priorities clarify the service offered. The presentation/lab description gives a concrete learning outcome.
+
+The [official NJ Take 2 page](https://www.nj.gov/njfilm/nj-take-2.shtml) supports the linked program description. Unverified operational claims about universal intake lists, and promises to become the statewide coordinating layer, were replaced with the proposed operation’s specific intended contribution. This is independent work; no government affiliation or endorsement is implied. Canonical Ledger essay/entries, original homepage, deck files, booking event and navigation behavior are unchanged. Native Google Docs/Slides were not edited.
