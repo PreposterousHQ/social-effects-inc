@@ -64,7 +64,17 @@ Focused new-interaction checks passed at 1440×1000 and 390×844, including the
 AI article link, direct Eva/Vinati links, title return, submission path, menu
 keyboard behavior, card arrangement, NJ ordering and responsive playlists.
 Opening, card and AI-view screenshots were inspected with fallback fonts.
-The full legacy-route run is in progress; publication waits for its outcome.
+The full regression subsequently passed at both sizes with normal motion
+enabled, including all 16 browser redirect chains, `/ledger`, `/eva`, `/vinati`,
+the original `Filmanthropy_Ledger.html`, `#fbr`, `#skater-girl`, canonical
+query/hash preservation, Forerunners landings, keyboard return, new-view
+interactions, NJ-priority fixtures and both lazy 16:9 players. No site
+JavaScript errors occurred. JavaScript syntax and diff-whitespace checks pass.
+
+Review PR: https://github.com/PreposterousHQ/social-effects-inc/pull/8
+
+Verified implementation preview (HTML, CSS and JavaScript returned HTTP 200):
+https://raw.githack.com/PreposterousHQ/social-effects-inc/df513008f2178a49ca845318ce6d6bec3e5f11e3/Filmanthropy_Ledger_v2.html#hub
 
 Run `tests/ledger-round-2.cjs` with Playwright available on `NODE_PATH` and
 `LEDGER_BROWSER=chrome` for installed Chrome. `LEDGER_SCREENSHOTS` optionally
