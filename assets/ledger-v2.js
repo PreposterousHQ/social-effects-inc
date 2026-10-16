@@ -57,6 +57,17 @@
   var currentEntry = null;
   var lastEntryTrigger = null;
   var feedPromise = null;
+  var routeRevision = 0;
+  var scrollInterrupted = false;
+
+  // A reader’s own movement takes precedence over late font/feed anchor corrections.
+  function interruptPendingScroll() { scrollInterrupted = true; }
+  ['wheel', 'touchstart', 'pointerdown'].forEach(function (name) {
+    window.addEventListener(name, interruptPendingScroll, { passive: true });
+  });
+  window.addEventListener('keydown', function (event) {
+    if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) interruptPendingScroll();
+  });
   var feedItemsByHash = Object.create(null);
 
   var SHARE_SECTIONS = {
@@ -360,7 +371,11 @@
     }
   }
 
-  function scrollToHash(hash, initial) {
+  function scrollToHash(hash, initial, revision) {
+    if (revision === undefined) revision = routeRevision;
+    function mayCorrectAnchor() {
+      return revision === routeRevision && !scrollInterrupted && window.location.hash.slice(1) === hash;
+    }
     var target;
     if (!hash || hash === 'hub') {
       target = document.documentElement;
@@ -381,12 +396,12 @@
     }
     if (target && target.scrollIntoView) {
       window.requestAnimationFrame(function () {
-        target.scrollIntoView({ behavior: initial ? 'instant' : 'smooth', block: 'start' });
+        if (mayCorrectAnchor()) target.scrollIntoView({ behavior: initial ? 'instant' : 'smooth', block: 'start' });
       });
       // Web fonts can change the height of the introduction above this anchor.
       if (document.fonts && document.fonts.status === 'loading') {
         document.fonts.ready.then(function () {
-          if (window.location.hash.slice(1) === hash) {
+          if (mayCorrectAnchor()) {
             target.scrollIntoView({ behavior: 'instant', block: 'start' });
           }
         });
@@ -395,6 +410,8 @@
   }
 
   function routeHash(initial) {
+    var revision = ++routeRevision;
+    scrollInterrupted = false;
     var hash = window.location.hash.slice(1);
 
     if (ENTRY_ORDER.includes(hash)) {
@@ -421,7 +438,7 @@
     } else if (hash === 'happening-now' || hash.indexOf('now-') === 0) {
       showView('happening-now');
       loadFeed().then(function () {
-        if (window.location.hash.slice(1) === hash) scrollToHash(hash, initial);
+        if (window.location.hash.slice(1) === hash) scrollToHash(hash, initial, revision);
       });
     } else if (hash === 'stories-from-the-field') {
       showView('stories-from-the-field');
@@ -431,7 +448,7 @@
       showView('hub');
     }
 
-    scrollToHash(hash, initial);
+    scrollToHash(hash, initial, revision);
     updateReadingProgress();
   }
 

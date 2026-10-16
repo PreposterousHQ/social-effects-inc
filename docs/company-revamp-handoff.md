@@ -14,7 +14,7 @@ This is the separate-page reading draft requested by Bret, based on his edited [
 | `/new/production-services.html` | Discovery, Design, Liaison, Story; Film Ready towns and fees; route to proposed Production Reuse operation |
 | `/new/film-biz-recycling.html` | The proposed reuse operation, material/human/proceeds streams and future pipeline |
 | `/new/values.html` | Edited principles, vision, mission and Moonshot invitation |
-| `/new/team.html` | About: Bret and Andrew, “More to come soon,” proposed Foundation/LLC structure and wider operating scope |
+| `/new/team.html` | About: values/vision, developing Foundation/LLC structure, then Who We Are with Bret, Andrew and “More to come soon” |
 | `/new/contact.html` | Existing public email, phone, WhatsApp and Telegram routes |
 | `/new/filmanthropy-history.html` | Companion history copy from the master |
 | `/new/why-filmmaking-is-civic.html` | Companion AI/civic filmmaking copy from the master |
@@ -107,3 +107,9 @@ Validation includes all eleven draft routes at 1366/1024/390/320px, menu/focus a
 Bret requested immediate publication before the broader repetition audit. The homepage contact links now share one height and type size, with a simple Email Bret label and no repeated visible number/address line. Telegram uses his supplied `@Bret_Warshawsky` username. Booking remains the prominent invitation; the email and messaging links share the same visual treatment. The homepage’s bottom contextual Back panel is removed, superseding the earlier instruction to keep it. Subpage return links remain.
 
 Work With Us has a full-viewport hero below the fixed navigation, eliminating the strip of the next light section on the tested laptop view. Shared CSS/JS references advance to version 7. All eleven routes pass the company regression at 1366/1024/390/320px; separate actual-font checks cover uniform contact-box heights, the correct Telegram destination, absent homepage return panel and hero extent at 1366/390/320px. The broader copy/structure and Ledger scrolling audit continues separately.
+
+## Structure and repetition cleanup, 16 October 2026
+
+The completed [site audit](company-streamline-audit.md) assigns each page a distinct purpose. What We Do loses repeated definition/history material and duplicate offer cards; the spectrum now follows Designed in from the Start. Regenerative Filmmaking and the Human Gift remain. Optional reading is three direct links. About begins with values, vision and mission, then the developing Social Effects NJ Foundation / Social Effects NJ LLC, followed by Who We Are with Bret and Andrew. It no longer repeats the service detail or Explore What We Are Building button. Public entity names are presented as in development, not as a verified incorporation claim. The homepage closing invitation is shorter; Work With Us holds full details. Reuse copy now invites people to help shape the proposed network and celebrates existing infrastructure without claiming to be the entire system. Shared styles use version 8.
+
+The Ledger loses only its repeated framework paragraph beneath the playlists. Canonical essay/cards/entry data and the exact phrase Filmanthropy by Design and Regenerative Filmmaking remain. Its scroll fix prevents delayed font/feed/window-load corrections from pulling readers back after they have begun moving. A before/after slow-font probe reproduced and eliminated a 1,980px-to-574px reset; delayed-font/feed tests and the existing full Ledger regression pass. Ordinary new section navigation still works. See the audit for source/test scope, word-count reductions and the unimplemented palette recommendation.
