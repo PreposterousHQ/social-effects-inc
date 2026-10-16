@@ -81,7 +81,7 @@ const server = http.createServer((req,res) => {
     const preserved = await page.evaluate(({before,after,selectors}) => {
       const texts = html => [...new DOMParser().parseFromString(html,'text/html').querySelectorAll(selectors)].map(e=>e.textContent);
       return JSON.stringify(texts(before)) === JSON.stringify(texts(after));
-    }, {before:original('Filmanthropy_Ledger_v2.html'),after:fs.readFileSync(path.join(root,'Filmanthropy_Ledger_v2.html'),'utf8'),selectors:protectedSelectors});
+    }, {before:original('Filmanthropy_Ledger_v2.html').replace('>Learn About Social Effects</a>','>Learn About Social Effects NJ</a>'),after:fs.readFileSync(path.join(root,'Filmanthropy_Ledger_v2.html'),'utf8'),selectors:protectedSelectors});
     assert.ok(preserved,'Canonical essay, cards, bridge and authorship wording unchanged');
     assert.equal(fs.readFileSync(path.join(root,'assets/ledger-entries.js'),'utf8').replace(/\r\n/g,'\n'),original('assets/ledger-entries.js'));
     const approvedCompanyCopy = original('index.html','9015ddb60b23b1db6a305c3cb802f3e529a96ae3').replace('every production leaves its community more whole than it found it','every production gifts its communities as much as possible and leaves them more whole than it found it');
@@ -162,11 +162,16 @@ const server = http.createServer((req,res) => {
       assert.equal(await page.locator('#hub .hub-ladder, .hub-social-effects').count(),0);
       assert.equal(await page.locator('#welcome-heading').textContent(), 'How far can the gift of a film reach?');
       assert.equal(await page.locator('.ledger-intro-link a').getAttribute('href'),'/socialeffects');
-      assert.equal((await page.locator('.ledger-intro-link').textContent()).replace(/\s+/g,' ').trim(),'For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our work and offerings, visit Social Effects.');
-      assert.deepEqual(await page.locator('.hub-grid > .hub-card h3').allTextContents(), ['The Essay','Filmanthropy and AI','The Case Studies','Stories from the Field','Happening Now','Submit Your Story']);
+      assert.equal((await page.locator('.ledger-intro-link').textContent()).replace(/\s+/g,' ').trim(),'For more about what we mean by Filmanthropy, Filmanthropy by Design and Regenerative Filmmaking, and to explore our work and offerings, visit Social Effects NJ.');
+      assert.deepEqual(await page.locator('.hub-grid > .hub-card h3').allTextContents(), ['The Case Studies','The Essay','Filmanthropy and AI','Stories from the Field','Happening Now','Submit Your Story']);
+      assert.deepEqual(await page.locator('.hub-grid > .hub-card .hub-number').allTextContents(),['01','02','03','04','05','06']);
+      assert.deepEqual(await page.locator('#nav-desktop-center a').evaluateAll(els=>els.slice(0,3).map(e=>e.getAttribute('href'))),['#case-studies','#essay','#filmanthropy-and-ai']);
+      assert.deepEqual(await page.locator('#nav-mobile-overlay .nav-mobile-item').evaluateAll(els=>els.slice(1,4).map(e=>e.textContent.trim())),['01Case Studies','02Essay','03Filmanthropy and AI']);
+      assert.deepEqual(await page.locator('a[href="/socialeffects"]').allTextContents(),['Social Effects NJ','Social Effects NJ','Social Effects NJ','07Social Effects NJ']);
+      assert.equal(await page.locator('.ledger-brand small').textContent(),'by Social Effects NJ');
       const cards = await page.locator('.hub-grid > .hub-card').evaluateAll(els => els.map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width};}));
       if (viewport.width >= 720) {
-        assert.equal(cards[0].y,cards[1].y,'AI in first row');
+        assert.equal(cards[0].y,cards[1].y,'Case Studies and Essay in first row');
         assert.equal(cards[3].x,cards[5].x,'Submission directly under firsthand stories');
         assert.equal(cards[4].y,cards[5].y,'Aligned last row');
       } else assert.ok(cards.every((card,i)=>i===0 || card.y > cards[i-1].y),'Six cards stack in reading order');
@@ -202,6 +207,7 @@ const server = http.createServer((req,res) => {
       await page.waitForSelector('#filmanthropy-and-ai-view:visible');
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#note-on-the-ledger');
       await page.waitForSelector('#note-on-the-ledger-view:visible');
+      await page.waitForFunction(()=>document.querySelector('#note-on-the-ledger-view .view-back').getBoundingClientRect().top>=document.querySelector('body > nav').getBoundingClientRect().bottom);
       assert.ok(await page.locator('#note-on-the-ledger-view .view-back').evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('body > nav').getBoundingClientRect().bottom),'Back link clears fixed header');
       await page.locator('#note-on-the-ledger-view .view-back').click();
       await page.waitForFunction(()=>document.body.dataset.ledgerView==='hub');
