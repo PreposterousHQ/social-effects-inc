@@ -102,7 +102,8 @@ const server = http.createServer((req,res) => {
     const approvedCompanyCopy = original('index.html','9015ddb60b23b1db6a305c3cb802f3e529a96ae3').replace('every production leaves its community more whole than it found it','every production gifts its communities as much as possible and leaves them more whole than it found it');
     assert.equal(fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/\r\n/g,'\n'),approvedCompanyCopy,'Only the exact approved company sentence changes');
     assert.equal(fs.readFileSync(path.join(root,'data/happening-now.json'),'utf8').replace(/\r\n/g,'\n'),original('data/happening-now.json'));
-    assert.ok((await page.locator('.hub-framework').textContent()).includes('Filmanthropy by Design and Regenerative Filmmaking'));
+    assert.equal(await page.locator('.hub-framework').count(),0,'Repeated framework sentence removed');
+    assert.ok((await page.locator('body').textContent()).includes('Filmanthropy by Design and Regenerative Filmmaking'),'Required phrase remains in the introduction');
     const aiPreserved = await page.evaluate(source => {
       const doc = new DOMParser().parseFromString(source, 'text/html');
       return JSON.stringify([...doc.querySelectorAll('.article-body p')].map(e=>e.textContent)) ===

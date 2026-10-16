@@ -8,7 +8,7 @@ const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://local
  async function atPosition(y){try{await page.waitForFunction(y=>Math.abs(scrollY-y)<3,y,{timeout:3000});}catch(e){throw Error('Expected scroll '+y+', received '+await page.evaluate(()=>scrollY)+' at '+page.url());}}
  for(const width of [1366,390,320]){
   await page.setViewportSize({width,height:900});
-  await page.goto(origin+'/new/our-practice.html',{waitUntil:'load'});await ready();const historyLink=page.locator('.route-card a[href="/new/filmanthropy-history.html"]');await historyLink.scrollIntoViewIfNeeded();await ready();const aY=await page.evaluate(()=>scrollY);assert.ok(aY>1000);
+  await page.goto(origin+'/new/our-practice.html',{waitUntil:'load'});await ready();const historyLink=page.locator('main a[href="/new/filmanthropy-history.html"]');await historyLink.scrollIntoViewIfNeeded();await ready();const aY=await page.evaluate(()=>scrollY);assert.ok(aY>1000);
   await historyLink.click();await page.waitForURL('**/new/filmanthropy-history.html');await ready();assert.equal(await page.locator('.return-bottom a').textContent(),'← Back to What We Do');
   // A second page lets the test verify a complete return chain, not a single Home link.
   await page.locator('.site-footer a[href="/new/contact.html"]').scrollIntoViewIfNeeded();const bY=await page.evaluate(()=>scrollY);await page.locator('.site-footer a[href="/new/contact.html"]').click();await page.waitForURL('**/new/contact.html');await ready();assert.equal(await page.locator('.return-bottom a').textContent(),'← Back to the History of Filmanthropy');
