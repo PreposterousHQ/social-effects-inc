@@ -460,7 +460,7 @@
 
   function loadFeed() {
     if (!feedPromise) {
-      feedPromise = fetch('data/happening-now.json')
+      feedPromise = fetch('/data/happening-now.json')
         .then(function (response) {
           if (!response.ok) throw new Error('Feed unavailable');
           return response.json();

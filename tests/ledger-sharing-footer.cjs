@@ -47,13 +47,13 @@ function sharedDestination(href){
     if(launch){const [popup]=await Promise.all([context.waitForEvent('page',{timeout:15000}),link.click()]);await popup.waitForLoadState('domcontentloaded');assert.equal(popup.url(),href);await popup.close();launches++;}
    }
   };
-  for(const file of ['Filmanthropy_Ledger_v2.html','Filmanthropy_Ledger.html']){
+  for(const file of ['filmanthropyledger/index.html','Filmanthropy_Ledger.html']){
    await page.goto(origin+'/'+file+'?from=preview#hub',{waitUntil:'load'});
    await checkLinks('.share-btn[href^="https:"]',canonical,false);
    await checkLinks('.ledger-share-strip .share-btn[href^="https:"]',canonical,true);
    await page.locator('#copy-link-btn-ledger').click();copies++;
    assert.equal(await page.evaluate(()=>window.__copied.at(-1)),canonical);
-   if(file.includes('_v2')){
+   if(file.includes('filmanthropyledger')){
     await page.locator('.hub-card-essay').click();
     await page.waitForSelector('#essay-view:visible');
    }
@@ -75,7 +75,7 @@ function sharedDestination(href){
   }
   for(const width of [360,390,1440]){
    await page.setViewportSize({width,height:900});
-   await page.goto(origin+'/Filmanthropy_Ledger_v2.html#hub',{waitUntil:'load'});
+   await page.goto(origin+'/filmanthropyledger/index.html#hub',{waitUntil:'load'});
    const footer=page.locator('.ledger-footer');await footer.scrollIntoViewIfNeeded();
    const text=await footer.textContent();assert.ok(!/Wrap It Forward|Sets\. Souls\. Stories\./.test(text));
    assert.deepEqual(await page.locator('.ledger-footer-heading').evaluate(e=>[...e.children].map(e=>e.textContent)),['From Special Effects to Social Effects','The Filmanthropy Ledger','© 2006 Social Effects NJ']);
@@ -85,7 +85,7 @@ function sharedDestination(href){
    }
    assert.equal(await page.locator('.ledger-footer-copyright').evaluate(e=>getComputedStyle(e).textAlign),'center');
    await page.locator('.ledger-footer-art').evaluate(e=>e.decode());
-   assert.equal(await page.locator('.ledger-footer-art').getAttribute('src'),'social-effects-logo.png','Use Bret’s existing image only');
+   assert.equal(await page.locator('.ledger-footer-art').getAttribute('src'),'/social-effects-logo.png','Use Bret’s existing image only');
    assert.equal(await page.locator('.ledger-footer-brand figcaption').textContent(),'Social Effects NJ');
    assert.ok(await page.locator('.ledger-footer-brand').evaluate(e=>{const image=e.querySelector('img').getBoundingClientRect();const caption=e.querySelector('figcaption').getBoundingClientRect();return caption.top>=image.bottom && Math.abs(image.x+image.width/2-(caption.x+caption.width/2))<2;}),'Brand caption centered below original image');
    assert.match(await page.locator('.ledger-footer-art').evaluate(e=>getComputedStyle(e).filter),/drop-shadow/,'Original ring has a visible warm edge treatment');

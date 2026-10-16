@@ -71,17 +71,32 @@ const server = http.createServer((req,res) => {
         return [...doc.querySelectorAll('nav a, .nav-mobile-overlay a, footer a')]
           .filter(a => /ledger/i.test(a.textContent) && a.getAttribute('href') !== '/filmanthropyledger' && !(ledgerPage && ['#hub','#note-on-the-ledger'].includes(a.getAttribute('href'))))
           .map(a => a.outerHTML);
-      }, {html:fs.readFileSync(path.join(root,file),'utf8'), ledgerPage:file === 'Filmanthropy_Ledger_v2.html'});
+      }, {html:fs.readFileSync(path.join(root,file),'utf8'), ledgerPage:file === 'filmanthropyledger/index.html'});
       assert.deepEqual(bad,[],file + ' navigation');
     }
     report.push('Companion Ledger links use /filmanthropyledger; the Ledger identity returns to its opening view');
     console.log(report.at(-1));
-    await page.goto(origin + '/Filmanthropy_Ledger_v2.html');
+    await page.goto(origin + '/filmanthropyledger/');
+    assert.equal(new URL(page.url()).pathname,'/filmanthropyledger/','Canonical page stays at the short address');
+    assert.equal(await page.locator('meta[http-equiv="refresh"]').count(),0,'Canonical route serves the complete page directly');
+    const assetFailures=[];page.on('response',r=>{const u=new URL(r.url());if(u.origin===origin&&/\.(?:css|js|png|jpg|json)$/.test(u.pathname)&&r.status()>=400)assetFailures.push(r.status()+' '+u.pathname);});
+
+    // An old cached short-address alias must not loop through the old filename.
+    const cachedAlias=original('filmanthropyledger/index.html');
+    const cachedHandler=route=>new URL(route.request().url()).searchParams.has('_ledger_home')?route.continue():route.fulfill({status:200,contentType:'text/html',body:cachedAlias});
+    await page.route(origin+'/filmanthropyledger/**',cachedHandler);
+    await page.goto(origin+'/filmanthropyledger/?from=cached-alias#hub');
+    await page.waitForSelector('#ledger-top:visible');
+    assert.equal(new URL(page.url()).pathname,'/filmanthropyledger/');
+    assert.equal(new URL(page.url()).search,'?from=cached-alias');
+    assert.equal(new URL(page.url()).hash,'#hub');
+    await page.unroute(origin+'/filmanthropyledger/**',cachedHandler);
+    console.log('Cached former alias bypassed without a loop; short URL, query and hash retained');
     const protectedSelectors = '.essay-p, .essay-h3, .l-card, .bridge-p, .ledger-v1-record';
     const preserved = await page.evaluate(({before,after,selectors}) => {
       const texts = html => [...new DOMParser().parseFromString(html,'text/html').querySelectorAll(selectors)].map(e=>e.textContent);
       return JSON.stringify(texts(before)) === JSON.stringify(texts(after));
-    }, {before:original('Filmanthropy_Ledger_v2.html').replace('>Learn About Social Effects</a>','>Learn About Social Effects NJ</a>'),after:fs.readFileSync(path.join(root,'Filmanthropy_Ledger_v2.html'),'utf8'),selectors:protectedSelectors});
+    }, {before:original('Filmanthropy_Ledger_v2.html').replace('>Learn About Social Effects</a>','>Learn About Social Effects NJ</a>'),after:fs.readFileSync(path.join(root,'filmanthropyledger/index.html'),'utf8'),selectors:protectedSelectors});
     assert.ok(preserved,'Canonical essay, cards, bridge and authorship wording unchanged');
     assert.equal(fs.readFileSync(path.join(root,'assets/ledger-entries.js'),'utf8').replace(/\r\n/g,'\n'),original('assets/ledger-entries.js'));
     const approvedCompanyCopy = original('index.html','9015ddb60b23b1db6a305c3cb802f3e529a96ae3').replace('every production leaves its community more whole than it found it','every production gifts its communities as much as possible and leaves them more whole than it found it');
@@ -122,12 +137,12 @@ const server = http.createServer((req,res) => {
       await page.goto(origin + '/filmanthropyledger?check=round2#case-studies');
       await landing();
       assert.ok(page.url().includes('?check=round2#case-studies'));
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#forerunners');
+      await page.goto(origin + '/filmanthropyledger/#forerunners');
       await landing();
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
+      await page.goto(origin + '/filmanthropyledger/#hub');
       await page.locator('.hub-card-cases [data-section-link]').first().click();
       await landing();
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#essay');
+      await page.goto(origin + '/filmanthropyledger/#essay');
       await page.getByRole('link',{name:'Browse the Case Studies'}).click();
       await landing();
       await page.locator('[data-entry="fbr"]').press('Enter');
@@ -140,7 +155,7 @@ const server = http.createServer((req,res) => {
         await page.goto(origin + '/' + file);
         await page.waitForSelector('#ledger-expanded.is-open');
         assert.equal(new URL(page.url()).hash,'#'+id);
-        assert.equal(new URL(page.url()).pathname,'/Filmanthropy_Ledger_v2.html');
+        assert.equal(new URL(page.url()).pathname,'/filmanthropyledger/');
       }
       for (const [route,id] of [['/eva','fbr'],['/vinati','skater-girl']]) {
         await page.goto(origin + route);
@@ -157,7 +172,7 @@ const server = http.createServer((req,res) => {
       await page.goto(origin + '/ledger');
       await page.waitForURL('**/Filmanthropy_Ledger.html');
       }
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
+      await page.goto(origin + '/filmanthropyledger/#hub');
       assert.equal(await page.locator('#hub .playlist-card').count(),2);
       assert.equal(await page.locator('#hub .hub-ladder, .hub-social-effects').count(),0);
       assert.equal(await page.locator('#welcome-heading').textContent(), 'How far can the gift of a film reach?');
@@ -206,7 +221,7 @@ const server = http.createServer((req,res) => {
       }
       await page.goBack();
       await page.waitForSelector('#filmanthropy-and-ai-view:visible');
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#note-on-the-ledger');
+      await page.goto(origin + '/filmanthropyledger/#note-on-the-ledger');
       await page.waitForSelector('#note-on-the-ledger-view:visible');
       await page.waitForFunction(()=>document.querySelector('#note-on-the-ledger-view .view-back').getBoundingClientRect().top>=document.querySelector('body > nav').getBoundingClientRect().bottom);
       assert.ok(await page.locator('#note-on-the-ledger-view .view-back').evaluate(e=>e.getBoundingClientRect().top>=document.querySelector('body > nav').getBoundingClientRect().bottom),'Back link clears fixed header');
@@ -263,13 +278,13 @@ const server = http.createServer((req,res) => {
         await page.locator('#nav-desktop-center a[href="#filmanthropy-and-ai"]').click();
         await page.waitForSelector('#filmanthropy-and-ai-view:visible');
       }
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
+      await page.goto(origin + '/filmanthropyledger/#hub');
       await page.locator('.hub-card-now').click();
       await page.waitForSelector('#happening-feed .feed-item');
       assert.equal(await page.locator('.ledger-v1-record').isVisible(),false);
       assert.equal(await page.locator('#happening-now-view iframe').count(),0);
       assert.equal(await page.locator('#watch').isVisible(),false);
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html#watch');
+      await page.goto(origin + '/filmanthropyledger/#watch');
       await page.waitForSelector('#watch:visible');
       assert.equal(await page.locator('body').getAttribute('data-ledger-view'),'hub');
       const players = await page.locator('.playlist-player iframe').evaluateAll(els => els.map(e => ({src:e.src,lazy:e.loading,title:e.title,ratio:e.clientWidth/e.clientHeight})));
@@ -283,7 +298,7 @@ const server = http.createServer((req,res) => {
       if (process.env.LEDGER_SCREENSHOTS) {
         fs.mkdirSync(process.env.LEDGER_SCREENSHOTS,{recursive:true});
         await page.locator('#watch').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'watch-'+viewport.width+'.png')});
-        await page.goto(origin+'/Filmanthropy_Ledger_v2.html#case-studies');
+        await page.goto(origin+'/filmanthropyledger/#case-studies');
         await landing();
         await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'forerunners-'+viewport.width+'.png')});
       }
@@ -306,12 +321,13 @@ const server = http.createServer((req,res) => {
       ]
     };
     await page.route('**/data/happening-now.json',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify(fixture)}));
-    await page.goto(origin+'/Filmanthropy_Ledger_v2.html?nj-priority-test=1#hub');
+    await page.goto(origin+'/filmanthropyledger/?nj-priority-test=1#hub');
     await page.locator('#now-fixture-nj-named').waitFor({state:'attached'});
     assert.deepEqual(await page.locator('#happening-feed .feed-item').evaluateAll(els=>els.map(e=>e.id)),['now-fixture-nj-named','now-fixture-nj-tagged','now-fixture-nj-old','now-fixture-outside-new','now-fixture-outside-old']);
     const teasers=await page.locator('#hub-happening-teasers .hub-headline').allTextContents();
     assert.ok(teasers[0].includes('TEST NJ named') && teasers[1].includes('TEST NJ tagged') && teasers[2].includes('TEST NJ old'));
     report.push('Synthetic NJ-priority cases pass: explicit name, NJ abbreviation and US-NJ metadata; newest first within groups; matching hub teasers; source JSON unchanged');
+    assert.deepEqual(assetFailures,[],'No failed same-site assets or feed requests');
     assert.deepEqual(errors,[],'No site JavaScript errors');
     report.push('No site JavaScript errors. External players/font CDNs are substituted; live playback/font delivery is not asserted by these tests.');
     console.log(report.join('\n'));

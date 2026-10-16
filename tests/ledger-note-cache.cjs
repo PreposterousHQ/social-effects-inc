@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
     const origin = 'http://127.0.0.1:' + server.address().port;
     for (const width of [1440,390]) {
       await page.setViewportSize({width,height:900});
-      await page.goto(origin + '/Filmanthropy_Ledger_v2.html', {waitUntil:'load'});
+      await page.goto(origin + '/filmanthropyledger/index.html', {waitUntil:'load'});
       if (!reproduce) {
         for (const [selector, file] of [['script[src*="ledger-v2.js"]','assets/ledger-v2.js'],['link[href*="ledger-v2.css"]','assets/ledger-v2.css']]) {
           const url = await page.locator(selector).evaluate(e => new URL(e.src || e.href).href);
