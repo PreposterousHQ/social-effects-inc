@@ -1,13 +1,10 @@
 .company-revamp { background: var(--film); }
 .company-revamp main { padding-top: 84px; }
-.return-strip { position: sticky; top: 84px; z-index: 900; margin-top: 84px; padding: .45rem 1.5rem; border-bottom: 1px solid #c8a84b44; background: #100d0af5; }
-.return-strip:not([hidden]) + main { padding-top: 0; }
-.return-strip-inner,.return-bottom-inner { width: min(1180px,100%); margin: auto; }
-.return-strip a,.return-bottom a { display: inline-flex; align-items: center; min-height: 36px; color: var(--gold-light); font: .75rem/1.6 var(--mono); text-decoration: none; }
-.return-strip a:hover,.return-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.return-bottom-inner { width: min(1180px,100%); margin: auto; }
+.return-bottom a { display: inline-flex; align-items: center; min-height: 36px; color: var(--gold-light); font: .75rem/1.6 var(--mono); text-decoration: none; }
+.return-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .return-bottom { padding: 1.25rem 1.5rem; background: var(--film); border-top: 1px solid #c8a84b44; }
 .company-revamp section[id] { scroll-margin-top: 100px; }
-.company-revamp:has(.return-strip:not([hidden])) :is(section[id],main[id]) { scroll-margin-top: 140px; }
 .company-revamp .hero-opening { display: block; margin-bottom: 1rem; color: var(--paper); font: 700 1.35rem/1.45 var(--serif); }
 .booking-intro { max-width: 60ch; line-height: 1.8; margin-bottom: 1.5rem; }
 .company-revamp a:focus-visible, .company-revamp button:focus-visible { outline: 2px solid var(--gold); outline-offset: 5px; }
@@ -118,3 +115,26 @@ body:has(.site-menu[open]) { overflow: hidden; }
 @media(max-width:600px) { .activity-grid { grid-template-columns: 1fr; } .activity-card { padding: 1.5rem; } .hero-activities { font-size: .93rem; } }
 
 .activity-card svg { display: block; width: 56px; height: 56px; color: var(--rust); margin: 1rem 0; }
+
+/* Homepage review: clearer entry points, a short lineage note and contact choices. */
+.company-revamp #home { padding-top: 3rem; padding-bottom: 3.5rem; }
+.practice-intro { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 1.25rem; align-items: start; }
+.practice-intro-copy { grid-column: span 3; }
+.word-history { padding: 1.5rem; border: 1px solid #9a7b2a66; background: var(--cream); }
+.word-history svg { display: block; width: 64px; height: 48px; color: var(--rust); margin-bottom: 1rem; }
+.word-history h3 { font: 700 1.5rem/1.25 var(--serif); margin-bottom: 1rem; }
+.word-history p { font-size: .9rem; line-height: 1.8; margin-bottom: 1rem; }
+.word-history .text-link { font-size: .88rem; }
+.examples-action { justify-content: center; margin-left: auto; margin-right: auto; }
+.examples-action .button-outline { text-align: center; }
+.company-revamp .conversation-actions .button-outline { background: transparent; color: var(--ink); border-color: #8a702e; flex-direction: column; gap: .2rem; }
+.contact-address { font: .8rem/1.5 var(--sans); overflow-wrap: anywhere; }
+.conversation-messages { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+.conversation-messages a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .55rem 1rem; border: 1px solid #8a702e; color: var(--ink); text-decoration: none; font: .78rem/1.5 var(--mono); }
+.company-revamp .conversation-actions .button-outline:hover,.conversation-messages a:hover { background: #c8a84b22; text-decoration: underline; text-underline-offset: 4px; }
+.conversation-number { font-size: .85rem; margin-top: 1rem; color: var(--ink-soft); }
+.conversation-number span { white-space: nowrap; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+@media(max-width:1000px) { .practice-intro { grid-template-columns: 1fr; } .practice-intro-copy { grid-column: auto; } .word-history { max-width: 600px; } }
+@media(max-width:520px) { .company-revamp #home { padding-top: 2.5rem; padding-bottom: 3rem; } .conversation-actions { max-width: none; } }
+@media(min-width:1001px) and (max-height:700px) { .company-revamp #home { padding-top: 2rem; padding-bottom: 2rem; } .company-revamp #home .hero-headline { font-size: clamp(2.9rem,5.1vw,4.7rem); } .company-revamp #home .hero-subhead { margin-top: 1rem; } .company-revamp #home .hero-actions { margin-top: 1.5rem; } }

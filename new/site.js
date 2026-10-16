@@ -19,7 +19,7 @@
     '/new/moonshot.html': 'the Practical Moonshot',
     '/new/filmanthropy-history.html': 'the History of Filmanthropy',
     '/new/why-filmmaking-is-civic.html': 'Filmmaking & AI',
-    '/filmanthropyledger/': 'the Ledger'
+    '/filmanthropyledger/': 'the Filmanthropy Ledger'
   };
   function pagePath(url) {
     return url.pathname.replace(/^\/new(?:\/index\.html)?$/, '/new/').replace(/^\/filmanthropyledger$/, '/filmanthropyledger/');
