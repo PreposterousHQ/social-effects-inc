@@ -196,7 +196,7 @@ const server = http.createServer((req,res) => {
       assert.equal(await page.locator('.hub-case-features a[href="/eva"]').count(),1);
       assert.equal(await page.locator('.hub-case-features a[href="/vinati"]').count(),1);
       assert.equal((await page.locator('.hub-case-browse').textContent()).replace(/\s+/g,' ').trim(),'Read All 16 Entries');
-      assert.equal(await page.locator('.hub-case-provenance p').textContent(),'These two entries are based on Bret Warshawsky’s conversations with Eva Radke and Vinati Makijany in 2026.');
+      assert.equal(await page.locator('.hub-case-provenance p').textContent(),'These two entries are based on Bret Warshawsky’s conversations with Eva Radke and Vinati Makijany during Summer 2026.');
       assert.ok(await page.locator('.hub-case-provenance').evaluate(e=>e.previousElementSibling.classList.contains('hub-case-features')));
       await page.locator('.hub-case-browse').click();
       await landing();
