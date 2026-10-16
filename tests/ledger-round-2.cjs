@@ -127,7 +127,13 @@ const server = http.createServer((req,res) => {
       await page.waitForURL('**/Filmanthropy_Ledger.html');
       await page.goto(origin + '/Filmanthropy_Ledger_v2.html#hub');
       assert.equal(await page.locator('#hub .playlist-card').count(),2);
-      assert.ok(await page.locator('#watch').evaluate(e => e.previousElementSibling.classList.contains('hub-ladder')));
+      assert.ok(await page.locator('.hub-inner').evaluate(e => e.firstElementChild.classList.contains('hub-ladder')));
+      assert.ok(await page.locator('#watch').evaluate(e => e.previousElementSibling.classList.contains('hub-grid')));
+      if (process.env.LEDGER_SCREENSHOTS) {
+        fs.mkdirSync(process.env.LEDGER_SCREENSHOTS,{recursive:true});
+        await page.locator('.hub-ladder').scrollIntoViewIfNeeded();
+        await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'main-top-'+viewport.width+'.png')});
+      }
       await page.locator('.hub-card-now').click();
       await page.waitForSelector('#happening-feed .feed-item');
       assert.equal(await page.locator('#happening-now-view iframe').count(),0);

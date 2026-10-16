@@ -6,6 +6,14 @@ Scope: attached Round 2 brief, tweaks 1–4, including its second-playlist updat
 Base: `main` at `67dd537a31f91ff0fcb994f3de5654f41f953d7d`.
 Branch: `codex/ledger-round-2`.
 
+Latest layout correction, 2026-10-15 New York time: Bret expected “How giving
+rises” near the top, as previously recommended. The follow-up branch
+`codex/ledger-giving-rises-top`, based on merged PR #5 at main `ab5c912`, moves
+the unchanged strip to the first row of the main hub, below the opening hero
+and above “Choose where to enter” and the four main boxes. The playlist boxes
+remain below the four choices, and Happening Now stays feed-only. This latest
+placement supersedes the earlier direct ladder-to-playlists arrangement below.
+
 The site is static HTML/CSS/JavaScript. GitHub Pages was checked directly:
 it publishes repository root on `main` to `socialeffectsnj.com`. Only Bret
 reviews and merges this PR. No deployment, main push or merge is part of this work.
@@ -22,7 +30,7 @@ reviews and merges this PR. No deployment, main push or merge is part of this wo
   `/eva` targets `#fbr`; `/vinati` targets `#skater-girl` on the same new route.
 - `/ledger` still leads to the original `Filmanthropy_Ledger.html`. The original
   page and its `#fbr` and `#skater-girl` behavior remain available.
-- The main Ledger hub includes two playlist boxes directly below “How giving rises,”
+- The main Ledger hub includes two playlist boxes below the four main choices,
   in a Watch section. Happening Now retains only its existing feed. The boxes use clearly labeled,
   responsive 16:9, lazy YouTube privacy-enhanced players. They sit side by side
   above 700px and stack at smaller widths. Each has a direct YouTube fallback link.
