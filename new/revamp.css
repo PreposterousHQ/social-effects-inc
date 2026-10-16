@@ -1,9 +1,5 @@
 .company-revamp { background: var(--film); }
 .company-revamp main { padding-top: 84px; }
-.return-bottom-inner { width: min(1180px,100%); margin: auto; }
-.return-bottom a { display: inline-flex; align-items: center; min-height: 36px; color: var(--gold-light); font: .75rem/1.6 var(--mono); text-decoration: none; }
-.return-bottom a:hover { text-decoration: underline; text-underline-offset: 4px; }
-.return-bottom { padding: 1.25rem 1.5rem; background: var(--film); border-top: 1px solid #c8a84b44; }
 .company-revamp section[id] { scroll-margin-top: 100px; }
 .company-revamp .hero-opening { display: block; margin-bottom: 1rem; color: var(--paper); font: 700 1.35rem/1.45 var(--serif); }
 .booking-intro { max-width: 60ch; line-height: 1.8; margin-bottom: 1.5rem; }
@@ -163,3 +159,62 @@ body:has(.site-menu[open]) { overflow: hidden; }
 
 .person-entry + .person-entry { border-top: 1px solid #9a7b2a55; padding-top: 3rem; margin-top: 3rem; }
 .more-people { margin-top: 2.5rem; font: italic 1.3rem/1.5 var(--serif); }
+
+/* Approved reading palette, reviewed in the local color comparison. */
+.company-revamp {
+  --film: #141611;
+  --ink: #20231d;
+  --ink-soft: #50564b;
+  --cream: #f5f2ea;
+  --paper: #f5f2ea;
+  --paper-warm: #f5f2ea;
+  --gold: #bea05a;
+  --gold-light: #e2cf9c;
+  --rust: #75602a;
+  --card: #efebe1;
+  --rule: #d8d0bc;
+}
+.company-revamp :is(.site-nav,.site-footer,.site-menu) { background-color: #11130f; }
+.company-revamp :is(.rev-section,.rev-section.paper,.rev-section.dark) {
+  background: var(--cream);
+  color: var(--ink);
+}
+.company-revamp .rev-section + .rev-section { box-shadow: inset 0 1px var(--rule); }
+.company-revamp .rev-section h2 em { color: var(--ink); }
+.company-revamp :is(.rev-section .eyebrow,.rev-section .text-link,.rev-section .reading a,.reading-links a,.person-role,.contact-links a) { color: var(--rust); }
+.company-revamp :is(.route-card,.dark .route-card,.activity-card,.entity-card,.word-history,.outcome-panel) {
+  background: var(--card);
+  color: var(--ink);
+  border-color: var(--rule);
+  border-top-color: var(--gold);
+}
+.company-revamp :is(.dark .route-card .text-link,.dark .route-card .eyebrow) { color: var(--rust); }
+.company-revamp .rev-section .button-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rust);
+}
+.company-revamp .rev-section .hero-actions .button-outline { background: transparent; }
+.company-revamp .button-gold { color: #171a13; }
+.company-revamp .conversation-actions a { border-color: var(--rust); }
+.company-revamp .definition-lede { color: var(--ink); }
+.company-revamp .fa-spectrum > div { background: var(--card) !important; border-color: var(--rule) !important; box-shadow: none !important; }
+.company-revamp .fa-spectrum > div:last-child { border-top-color: var(--gold) !important; }
+.company-revamp .fa-spectrum p { color: var(--ink-soft) !important; }
+.company-revamp .fa-spectrum span { color: var(--rust) !important; }
+.company-revamp .fa-spectrum a { color: var(--rust) !important; }
+.company-revamp .human-gift { background: var(--cream); color: var(--ink); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.company-revamp .human-gift :is(h2,p) { color: var(--ink) !important; }
+.company-revamp .human-gift :is(.section-tag,span) { color: var(--rust) !important; }
+.company-revamp .human-gift-card { background: var(--card); border-color: var(--rule); }
+.company-revamp .human-gift-card svg { stroke: var(--rust); }
+.company-revamp .human-gift-headline em { color: var(--ink); }
+.company-revamp .degree-status { color: var(--ink-soft); }
+.company-revamp .deck-viewer { color: var(--paper); }
+.company-revamp .rev-section.vision-screen { background: linear-gradient(#09080666,#090806ee 70%),url('/new/theater-hero.png') center top/cover; color: var(--paper); }
+.company-revamp .rev-section.vision-screen :is(.eyebrow,h2 em) { color: var(--gold-light); }
+
+
+.company-revamp :is(.deck-switcher button,.deck-actions a,.materials-invite a) { color: var(--rust); }
+.company-revamp .deck-switcher button[aria-pressed="true"] { color: var(--film); }
+.company-revamp .vision-screen .reading a { color: var(--gold-light); }
