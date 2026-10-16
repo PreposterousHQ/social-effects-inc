@@ -8,8 +8,8 @@ This is the separate-page reading draft requested by Bret, based on his edited [
 
 | Page | Contents |
 | --- | --- |
-| `/new/` | Short introduction, Presentation and Lab invitation, real examples, four service routes, New Jersey collaboration and booking |
-| `/new/our-practice.html` | Definition and connected approaches to giving, Filmanthropy by Design, regenerative filmmaking, human gift, history and AI |
+| `/new/` | Whole-enterprise identity, Document/Present/Teach/Do, Ledger/work invitations, examples, New Jersey collaboration and foundation/LLC summary |
+| `/new/our-practice.html` | What We Do: enterprise cycle and engagement routes, followed by the deeper Filmanthropy practice and optional reading |
 | `/new/offerings.html` | Presentations & Labs: audience, presentation/conversation/lab, intended takeaways, booking and three protected decks |
 | `/new/production-services.html` | Discovery, Design, Liaison, Story; Film Ready towns and fees; route to proposed Production Reuse operation |
 | `/new/film-biz-recycling.html` | The proposed reuse operation, material/human/proceeds streams and future pipeline |
@@ -77,3 +77,13 @@ Presentations & Labs retains /new/offerings.html and #presentations, the origina
 Page-hero images were already full width but some short headings made the banners shallow, especially Who We Are on phones. Shared minimum heights now give desktop banners 520px and smaller-screen banners at least 400px, while longer content can grow. Background cover sizing retains the image aspect ratio and existing imagery; no image was regenerated or distorted. Hero jump links use the established gold on dark backgrounds. Shared CSS/JS references are versioned.
 
 A one-minute Grok video script and six-shot production brief are delivered separately to Bret. Recommended placement is click-to-play after the homepage opening, before the main presentation invitation, with a poster, captions and a booking route. No video has been generated, no public player or placeholder has been added, and no paid generation has been started.
+
+## Restore the whole-enterprise identity, 16 October 2026
+
+Bret approved a revision after reviewing the booking-focused draft. The homepage now introduces Social Effects NJ as a developing foundation and LLC connecting education, awareness, entertainment and practical services. The existing headline remains From Special Effects to Social Effects, followed by Document. Present. Teach. Do. Four connected activities describe the whole undertaking; Discovery, Design, Liaison and Story remain the distinct production-service method. The existing four activity icons moved from the services page to the enterprise cycle, without regenerating imagery.
+
+The two main homepage invitations are Explore our work and Read the Ledger. The Ledger is described as a publication by Social Effects NJ, with its distinct identity and existing address retained. The foundation/LLC summary is visible on the homepage; formation details remain qualified as proposed/developing in About. No legal status is inferred.
+
+Primary navigation is What We Do, The Ledger, Work With Us and About, plus Book a Call. Programs and deeper articles remain accessible under an optional Explore further disclosure in the full menu and footer. The What We Do page reuses our-practice.html, introducing the four-activity cycle before the fuller practice material. Work With Us reuses the contact page and existing 20-minute booking event. No pages were added or deleted. No new domain, DNS, root-homepage replacement, Ledger editing, native-deck change or video integration is part of this revision. /new remains the published working draft.
+
+Validation for this revision: eleven routes at 1366/1024/390/320px, enterprise wording and four activities, simpler primary menu and program disclosure, existing headings/assets/noindex and layout bounds; two-level contextual returns, updated What We Do labels, program-menu navigation, reading-position restoration and the What We Do-to-booking path at 1366/390/320px. Hero previews with actual fonts were inspected on desktop and phone. The encrypted viewer and deck assets were unchanged; final live viewer acceptance is recorded in the PR.
