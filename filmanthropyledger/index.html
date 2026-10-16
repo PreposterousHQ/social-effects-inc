@@ -695,7 +695,7 @@
   }
 </style>
 <link rel="canonical" href="https://socialeffectsnj.com/filmanthropyledger">
-<link rel="stylesheet" href="/assets/ledger-v2.css?v=658e58b7e23c">
+<link rel="stylesheet" href="/assets/ledger-v2.css?v=84915791775d">
 <!-- Discard only the migration marker after bypassing an older cached redirect. -->
 <script>
 (function () {
@@ -774,7 +774,8 @@
     </div>
     <a href="#submit-your-story" class="nav-cta-desktop ledger-submit-link">Submit a Story</a>
     <button class="nav-mobile-btn" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-overlay">
-      <span></span><span></span><span></span>
+      <span class="nav-menu-label">Menu</span>
+      <span class="nav-menu-icon" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
 
   </div>
@@ -789,9 +790,8 @@
   <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,rgba(139,90,43,0.08) 100%),linear-gradient(to right,rgba(200,168,75,0.04) 0%,transparent 30%);z-index:2;pointer-events:none;"></div>
   <div class="ledger-hero-grain"></div>
   <div class="ledger-welcome">
-    <span class="ledger-hero-tag">A Living Record · Think Outside the Frame</span>
     <h1 class="ledger-hero-headline"><a href="#hub">The <em>Filmanthropy</em> Ledger</a></h1>
-    <p class="ledger-byline">by <a href="/socialeffects">Social Effects NJ</a></p>
+    <p class="ledger-byline">by Social Effects NJ</p>
     <div class="ledger-introduction" aria-labelledby="welcome-heading">
       <h2 id="welcome-heading">How far can the gift of a film reach?</h2>
       <p>The story it tells. The love that brings it into being. How it is made, who it benefits, and what it makes possible for people, communities and places.</p>
@@ -1513,7 +1513,7 @@
   </div>
   <figure class="ledger-footer-brand">
     <img class="ledger-footer-art" src="/social-effects-logo.png" alt="" width="2048" height="2048" loading="lazy" decoding="async">
-    <figcaption>Social Effects NJ</figcaption>
+    <figcaption><a href="/socialeffects">Social Effects NJ</a></figcaption>
   </figure>
 </footer>
 
@@ -1708,7 +1708,7 @@ function copyEntryLink(platform) {
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
   window.addEventListener('resize', function() {
-    if (window.innerWidth > 1250 && overlay.classList.contains('open')) closeNav(false);
+    if (window.innerWidth >= 1600 && overlay.classList.contains('open')) closeNav(false);
   });
 })();
 </script>

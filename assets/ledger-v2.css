@@ -47,6 +47,8 @@
 .ledger-footer-brand { width: min(280px, 100%); margin: 0; text-align: center; }
 .ledger-footer-art { display: block; width: 100%; height: auto; margin: 0 auto; filter: brightness(1.12) contrast(1.08) drop-shadow(0 0 1px rgba(218, 182, 91, 0.9)) drop-shadow(0 0 8px rgba(200, 168, 75, 0.3)); }
 .ledger-footer-brand figcaption { margin-top: 0.65rem; color: var(--gold-light); font-family: var(--serif); font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.ledger-footer-brand figcaption a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration: none; }
+.ledger-footer-brand figcaption a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .share-feedback { color: var(--gold-light); font-size: 0.75rem; line-height: 1.5; }
 .share-feedback:empty { display: none; }
 .exp-share-btn { cursor: pointer; }
@@ -68,7 +70,7 @@
 
 .ledger-v2 .ledger-hero {
   min-height: 0;
-  padding: 7rem 1.25rem 2.5rem;
+  padding: 5.5rem 1.25rem 2rem;
 }
 
 /* The Ledger has its own navigation; the company site retains its menu. */
@@ -107,9 +109,9 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  padding: 0 0.5rem;
+  padding: 0 0.75rem;
   color: var(--paper);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -139,10 +141,20 @@
 .ledger-v2 .nav-mobile-close { min-width: 44px; min-height: 44px; }
 .ledger-v2 .nav-mobile-overlay > a { flex-shrink: 0; }
 
-@media (max-width: 1250px) {
+.ledger-v2 .nav-menu-label,
+.ledger-v2 .nav-menu-icon { width: auto; height: auto; background: none; border-radius: 0; }
+.ledger-v2 .nav-menu-label { color: var(--gold-light); font-family: var(--mono); font-size: 0.7rem; line-height: 1; }
+.ledger-v2 .nav-menu-icon { display: grid; gap: 4px; width: 20px; }
+.nav-menu-icon i { display: block; height: 2px; background: var(--paper); border-radius: 1px; }
+
+@media (max-width: 359px) {
+  .ledger-brand { font-size: 0.875rem; padding-right: 0.25rem; }
+}
+
+@media (max-width: 1599px) {
   .ledger-v2 #nav-desktop-center,
   .ledger-v2 .nav-cta-desktop { display: none; }
-  .ledger-v2 .nav-mobile-btn { display: flex; min-width: 44px; min-height: 44px; align-items: center; }
+  .ledger-v2 .nav-mobile-btn { display: flex; flex-direction: row; gap: 0.6rem; min-height: 44px; align-items: center; padding: 0.4rem 0.65rem; border: 1px solid var(--v2-line); border-radius: 3px; }
 }
 
 .ledger-welcome {
@@ -155,32 +167,31 @@
 .ledger-v2 .ledger-hero-headline {
   max-width: none;
   font-size: clamp(2.4rem, 5.2vw, 4.8rem);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.5rem;
 }
 
 .ledger-hero-headline a { color: inherit; text-decoration: none; }
 
 .ledger-byline {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: var(--gold-light);
   font-family: var(--mono);
   font-size: 0.85rem;
 }
 
-.ledger-byline a,
 .ledger-introduction a { color: var(--gold-light); text-underline-offset: 4px; }
 
 .ledger-introduction { max-width: 76ch; color: var(--paper); }
 
 .ledger-introduction h2 {
   max-width: 28ch;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   font-family: var(--serif);
   font-size: clamp(1.9rem, 3.3vw, 2.8rem);
   line-height: 1.15;
 }
 
-.ledger-introduction p { margin-top: 1rem; line-height: 1.75; color: #e0d9ce; }
+.ledger-introduction p { margin-top: 0.75rem; line-height: 1.6; color: #e0d9ce; }
 .ledger-introduction .ledger-intro-link { font-size: 0.9rem; color: #c8c1b6; }
 
 .welcome-explore {
@@ -188,7 +199,7 @@
   align-items: center;
   gap: 1rem;
   min-height: 44px;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   padding: 0.75rem 1.1rem;
   border: 1px solid var(--gold);
   border-radius: 3px;
@@ -1077,7 +1088,7 @@
 @media (max-width: 600px) {
   .ledger-v2 .ledger-hero {
     min-height: 0;
-    padding-top: 6rem;
+    padding-top: 5.25rem;
     padding-bottom: 2rem;
   }
 
@@ -1085,8 +1096,7 @@
     font-size: clamp(2rem, 9vw, 3rem);
   }
 
-  .ledger-v2 .ledger-hero-tag { margin-bottom: 1rem; }
-  .ledger-byline { margin-bottom: 1.25rem; }
+  .ledger-byline { margin-bottom: 1rem; }
   .ledger-introduction h2 { font-size: 1.8rem; margin-bottom: 0.75rem; }
   .ledger-introduction p { margin-top: 0.75rem; line-height: 1.6; }
   .welcome-explore { margin-top: 1.1rem; }
