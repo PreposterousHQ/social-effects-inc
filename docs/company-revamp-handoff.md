@@ -1,0 +1,53 @@
+# Social Effects NJ company site reading draft
+
+Requested working location: https://socialeffectsnj.com/new/
+
+This is the separate-page reading draft requested by Bret, based on his edited [website copy master](https://docs.google.com/document/d/1r2eaaiBrEJKx7nRx1rCyQxCjSt3ca8PA_tFbhJQYjVk/edit). The source was rechecked at its 16 October 2026, 07:49:59 UTC revision; the Google Doc was not overwritten. The existing company homepage and the separate Filmanthropy Ledger publication are not changed by this branch.
+
+## Page map
+
+| Page | Contents |
+| --- | --- |
+| `/new/` | Revised introduction and definition, three levels of practice, routes into the new pages |
+| `/new/our-practice.html` | Filmanthropy by Design, regenerative filmmaking, the human gift, links to history and AI |
+| `/new/offerings.html` | Document, Present, Teach, Do; proposed Foundation and LLC; educational/creative offerings; three protected decks; Discovery, Design, Liaison, Story; Film Ready towns and fees |
+| `/new/film-biz-recycling.html` | The proposed reuse operation, material/human/proceeds streams and future pipeline |
+| `/new/values.html` | Edited principles, vision, mission and Moonshot invitation |
+| `/new/team.html` | Bret and Andrew; “More to come soon.” |
+| `/new/contact.html` | Existing public email, phone, WhatsApp and Telegram routes |
+| `/new/filmanthropy-history.html` | Companion history copy from the master |
+| `/new/why-filmmaking-is-civic.html` | Companion AI/civic filmmaking copy from the master |
+| `/new/moonshot.html` | Companion Moonshot copy from the master |
+
+Navigation, responsive menu, footer, assets and styles live within `/new`. Existing projector/theater/Fort Lee imagery and portraits are copied byte for byte. The established cream, dark, gold and rust palette and type families are retained. All ten draft pages carry `noindex,follow`; that is an indexing preference, not access control.
+
+## Deck viewer
+
+Bret selected password-protected exported copies rather than a prompt over public Google embeds. The rest of the page stays public. One viewer switches among:
+
+1. Filmanthropy by Design Presentation and Lab (15 slides)
+2. Purpose by Design Lab: Corporate (12 slides)
+3. Regenerative Filmmaking: Educational Pathways (16 slides)
+
+The native file titles were updated, along with the first and third cover titles. Native slide order, non-cover slides, notes and existing styling are preserved. Updated titles and new website copy use no em dashes.
+
+Only cover thumbnails and the three titles/captions are public. The slide images and accessible slide text are encrypted. `new/private-decks.js` derives a non-extractable AES-256-GCM key in the visitor’s browser using PBKDF2-SHA256 (600,000 iterations and a random salt). Every encrypted file has a separate random 96-bit IV, authentication tag and path-bound additional data. Neither the password, key, plaintext exports nor source Google deck URLs are in the public viewer files. The password is not transmitted, stored in browser storage or saved in a cookie. Lock/reload clears the viewer; the rest of the page is unaffected. Original Google embeds returned HTTP 401 anonymously for all three decks after access was restored to restricted.
+
+The current password is delivered privately to Bret, outside this repository and PR. People with the password can view and copy displayed content; this does not provide individual-account revocation. Existing named Google collaborators retain their permissions. No messages or permission notifications were sent to collaborators.
+
+These are exported snapshots, not live Google embeds. Refresh exports after editing a source deck. The viewer provides previous/next controls, arrow keys, full screen where supported, slide text and a lock control. Native animations and clickable slide objects are not preserved in the image viewer.
+
+`scripts/package-private-decks.cjs` packages approved local exports. Its two arguments are a private input JSON file and a private password file, both outside this public repository. It writes only encrypted packets, covers and public configuration under `new/decks`. Keep source PDFs, images, native JSON and password files outside the repository. A future password rotation requires repackaging all decks; previously downloaded copies cannot be recalled.
+
+## Editorial boundaries
+
+The Doc remains the creative master. Long introductory copy is retained for Bret’s reading pass. Company legal structures, recycling operations, academic credentials and unconfirmed affiliations remain proposed/intended where the source identifies them that way. The public team is only Bret and Andrew. Informal editorial instructions and unconfirmed private partnership speculation were not turned into public commitments. The practice page includes a concise regenerative synthesis with a link to the canonical Ledger. Statistics and historical assertions carried over from the source are editorial material, not newly certified facts. No final homepage migration or new legal structure is established by this draft.
+
+## Validation
+
+- All ten pages: HTTP 200, expected navigation destinations, one main heading, one noindex tag, menu/Escape/focus behavior and no horizontal overflow at 1366, 1024, 390 and 320 pixels. Revised source-copy anchors, four services, four SVG methodology icons and byte-identical original images pass. No site JavaScript errors or failed `/new` assets.
+- Protected viewer: wrong passwords rejected; all 43 slides loaded and switched at 1366, 390 and 320 pixels; previous/next, arrow keys, boundary states, accessible slide text, re-locking, locked reload and empty browser storage pass. No password in outgoing requests. Modified ciphertext rejected. No plaintext deck exports, Google source URLs or password found in `/new`.
+- All slides rendered from Google PDF exports and visually inspected; cover typography preserved. Structural checker reports no errors. Existing small-type warnings in unchanged source slides were preserved for a future deck-editing pass.
+- Tests: `tests/company-revamp.cjs`, `tests/private-decks.cjs`. The latter requires `DECK_TEST_PASSWORD_FILE` pointing to the private password file. `COMPANY_ORIGIN` can select a deployed origin. Do not commit test credentials.
+
+Publication and exact live acceptance are recorded in the PR after deployment. Remaining work is Bret’s reading/design pass, future copy/services refinement, future team decisions, and refreshing exported decks as their sources evolve.

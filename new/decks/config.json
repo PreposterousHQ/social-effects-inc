@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "salt": "IAgOgoDPLKLb0EQ1ZQxYTA==",
+  "iterations": 600000,
+  "decks": {
+    "lab": {
+      "title": "Filmanthropy by Design Presentation and Lab",
+      "caption": "A presentation, conversation and applied workshop for film schools, festivals and filmmaker communities.",
+      "manifest": "/new/decks/lab/manifest.bin",
+      "cover": "/new/decks/lab/cover.jpg"
+    },
+    "corporate": {
+      "title": "Purpose by Design Lab: Corporate",
+      "caption": "What filmmaking can teach business about designing purpose into the product itself. An interactive keynote and innovation lab.",
+      "manifest": "/new/decks/corporate/manifest.bin",
+      "cover": "/new/decks/corporate/cover.jpg"
+    },
+    "education": {
+      "title": "Regenerative Filmmaking: Educational Pathways",
+      "caption": "A working vision for a course, certificate and accreditation pathway, with Filmanthropy by Design at its center.",
+      "manifest": "/new/decks/education/manifest.bin",
+      "cover": "/new/decks/education/cover.jpg"
+    }
+  }
+}
