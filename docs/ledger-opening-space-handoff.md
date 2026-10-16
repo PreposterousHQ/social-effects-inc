@@ -19,6 +19,9 @@ padding. The existing accessible overlay, keyboard focus trap, Escape/close,
 menu links and submission action are reused. Its resize boundary matches the
 new breakpoint. The header identity still returns to the Ledger opening; the
 company-information link in the final opening paragraph remains linked.
+At Bret's follow-up request, the **Social Effects NJ** caption beneath the
+footer illustration also links to `/socialeffects`, the existing company page.
+It retains its centered appearance and has a 44px minimum click/tap height.
 
 Real site-font layout checks passed at 1280×600, 1366×600, 1440×700, 1536×700,
 1920×900, 390×844, 360×800 and 320×720. The Explore button ends at y=521–534 in
@@ -33,7 +36,8 @@ Existing focused normal-motion navigation checks passed at 1440×1000 and
 390×844: exact approved introduction, choice/menu order, byline/tag removal,
 canonical address and cached former-alias migration, featured entries,
 Forerunners landing, AI/note navigation, mobile keyboard/menu behavior,
-submission, news feed, lazy responsive playlists and NJ ordering fixtures.
+submission, news feed, lazy responsive playlists, the footer caption's actual
+navigation to the company homepage, and NJ ordering fixtures.
 Legacy/alias/16 entry URLs return HTTP 200; canonical article/data comparisons
 remain unchanged; no site JavaScript errors. Cached-router note checks and
 stylesheet-version checks pass at 1440/390px. External fonts/icons/players are
@@ -44,4 +48,7 @@ Changed: canonical HTML, `assets/ledger-v2.css` and its content-derived version,
 the two existing menu/navigation tests, this handoff. No image, sharing,
 metadata, news data, router or company-page change. Future edits remain in
 `filmanthropyledger/index.html`. The PR records the tested commit and review
-status; publication awaits Bret's approval of this new change and menu proposal.
+status. Bret subsequently instructed that all these changes be merged and made
+live, including the footer caption link. This authorizes the combined PR #14
+publication; verify its exact deployment and live behavior before claiming it.
+The separate company-opening wording discussed afterward remains a proposal.

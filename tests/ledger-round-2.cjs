@@ -183,7 +183,7 @@ const server = http.createServer((req,res) => {
       assert.deepEqual(await page.locator('.hub-grid > .hub-card .hub-number').allTextContents(),['01','02','03','04','05','06']);
       assert.deepEqual(await page.locator('#nav-desktop-center a').evaluateAll(els=>els.slice(0,3).map(e=>e.getAttribute('href'))),['#case-studies','#essay','#filmanthropy-and-ai']);
       assert.deepEqual(await page.locator('#nav-mobile-overlay .nav-mobile-item').evaluateAll(els=>els.slice(1,4).map(e=>e.textContent.trim())),['01Case Studies','02Essay','03Filmanthropy and AI']);
-      assert.deepEqual(await page.locator('a[href="/socialeffects"]').allTextContents(),['Social Effects NJ','Social Effects NJ','07Social Effects NJ']);
+      assert.deepEqual(await page.locator('a[href="/socialeffects"]').allTextContents(),['Social Effects NJ','Social Effects NJ','Social Effects NJ','07Social Effects NJ']);
       assert.equal(await page.locator('.ledger-brand small').textContent(),'by Social Effects NJ');
       assert.equal(await page.locator('.ledger-byline').textContent(),'by Social Effects NJ');
       assert.equal(await page.locator('.ledger-byline a, .ledger-hero-tag').count(),0);
@@ -304,7 +304,10 @@ const server = http.createServer((req,res) => {
         await landing();
         await page.screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'forerunners-'+viewport.width+'.png')});
       }
-      report.push(viewport.width + 'px: ' + (process.env.LEDGER_FOCUS_NEW ? 'focused new paths, menus and article navigation' : 'redirects, all 16 entry hashes, legacy hashes, Case Studies/Forerunners, keyboard entry/return') + ', responsive 16:9 lazy players pass');
+      assert.equal(await page.locator('.ledger-footer-brand figcaption a').getAttribute('href'),'/socialeffects');
+      await page.locator('.ledger-footer-brand figcaption a').click();
+      await page.waitForURL('**/index.html');
+      report.push(viewport.width + 'px: ' + (process.env.LEDGER_FOCUS_NEW ? 'focused new paths, menus and article navigation' : 'redirects, all 16 entry hashes, legacy hashes, Case Studies/Forerunners, keyboard entry/return') + ', responsive 16:9 lazy players and footer company link pass');
     }
     await page.goto(origin+'/socialeffects?source=ledger#services');
     await page.waitForURL('**/index.html?source=ledger#services');
