@@ -218,3 +218,7 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .company-revamp :is(.deck-switcher button,.deck-actions a,.materials-invite a) { color: var(--rust); }
 .company-revamp .deck-switcher button[aria-pressed="true"] { color: var(--film); }
 .company-revamp .vision-screen .reading a { color: var(--gold-light); }
+
+/* More breathing room for the practice and people introductions. */
+.company-revamp:is(.practice-page,.about-page) .page-hero { min-height: 640px; }
+@media(max-width:800px) { .company-revamp:is(.practice-page,.about-page) .page-hero { min-height: 480px; padding-bottom: 5rem; } }
