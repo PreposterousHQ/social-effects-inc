@@ -11,7 +11,7 @@
 .site-nav::before { top: 5px; }.site-nav::after { bottom: 5px; }
 .site-nav-inner { width: min(1440px,100%); height: 100%; margin: auto; display: flex; align-items: center; gap: 1.8rem; }
 .site-brand { display: flex; flex-direction: column; color: var(--paper); text-decoration: none; white-space: nowrap; }
-.site-brand > span { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; letter-spacing: -.025em; }.site-brand b { color: var(--gold-light); }
+.site-brand > span { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; letter-spacing: -.025em; }.site-brand b { color: var(--gold-light); font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; }
 .site-links { display: flex; gap: 1.25rem; align-items: center; margin-left: auto; }
 .site-links a { color: var(--paper); text-decoration: none; font: 500 .875rem var(--sans); white-space: nowrap; padding: .8rem 0; }
 .site-links a:hover, .site-links a[aria-current] { color: var(--gold-light); text-decoration: underline; text-underline-offset: 6px; }
@@ -287,3 +287,27 @@ body:has(.site-menu[open]) { overflow: hidden; }
 /* Shared publication, contribution and work invitations on the company homepage. */
 .company-revamp #ways-in .participation-routes { grid-template-columns: repeat(3,minmax(0,1fr)); }
 @media(max-width:1000px) { .company-revamp #ways-in .participation-routes { grid-template-columns: 1fr; } }
+
+/* Public New Jersey use-case decks; original Slides controls stay available. */
+.moonshot-decks .deck-switcher { margin: 1.5rem 0 1rem; }
+.moonshot-deck-status { margin: 1rem 0; font: .8rem/1.6 var(--sans); color: var(--ink-soft); }
+
+/* The short About page opens with orientation, then flows into its three sections. */
+.company-revamp.about-page .page-hero { min-height: calc(100svh - 84px); display: flex; align-items: center; }
+.about-page .page-hero-inner { width: min(1180px,100%); }
+.company-revamp .hero-brand { color: var(--gold-light); font-style: normal; font-weight: inherit; }
+
+.moonshot-viewer { border: 1px solid var(--gold); margin-top: 2rem; background: var(--film); color: var(--paper); }
+.moonshot-slide-stage { width: 100%; aspect-ratio: 16/9; display: grid; place-items: center; }
+.moonshot-slide-stage img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.moonshot-controls { padding: 1rem; }
+.moonshot-controls a { color: var(--gold-light); font-size: .8rem; }
+.moonshot-viewer:fullscreen { display: flex; flex-direction: column; height: 100dvh; width: 100vw; }
+.moonshot-viewer:fullscreen .moonshot-slide-stage { flex: 1; min-height: 0; aspect-ratio: auto; }
+.moonshot-viewer:fullscreen .moonshot-controls { flex: 0 0 auto; }
+@media(max-width:520px) { .moonshot-controls .deck-paging { gap: .5rem; } .moonshot-controls .deck-tools { flex-wrap: wrap; } }
+
+.moonshot-pdf-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin-top: 1rem; }
+
+.moonshot-controls button { padding: .65rem .75rem; }
+#moonshot-count { min-width: 3rem; text-align: center; font: .75rem var(--mono); }

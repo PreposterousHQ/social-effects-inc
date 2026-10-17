@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "exported": "2026-10-17",
+  "decks": {
+    "fiscal": {
+      "title": "Deck 1: The Fiscal Case",
+      "pdf": "/new/moonshot-decks/fiscal-2a31ebe7d9.pdf",
+      "slides": [
+        {
+          "src": "/new/moonshot-decks/fiscal/01-d9f008c61c.jpg",
+          "title": "The Fiscal Case: Ask New Jersey to Look"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/02-89cd3e3ddb.jpg",
+          "title": "What Is CEPP?"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/03-c3f852825c.jpg",
+          "title": "The Scale"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/04-48f42af767.jpg",
+          "title": "The Cost of Waiting"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/05-62ff74cf9a.jpg",
+          "title": "What Are We Really Paying For?"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/06-18ef390622.jpg",
+          "title": "We’re Asking New Jersey to Look"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/07-c657a98ace.jpg",
+          "title": "What Could We Build Instead?"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/08-42e2ef9714.jpg",
+          "title": "Storylivingry Campus: People, Place, Possibility"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/09-37dd1b16cc.jpg",
+          "title": "From Storylivingry Campus to Storylivingry City"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/10-77e6494622.jpg",
+          "title": "From Cost Center to Regenerative Engine"
+        },
+        {
+          "src": "/new/moonshot-decks/fiscal/11-e21cbf83e6.jpg",
+          "title": "Look at the People. Look at the Numbers."
+        }
+      ]
+    },
+    "engine": {
+      "title": "Deck 2: The Regenerative Engine",
+      "pdf": "/new/moonshot-decks/engine-b7f3e30a76.pdf",
+      "slides": [
+        {
+          "src": "/new/moonshot-decks/engine/01-4812b5af4a.jpg",
+          "title": "The Regenerative Engine: Filmanthropy by Design"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/02-09dabb05aa.jpg",
+          "title": "Unbreakable Spirit: A Personal Story in Service to a Collective Journey"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/03-cc555ac765.jpg",
+          "title": "Don’t Just Tell the Story. Build the Thing."
+        },
+        {
+          "src": "/new/moonshot-decks/engine/04-204d3339cb.jpg",
+          "title": "The $250M+ Moonshot"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/05-6b2439bb3f.jpg",
+          "title": "One Production. Multiple Forms of Value."
+        },
+        {
+          "src": "/new/moonshot-decks/engine/06-98aed9d1de.jpg",
+          "title": "The Cameras Are Already Coming Back"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/07-3f8d85185c.jpg",
+          "title": "After Wrap: What Remains?"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/08-ab29cee1df.jpg",
+          "title": "Come to New Jersey"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/09-2687f2e9d5.jpg",
+          "title": "The New Jersey Launch"
+        },
+        {
+          "src": "/new/moonshot-decks/engine/10-1fd370f03a.jpg",
+          "title": "Build the Proof. Film the Process. Invite the World."
+        }
+      ]
+    }
+  }
+}
