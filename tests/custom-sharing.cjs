@@ -3,7 +3,7 @@
 const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict'),crypto=require('node:crypto'),vm=require('node:vm'),{execFileSync}=require('node:child_process'),{chromium}=require('playwright');
 const root=path.resolve(__dirname,'..'),registry=JSON.parse(fs.readFileSync(path.join(root,'data/share-cards.json'),'utf8')),catalog=registry.items;
 const entries=vm.runInNewContext(fs.readFileSync(path.join(root,'assets/ledger-entries.js'),'utf8')+'\nentries'),news=JSON.parse(fs.readFileSync(path.join(root,'data/happening-now.json'),'utf8')).items;
-const baseline=process.env.SHARING_BASE||'0348ba219b5943b58ff88284997a0f58d57cd0c4';
+const baseline=process.env.SHARING_BASE||'7e83799de229e939ecd23f4f4c7565fc4928d3f0';
 const original=f=>execFileSync('git',['show',baseline+':'+f],{cwd:root,encoding:'utf8',maxBuffer:3e6}).replace(/\r\n/g,'\n');
 execFileSync(process.execPath,['scripts/build-sharing.cjs','--check'],{cwd:root,stdio:'pipe'});
 for(const f of ['assets/ledger-entries.js','data/happening-now.json'])assert.equal(fs.readFileSync(path.join(root,f),'utf8').replace(/\r\n/g,'\n'),original(f),f+' canonical data preserved');
@@ -25,7 +25,11 @@ function destination(href){const u=new URL(href);return u.searchParams.get('url'
  await raw.close();
  // Existing editorial sections remain identical in the public Ledger source.
  const oldViews=await p.evaluate(html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.ledger-view')).map(e=>{e.querySelectorAll('.inshort-band-footer a[href^="https:"]').forEach(a=>a.setAttribute('href','SHARE_DESTINATION'));return{id:e.id,html:e.innerHTML};}),original('ledger/index.html'));
- const newViews=await p.evaluate(html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.ledger-view')).map(e=>{e.querySelectorAll('.inshort-band-footer a[href^="https:"]').forEach(a=>a.setAttribute('href','SHARE_DESTINATION'));return{id:e.id,html:e.innerHTML};}),fs.readFileSync(path.join(root,'ledger/index.html'),'utf8'));assert.deepEqual(newViews,oldViews);
+ const newViews=await p.evaluate(html=>Array.from(new DOMParser().parseFromString(html,'text/html').querySelectorAll('.ledger-view')).map(e=>{e.querySelectorAll('.inshort-band-footer a[href^="https:"]').forEach(a=>a.setAttribute('href','SHARE_DESTINATION'));return{id:e.id,html:e.innerHTML};}),fs.readFileSync(path.join(root,'ledger/index.html'),'utf8'));assert.deepEqual(newViews.filter(v=>!['stories-from-the-field-view','submit-your-story-view'].includes(v.id)),oldViews.filter(v=>!['stories-from-the-field-view','submit-your-story-view'].includes(v.id)));
+ // The two intentionally updated intake views have focused acceptance coverage in story-intake.cjs.
+ assert.equal(newViews.length,oldViews.length);
+ const oldStories=oldViews.find(v=>v.id==='stories-from-the-field-view').html;
+ assert.equal(newViews.find(v=>v.id==='stories-from-the-field-view').html,oldStories.replace('Email submissions open','Submissions open'));
  const pilot=catalog.filter(s=>['case-study','news','section'].includes(s.kind));
  for(const width of [1366,1024,390,320]){await p.setViewportSize({width,height:900});for(const item of pilot){await p.goto(origin+item.route,{waitUntil:'load'});assert.equal(await p.locator('h1').count(),1);assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));for(const href of await p.locator('.share-links a').evaluateAll(es=>es.map(e=>e.href)))assert.equal(destination(href),registry.origin+item.route);await p.locator('[data-copy-share]').click();assert.equal(await p.evaluate(()=>window.copied.at(-1)),registry.origin+item.route);assert.ok((await p.locator('.share-feedback').innerText()).includes('copied'));if(process.env.COMPANY_SCREENSHOTS){fs.mkdirSync(process.env.COMPANY_SCREENSHOTS,{recursive:true});await p.screenshot({path:path.join(process.env.COMPANY_SCREENSHOTS,item.id+'-'+width+'.png')});}}
   console.log(width+'px: standalone story layout, platform-link destinations and copy controls pass.');
