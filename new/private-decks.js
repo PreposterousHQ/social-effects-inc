@@ -77,7 +77,7 @@
     if (loading) return;
     var token = ++sequence;
     error.textContent = ''; input.removeAttribute('aria-invalid'); busy(true);
-    status.textContent = 'Unlocking the presentations…';
+    status.textContent = 'Unlocking the proposal decks…';
     try {
       if (!crypto.subtle) throw new Error('Please use a current browser with a secure HTTPS connection.');
       await configPromise;
@@ -90,7 +90,7 @@
       if (token !== sequence) return;
       key = null; manifest = null; cover();
       error.textContent = e.name === 'OperationError' ? 'That password did not unlock these slides. Please try again.' : e.message;
-      input.setAttribute('aria-invalid', 'true'); input.focus(); status.textContent = 'Presentation locked.';
+      input.setAttribute('aria-invalid', 'true'); input.focus(); status.textContent = 'Proposal deck locked.';
     } finally { input.value = ''; if (token === sequence) busy(false); }
   });
   buttons.forEach(function (button) {
@@ -108,7 +108,7 @@
         buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b === button)); });
         cover();
         if (key) { busy(true); await loadSelected(token, key); }
-        else status.textContent = 'Presentation preview. Enter the password to view the slides.';
+        else status.textContent = 'Proposal deck preview. Enter the password to view the slides.';
       } catch (e) { error.textContent = 'This presentation could not load. Please try another deck or reload.'; }
       finally { if (token === sequence) busy(false); }
     });
@@ -130,7 +130,7 @@
     sequence++; key = null; manifest = null; index = 0;
     cover(); controls.hidden = true; transcript.hidden = true; form.hidden = false;
     shell.classList.remove('is-unlocked'); error.textContent = ''; input.value = ''; input.removeAttribute('aria-invalid');
-    status.textContent = 'Presentation locked.'; busy(false); input.focus();
+    status.textContent = 'Proposal deck locked.'; busy(false); input.focus();
   });
   document.getElementById('deck-fullscreen').addEventListener('click', async function () {
     try { if (document.fullscreenElement) await document.exitFullscreen(); else await shell.requestFullscreen(); }
