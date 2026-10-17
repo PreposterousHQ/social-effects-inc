@@ -23,3 +23,9 @@ The launch PR records its exact tested head, merge commit, Pages run and live ve
 ## Next work
 
 Working reviewed text/audio/video story intake follows this homepage launch, per Bret’s explicit order. The present email intake is unchanged by this route-only launch. A separate Ledger domain remains a later intention. Neither is falsely marked delivered by this launch.
+
+### Header sprocket contrast preview, 17 October 2026
+
+After the verified PR #44 launch, Bret requested a little more visible header sprockets. On codex/header-sprocket-contrast, the shared company header retains its existing color, 7px height and spacing, with opacity increased from about 18% to 34%. All twelve company pages request CSS v25 for the eventual publication. Desktop 1366×768 and phone 390×844 actual-font captures inspected; header/link/button geometry is identical to the published baseline, no overflow or site JS errors, and mobile menu/Escape work. Ledger styling is unchanged. Preview http://127.0.0.1:61262/ . Ready under Bret’s standing preview-then-k publication rule; not yet committed, pushed or merged. Current live remains PR #44. No new implementation tests are added for this color-only adjustment.
+
+Bret’s subsequent “K” approves publication of this preview and supersedes its pending-approval status. The publication PR records the tested head, exact merge, Pages run and live CSS verification. The twelve HTML changes are cache-version updates only; all copy, links, assets, hero geometry and Ledger styling are preserved.
