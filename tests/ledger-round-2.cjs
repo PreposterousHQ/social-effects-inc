@@ -267,7 +267,7 @@ const server = http.createServer((req,res) => {
       await page.locator('#stories-from-the-field-view .stories-submit').click();
       await page.waitForSelector('#submit-your-story-view:visible');
       assert.equal(await page.locator('.ledger-v1-record').isVisible(),false);
-      assert.equal(await page.locator('#submit-your-story-view .stories-submit').getAttribute('href'),'mailto:bret@socialeffectsnj.com?subject=Story%20for%20the%20Filmanthropy%20Ledger');
+      assert.equal(await page.locator('#submit-your-story-view .intake-fallback a').getAttribute('href'),'https://tally.so/r/vXjgJ0');
       if (process.env.LEDGER_SCREENSHOTS) await page.locator('#submit-your-story-view .stories-inner').screenshot({path:path.join(process.env.LEDGER_SCREENSHOTS,'submit-'+viewport.width+'.png')});
       await page.locator('.ledger-brand').click();
       await page.waitForSelector('#hub:visible');

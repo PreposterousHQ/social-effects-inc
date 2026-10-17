@@ -1,0 +1,5 @@
+/* Shared by the Ledger view and its generated, independently shareable page. */
+.story-intake{margin:28px 0 16px;padding:clamp(16px,4vw,32px);background:#f4f1e8;color:#20231d;border:1px solid #c9b374;border-top-width:3px;border-radius:4px;min-width:0}
+.story-intake iframe{display:block;width:100%;border:0}
+.intake-fallback,.intake-help{font-size:16px;line-height:1.65}
+.intake-fallback a{font-weight:700;text-underline-offset:4px}
