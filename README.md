@@ -29,6 +29,10 @@ The proposal decks in new/decks remain password-protected encrypted snapshots. D
 
 The two specifically approved public Moonshot decks are separate read-only image/PDF snapshots in new/moonshot-decks. They require fresh export and review after source edits. See scripts/package-moonshot-decks.cjs and docs/company-revamp-handoff.md for the refresh process.
 
+## Custom sharing
+
+data/share-cards.json and scripts/build-sharing.cjs generate approved sharing metadata, versioned card images, the two pilot static story pages and the Ledger share-route mapping. Narrative sources remain the existing entry/news records. Run the builder after edits and --check before publishing; --render-images uses the existing Playwright/Chrome operator setup when a visible card input changes. Do not hand-edit generated story HTML, assets/share-routes.js or data/share-manifest.json. The read-only Sharing integrity workflow checks freshness in PRs/main. See docs/custom-sharing.md for the four-card pilot, the approved-image review process, scope and platform-testing limits.
+
 ## Review and testing
 
 Use the company, return-navigation, Ledger and deck tests under tests/ as appropriate to the change. Browser tests use Playwright; set LEDGER_BROWSER=chrome where supported to use installed Chrome. Protected-deck tests require a password file outside this repository.

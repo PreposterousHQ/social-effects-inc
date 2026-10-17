@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "social-effects-nj",
+      "kind": "company",
+      "shareKey": null,
+      "url": "https://socialeffectsnj.com/",
+      "title": "From Special Effects to Social Effects | Social Effects NJ",
+      "description": "Social Effects NJ brings research, education, entertainment and practical services together to expand what filmmaking makes possible for people and communities.",
+      "image": "https://socialeffectsnj.com/assets/share/social-effects-nj-a40d968e62.png",
+      "imageAlt": "From Special Effects to Social Effects · Main Social Effects NJ site · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "index.html#home"
+    },
+    {
+      "id": "ledger",
+      "kind": "publication",
+      "shareKey": "",
+      "url": "https://socialeffectsnj.com/ledger",
+      "title": "The Filmanthropy Ledger | Social Effects NJ",
+      "description": "Explore a century of giving through film, real case studies, news, firsthand stories and the possibilities at the intersection of filmmaking and AI.",
+      "image": "https://socialeffectsnj.com/assets/share/ledger-7c71c2ed84.png",
+      "imageAlt": "The Filmanthropy Ledger · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "ledger/index.html#ledger-top"
+    },
+    {
+      "id": "spielberg",
+      "kind": "case-study",
+      "shareKey": "schindlers-list",
+      "url": "https://socialeffectsnj.com/ledger/case-studies/schindlers-list/",
+      "title": "Steven Spielberg: Giving beyond the film | The Filmanthropy Ledger",
+      "description": "Spielberg directed his share of Schindler’s List profits into the Righteous Persons Foundation. Explore the Ledger’s account of that founding act.",
+      "image": "https://socialeffectsnj.com/assets/share/spielberg-a5612a2ca1.png",
+      "imageAlt": "Steven Spielberg: Giving beyond the film · Case Studies · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "assets/ledger-entries.js#schindlers-list"
+    },
+    {
+      "id": "clean-hands",
+      "kind": "news",
+      "shareKey": "now-clean-hands-brookes-house",
+      "url": "https://socialeffectsnj.com/ledger/news/clean-hands-brookes-house/",
+      "title": "Clean Hands pledges a third of its profits to Brooke’s House | The Filmanthropy Ledger",
+      "description": "The production has pledged one-third of its profits to Brooke’s House, the recovery center that inspired the film. Reported commitment; payments remain to be followed up.",
+      "image": "https://socialeffectsnj.com/assets/share/clean-hands-95814036cc.png",
+      "imageAlt": "Clean Hands pledges a third of its profits to Brooke’s House · Happening Now · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/happening-now.json#clean-hands-brookes-house"
+    }
+  ]
+}
