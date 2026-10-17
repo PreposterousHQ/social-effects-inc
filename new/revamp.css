@@ -22,7 +22,9 @@
 .site-menu::backdrop { background: #090806d9; }.site-menu form { text-align: right; margin-bottom: 2rem; }.site-menu-close { color: var(--gold-light); background: none; border: 0; min-height: 44px; font: .85rem var(--mono); cursor: pointer; }
 .site-menu nav { position: static; display: grid; height: auto; padding: 0; border: 0; background: none; margin-top: 1rem; }.site-menu nav a { padding: .7rem 0; color: var(--paper); text-decoration: none; font: 1.25rem var(--serif); border-bottom: 1px solid #c8a84b33; }.site-menu nav a[aria-current] { color: var(--gold-light); }
 body:has(.site-menu[open]) { overflow: hidden; }
-.eyebrow { display: block; font: .66rem var(--mono); letter-spacing: .15em; text-transform: uppercase; color: var(--rust); margin-bottom: 1rem; }
+.eyebrow { display: block; font: 700 clamp(1rem,1.4vw,1.125rem)/1.5 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--rust); margin-bottom: 1rem; }
+.company-revamp :is(.section-label,.section-tag,.deck-private-label,.context-bar-label) { font: 700 clamp(1rem,1.4vw,1.125rem)/1.5 var(--sans); letter-spacing: .06em; text-transform: uppercase; }
+.company-revamp .context-bar-label { color: var(--gold-light); }
 .company-revamp .hero { min-height: calc(100svh - 84px); height: auto; padding: 5rem max(2rem,calc((100vw - 1240px)/2)); }
 .company-revamp .hero-headline { font-size: clamp(2.9rem,5.8vw,5.7rem); max-width: 960px; }
 .company-revamp .hero-subhead { max-width: 710px; font-size: 1.12rem; line-height: 1.8; }
