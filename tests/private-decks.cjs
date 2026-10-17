@@ -20,7 +20,7 @@ const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://local
   const page=await browser.newPage({reducedMotion:'reduce'});page.setDefaultTimeout(15000);
   const errors=[],sent=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{sent.push({url:r.url(),body:r.postData()});});
   for(const width of [1366,390,320]){
-    await page.setViewportSize({width,height:900});await page.goto(origin+'/new/offerings.html',{waitUntil:'domcontentloaded'});await page.evaluate(()=>document.fonts.ready);
+    await page.setViewportSize({width,height:900});await page.goto(origin+'/offerings.html',{waitUntil:'domcontentloaded'});await page.evaluate(()=>document.fonts.ready);
     assert.equal(await page.locator('iframe').count(),0);assert.equal(await page.locator('#deck-unlock').isVisible(),true);assert.equal(await page.locator('#deck-controls').isVisible(),false);
     assert.ok(await page.locator('#presentation-overview').isVisible(),'Page outside viewer is public');
     for(const id of ['education','corporate','lab']){await page.locator('[data-deck="'+id+'"]').click();await page.waitForFunction(()=>!document.querySelector('[data-deck]').disabled);assert.equal(await page.locator('#deck-heading').textContent(),config.decks[id].title);assert.equal(await page.locator('#deck-slide').getAttribute('src'),config.decks[id].cover);assert.equal(await page.locator('#deck-slide-text').textContent(),'');}
