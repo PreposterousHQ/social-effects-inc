@@ -8,18 +8,20 @@ Public repository and GitHub Pages deployment source for [socialeffectsnj.com](h
 
 | Route | Purpose |
 | --- | --- |
-| / and /socialeffects/ | Existing company site |
-| /new/ | Live, noindex company redesign under review |
-| /filmanthropyledger/ | The Filmanthropy Ledger |
+| / | Social Effects NJ company homepage |
+| /our-practice.html, /contact.html, /team.html and linked pages | Company practice, services, booking and people |
+| /ledger/ | The Filmanthropy Ledger |
+| /new/ and its former HTML pages | Query/hash-preserving bridges to the launched company pages |
+| /socialeffects/, /filmanthropyledger/, legacy Ledger filenames | Bridges to the company homepage or /ledger/ |
 | /eva/, /vinati/, entry-*.html | Entry sharing/redirect routes |
 
-The later /new/ to root homepage transition and desired /ledger address are launch work, not current routing. Do not change those routes based on this plan alone. See the current handoff and PR publication records.
+The root and /ledger transition was authorized by Bret on 17 October 2026. See docs/root-ledger-launch.md and the launch PR for verification/publication status. Canonical company HTML lives at the root; /new HTML files are compatibility bridges, not editable page copies.
 
 ## Company and publication
 
-The company draft describes Social Effects NJ as a developing foundation and LLC bringing research, education, entertainment and practical services together. The Ledger is its publication. The word Filmanthropy has a wider history documented on the site; it is not presented as a newly coined Social Effects term.
+The company describes Social Effects NJ as a developing foundation and LLC bringing research, education, entertainment and practical services together. The Ledger is its publication. The word Filmanthropy has a wider history documented on the site; it is not presented as a newly coined Social Effects term.
 
-Company pages are static HTML with shared new/site.css, new/revamp.css and new/site.js. Canonical Ledger essay and case-study wording must be preserved unless Bret requests a specific edit. Entry routes use hashes matching the Ledger's entry keys.
+Company pages are root-level static HTML with shared new/site.css, new/revamp.css and new/site.js. Assets remain under /new, including authenticated encrypted-deck paths, so do not remove that directory. The canonical publication source is ledger/index.html. Canonical Ledger essay and case-study wording must be preserved unless Bret requests a specific edit. Entry routes use hashes matching the Ledger's entry keys. Sitemap and canonical/OG metadata identify the launched addresses; bridge pages remain noindex.
 
 ## Slide viewers
 
