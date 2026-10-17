@@ -182,6 +182,7 @@
   font-size: 0.85rem;
 }
 
+.ledger-byline a,
 .ledger-introduction a { color: var(--gold-light); text-underline-offset: 4px; }
 
 .ledger-introduction { max-width: 76ch; color: var(--paper); }

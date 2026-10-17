@@ -31,7 +31,7 @@ The two specifically approved public Moonshot decks are separate read-only image
 
 ## Custom sharing
 
-data/share-cards.json and scripts/build-sharing.cjs generate approved sharing metadata, versioned card images, the two pilot static story pages and the Ledger share-route mapping. Narrative sources remain the existing entry/news records. Run the builder after edits and --check before publishing; --render-images uses the existing Playwright/Chrome operator setup when a visible card input changes. Do not hand-edit generated story HTML, assets/share-routes.js or data/share-manifest.json. The read-only Sharing integrity workflow checks freshness in PRs/main. See docs/custom-sharing.md for the four-card pilot, the approved-image review process, scope and platform-testing limits.
+data/share-cards.json and scripts/build-sharing.cjs maintain individual sharing metadata/images for all company pages, Ledger sections, cases and news. Twenty-six static reader pages project the canonical Ledger content; current in-app share/copy controls select their corresponding URLs. Run the builder after source edits and --check before publishing; --render-images uses the existing Playwright/Chrome operator setup for visible card changes. Coverage checks require a record for every current page/item. Do not hand-edit generated reader HTML, assets/share-routes.js or data/share-manifest.json. The read-only Sharing integrity workflow checks freshness in PRs/main. See docs/custom-sharing.md for the source model, rendering/review process, Telegram pilot result and pending intake pipeline.
 
 ## Review and testing
 
