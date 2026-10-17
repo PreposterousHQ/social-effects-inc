@@ -254,7 +254,8 @@ body:has(.site-menu[open]) { overflow: hidden; }
 /* The opening fills the screen; company context is a separate reading section. */
 .company-revamp #home { min-height: calc(100svh - 84px); justify-content: center; padding-top: clamp(2.5rem,6svh,5rem); padding-bottom: clamp(2.5rem,6svh,5rem); }
 .company-revamp #home .hero-activities { margin-top: clamp(2rem,6svh,3.5rem); margin-bottom: 1rem; }
-.company-revamp #home .hero-actions { margin-top: 2rem; }
+.company-revamp #home .hero-actions { margin-top: clamp(3.5rem,8svh,5rem); gap: 1.5rem; }
+.company-revamp #home .hero-actions .button-gold { gap: .5rem; font: 700 .95rem/1.7 var(--sans); }
 .hero-ledger-link { color: var(--gold-light); font: 700 .95rem/1.7 var(--sans); text-decoration: underline; text-underline-offset: 5px; padding: .5rem 0; }
 .hero-ledger-link:hover { color: var(--paper); }
 .company-intro-band { padding: clamp(3rem,6vw,5.5rem) max(1.5rem,calc((100vw - 1240px)/2)); background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--rule); }
@@ -263,5 +264,5 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .company-revamp #home .hero-image { position: absolute; inset: 0 0 0 auto; height: 100%; aspect-ratio: 1024/559; background: url('projector-heart.jpg') center/cover no-repeat; mask-image: linear-gradient(90deg,transparent,#000 15%); filter: brightness(.42) saturate(.75); z-index: 0; }
 .company-revamp #home .hero-accent { display: none; }
 .company-revamp #home::after { content: ''; position: absolute; inset: 60% 0 0; background: linear-gradient(180deg,transparent,var(--film)); z-index: 2; pointer-events: none; }
-@media(max-width:800px) { .company-revamp #home { padding-top: 3rem; padding-bottom: 3rem; } .company-revamp #home .hero-activities { margin-top: 2.5rem; } }
+@media(max-width:800px) { .company-revamp #home { padding-top: 3rem; padding-bottom: 3rem; } .company-revamp #home .hero-activities { margin-top: 2.5rem; } .company-revamp #home .hero-actions { margin-top: 3rem; gap: 1rem; } }
 @media(max-width:520px) { .hero-ledger-link { text-align: center; } }
