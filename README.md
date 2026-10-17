@@ -1,32 +1,34 @@
-# Social Effects Inc
+# Social Effects NJ
 
-**Filmanthropy & Regenerative Filmmaking — Central New Jersey**
+Filmanthropy by Design and Regenerative Filmmaking.
 
-> *From Special Effects to Social Effects. Wrap It Forward.*
+Public repository and GitHub Pages deployment source for [socialeffectsnj.com](https://socialeffectsnj.com). Pages deploys main; review changes in a branch and pull request before publishing. Never place private project records, credentials or unapproved source files in this repository.
 
-A Central New Jersey startup coordinating production surplus — sets, wardrobe, food, props, equipment, vehicles, flowers — from the NJ film boom into the communities where filming happens.
+## Current routes
 
-## Pillar
-`01-mental-wealth` — Social Effects Inc is a for-profit venture whose sponsored beneficiary is the Mental Health Reformation Consortium. Also cross-pillar to `02-storylivingry-studio` via the Filmanthropy and Regenerative Filmmaking frameworks.
+| Route | Purpose |
+| --- | --- |
+| / and /socialeffects/ | Existing company site |
+| /new/ | Live, noindex company redesign under review |
+| /filmanthropyledger/ | The Filmanthropy Ledger |
+| /eva/, /vinati/, entry-*.html | Entry sharing/redirect routes |
 
-## Status
-- **Private repo** — stealth mode. Public launch TBD.
-- **Domain:** socialeffectsnj.com (will redirect here when Pages is enabled)
-- **Demo:** `index.html` at repo root
-- **Live URL:** Not yet deployed. GitHub Pages to be enabled when ready.
+The later /new/ to root homepage transition and desired /ledger address are launch work, not current routing. Do not change those routes based on this plan alone. See the current handoff and PR publication records.
 
-## Short links
-Short links use a folder with an `index.html`, such as `eva/index.html`. To add one, copy an existing short-link page, reuse the matching entry share page metadata, and update the canonical URL, `og:url`, meta refresh, JavaScript redirect, and fallback link. The redirect target should be the absolute Ledger URL with a hash that matches a key in the Ledger's `entries` object.
+## Company and publication
 
-## Ecosystem Links
-- Sponsored beneficiary: [Mental Health Reformation Consortium](https://www.stonesynergysoup.com)
-- Parent ontology: PreposterousHQ/00-preposterous
-- Founder: Bret Warshawsky — bret@bretwarshawsky.com
+The company draft describes Social Effects NJ as a developing foundation and LLC bringing research, education, entertainment and practical services together. The Ledger is its publication. The word Filmanthropy has a wider history documented on the site; it is not presented as a newly coined Social Effects term.
 
-## Source of truth
-- **Drive archive copy:** `01-mental-wealth/social-effects-inc/website-demo/Social Effects Inc HTML.html`
-- **Repo deployment copy:** `index.html` (this file)
-- Both should be kept aligned when the HTML is updated.
+Company pages are static HTML with shared new/site.css, new/revamp.css and new/site.js. Canonical Ledger essay and case-study wording must be preserved unless Bret requests a specific edit. Entry routes use hashes matching the Ledger's entry keys.
 
----
-*Part of the BRET ecosystem. Filmanthropy is a native Storylivingry Studios framework. This is pillar 1 funded by pillar 2's industry using pillar 2's philosophy.*
+## Slide viewers
+
+The proposal decks in new/decks remain password-protected encrypted snapshots. Do not commit passwords, plaintext exports or private source material there. Their public covers and captions identify the concepts without exposing the slides.
+
+The two specifically approved public Moonshot decks are separate read-only image/PDF snapshots in new/moonshot-decks. They require fresh export and review after source edits. See scripts/package-moonshot-decks.cjs and docs/company-revamp-handoff.md for the refresh process.
+
+## Review and testing
+
+Use the company, return-navigation, Ledger and deck tests under tests/ as appropriate to the change. Browser tests use Playwright; set LEDGER_BROWSER=chrome where supported to use installed Chrome. Protected-deck tests require a password file outside this repository.
+
+docs/company-streamline-audit.md and docs/company-revamp-handoff.md contain dated design and implementation records. Later PR/deployment checkpoints supersede older preview-only statements. Drive and Google Docs remain creative reference surfaces where recorded; do not assume they automatically match the deployed HTML.

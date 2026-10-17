@@ -311,3 +311,7 @@ body:has(.site-menu[open]) { overflow: hidden; }
 
 .moonshot-controls button { padding: .65rem .75rem; }
 #moonshot-count { min-width: 3rem; text-align: center; font: .75rem var(--mono); }
+
+/* Dated source for the reuse proposal's compact industry context. */
+.company-revamp .context-source { margin: 1.5rem 0 0; font-size: .8rem; line-height: 1.65; }
+.company-revamp .context-source a { color: var(--gold-light); text-underline-offset: 4px; }
