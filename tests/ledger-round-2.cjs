@@ -261,7 +261,7 @@ const server = http.createServer((req,res) => {
           await page.locator('body > nav').evaluate(e => { e.style.visibility = ''; });
         }
       }
-      assert.match(await page.locator('.hub-card-stories p').textContent(),/Personal, firsthand accounts/);
+      assert.match(await page.locator('.hub-card-stories p').textContent(),/Firsthand experiences/);
       await page.locator('.hub-card-stories').click();
       await page.waitForSelector('#stories-from-the-field-view:visible');
       await page.locator('#stories-from-the-field-view .stories-submit').click();

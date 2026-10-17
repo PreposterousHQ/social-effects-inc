@@ -283,3 +283,7 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .civic-article > h2 { margin: 2.25rem 0 1rem; font: 700 1.6rem/1.25 var(--serif); color: #0e0d0b; }
 .civic-article > h2:first-child { margin-top: 0; }
 .civic-article > p { margin: 1rem 0 0; line-height: 1.85; }
+
+/* Shared publication, contribution and work invitations on the company homepage. */
+.company-revamp #ways-in .participation-routes { grid-template-columns: repeat(3,minmax(0,1fr)); }
+@media(max-width:1000px) { .company-revamp #ways-in .participation-routes { grid-template-columns: 1fr; } }
