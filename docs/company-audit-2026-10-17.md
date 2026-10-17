@@ -49,17 +49,19 @@ The live Work With Us “Choose a time” button opens Bret’s `20-minute-explo
 
 The first probe inspected the calendar before asynchronous availability had arrived; waiting for enabled date controls resolved that, not an account setting change. A later probe used the visible “Next” text while Calendly’s accessible name also includes the chosen time. Correcting the selector completed the journey without any website or Calendly configuration change.
 
-## Deliberately remaining
+## Current decisions and next steps
 
-1. Bret will supply new bio material. Keep the About summary near its current length and add a separate, longer biography in the established editorial style, with Social Effects NJ named consistently. No longer-bio draft or route is represented as ready yet.
-2. Decide the public workshop/lab wording once; the current choice remains pending. Do not silently rename the branded Presentation and Lab deck.
-3. Replace interim email story intake with a working reviewed text/audio/video submission form before the main-site launch. No provider, backend or form configuration was added by this audit.
-4. The Ledger’s company links still lead to the existing company site. Update them with the planned root-homepage transition, alongside `/ledger`, rather than making the public publication depend on this draft unexpectedly.
-5. During the planned AI copy upgrade, review its statement about daily use for matching/logistics against the actual operational stage. The essay is deliberately unchanged here.
-6. The Moonshot is framed as a thought experiment. Its stronger health-care, reimbursement, permanent-ownership, financing and construction-timeline assertions still need a dedicated factual review before the full launch. This audit has not certified them or silently rewritten Bret’s essay.
-7. Google source edits require re-export of deck snapshots. The original Storylivingry NJ1/NJ2 wrapper sign-in issue remains separate; the new public Moonshot snapshots work independently.
+Updated after Bret’s response to this audit on 17 October 2026. These directions supersede the earlier pending list.
 
-These remaining items are named work, not reasons to keep restructuring the site. No root/DNS migration, publishing, source-deck sharing change, new service purchase or external message occurs in this preview.
+1. **Bio:** material received. About now has a short bio naming Social Effects NJ and a link to the new, longer `/new/bret-warshawsky.html` page. Both are tested and join the audit changes approved by Bret’s subsequent “k”. Exact publication status belongs in the PR/shared handoff.
+2. **Workshop/lab wording:** the current choice is canonical for now, including the branded Presentation and Lab title. No rename is pending.
+3. **Intake:** implement the reviewed text/audio/video submission form as soon as possible **after** the main-site launch planned for 17 October. It is no longer a prerequisite for that launch. The interim email route remains until the real form works.
+4. **Launch:** the next transition is `/new/` becoming the root Social Effects NJ homepage, with company-return links updated coherently and `/ledger` dedicated to the publication. Bret also intends a separate Ledger domain later; none has been selected or purchased here. The current audit/bio approval publishes these improvements under the existing routes, without performing that upcoming cutover.
+5. **AI clarification:** the one operational sentence at issue is “Social Effects uses it daily, for matching, logistics, and documentation.” The question is whether this describes current daily activity or capabilities being developed. This is a narrow factual wording clarification, not a requirement for a general AI-essay rewrite. The approved essay remains unchanged pending Bret’s answer.
+6. **Moonshot:** Bret accepts the copy and says the information was previously researched. The proposed additional factual-review gate is withdrawn. This records Bret’s editorial acceptance; it does not claim this audit repeated the earlier research.
+7. **Slides:** both site viewers work. They serve saved slide copies, so later Google Slides edits require refreshed exports; automatic source synchronization was not implemented. There is no sign-in defect in this site’s public Moonshot viewer. The earlier sign-in observation concerned separate Storylivingry NJ1/NJ2 Google-embed wrappers, not a launch dependency here. Treat export refresh as maintenance, not an unresolved viewer bug.
+
+Bret authorized merging the audit improvements and bio work. No root/DNS migration, source-deck sharing change, service purchase, real booking or external message is included in this publication.
 
 ## Sources and preview
 
