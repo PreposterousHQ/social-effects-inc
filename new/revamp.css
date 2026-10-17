@@ -7,7 +7,7 @@
 .skip-link { position: fixed; left: 1rem; top: -100px; z-index: 3000; padding: 1rem; background: var(--gold); color: var(--film); }
 .skip-link:focus { top: 1rem; }
 .site-nav { position: fixed; inset: 0 0 auto; height: 84px; padding: 0 2rem; z-index: 1000; background: #0d0b08; border-bottom: 1px solid #77623966; }
-.site-nav::before, .site-nav::after { content: ''; position: absolute; left: 0; right: 0; height: 7px; background: repeating-linear-gradient(90deg,transparent 0 18px,#7762392e 18px 32px,transparent 32px 42px); }
+.site-nav::before, .site-nav::after { content: ''; position: absolute; left: 0; right: 0; height: 7px; background: repeating-linear-gradient(90deg,transparent 0 18px,#77623957 18px 32px,transparent 32px 42px); }
 .site-nav::before { top: 5px; }.site-nav::after { bottom: 5px; }
 .site-nav-inner { width: min(1440px,100%); height: 100%; margin: auto; display: flex; align-items: center; gap: 1.8rem; }
 .site-brand { display: flex; flex-direction: column; color: var(--paper); text-decoration: none; white-space: nowrap; }
