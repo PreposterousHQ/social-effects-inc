@@ -83,9 +83,9 @@
 
   function pageShareContext() {
     var hash = window.location.hash.slice(1);
-    if (ENTRY_ORDER.includes(hash)) return { hash: hash, title: entries[hash].name, label: 'Share this entry' };
+    if (ENTRY_ORDER.includes(hash)) return { hash: hash, title: window.ledgerShareTitle(hash, entries[hash].name), label: 'Share this entry' };
     if (document.body.dataset.ledgerView === 'happening-now' && feedItemsByHash[hash]) {
-      return { hash: hash, title: feedItemsByHash[hash].production, label: 'Share this report' };
+      return { hash: hash, title: window.ledgerShareTitle(hash, feedItemsByHash[hash].production), label: 'Share this report' };
     }
     return SHARE_SECTIONS[document.body.dataset.ledgerView] || SHARE_SECTIONS.hub;
   }
@@ -308,7 +308,7 @@
     document.getElementById('exp-narrative').innerHTML = narrative;
 
     var shareUrl = encodeURIComponent(window.ledgerShareUrl(id));
-    var shareText = encodeURIComponent(entry.name + ' — A Social Effects Ledger of Filmanthropy · Social Effects NJ.');
+    var shareText = encodeURIComponent(window.ledgerShareTitle(id, entry.name) + ' — The Filmanthropy Ledger · Social Effects NJ.');
     document.getElementById('share-twitter').href = 'https://twitter.com/intent/tweet?url=' + shareUrl + '&text=' + shareText;
     document.getElementById('share-linkedin').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + shareUrl;
     document.getElementById('share-facebook').href = 'https://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
@@ -541,6 +541,7 @@
   }
 
   function makeReportShares(hash, title) {
+    title = window.ledgerShareTitle(hash, title);
     var group = makeElement('div', 'feed-share');
     group.setAttribute('role', 'group');
     group.setAttribute('aria-label', 'Share report: ' + title);

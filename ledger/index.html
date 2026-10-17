@@ -4,25 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<title>The Filmanthropy Ledger — The Gift in the Making | Social Effects NJ</title>
+<title>The Filmanthropy Ledger | Social Effects NJ</title>
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Social Effects NJ">
-<meta property="og:title" content="The Filmanthropy Ledger — The Gift in the Making | Social Effects NJ">
-<meta property="og:description" content="A hundred years of giving in film, and the hundred to come.">
-<meta name="description" content="A hundred years of giving in film, and the hundred to come.">
-<meta property="og:image:alt" content="A vintage film projector casting a golden light beam — Social Effects NJ Filmanthropy research archive.">
+<meta property="og:site_name" content="The Filmanthropy Ledger · Social Effects NJ">
+<meta property="og:title" content="The Filmanthropy Ledger | Social Effects NJ">
+<meta property="og:description" content="Explore a century of giving through film, real case studies, news, firsthand stories and the possibilities at the intersection of filmmaking and AI.">
+<meta name="description" content="Explore a century of giving through film, real case studies, news, firsthand stories and the possibilities at the intersection of filmmaking and AI.">
+<meta property="og:image:alt" content="The Filmanthropy Ledger · Social Effects NJ">
 <meta property="og:url" content="https://socialeffectsnj.com/ledger">
-<meta property="og:image" content="https://socialeffectsnj.com/social-share-nj-v2.jpg">
+<meta property="og:image" content="https://socialeffectsnj.com/assets/share/ledger-7c71c2ed84.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%230e0d0b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23c8a84b' stroke-width='3'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23c8a84b'/%3E%3C/svg%3E">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Filmanthropy Ledger — The Gift in the Making">
-<meta name="twitter:description" content="A hundred years of giving in film, and the hundred to come.">
-<meta name="twitter:image" content="https://socialeffectsnj.com/social-share-nj-v2.jpg">
-<meta name="twitter:image:alt" content="A vintage film projector casting a golden light beam — Social Effects NJ Filmanthropy research archive.">
+<meta name="twitter:title" content="The Filmanthropy Ledger | Social Effects NJ">
+<meta name="twitter:description" content="Explore a century of giving through film, real case studies, news, firsthand stories and the possibilities at the intersection of filmmaking and AI.">
+<meta name="twitter:image" content="https://socialeffectsnj.com/assets/share/ledger-7c71c2ed84.png">
+<meta name="twitter:image:alt" content="The Filmanthropy Ledger · Social Effects NJ">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -1524,6 +1524,7 @@
   </figure>
 </footer>
 
+<script src="/assets/share-routes.js?v=33a31fb05fa0" data-share-routes></script>
 <script>window.LEDGER_V2 = true;</script>
 <script>
 
@@ -1616,7 +1617,14 @@ function closeExpanded() {
 })();
 
 function ledgerShareUrl(id) {
+  var item = window.ledgerShareRoutes && window.ledgerShareRoutes[id || ''];
+  if (item) return item.url;
   return 'https://socialeffectsnj.com/ledger' + (id ? '#' + encodeURIComponent(id) : '');
+}
+
+function ledgerShareTitle(id, fallback) {
+  var item = window.ledgerShareRoutes && window.ledgerShareRoutes[id || ''];
+  return item ? item.title : fallback;
 }
 
 function copyInShortLink() {
@@ -1721,7 +1729,7 @@ function copyEntryLink(platform) {
 })();
 </script>
 <script src="/assets/ledger-entries.js" defer></script>
-<script src="/assets/ledger-v2.js?v=35a7ef25372c" defer></script>
+<script src="/assets/ledger-v2.js?v=6a4d7d7f1483" defer></script>
 
 </body>
 </html>

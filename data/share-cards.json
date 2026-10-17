@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "origin": "https://socialeffectsnj.com",
+  "items": [
+    {
+      "id": "social-effects-nj",
+      "cover": true,
+      "section": "Main Social Effects NJ site",
+      "context": "Filmanthropy by Design · Regenerative Filmmaking",
+      "headline": "From Special Effects to Social Effects",
+      "caption": "Document. Present. Teach. Do.",
+      "description": "Social Effects NJ brings research, education, entertainment and practical services together to expand what filmmaking makes possible for people and communities.",
+      "metadataTitle": "From Special Effects to Social Effects | Social Effects NJ",
+      "footerLabel": "",
+      "footerUrl": "socialeffectsnj.com",
+      "source": "index.html#home",
+      "image": "/assets/share/social-effects-nj-a40d968e62.png",
+      "kind": "company",
+      "sourceId": null,
+      "route": "/",
+      "shareKey": null,
+      "imageInputHash": "14013613e3e6d6953a4f8871d128d67e3ac0edc30ab7be493e98dd813b77c073"
+    },
+    {
+      "id": "ledger",
+      "cover": true,
+      "section": "The Filmanthropy Ledger",
+      "context": "The past, present and future of giving through film",
+      "headline": "The Filmanthropy Ledger",
+      "caption": "How far can the gift of a film reach?",
+      "extraCaption": "An essay, case studies, news, firsthand stories and AI.",
+      "description": "Explore a century of giving through film, real case studies, news, firsthand stories and the possibilities at the intersection of filmmaking and AI.",
+      "metadataTitle": "The Filmanthropy Ledger | Social Effects NJ",
+      "footerLabel": "",
+      "footerUrl": "socialeffectsnj.com/ledger",
+      "source": "ledger/index.html#ledger-top",
+      "image": "/assets/share/ledger-7c71c2ed84.png",
+      "kind": "publication",
+      "sourceId": null,
+      "route": "/ledger",
+      "shareKey": "",
+      "imageInputHash": "0331af727791a8f11a9940f02551b498703642be96fcfb68b58e54bf67a9322c"
+    },
+    {
+      "id": "spielberg",
+      "section": "Case Studies",
+      "headline": "Steven Spielberg: Giving beyond the film",
+      "caption": "Schindler’s List · The Righteous Persons Foundation",
+      "description": "Spielberg directed his share of Schindler’s List profits into the Righteous Persons Foundation. Explore the Ledger’s account of that founding act.",
+      "source": "assets/ledger-entries.js#schindlers-list",
+      "image": "/assets/share/spielberg-a5612a2ca1.png",
+      "kind": "case-study",
+      "sourceId": "schindlers-list",
+      "route": "/ledger/case-studies/schindlers-list/",
+      "shareKey": "schindlers-list",
+      "imageInputHash": "a104096c4a2518646e8aab4c2411311d98d6443ef9ed4dfe8cd37fed35596962"
+    },
+    {
+      "id": "clean-hands",
+      "section": "Happening Now",
+      "headline": "Clean Hands pledges a third of its profits to Brooke’s House",
+      "caption": "Texas · A reported pledge to support recovery",
+      "description": "The production has pledged one-third of its profits to Brooke’s House, the recovery center that inspired the film. Reported commitment; payments remain to be followed up.",
+      "source": "data/happening-now.json#clean-hands-brookes-house",
+      "image": "/assets/share/clean-hands-95814036cc.png",
+      "kind": "news",
+      "sourceId": "clean-hands-brookes-house",
+      "route": "/ledger/news/clean-hands-brookes-house/",
+      "shareKey": "now-clean-hands-brookes-house",
+      "imageInputHash": "f343f9a99ab76bebdd3fb7abb89580a7b43b80124552b2a4752eabe87cf5ca59"
+    }
+  ]
+}
