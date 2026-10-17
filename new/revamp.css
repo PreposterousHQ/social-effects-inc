@@ -257,7 +257,10 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .company-revamp #home .hero-actions { margin-top: 1.5rem; }
 .hero-ledger-link { color: var(--gold-light); font: 700 .95rem/1.7 var(--sans); text-decoration: underline; text-underline-offset: 5px; padding: .5rem 0; }
 .hero-ledger-link:hover { color: var(--paper); }
-.company-intro-band { padding: 1.25rem 1.5rem; background: var(--card); color: var(--ink); border-bottom: 1px solid var(--rule); }
-.company-intro-band p { font: 400 1.02rem/1.8 var(--sans); margin: 0; }
+.company-intro-band { padding: 1.25rem 1.5rem 1.75rem; background: var(--film); color: var(--paper); }
+.company-intro-band p { font: 400 clamp(1.125rem,1.35vw,1.25rem)/1.7 var(--serif); margin: 0; }
+.company-revamp #home .hero-image { position: absolute; inset: 0 0 0 auto; height: 100%; aspect-ratio: 1024/559; background: url('projector-heart.jpg') center/cover no-repeat; mask-image: linear-gradient(90deg,transparent,#000 15%); filter: brightness(.42) saturate(.75); z-index: 0; }
+.company-revamp #home .hero-accent { display: none; }
+.company-revamp #home::after { content: ''; position: absolute; inset: 60% 0 0; background: linear-gradient(180deg,transparent,var(--film)); z-index: 2; pointer-events: none; }
 @media(max-width:800px) { .company-revamp #home { min-height: 0; padding-top: 2rem; padding-bottom: 2.5rem; } .company-revamp #home .hero-activities { margin-top: 2rem; } }
 @media(max-width:520px) { .hero-ledger-link { text-align: center; } }
