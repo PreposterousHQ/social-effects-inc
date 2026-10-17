@@ -251,16 +251,17 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .article-next p { margin-bottom: 1.25rem; }
 @media(max-width:800px) { .session-option { grid-template-columns: 1fr; gap: 1rem; } }
 
-/* A clean opening, followed immediately by the company introduction. */
-.company-revamp #home { min-height: clamp(440px,calc(80svh - 84px),640px); justify-content: flex-start; padding-top: 2.5rem; padding-bottom: 3rem; }
-.company-revamp #home .hero-activities { margin-top: clamp(2rem,5vh,3rem); margin-bottom: .75rem; }
-.company-revamp #home .hero-actions { margin-top: 1.5rem; }
+/* The opening fills the screen; company context is a separate reading section. */
+.company-revamp #home { min-height: calc(100svh - 84px); justify-content: center; padding-top: clamp(2.5rem,6svh,5rem); padding-bottom: clamp(2.5rem,6svh,5rem); }
+.company-revamp #home .hero-activities { margin-top: clamp(2rem,6svh,3.5rem); margin-bottom: 1rem; }
+.company-revamp #home .hero-actions { margin-top: 2rem; }
 .hero-ledger-link { color: var(--gold-light); font: 700 .95rem/1.7 var(--sans); text-decoration: underline; text-underline-offset: 5px; padding: .5rem 0; }
 .hero-ledger-link:hover { color: var(--paper); }
-.company-intro-band { padding: 1.25rem 1.5rem 1.75rem; background: var(--film); color: var(--paper); }
-.company-intro-band p { font: 400 clamp(1.125rem,1.35vw,1.25rem)/1.7 var(--serif); margin: 0; }
+.company-intro-band { padding: clamp(3rem,6vw,5.5rem) max(1.5rem,calc((100vw - 1240px)/2)); background: var(--paper); color: var(--ink); border-bottom: 1px solid var(--rule); }
+.company-intro-band p { max-width: 1000px; font: 400 clamp(1.4rem,2.2vw,2rem)/1.6 var(--serif); margin: 0; }
+.company-intro-band .rev-inner::before { content: ''; display: block; width: 3rem; border-top: 3px solid var(--gold); margin-bottom: 1.5rem; }
 .company-revamp #home .hero-image { position: absolute; inset: 0 0 0 auto; height: 100%; aspect-ratio: 1024/559; background: url('projector-heart.jpg') center/cover no-repeat; mask-image: linear-gradient(90deg,transparent,#000 15%); filter: brightness(.42) saturate(.75); z-index: 0; }
 .company-revamp #home .hero-accent { display: none; }
 .company-revamp #home::after { content: ''; position: absolute; inset: 60% 0 0; background: linear-gradient(180deg,transparent,var(--film)); z-index: 2; pointer-events: none; }
-@media(max-width:800px) { .company-revamp #home { min-height: 0; padding-top: 2rem; padding-bottom: 2.5rem; } .company-revamp #home .hero-activities { margin-top: 2rem; } }
+@media(max-width:800px) { .company-revamp #home { padding-top: 3rem; padding-bottom: 3rem; } .company-revamp #home .hero-activities { margin-top: 2.5rem; } }
 @media(max-width:520px) { .hero-ledger-link { text-align: center; } }
