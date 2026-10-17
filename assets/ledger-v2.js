@@ -111,7 +111,7 @@
     if (!group) return;
     var url = window.ledgerShareUrl(context.hash);
     group.querySelectorAll('.share-btn[data-label]').forEach(function (control) {
-      var href = shareHref(control.dataset.label, url, context.title);
+      var href = shareHref(control.dataset.label, url, window.ledgerShareTitle(context.hash, context.title));
       if (href) control.href = href;
     });
   }
