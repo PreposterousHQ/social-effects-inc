@@ -1,0 +1,11 @@
+# Subscriber chat alternative: approved
+
+18 October 2026. Bret asked to try replacing the post preview with this chat, with the option to return to the approved post: https://substack.com/chat/group/040c8908-4a54-4103-bf1f-2ce11d96c0e9 .
+
+The chat's public page identifies it as **Filmanthropy by Design & Regenerative Filmmaking** and says only subscribers to **A Civil Rights Moviement for the Soul** can access it. Direct response-header inspection returned `Content-Security-Policy: frame-ancestors 'self' https://*.substack.com https://substack.com`. That excludes socialeffectsnj.com and localhost; the chat page cannot be directly framed in the Ledger. Substack's [official embed guide](https://support.substack.com/hc/en-us/articles/25665267911572-How-do-I-embed-Substack-posts-or-notes-on-a-website) documents post/note embeds, not a public chat widget. No access setting was changed and no private chat content was read, copied, proxied or exposed.
+
+The local alternative is an explicitly linked invitation card. It opens the exact chat in a new tab, explains that Substack requires sign-in/subscription, and keeps the Ledger available. The copy reuses the Ledger's existing invitation to share good, waste and possibilities. It is **not a live chat embed**. The article/series link remains beside it.
+
+Bret reviewed the local preview and explicitly requested merging it live on 18 October 2026. Branch: `codex/substack-chat-preview`; exact publication evidence belongs in the PR and shared TODO handoff. The previous article version is preserved in merge `7e500a44941b88f9802fb7ef668bbda1727a8992` (PR #49). To return to it at Bret's request, restore only the Substack section, its scoped CSS and corresponding test from that known version, preserving unrelated subsequent edits. `docs/ledger-substack.md` now describes the approved chat invitation.
+
+Checks cover laptop/phone width, retained YouTube playlists, exact new-tab destination and the actual subscriber gate. No login, subscription, group join, message, invitation or notification was initiated. `tests/ledger-substack.cjs` in this preview branch covers the linked card; the original article-embed test remains recoverable in PR #49.

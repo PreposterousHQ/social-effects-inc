@@ -1,34 +1,17 @@
-// Checks the real native embed and failure fallback; never subscribes or posts.
-const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),{chromium}=require('playwright');
-const origin=process.env.COMPANY_ORIGIN||'http://127.0.0.1:61262',post='https://thesyntonytimes.substack.com/p/the-giants-who-did-it-first',archive='https://thesyntonytimes.substack.com/s/social-effects';
-(async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
- const context=await browser.newContext({reducedMotion:'reduce'}),p=await context.newPage();
- for(const width of (process.env.SUBSTACK_WIDTHS||'1366,768,390,320').split(',').map(Number)){
-  await p.setViewportSize({width,height:900});await p.goto(origin+'/ledger/#hub',{waitUntil:'load'});
-  await p.waitForFunction(()=>document.body.dataset.ledgerView==='hub');
-  const section=p.locator('.ledger-substack');await section.scrollIntoViewIfNeeded();
-  const frame=p.frameLocator('.substack-preview iframe');
-  await frame.getByRole('link',{name:'The Giants Who Did It First',exact:true}).waitFor({timeout:60000});
-  const article=p.frames().find(f=>f.url().includes('/embed/p/the-giants-who-did-it-first'));
-  assert.ok(article,'Native article frame loaded');
-  await article.waitForLoadState('load');
-  await article.evaluate(()=>document.fonts.ready);
-  await article.waitForFunction(()=>document.documentElement.scrollWidth<=innerWidth,{},{timeout:20000});
-  assert.ok(await article.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Article fits '+width);
-  assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'Ledger fits '+width);
-  assert.equal(await section.locator('.substack-intro > a').getAttribute('href'),archive);
-  assert.equal(await section.locator('.substack-intro > a').getAttribute('target'),'_blank');
-  assert.ok((await frame.getByRole('link',{name:'Read on Substack',exact:true}).getAttribute('href')).startsWith(post));
-  assert.ok(await p.evaluate(()=>document.querySelector('#watch').getBoundingClientRect().bottom<=document.querySelector('#substack').getBoundingClientRect().top),'After playlists');
-  assert.equal(await p.locator('.playlist-player iframe').count(),2);
-  if(process.env.SUBSTACK_SCREENSHOTS){fs.mkdirSync(process.env.SUBSTACK_SCREENSHOTS,{recursive:true});await p.evaluate(()=>document.fonts.ready);await p.locator('body > nav').evaluate(e=>e.style.visibility='hidden');await section.screenshot({path:path.join(process.env.SUBSTACK_SCREENSHOTS,'substack-'+width+'.png')});await p.locator('body > nav').evaluate(e=>e.style.visibility='');}
-  await p.locator('#nav-hamburger').click();await p.locator('#nav-mobile-overlay.open').waitFor();await p.locator('#nav-mobile-overlay a[href="#filmanthropy-and-ai"]').click();await p.locator('#filmanthropy-and-ai-view').waitFor({state:'visible'});assert.equal(await section.isVisible(),false);await p.goBack();await section.waitFor({state:'visible'});
-  console.log(width+'px: native article loaded, no overflow, exact section/post destinations, two playlists and Back navigation pass.');
- }
- for(const disabled of [true,false]){
-  const fallback=await browser.newContext({javaScriptEnabled:!disabled});if(!disabled)await fallback.route('https://substack.com/embedjs/embed.js',r=>r.abort());
-  const page=await fallback.newPage();await page.goto(origin+'/ledger/#hub',{waitUntil:'domcontentloaded'});const section=page.locator('.ledger-substack');
-  const link=section.locator('[data-post-link]');assert.equal(await link.isVisible(),true);assert.equal(await link.getAttribute('href'),post);assert.equal(await link.getAttribute('target'),'_blank');assert.equal(await section.getByText('The Giants Who Did It First by Bret Warshawsky',{exact:true}).isVisible(),true);await fallback.close();
- }
- console.log('Script-disabled and blocked-embed article fallback pass. No subscription, post or message sent.');
-}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
+// Acceptance: approved linked subscriber chat, no private messages embedded.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict'),{chromium}=require('playwright');
+const origin=process.env.COMPANY_ORIGIN||'http://127.0.0.1:61262',chatUrl='https://substack.com/chat/group/040c8908-4a54-4103-bf1f-2ce11d96c0e9';
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});try{
+const p=await b.newPage({reducedMotion:'reduce'});
+for(const width of [1366,768,390,320]){
+ await p.setViewportSize({width,height:900});await p.goto(origin+'/ledger/#substack',{waitUntil:'load'});await p.evaluate(()=>document.fonts.ready);
+ const section=p.locator('.ledger-substack'),card=p.locator('.substack-chat-card');await section.scrollIntoViewIfNeeded();
+ assert.ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert.equal(await card.getAttribute('href'),chatUrl);assert.equal(await card.getAttribute('target'),'_blank');assert.equal(await card.getAttribute('rel'),'noopener noreferrer');
+ assert.equal(await section.locator('iframe').count(),0);assert.equal(await p.locator('script[src="https://substack.com/embedjs/embed.js"]').count(),0);assert.equal(await p.locator('.playlist-player iframe').count(),2);
+ assert.ok(await p.evaluate(()=>document.querySelector('#watch').getBoundingClientRect().bottom<=document.querySelector('#substack').getBoundingClientRect().top));
+ if(process.env.SUBSTACK_SCREENSHOTS){fs.mkdirSync(process.env.SUBSTACK_SCREENSHOTS,{recursive:true});await p.addStyleTag({content:'body>nav{display:none!important}'});await section.screenshot({path:path.join(process.env.SUBSTACK_SCREENSHOTS,'chat-'+width+'.png')});await p.locator('style').last().evaluate(e=>e.remove());}
+ await p.locator('#nav-hamburger').click();await p.locator('#nav-mobile-overlay.open').waitFor();await p.locator('#nav-mobile-overlay a[href="#filmanthropy-and-ai"]').click();await p.locator('#filmanthropy-and-ai-view').waitFor({state:'visible'});await p.goBack();await section.waitFor({state:'visible'});console.log(width+'px: chat invitation, exact destination, two playlists, menu/Back and no overflow pass.');
+}
+const next=p.waitForEvent('popup');await p.locator('.substack-chat-card').click();const chat=await next;await chat.waitForLoadState('domcontentloaded');await chat.getByText('Only subscribers to A Civil Rights Moviement for the Soul can access this chat.',{exact:true}).waitFor();assert.ok(p.url().endsWith('/ledger/#substack'));await chat.close();
+console.log('Chat opens separately with subscriber access requirement; Ledger retained. No account, subscription or message changed.');
+}finally{await b.close()}})().catch(e=>{console.error(e);process.exitCode=1});
