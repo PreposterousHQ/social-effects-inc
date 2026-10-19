@@ -1,0 +1,33 @@
+# Deeper Dives
+
+19 October 2026. Requested by Bret: develop longer Substack pillar essays, feature Women Are the Story, and give the company site short summaries with routes to the full articles.
+
+## Approved direction
+
+- Canonical candidate page: `deeper-dives.html`. Bret explicitly confirmed that Beyond AI must remain a prominent, separate main-menu offering, supporting future talks and consulting. Company header, mobile menu and footer keep both Beyond AI and Deeper Dives. Beyond AI follows What We Do; Deeper Dives follows the Ledger. The original AI essay also remains a reading destination on this page.
+- Women Are the Story is the featured essay, with an approximately 100-word In brief summary, direct new-tab article link and the official Substack post embed obtained through Share > More > Embed. The summary conveys the argument and concrete examples for readers who do not open the full essay; it does not repeat the native card's title, subtitle or opening teaser. The complete article remains on Substack. The native widget includes Substack's own publication identity and controls.
+- The Giants Who Did It First is the second Substack reading link. The original human/civic AI note remains a local reading destination.
+- Homepage publication card adds a short Deeper Dives link. No fourth participation card, duplicated essay body or automatic feed was introduced.
+- The approved Ledger subscriber-chat section remains intact. This page does not attempt to iframe the restricted chat.
+- The new AI pillar essay is a separate private creative draft for review. It has not been published, emailed or placed in this public repository. Add its public article URL and approved short summary here after publication, rather than inventing a destination.
+- Bret authorized publishing this page with “More articles coming soon” and article-specific sharing on 19 October 2026. The filmstrip card concepts are a separate design preview; this release uses the existing approved black-and-gold template with distinct article information.
+
+## Article-specific sharing
+
+`data/deeper-dives.json` is the source for article titles, full-essay destinations and summaries. `scripts/deeper-dives.cjs`, called by the existing `scripts/build-sharing.cjs`, builds the hub content, share controls and three complete static share landings. Each article has a `deep-dive` record in `data/share-cards.json`, with an individual title, description, 1200 × 630 content-hashed PNG and canonical URL under `/deeper-dives/<id>/`. A fragment on the collection cannot provide its own initial metadata, so sharing uses these real HTML pages. They show the summary and clearly link to the complete article.
+
+Each entry has LinkedIn, X, Facebook, WhatsApp, Telegram, Threads and Email composer links, plus Copy for Instagram and Copy link. Instagram copies a link for pasting; it does not pretend to publish through a web composer. Copy feedback is scoped to the entry clicked. Controls never publish on behalf of the visitor. `assets/deeper-dives.js` supports multiple independent groups on the hub and the single group on each landing. Explicit full-essay/share links work with JavaScript disabled.
+
+To add an approved article, add its summary/source record and sharing record, render/review its card with `node scripts/build-sharing.cjs --render-images`, then run `--check` and `tests/deeper-dives.cjs`. Existing article/card assets are reused unchanged unless their inputs change. The collection's original share record remains distinct. Private drafts and source attachments never belong in this public repository.
+
+## Verification
+
+- Existing company browser suite passes for all thirteen pages at 1366, 1024, 390 and 320px, including navigation targets, menu/focus and horizontal bounds.
+- Actual women’s article iframe loaded from Substack and was visually reviewed at 1366, 768, 390 and 320px. Its heading, image, full-article destination and native controls render. No subscription, reaction or comment was submitted.
+- AI link leads to the complete existing essay. Browser Back restores the reading position after the embed/fonts have settled. An initial automated probe measured before the asynchronously loaded widget settled; measuring the stable, visible click position passed without a production routing change.
+- Sharing registry now has 43 records and 29 generated reader pages. The three bespoke-information article cards and collection card were visually reviewed; all previous approved card assets remain unchanged. `node scripts/build-sharing.cjs --check` passes.
+- `tests/deeper-dives.cjs` verifies real initial crawler metadata and full summaries, distinct valid images, seven composer destinations and both copy controls per article, script-disabled fallbacks and layouts at 1366/1200/768/390/320px. It never posts or subscribes. Publication commit, PR, CI and live acceptance evidence belong in the release handoff.
+
+## Maintenance
+
+This is a curated reading page. Add or replace summaries and article links deliberately as essays are approved. Keep one native embed on the page unless the external loader's handling of multiple embeds has been verified. Maintain the explicit full-article link so a blocked external widget never hides the destination. Private creative masters, contributor data and unpublished article bodies stay outside the public repository. A new company page must also have an entry in `data/share-cards.json`, a generated card and metadata, and a sitemap entry.

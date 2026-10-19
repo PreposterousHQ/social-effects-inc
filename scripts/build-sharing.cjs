@@ -9,6 +9,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const sha=b=>crypto.createHash('sha256').update(typeof b==='string'?normalize(b):b).digest('hex');
 const entries=vm.runInNewContext(read('assets/ledger-entries.js')+'\nentries');
 const reports=JSON.parse(read('data/happening-now.json')).items;
+const dives=JSON.parse(read('data/deeper-dives.json')).items;
 const ledger=read('ledger/index.html'),ledgerJS=read('assets/ledger-v2.js');
 const chapters=vm.runInNewContext('('+ledgerJS.match(/var CHAPTERS = (\{[\s\S]*?\n  \});/)[1]+')');
 const {sectionContent,inline}=require('./sharing-content.cjs');
@@ -25,6 +26,7 @@ for(const item of catalog.items){
  if(item.kind==='case-study')assert.ok(entries[item.sourceId],'Missing canonical entry');
  else if(item.kind==='news')assert.ok(reports.some(r=>r.id===item.sourceId),'Missing canonical report');
  else if(item.kind==='section')assert.ok(ledger.includes('id="'+item.sourceId+'"'),'Missing canonical section');
+ else if(item.kind==='deep-dive')assert.ok(dives.some(d=>d.id===item.sourceId),'Missing canonical deep dive');
  else assert.ok(['company','company-page','publication'].includes(item.kind),'Unknown item kind');
 }
 const companyFiles=fs.readdirSync(root).filter(f=>f.endsWith('.html')&&read(f).includes('class="company-revamp'));
@@ -48,11 +50,12 @@ async function renderImages(){
  fs.writeFileSync(catalogFile,JSON.stringify(catalog,null,2)+'\n');
 }
 const isCompany=s=>['company','company-page'].includes(s.kind);
-const title=s=>s.metadataTitle||s.headline+' | '+(isCompany(s)?'Social Effects NJ':'The Filmanthropy Ledger');
+const isCompanyBrand=s=>isCompany(s)||s.kind==='deep-dive';
+const title=s=>s.metadataTitle||s.headline+' | '+(isCompanyBrand(s)?'Social Effects NJ':'The Filmanthropy Ledger');
 const url=s=>origin+s.route;
 const fileFor=s=>isCompany(s)?s.source.split('#')[0]:s.kind==='publication'?'ledger/index.html':s.route.slice(1)+'index.html';
-const imageAlt=s=>[...new Set([s.headline,s.section,'Social Effects NJ'])].join(' · ');
-const fullMeta=s=>({title:title(s),description:s.description,url:url(s),image:origin+s.image,alt:imageAlt(s),type:['case-study','news'].includes(s.kind)?'article':'website',site:isCompany(s)?'Social Effects NJ':'The Filmanthropy Ledger · Social Effects NJ'});
+const imageAlt=s=>[...new Set([s.headline,...(s.kind==='deep-dive'?[s.caption]:[]),s.section,'Social Effects NJ'])].join(' · ');
+const fullMeta=s=>({title:title(s),description:s.description,url:url(s),image:origin+s.image,alt:imageAlt(s),type:['case-study','news','deep-dive'].includes(s.kind)?'article':'website',site:isCompanyBrand(s)?'Social Effects NJ':'The Filmanthropy Ledger · Social Effects NJ'});
 function patchMeta(html,meta){
  const split=html.indexOf('</head>');assert.ok(split>=0,'HTML head required');let head=html.slice(0,split),body=html.slice(split);
  function replaceTag(pattern,tag){let found=false;head=head.replace(pattern,()=>{if(found)return '';found=true;return tag;});if(!found)head+='\n'+tag;}
@@ -98,11 +101,14 @@ async function main(){
  for(const s of catalog.items){assert.equal(s.imageInputHash,fingerprint(s),s.id+': card changed; run --render-images and review it');assert.match(s.image,/^\/assets\/share\/[a-z0-9-]+-[a-f0-9]{10}\.png$/);const image=fs.readFileSync(path.join(root,s.image.slice(1)));assert.equal(image.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(image.readUInt32BE(16),1200);assert.equal(image.readUInt32BE(20),630);assert.ok(s.image.endsWith('-'+sha(image).slice(0,10)+'.png'),'Image digest matches filename');}
  const planned=new Map(),company=catalog.items.find(s=>s.kind==='company'),publication=catalog.items.find(s=>s.kind==='publication');
  function modify(file,fn){planned.set(file,fn(planned.has(file)?planned.get(file):read(file)));}
+ const deepDives=require('./deeper-dives.cjs')({items:dives,catalog:catalog.items,origin,esc,read,sha});
+ assert.deepEqual(new Set(catalog.items.filter(s=>s.kind==='deep-dive').map(s=>s.sourceId)),new Set(dives.map(d=>d.id)),'Every deep dive needs its own sharing record');
+ modify('deeper-dives.html',h=>deepDives.hub(h));
  const companyBridges=fs.readdirSync(path.join(root,'new')).filter(f=>f.endsWith('.html')).map(f=>'new/'+f).concat('socialeffects/index.html');
  for(const f of companyBridges){const source=f==='socialeffects/index.html'?'index.html':f.slice(4),card=catalog.items.find(s=>isCompany(s)&&fileFor(s)===source);assert.ok(card,'Company bridge has canonical card');modify(f,h=>patchMeta(h,fullMeta(card)));}
  const publicationBridges=['filmanthropyledger/index.html','Filmanthropy_Ledger.html','Filmanthropy_Ledger_v2.html','eva/index.html','vinati/index.html',...fs.readdirSync(root).filter(f=>/^entry-.*\.html$/.test(f))];
  for(const f of publicationBridges)modify(f,h=>patchMeta(h,{image:origin+publication.image,alt:imageAlt(publication)}));
- for(const s of catalog.items){const f=fileFor(s);if(isCompany(s)||s.kind==='publication')modify(f,h=>patchMeta(h,fullMeta(s)));else planned.set(f,article(s));}
+ for(const s of catalog.items){const f=fileFor(s);if(isCompany(s)||s.kind==='publication')modify(f,h=>patchMeta(h,fullMeta(s)));else if(s.kind==='deep-dive')planned.set(f,patchMeta(deepDives.article(s,planned.get('deeper-dives.html')),fullMeta(s)));else planned.set(f,article(s));}
  const routeMap=Object.fromEntries(catalog.items.filter(s=>s.shareKey!==null).map(s=>[s.shareKey,{url:url(s),title:s.headline}]));
  const routeJS='// Generated by scripts/build-sharing.cjs from data/share-cards.json.\nwindow.ledgerShareRoutes=Object.freeze('+JSON.stringify(routeMap).replace(/</g,'\\u003c')+');\n';planned.set('assets/share-routes.js',routeJS);
  modify('ledger/index.html',h=>{const tag='<script src="/assets/share-routes.js?v='+sha(routeJS).slice(0,12)+'" data-share-routes></script>';if(/<script\b[^>]*data-share-routes[^>]*><\/script>/.test(h))h=h.replace(/<script\b[^>]*data-share-routes[^>]*><\/script>/,tag);else h=h.replace('<script>window.LEDGER_V2 = true;</script>',tag+'\n<script>window.LEDGER_V2 = true;</script>');return h.replace(/\/assets\/story-intake\.css(?:\?v=[^"']+)?/,'/assets/story-intake.css?v='+sha(read('assets/story-intake.css')).slice(0,12)).replace(/\/assets\/ledger-v2\.js\?v=[^"']+/,'/assets/ledger-v2.js?v='+sha(read('assets/ledger-v2.js')).slice(0,12)).replace(/\/assets\/ledger-v2\.css\?v=[^"']+/,'/assets/ledger-v2.css?v='+sha(read('assets/ledger-v2.css')).slice(0,12)).replaceAll(encodeURIComponent(origin+'/ledger#essay'),encodeURIComponent(origin+'/ledger/essay/'));});
@@ -111,9 +117,9 @@ async function main(){
   for(const f of aliases)modify(f,h=>patchMeta(h,fullMeta(card)).replaceAll('/ledger/#'+card.sourceId,card.route).replaceAll('/ledger#'+card.sourceId,card.route));
  }
  const manifest=catalog.items.map(s=>({id:s.id,kind:s.kind,shareKey:s.shareKey,url:url(s),title:title(s),description:s.description,image:origin+s.image,imageAlt:imageAlt(s),width:1200,height:630,source:s.source}));planned.set('data/share-manifest.json',JSON.stringify({version:1,items:manifest},null,2)+'\n');
- let sitemap=read('sitemap.xml');for(const s of catalog.items.filter(s=>['case-study','news','section'].includes(s.kind)))if(!sitemap.includes('<loc>'+url(s)+'</loc>'))sitemap=sitemap.replace('</urlset>','  <url><loc>'+url(s)+'</loc></url>\n</urlset>');planned.set('sitemap.xml',sitemap);
+ let sitemap=read('sitemap.xml');for(const s of catalog.items.filter(s=>['case-study','news','section','deep-dive'].includes(s.kind)))if(!sitemap.includes('<loc>'+url(s)+'</loc>'))sitemap=sitemap.replace('</urlset>','  <url><loc>'+url(s)+'</loc></url>\n</urlset>');planned.set('sitemap.xml',sitemap);
  const changed=[];for(const[f,text]of planned){const p=path.join(root,f);if(!fs.existsSync(p)||normalize(fs.readFileSync(p,'utf8'))!==normalize(text)){changed.push(f);if(!process.argv.includes('--check')){fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,text);}}}
  if(process.argv.includes('--check')&&changed.length)throw Error('Generated sharing output is stale: '+changed.join(', '));
- console.log(catalog.items.length+' sharing cards, '+catalog.items.filter(s=>['case-study','news','section'].includes(s.kind)).length+' generated reader pages; '+changed.length+' file(s) '+(process.argv.includes('--check')?'would change.':'updated.'));
+ console.log(catalog.items.length+' sharing cards, '+catalog.items.filter(s=>['case-study','news','section','deep-dive'].includes(s.kind)).length+' generated reader pages; '+changed.length+' file(s) '+(process.argv.includes('--check')?'would change.':'updated.'));
 }
 main().catch(e=>{console.error(e.message);process.exitCode=1;});
