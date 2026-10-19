@@ -1,4 +1,36 @@
 .company-revamp { background: var(--film); }
+.dives-hero { padding: clamp(4rem,7vw,6rem) 1.5rem; color: var(--paper); background: linear-gradient(90deg,#11130ff2,#11130fb3),url('theater-hero.png') center 46%/cover; border-bottom: 1px solid #b1a06166; }
+.dives-hero .eyebrow { color: var(--gold-light); }
+.dives-hero h1 { font: 700 clamp(2.9rem,5.5vw,5rem)/1.1 var(--serif); letter-spacing: -.025em; }
+.dives-hero h1 em { color: var(--gold-light); }
+.dives-hero p { max-width: 51ch; margin-top: 1.75rem; font-size: 1.12rem; line-height: 1.8; color: var(--paper); }
+.dives-feature-grid { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); align-items: center; gap: clamp(2rem,6vw,5rem); }
+.dives-feature-copy h2 { margin-bottom: 1.25rem; }
+.dives-feature-copy p { font-size: 1.06rem; line-height: 1.85; margin-bottom: 1.5rem; max-width: 49ch; }
+.dives-embed { width: 100%; max-width: 500px; justify-self: end; min-width: 0; }
+.dives-embed iframe { display: block; width: 100%; max-width: 100%; border: 0; }
+.dives-embed .substack-post-embed { padding: 1.5rem; border: 1px solid var(--gold); line-height: 1.8; }
+.dives-embed .substack-post-embed a { color: var(--rust); text-underline-offset: 4px; }
+.dives-conversation { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #b1a06166; }
+.dives-conversation p { margin-bottom: 1rem; line-height: 1.8; }
+.dives-conversation > div { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+.publication-essays-link { margin-top: 1rem !important; }
+.dives-share { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #b1a06166; }
+.dives-share-label { display: block; margin-bottom: .65rem; color: var(--rust); font: 700 .75rem/1.5 var(--sans); letter-spacing: .05em; text-transform: uppercase; }
+.dives-share-buttons { display: flex; flex-wrap: wrap; gap: .45rem; }
+.dives-share-buttons a,.dives-share-buttons button { display: inline-flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; padding: 10px; border: 1px solid #b1a06188; background: transparent; color: var(--rust); cursor: pointer; }
+.dives-share-buttons a:hover,.dives-share-buttons button:hover { background: #b1a06122; border-color: var(--rust); }
+.dives-share-buttons svg { display: block; width: 22px; height: 22px; }
+.dives-share-feedback { overflow-wrap: anywhere; }
+.dives-share .dives-share-feedback { font: 400 .85rem/1.6 var(--sans); margin: .6rem 0 0; }
+.route-card .dives-share { margin-top: 1.75rem; }
+.dives-coming-soon { margin-top: 2rem; font: 400 1.35rem/1.6 var(--serif); color: var(--rust); }
+.dives-reader { max-width: 790px; }
+.dives-reader > p { font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; }
+.dives-reader .dives-all { margin-top: 2.5rem; }
+.company-revamp .route-card[id] { scroll-margin-top: 100px; }
+.dives-hero .dives-article-title { font: 400 clamp(1.5rem,3vw,2.3rem)/1.4 var(--serif); color: var(--gold-light); }
+@media(max-width:760px) { .dives-feature-grid { grid-template-columns: 1fr; }.dives-embed { justify-self: start; }.dives-feature-copy h2 { max-width: none; } }
 .company-revamp main { padding-top: 84px; }
 .company-revamp section[id] { scroll-margin-top: 100px; }
 .company-revamp .hero-opening { display: block; margin-bottom: 1rem; color: var(--paper); font: 700 1.35rem/1.45 var(--serif); }

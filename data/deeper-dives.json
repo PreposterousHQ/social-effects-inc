@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "id": "women-are-the-story",
+      "featured": true,
+      "category": "People and pioneers",
+      "heading": "What their work makes possible.",
+      "shareHeadline": "What Their Work Makes Possible",
+      "articleTitle": "Women Are the Story",
+      "subtitle": "The Past, Present and Future of Filmanthropy & Regenerative Filmmaking",
+      "sourceUrl": "https://thesyntonytimes.substack.com/p/women-are-the-story",
+      "sourceLabel": "Read the full essay on Substack",
+      "external": true,
+      "summary": [
+        "The film itself is already a gift. This essay follows women who helped filmmaking give in further ways: Mary Pickford helped organize care for film workers; Eva Radke connected production surplus with people who could use it; Vinati and Manjari Makijany helped create a skatepark that remained after filming.",
+        "Their stories reveal the practical work behind generosity: building relationships, organizing resources and sustaining what comes next. They also invite us to recognize overlooked pioneers and ask what else the films we make, and the ways we make them, could give."
+      ]
+    },
+    {
+      "id": "why-filmmaking-is-civic",
+      "category": "Beyond AI",
+      "heading": "Why Filmmaking’s Future Is Human and Civic",
+      "shareHeadline": "Filmmaking as a Human and Civic Act",
+      "articleTitle": "Why Filmmaking’s Future Is Human and Civic",
+      "subtitle": "The original Social Effects NJ note on AI and filmmaking",
+      "sourceUrl": "https://socialeffectsnj.com/why-filmmaking-is-civic.html",
+      "sourceLabel": "Read the original AI essay",
+      "external": false,
+      "summary": [
+        "A film’s value includes the human undertaking that brings it into being: people learning a craft, earning a living, working together and contributing to a place. This original note asks how those gifts might shape filmmaking’s future as AI changes the images we can create."
+      ]
+    },
+    {
+      "id": "the-giants-who-did-it-first",
+      "category": "A history of giving",
+      "heading": "The Giants Who Did It First",
+      "shareHeadline": "A Century of Giving Through Film",
+      "articleTitle": "The Giants Who Did It First",
+      "subtitle": "The Filmanthropy Ledger, No. 1",
+      "sourceUrl": "https://thesyntonytimes.substack.com/p/the-giants-who-did-it-first",
+      "sourceLabel": "Read on Substack",
+      "external": true,
+      "summary": [
+        "Giving through film has a history that long predates today’s language of social impact. This essay traces people and precedents from that history, showing how filmmakers have extended their work’s gifts beyond the screen and offering starting points for what productions could make possible next."
+      ]
+    }
+  ]
+}
