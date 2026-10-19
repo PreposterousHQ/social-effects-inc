@@ -28,6 +28,7 @@
 .dives-reader { max-width: 790px; }
 .dives-reader > p { font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem; }
 .dives-reader .dives-all { margin-top: 2.5rem; }
+.company-revamp .route-card[id] { scroll-margin-top: 100px; }
 .dives-hero .dives-article-title { font: 400 clamp(1.5rem,3vw,2.3rem)/1.4 var(--serif); color: var(--gold-light); }
 @media(max-width:760px) { .dives-feature-grid { grid-template-columns: 1fr; }.dives-embed { justify-self: start; }.dives-feature-copy h2 { max-width: none; } }
 .company-revamp main { padding-top: 84px; }

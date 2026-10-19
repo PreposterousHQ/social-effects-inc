@@ -27,6 +27,7 @@ To add an approved article, add its summary/source record and sharing record, re
 - AI link leads to the complete existing essay. Browser Back restores the reading position after the embed/fonts have settled. An initial automated probe measured before the asynchronously loaded widget settled; measuring the stable, visible click position passed without a production routing change.
 - Sharing registry now has 43 records and 29 generated reader pages. The three bespoke-information article cards and collection card were visually reviewed; all previous approved card assets remain unchanged. `node scripts/build-sharing.cjs --check` passes.
 - `tests/deeper-dives.cjs` verifies real initial crawler metadata and full summaries, distinct valid images, seven composer destinations and both copy controls per article, script-disabled fallbacks and layouts at 1366/1200/768/390/320px. It never posts or subscribes. Publication commit, PR, CI and live acceptance evidence belong in the release handoff.
+- Release review caught missing fixed-header clearance for article fragment destinations. Article cards now have the same 100px clearance as sections. Initial fragment navigation also follows the target while the native embed changes height; it stops at the visitor's first scroll/key/pointer interaction and does not override browser Back restoration. Return-link checks pass for all three entries at laptop and phone widths after the actual widget finishes loading.
 
 ## Maintenance
 
