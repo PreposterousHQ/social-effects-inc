@@ -120,8 +120,8 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .deck-actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-top: 1rem; font-size: .8rem; line-height: 1.7; }
 .deck-actions a { color: var(--gold-light); }.degree-status { margin-top: 1rem; color: #d2c9b7; font-size: .85rem; line-height: 1.8; }
 
-/* Give shorter page banners the same breathing room as longer introductions. */
-.page-hero { min-height: 520px; display: flex; align-items: center; background-position: center,75% 45%; }
+/* Match the main-page opening below the fixed 84px navigation; grow for long copy. */
+.page-hero { min-height: calc(100svh - 84px); display: flex; align-items: center; background-position: center,75% 45%; }
 .page-hero-inner { width: min(1180px,100%); }
 .page-hero .text-link { color: var(--gold-light); }
 .feature-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 3rem; align-items: start; }
@@ -130,7 +130,7 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .outcome-panel ul { padding-left: 1.25rem; line-height: 1.9; }
 .outcome-panel li + li { margin-top: .5rem; }
 .company-revamp :is(#discovery,#design,#liaison,#story,#organization,#people) { scroll-margin-top: 150px; }
-@media(max-width:800px) { .feature-grid { grid-template-columns: 1fr; gap: 2rem; } .page-hero { min-height: 400px; } }
+@media(max-width:800px) { .feature-grid { grid-template-columns: 1fr; gap: 2rem; } }
 
 /* The whole enterprise leads; programs and further reading remain available. */
 .hero-activities { position: relative; z-index: 3; color: var(--gold-light); font: 700 clamp(1rem,1.8vw,1.4rem)/1.5 var(--mono); margin: 1.2rem 0; }
@@ -256,9 +256,6 @@ body:has(.site-menu[open]) { overflow: hidden; }
 .company-revamp .deck-switcher button[aria-pressed="true"] { color: var(--film); }
 .company-revamp .vision-screen .reading a { color: var(--gold-light); }
 
-/* More breathing room for the practice and people introductions. */
-.company-revamp:is(.practice-page,.about-page) .page-hero { min-height: 640px; }
-@media(max-width:800px) { .company-revamp:is(.practice-page,.about-page) .page-hero { min-height: 480px; padding-bottom: 5rem; } }
 
 /* Companion essays: clear reading rhythm and a structured argument summary. */
 .history-content { padding-top: clamp(2.5rem,4vw,3.5rem); }
