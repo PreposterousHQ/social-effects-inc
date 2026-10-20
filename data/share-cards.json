@@ -701,6 +701,29 @@
       "articleImageAlt": "Historic World Film Producing Studios backlot in Fort Lee, New Jersey",
       "articleImagePosition": "center",
       "articleKicker": "FILMANTHROPY · HISTORY · POSSIBILITIES"
+    },
+    {
+      "id": "deep-dive-the-irreplaceable-art-of-being-human",
+      "kind": "deep-dive",
+      "section": "Deeper Dives",
+      "context": "Deeper Dives · Beyond AI",
+      "headline": "What We Become Through Making",
+      "caption": "The Irreplaceable Art of Being Human",
+      "description": "Making art changes the people who make it. This essay explores the experience of creating together: rehearsal, vulnerability, trust, discovery and the relationships formed around a shared undertaking. As AI expands what we can generate, Bret asks how the value of those experiences might become more visible, and how the tools could help people collaborate without making the finished output our only measure of the work.",
+      "metadataTitle": "The Irreplaceable Art of Being Human | Social Effects NJ · Deeper Dives",
+      "footerLabel": "Deeper Dives",
+      "footerUrl": "socialeffectsnj.com/deeper-dives.html",
+      "source": "data/deeper-dives.json#the-irreplaceable-art-of-being-human",
+      "sourceId": "the-irreplaceable-art-of-being-human",
+      "route": "/deeper-dives/the-irreplaceable-art-of-being-human/",
+      "shareKey": null,
+      "cardDesign": "filmstrip-b",
+      "articleImage": "/assets/deeper-dives/the-irreplaceable-art-of-being-human.png",
+      "articleImageAlt": "The Irreplaceable Art of Being Human, AI and Filmmaking: the original orange and gold article cover",
+      "articleImagePosition": "center",
+      "articleKicker": "BEYOND AI · PEOPLE · POSSIBILITIES",
+      "image": "/assets/share/deep-dive-the-irreplaceable-art-of-being-human-ab7c473076.png",
+      "imageInputHash": "fd98b982c53c49b2a8ee8323a90a1fada65769f950dac0543a2272178c4408e5"
     }
   ]
 }
