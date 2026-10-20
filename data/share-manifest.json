@@ -559,6 +559,19 @@
       "width": 1200,
       "height": 630,
       "source": "data/deeper-dives.json#the-giants-who-did-it-first"
+    },
+    {
+      "id": "deep-dive-the-irreplaceable-art-of-being-human",
+      "kind": "deep-dive",
+      "shareKey": null,
+      "url": "https://socialeffectsnj.com/deeper-dives/the-irreplaceable-art-of-being-human/",
+      "title": "The Irreplaceable Art of Being Human | Social Effects NJ · Deeper Dives",
+      "description": "Making art changes the people who make it. This essay explores the experience of creating together: rehearsal, vulnerability, trust, discovery and the relationships formed around a shared undertaking. As AI expands what we can generate, Bret asks how the value of those experiences might become more visible, and how the tools could help people collaborate without making the finished output our only measure of the work.",
+      "image": "https://socialeffectsnj.com/assets/share/deep-dive-the-irreplaceable-art-of-being-human-ab7c473076.png",
+      "imageAlt": "What We Become Through Making · The Irreplaceable Art of Being Human · Deeper Dives · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/deeper-dives.json#the-irreplaceable-art-of-being-human"
     }
   ]
 }
