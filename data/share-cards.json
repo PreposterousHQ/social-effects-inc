@@ -649,8 +649,12 @@
       "sourceId": "women-are-the-story",
       "route": "/deeper-dives/women-are-the-story/",
       "shareKey": null,
-      "image": "/assets/share/deep-dive-women-are-the-story-c7fdf68d2c.png",
-      "imageInputHash": "7314ba45dde75ed292a8d46437cf7e9bc0b15dc4b9d3d6cc7425d9d50d7bc0ac"
+      "image": "/assets/share/deep-dive-women-are-the-story-5dff6d1e20.png",
+      "imageInputHash": "fd6d31ebfa67757f3c60337381be9f5563d0c00f35836d1bf9c591fccc753c1b",
+      "cardDesign": "filmstrip-b",
+      "articleImage": "/assets/deeper-dives/women-are-the-story.jpg",
+      "articleImageAlt": "Mary Pickford, cover portrait for Women Are the Story",
+      "articleImagePosition": "center 25%"
     },
     {
       "id": "deep-dive-why-filmmaking-is-civic",
@@ -667,8 +671,13 @@
       "sourceId": "why-filmmaking-is-civic",
       "route": "/deeper-dives/why-filmmaking-is-civic/",
       "shareKey": null,
-      "image": "/assets/share/deep-dive-why-filmmaking-is-civic-d94dcca36f.png",
-      "imageInputHash": "46c1f8bbb63e9220bf26704613cbb313d5f21a1365da570d015accb1b4aca88f"
+      "image": "/assets/share/deep-dive-why-filmmaking-is-civic-636f8da283.png",
+      "imageInputHash": "91d4cf26b9a75b6f1fb7e9cf2a0c184326a6e15a0a1a717aed10ec5d35b2f3e9",
+      "cardDesign": "filmstrip-b",
+      "articleImage": "/projector-heart.jpg",
+      "articleImageAlt": "A film projector casting a golden heart",
+      "articleImagePosition": "78% center",
+      "articleKicker": "BEYOND AI · PEOPLE · POSSIBILITIES"
     },
     {
       "id": "deep-dive-the-giants-who-did-it-first",
@@ -685,8 +694,13 @@
       "sourceId": "the-giants-who-did-it-first",
       "route": "/deeper-dives/the-giants-who-did-it-first/",
       "shareKey": null,
-      "image": "/assets/share/deep-dive-the-giants-who-did-it-first-288c47b800.png",
-      "imageInputHash": "e5ac50117d7910187be35fc7bcb430772424a279be03b1d30bd6d3faeb52b781"
+      "image": "/assets/share/deep-dive-the-giants-who-did-it-first-aebf3e1c88.png",
+      "imageInputHash": "41e21b4dd89f9ab8b958a52758ef68a689a717e61bcb5e77fbd739e5d6774b4b",
+      "cardDesign": "filmstrip-b",
+      "articleImage": "/fort-lee-backlot.jpg",
+      "articleImageAlt": "Historic World Film Producing Studios backlot in Fort Lee, New Jersey",
+      "articleImagePosition": "center",
+      "articleKicker": "FILMANTHROPY · HISTORY · POSSIBILITIES"
     }
   ]
 }

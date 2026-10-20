@@ -10,7 +10,7 @@
 - Homepage publication card adds a short Deeper Dives link. No fourth participation card, duplicated essay body or automatic feed was introduced.
 - The approved Ledger subscriber-chat section remains intact. This page does not attempt to iframe the restricted chat.
 - The new AI pillar essay is a separate private creative draft for review. It has not been published, emailed or placed in this public repository. Add its public article URL and approved short summary here after publication, rather than inventing a destination.
-- Bret authorized publishing this page with “More articles coming soon” and article-specific sharing on 19 October 2026. The filmstrip card concepts are a separate design preview; this release uses the existing approved black-and-gold template with distinct article information.
+- Bret authorized publishing this page with “More articles coming soon” and article-specific sharing on 19 October 2026. The first release used the established black-and-gold template. He subsequently selected filmstrip concept B: a straight filmstrip, larger article image, article title first and the short summary headline beneath it. This design applies to individual Deeper Dives, preserving Beyond AI's separate menu/offering and the existing collection/company/Ledger cards.
 
 ## Article-specific sharing
 
@@ -18,7 +18,9 @@
 
 Each entry has LinkedIn, X, Facebook, WhatsApp, Telegram, Threads and Email composer links, plus Copy for Instagram and Copy link. Instagram copies a link for pasting; it does not pretend to publish through a web composer. Copy feedback is scoped to the entry clicked. Controls never publish on behalf of the visitor. `assets/deeper-dives.js` supports multiple independent groups on the hub and the single group on each landing. Explicit full-essay/share links work with JavaScript disabled.
 
-To add an approved article, add its summary/source record and sharing record, render/review its card with `node scripts/build-sharing.cjs --render-images`, then run `--check` and `tests/deeper-dives.cjs`. Existing article/card assets are reused unchanged unless their inputs change. The collection's original share record remains distinct. Private drafts and source attachments never belong in this public repository.
+To add an approved article, add its summary/source record and sharing record, render/review its card with `node scripts/build-sharing.cjs --render-images`, then run `--check` and `tests/deeper-dives.cjs`. Individual cards select `cardDesign: filmstrip-b` and name a local `articleImage`, alt text, crop position and optional topic label. `scripts/deep-dive-card-template.cjs` renders the article title from the record's caption and the summary headline below it. Long titles fit within the filmstrip without hiding the subtitle/byline. The image fingerprint includes template, text, crop and actual source-image bytes, so changing an article image regenerates its card. Other approved cards are reused unchanged. The collection's original share record remains distinct. Private drafts and source attachments never belong in this public repository.
+
+The Women card uses the Mary Pickford cover portrait retrieved from the public Women Are the Story article. Public source: `https://substack-post-media.s3.amazonaws.com/public/images/e85a9c32-7d8f-4b86-9c01-5afed18df0dd_505x640.png`. The Giants article's public cover uses the Fort Lee backlot; its card uses the existing `fort-lee-backlot.jpg` directly so no cover lettering is cropped or repeated. The existing AI note keeps the site's projector artwork. The unpublished new AI essay and its Regen ensemble cover are separate private drafts and are not used here. Original A/B mockups remain outside the public repo.
 
 ## Verification
 

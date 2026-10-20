@@ -15,7 +15,9 @@ const chapters=vm.runInNewContext('('+ledgerJS.match(/var CHAPTERS = (\{[\s\S]*?
 const {sectionContent,inline}=require('./sharing-content.cjs');
 const template=normalize(read('scripts/share-card-template.cjs')),art=fs.readFileSync(path.join(root,'projector-heart.jpg'));
 const designFields=['id','cover','section','context','headline','caption','extraCaption','footerLabel','footerUrl'];
-const fingerprint=s=>crypto.createHash('sha256').update(JSON.stringify(Object.fromEntries(designFields.map(k=>[k,s[k]??null])))).update(template).update(art).digest('hex');
+const isFilmstrip=s=>s.kind==='deep-dive'&&s.cardDesign==='filmstrip-b';
+const filmstripTemplate=normalize(read('scripts/deep-dive-card-template.cjs'));
+const fingerprint=s=>{const hash=crypto.createHash('sha256').update(JSON.stringify(Object.fromEntries(designFields.map(k=>[k,s[k]??null]))));if(isFilmstrip(s)){assert.match(s.articleImage,/^\/[a-zA-Z0-9/_-]+\.(jpg|png)$/);hash.update(filmstripTemplate).update(JSON.stringify([s.cardDesign,s.articleImage,s.articleImageAlt,s.articleImagePosition,s.articleKicker])).update(fs.readFileSync(path.join(root,s.articleImage.slice(1))));}else hash.update(template).update(art);return hash.digest('hex');};
 assert.equal(origin,'https://socialeffectsnj.com','New domains need a separately approved connection/canonical migration.');
 const ids=new Set(),routes=new Set(),keys=new Set();
 for(const item of catalog.items){
@@ -35,13 +37,14 @@ assert.deepEqual(new Set(catalog.items.filter(s=>s.kind==='case-study').map(s=>s
 assert.deepEqual(new Set(catalog.items.filter(s=>s.kind==='news').map(s=>s.sourceId)),new Set(reports.map(r=>r.id)),'Every report needs a sharing record');
 assert.deepEqual(new Set(catalog.items.filter(s=>s.kind==='section').map(s=>s.shareKey)),new Set(['essay','case-studies','filmanthropy-and-ai','happening-now','stories-from-the-field','submit-your-story','note-on-the-ledger']),'Every Ledger section needs a sharing record');
 async function renderImages(){
- const http=require('node:http'),{chromium}=require('playwright'),artwork=require('./share-card-template.cjs');
- const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://localhost');if(u.pathname==='/projector-heart.jpg'){res.writeHead(200,{'Content-Type':'image/jpeg'}).end(art);return;}const item=catalog.items.find(s=>u.pathname==='/'+s.id);if(!item){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':'text/html'}).end(artwork(item));});
+ const http=require('node:http'),{chromium}=require('playwright'),artwork=require('./share-card-template.cjs'),filmstrip=require('./deep-dive-card-template.cjs');
+ const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://localhost');if(u.pathname==='/projector-heart.jpg'){res.writeHead(200,{'Content-Type':'image/jpeg'}).end(art);return;}const image=catalog.items.find(s=>isFilmstrip(s)&&s.articleImage===u.pathname);if(image){res.writeHead(200,{'Content-Type':image.articleImage.endsWith('.png')?'image/png':'image/jpeg'}).end(fs.readFileSync(path.join(root,image.articleImage.slice(1))));return;}const item=catalog.items.find(s=>u.pathname==='/'+s.id);if(!item){res.writeHead(404).end();return;}res.writeHead(200,{'Content-Type':'text/html'}).end(isFilmstrip(item)?filmstrip(item):artwork(item));});
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch({channel:process.env.LEDGER_BROWSER||'chrome',headless:true});
  try{const page=await browser.newPage({viewport:{width:1200,height:630},deviceScaleFactor:1});for(const item of catalog.items){
   // Approved images are reused exactly until a visible card input changes.
   if(item.imageInputHash===fingerprint(item)&&item.image&&fs.existsSync(path.join(root,item.image.slice(1))))continue;
   await page.goto('http://127.0.0.1:'+server.address().port+'/'+item.id,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
+  if(isFilmstrip(item))await page.evaluate(()=>{const content=document.querySelector('.content'),title=document.querySelector('.headline'),limit=document.querySelector('.film').getBoundingClientRect().bottom-43;while(content.getBoundingClientRect().bottom>limit&&parseFloat(getComputedStyle(title).fontSize)>45)title.style.fontSize=(parseFloat(getComputedStyle(title).fontSize)-1)+'px';if(content.getBoundingClientRect().bottom>limit)throw Error('Filmstrip text exceeds safe frame');if(!document.querySelector('.photo').naturalWidth)throw Error('Article image did not load');});
   const fit=await page.evaluate(()=>({bottom:document.querySelector('.content').getBoundingClientRect().bottom,footer:document.querySelector('.footer').getBoundingClientRect().top,width:document.documentElement.scrollWidth}));
   assert.ok(fit.bottom+15<fit.footer&&fit.width===1200,item.id+': headline must fit the card');
   const image=await page.screenshot({type:'png'});item.image='/assets/share/'+item.id+'-'+sha(image).slice(0,10)+'.png';item.imageInputHash=fingerprint(item);fs.writeFileSync(path.join(root,item.image.slice(1)),image);
