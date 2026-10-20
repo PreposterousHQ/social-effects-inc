@@ -9,6 +9,7 @@
 - The Giants Who Did It First is the second Substack reading link. The original human/civic AI note remains a local reading destination.
 - Homepage publication card adds a short Deeper Dives link. No fourth participation card, duplicated essay body or automatic feed was introduced.
 - The approved Ledger subscriber-chat section remains intact. This page does not attempt to iframe the restricted chat.
+- The Deeper Dives collection and individual essay introductions use the same full-screen hero height as the other main pages: the stable viewport minus the 84px fixed header. Text stays vertically centered, with natural expansion on short screens so it is never clipped. The existing theater imagery and copy remain unchanged.
 - The new AI pillar essay is a separate private creative draft for review. It has not been published, emailed or placed in this public repository. Add its public article URL and approved short summary here after publication, rather than inventing a destination.
 - Bret authorized publishing this page with “More articles coming soon” and article-specific sharing on 19 October 2026. The first release used the established black-and-gold template. He subsequently selected filmstrip concept B: a straight filmstrip, larger article image, article title first and the short summary headline beneath it. This design applies to individual Deeper Dives, preserving Beyond AI's separate menu/offering and the existing collection/company/Ledger cards.
 

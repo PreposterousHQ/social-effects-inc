@@ -1,5 +1,6 @@
 .company-revamp { background: var(--film); }
-.dives-hero { padding: clamp(4rem,7vw,6rem) 1.5rem; color: var(--paper); background: linear-gradient(90deg,#11130ff2,#11130fb3),url('theater-hero.png') center 46%/cover; border-bottom: 1px solid #b1a06166; }
+.dives-hero { min-height: calc(100svh - 84px); display: flex; align-items: center; padding: clamp(4rem,7vw,6rem) 1.5rem; color: var(--paper); background: linear-gradient(90deg,#11130ff2,#11130fb3),url('theater-hero.png') center 46%/cover; border-bottom: 1px solid #b1a06166; }
+.dives-hero .rev-inner { width: min(1180px,100%); }
 .dives-hero .eyebrow { color: var(--gold-light); }
 .dives-hero h1 { font: 700 clamp(2.9rem,5.5vw,5rem)/1.1 var(--serif); letter-spacing: -.025em; }
 .dives-hero h1 em { color: var(--gold-light); }
