@@ -724,6 +724,30 @@
       "articleKicker": "BEYOND AI · PEOPLE · POSSIBILITIES",
       "image": "/assets/share/deep-dive-the-irreplaceable-art-of-being-human-ab7c473076.png",
       "imageInputHash": "fd98b982c53c49b2a8ee8323a90a1fada65769f950dac0543a2272178c4408e5"
+    },
+    {
+      "id": "deep-dive-when-ai-can-make-the-movie-why-make",
+      "kind": "deep-dive",
+      "section": "Deeper Dives",
+      "context": "Deeper Dives · Beyond AI",
+      "headline": "A Larger Purpose for Making Films",
+      "caption": "When AI Can Make the Movie, Why Make One Together?",
+      "description": "If AI can create compelling films, why gather people to make one together? The experience itself has value: shared attention, learning, trust and changes in the people taking part, even when a film is not a hit.",
+      "metadataTitle": "When AI Can Make the Movie, Why Make One Together? | Social Effects NJ · Deeper Dives",
+      "footerLabel": "Deeper Dives",
+      "footerUrl": "socialeffectsnj.com/deeper-dives.html",
+      "source": "data/deeper-dives.json#when-ai-can-make-the-movie-why-make",
+      "sourceId": "when-ai-can-make-the-movie-why-make",
+      "route": "/deeper-dives/when-ai-can-make-the-movie-why-make/",
+      "shareKey": null,
+      "cardDesign": "filmstrip-b",
+      "articleImage": "/assets/deeper-dives/when-ai-can-make-the-movie-why-make.png",
+      "articleImageAlt": "Artistic Intelligence: three filmmakers working with a camera and a miniature, under a luminous filmstrip",
+      "articleImagePosition": "center",
+      "articleImageFit": "contain",
+      "articleKicker": "BEYOND AI · EXPERIENCE · CIVIC LIFE",
+      "image": "/assets/share/deep-dive-when-ai-can-make-the-movie-why-make-781e56ea14.png",
+      "imageInputHash": "138915311ea3a340a91fe59a74b6f8055739c7a974bf34f001b5433cdb770448"
     }
   ]
 }

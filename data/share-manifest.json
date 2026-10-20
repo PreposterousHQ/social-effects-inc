@@ -572,6 +572,19 @@
       "width": 1200,
       "height": 630,
       "source": "data/deeper-dives.json#the-irreplaceable-art-of-being-human"
+    },
+    {
+      "id": "deep-dive-when-ai-can-make-the-movie-why-make",
+      "kind": "deep-dive",
+      "shareKey": null,
+      "url": "https://socialeffectsnj.com/deeper-dives/when-ai-can-make-the-movie-why-make/",
+      "title": "When AI Can Make the Movie, Why Make One Together? | Social Effects NJ · Deeper Dives",
+      "description": "If AI can create compelling films, why gather people to make one together? The experience itself has value: shared attention, learning, trust and changes in the people taking part, even when a film is not a hit.",
+      "image": "https://socialeffectsnj.com/assets/share/deep-dive-when-ai-can-make-the-movie-why-make-781e56ea14.png",
+      "imageAlt": "A Larger Purpose for Making Films · When AI Can Make the Movie, Why Make One Together? · Deeper Dives · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/deeper-dives.json#when-ai-can-make-the-movie-why-make"
     }
   ]
 }
