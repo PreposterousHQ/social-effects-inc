@@ -9,6 +9,7 @@ Public repository and GitHub Pages deployment source for [socialeffectsnj.com](h
 | Route | Purpose |
 | --- | --- |
 | / | Social Effects NJ company homepage |
+| /schedule/ | Redirect to Bret's one-hour Calendly booking link |
 | /our-practice.html, /contact.html, /team.html and linked pages | Company practice, services, booking and people |
 | /ledger/ | The Filmanthropy Ledger |
 | /new/ and its former HTML pages | Query/hash-preserving bridges to the launched company pages |
