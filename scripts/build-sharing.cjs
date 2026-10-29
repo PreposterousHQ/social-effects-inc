@@ -56,7 +56,8 @@ async function renderImages(){
 const isCompany=s=>['company','company-page'].includes(s.kind);
 const isCompanyBrand=s=>isCompany(s)||s.kind==='deep-dive';
 const title=s=>s.metadataTitle||s.headline+' | '+(isCompanyBrand(s)?'Social Effects NJ':'The Filmanthropy Ledger');
-const url=s=>origin+s.route;
+const destination=s=>s.kind==='case-study'?'/ledger/#'+s.sourceId:s.route;
+const url=s=>origin+destination(s);
 const fileFor=s=>isCompany(s)?s.source.split('#')[0]:s.kind==='publication'?'ledger/index.html':s.route.slice(1)+'index.html';
 const imageAlt=s=>[...new Set([s.headline,...(s.kind==='deep-dive'?[s.caption]:[]),s.section,'Social Effects NJ'])].join(' · ');
 const fullMeta=s=>({title:title(s),description:s.description,url:url(s),image:origin+s.image,alt:imageAlt(s),type:['case-study','news','deep-dive'].includes(s.kind)?'article':'website',site:isCompanyBrand(s)?'Social Effects NJ':'The Filmanthropy Ledger · Social Effects NJ'});
@@ -79,6 +80,11 @@ function shares(s){
  return '<section class="article-share" aria-labelledby="share-title"><h2 id="share-title">Share this '+(s.kind==='news'?'report':s.kind==='case-study'?'entry':'page')+'</h2><div class="share-links">'+links.map(([name,href])=>'<a href="'+esc(href)+'" target="_blank" rel="noopener noreferrer" aria-label="Share via '+name+'">'+name+'</a>').join('')+'<button type="button" data-copy-share="'+esc(url(s))+'">Copy link</button></div><p class="share-feedback" role="status" aria-live="polite"></p><noscript><p>Link: <a href="'+esc(url(s))+'">'+esc(url(s))+'</a></p></noscript></section>';
 }
 function article(s){
+ if(s.kind==='case-study'){
+  const target=destination(s);
+  // Keep per-entry preview metadata while readers open the original Ledger design.
+  return patchMeta('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title></title><meta http-equiv="refresh" content="0;url='+esc(target)+'"></head><body><script>window.location.replace('+JSON.stringify(target)+');</script><p><a href="'+esc(target)+'">Open '+esc(entries[s.sourceId].name)+' in The Filmanthropy Ledger</a></p></body></html>\n',fullMeta(s));
+ }
  let heading,editorial,meta,content,sectionHref,sectionLabel;
  if(s.kind==='case-study'){
   const e=entries[s.sourceId];heading=e.name;editorial=e.editorial;meta=e.meta;sectionHref='/ledger/case-studies/';sectionLabel='All case studies';
@@ -89,7 +95,7 @@ function article(s){
  }else if(s.kind==='news'){
   const r=reports.find(r=>r.id===s.sourceId);heading=s.headline;editorial=r.production;meta=r.place+' · '+r.date+' · '+r.who;sectionHref='/ledger/happening-now/';sectionLabel='All reports';
   content='<p class="report-summary">'+esc(r.summary)+'</p><div class="report-status"><p><strong>'+esc(r.verification.label)+'</strong>'+(r.followUp?' · '+esc(r.followUp):'')+'</p></div><h2>Source'+(r.sources.length>1?'s':'')+'</h2><ul class="source-list">'+r.sources.map(source=>'<li><a href="'+safeUrl(source.url)+'" target="_blank" rel="noopener noreferrer">'+esc(source.outlet)+'</a> · '+esc(source.date)+'</li>').join('')+'</ul>';
-  if(r.related){const target=catalog.items.find(s=>s.shareKey===r.related.anchor);assert.ok(target,'Related report case exists');content+='<p><a href="'+esc(target.route)+'">'+esc(r.related.label)+'</a></p>';}
+  if(r.related){const target=catalog.items.find(s=>s.shareKey===r.related.anchor);assert.ok(target,'Related report case exists');content+='<p><a href="'+esc(destination(target))+'">'+esc(r.related.label)+'</a></p>';}
  }else{
   heading=s.headline;editorial=s.caption;meta='The Filmanthropy Ledger · Social Effects NJ';sectionHref='/ledger/#'+s.shareKey;sectionLabel='Read in the Ledger';
   content=sectionContent(s,{ledger,entries,reports,catalog:catalog.items,esc,chapters});
@@ -118,10 +124,10 @@ async function main(){
  modify('ledger/index.html',h=>{const tag='<script src="/assets/share-routes.js?v='+sha(routeJS).slice(0,12)+'" data-share-routes></script>';if(/<script\b[^>]*data-share-routes[^>]*><\/script>/.test(h))h=h.replace(/<script\b[^>]*data-share-routes[^>]*><\/script>/,tag);else h=h.replace('<script>window.LEDGER_V2 = true;</script>',tag+'\n<script>window.LEDGER_V2 = true;</script>');return h.replace(/\/assets\/story-intake\.css(?:\?v=[^"']+)?/,'/assets/story-intake.css?v='+sha(read('assets/story-intake.css')).slice(0,12)).replace(/\/assets\/ledger-v2\.js\?v=[^"']+/,'/assets/ledger-v2.js?v='+sha(read('assets/ledger-v2.js')).slice(0,12)).replace(/\/assets\/ledger-v2\.css\?v=[^"']+/,'/assets/ledger-v2.css?v='+sha(read('assets/ledger-v2.css')).slice(0,12)).replaceAll(encodeURIComponent(origin+'/ledger#essay'),encodeURIComponent(origin+'/ledger/essay/'));});
  for(const card of catalog.items.filter(s=>s.kind==='case-study')){
   const aliases=['entry-'+card.sourceId+'.html',...(card.sourceId==='fbr'?['eva/index.html']:card.sourceId==='skater-girl'?['vinati/index.html']:[])];
-  for(const f of aliases)modify(f,h=>patchMeta(h,fullMeta(card)).replaceAll('/ledger/#'+card.sourceId,card.route).replaceAll('/ledger#'+card.sourceId,card.route));
+  for(const f of aliases)modify(f,h=>patchMeta(h,fullMeta(card)).replaceAll(card.route,destination(card)).replaceAll('/ledger#'+card.sourceId,destination(card)));
  }
  const manifest=catalog.items.map(s=>({id:s.id,kind:s.kind,shareKey:s.shareKey,url:url(s),title:title(s),description:s.description,image:origin+s.image,imageAlt:imageAlt(s),width:1200,height:630,source:s.source}));planned.set('data/share-manifest.json',JSON.stringify({version:1,items:manifest},null,2)+'\n');
- let sitemap=read('sitemap.xml');for(const s of catalog.items.filter(s=>['case-study','news','section','deep-dive'].includes(s.kind)))if(!sitemap.includes('<loc>'+url(s)+'</loc>'))sitemap=sitemap.replace('</urlset>','  <url><loc>'+url(s)+'</loc></url>\n</urlset>');planned.set('sitemap.xml',sitemap);
+ let sitemap=read('sitemap.xml').replace(/\s*<url><loc>https:\/\/socialeffectsnj\.com\/ledger\/case-studies\/[^<]+<\/loc><\/url>/g,'');for(const s of catalog.items.filter(s=>['news','section','deep-dive'].includes(s.kind)))if(!sitemap.includes('<loc>'+url(s)+'</loc>'))sitemap=sitemap.replace('</urlset>','  <url><loc>'+url(s)+'</loc></url>\n</urlset>');planned.set('sitemap.xml',sitemap);
  const changed=[];for(const[f,text]of planned){const p=path.join(root,f);if(!fs.existsSync(p)||normalize(fs.readFileSync(p,'utf8'))!==normalize(text)){changed.push(f);if(!process.argv.includes('--check')){fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,text);}}}
  if(process.argv.includes('--check')&&changed.length)throw Error('Generated sharing output is stale: '+changed.join(', '));
  console.log(catalog.items.length+' sharing cards, '+catalog.items.filter(s=>['case-study','news','section','deep-dive'].includes(s.kind)).length+' generated reader pages; '+changed.length+' file(s) '+(process.argv.includes('--check')?'would change.':'updated.'));

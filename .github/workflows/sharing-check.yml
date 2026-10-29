@@ -16,4 +16,6 @@ jobs:
         with:
           node-version: '22'
       - name: Check approved images, records, metadata and generated pages
-        run: node scripts/build-sharing.cjs --check
+        run: |
+          node scripts/build-sharing.cjs --check
+          node tests/original-case-routing.cjs
