@@ -26,7 +26,7 @@ function sectionContent(s,{ledger,entries,reports,catalog,esc,chapters}){
   let content;
   if(s.shareKey==='case-studies'){
     const order=Object.keys(entries).sort((a,b)=>ledger.indexOf('data-entry="'+a+'"')-ledger.indexOf('data-entry="'+b+'"'));
-    content='<p>Sixteen entries and counting, from over 100 years right through the pioneers of sustainability and modern Filmanthropy and beyond.</p><ol class="story-index">'+order.map(id=>{const e=entries[id],card=catalog.find(s=>s.kind==='case-study'&&s.sourceId===id);return '<li><span class="index-label">'+esc(e.bLabel)+'</span><h2><a href="'+esc(destination(card))+'">'+esc(e.name)+'</a></h2><p class="index-caption">'+esc(e.editorial)+'</p><p>'+esc(card.description)+'</p><a class="index-read" href="'+esc(destination(card))+'">Read full entry →</a></li>';}).join('')+'</ol>';
+    content='<p>Sixteen entries spanning a century of giving: mutual aid, shared proceeds, production reuse and lasting benefits for communities.</p><ol class="story-index">'+order.map(id=>{const e=entries[id],card=catalog.find(s=>s.kind==='case-study'&&s.sourceId===id);return '<li><span class="index-label">'+esc(e.bLabel)+'</span><h2><a href="'+esc(destination(card))+'">'+esc(e.name)+'</a></h2><p class="index-caption">'+esc(e.editorial)+'</p><p>'+esc(card.description)+'</p><a class="index-read" href="'+esc(destination(card))+'">Read full entry →</a></li>';}).join('')+'</ol>';
   }else if(s.shareKey==='happening-now'){
     let intro=element(ledger,'class','live-feed-inner');
     intro=withoutElement(intro,'id','happening-feed');
