@@ -585,6 +585,71 @@
       "width": 1200,
       "height": 630,
       "source": "data/deeper-dives.json#when-ai-can-make-the-movie-why-make"
+    },
+    {
+      "id": "news-art-pantry-14c",
+      "kind": "news",
+      "shareKey": "now-art-pantry-14c",
+      "url": "https://socialeffectsnj.com/ledger/news/art-pantry-14c/",
+      "title": "Art Pantry 14C: Sets become art | The Filmanthropy Ledger",
+      "description": "A film set can keep making things possible after the cameras leave.",
+      "image": "https://socialeffectsnj.com/assets/share/news-art-pantry-14c-ea9d7c658d.png",
+      "imageAlt": "Art Pantry 14C: Sets become art · Happening Now · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/happening-now.json#art-pantry-14c"
+    },
+    {
+      "id": "news-mothers-love-slum2school",
+      "kind": "news",
+      "shareKey": "now-mothers-love-slum2school",
+      "url": "https://socialeffectsnj.com/ledger/news/mothers-love-slum2school/",
+      "title": "Mother’s Love reports an education gift | The Filmanthropy Ledger",
+      "description": "Omotola Jalade-Ekeinde reports that the producers’ entire ₦22,276,558 share of the film’s Nigerian cinema run was transferred to Slum2School Africa on July 7, 2026, to support children’s education.",
+      "image": "https://socialeffectsnj.com/assets/share/news-mothers-love-slum2school-5c86b345af.png",
+      "imageAlt": "Mother’s Love reports an education gift · Happening Now · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/happening-now.json#mothers-love-slum2school"
+    },
+    {
+      "id": "news-venice-days",
+      "kind": "news",
+      "shareKey": "now-venice-days",
+      "url": "https://socialeffectsnj.com/ledger/news/venice-days/",
+      "title": "Venice Days pledges its profits | The Filmanthropy Ledger",
+      "description": "An independent feature about a widowed father in recovery is pairing its story with a promise to its own community.",
+      "image": "https://socialeffectsnj.com/assets/share/news-venice-days-4a46086738.png",
+      "imageAlt": "Venice Days pledges its profits · Happening Now · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/happening-now.json#venice-days"
+    },
+    {
+      "id": "news-granite-rapids-moon",
+      "kind": "news",
+      "shareKey": "now-granite-rapids-moon",
+      "url": "https://socialeffectsnj.com/ledger/news/granite-rapids-moon/",
+      "title": "Granite Rapids Moon gives through screenings | The Filmanthropy Ledger",
+      "description": "A film’s route to audiences can become part of its giving.",
+      "image": "https://socialeffectsnj.com/assets/share/news-granite-rapids-moon-43e86f9650.png",
+      "imageAlt": "Granite Rapids Moon gives through screenings · Happening Now · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/happening-now.json#granite-rapids-moon"
+    },
+    {
+      "id": "news-independent-film-sustainability-handbook",
+      "kind": "news",
+      "shareKey": "now-independent-film-sustainability-handbook",
+      "url": "https://socialeffectsnj.com/ledger/news/independent-film-sustainability-handbook/",
+      "title": "Planning for what a film leaves behind | The Filmanthropy Ledger",
+      "description": "Giving through production needs time, people and a budget.",
+      "image": "https://socialeffectsnj.com/assets/share/news-independent-film-sustainability-handbook-489ae4ffbd.png",
+      "imageAlt": "Planning for what a film leaves behind · Happening Now · Social Effects NJ",
+      "width": 1200,
+      "height": 630,
+      "source": "data/happening-now.json#independent-film-sustainability-handbook"
     }
   ]
 }

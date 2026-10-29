@@ -748,6 +748,76 @@
       "articleKicker": "BEYOND AI · EXPERIENCE · CIVIC LIFE",
       "image": "/assets/share/deep-dive-when-ai-can-make-the-movie-why-make-781e56ea14.png",
       "imageInputHash": "138915311ea3a340a91fe59a74b6f8055739c7a974bf34f001b5433cdb770448"
+    },
+    {
+      "id": "news-art-pantry-14c",
+      "kind": "news",
+      "section": "Happening Now",
+      "headline": "Art Pantry 14C: Sets become art",
+      "caption": "Jersey City · Free materials for local artists",
+      "description": "A film set can keep making things possible after the cameras leave.",
+      "source": "data/happening-now.json#art-pantry-14c",
+      "sourceId": "art-pantry-14c",
+      "route": "/ledger/news/art-pantry-14c/",
+      "shareKey": "now-art-pantry-14c",
+      "imageInputHash": "4113f981832581a263f3856c80f0fbcb736eb73b3b65e02b471687b387f64c4d",
+      "image": "/assets/share/news-art-pantry-14c-ea9d7c658d.png"
+    },
+    {
+      "id": "news-mothers-love-slum2school",
+      "kind": "news",
+      "section": "Happening Now",
+      "headline": "Mother’s Love reports an education gift",
+      "caption": "Nigeria · Producers report ₦22.28m for Slum2School",
+      "description": "Omotola Jalade-Ekeinde reports that the producers’ entire ₦22,276,558 share of the film’s Nigerian cinema run was transferred to Slum2School Africa on July 7, 2026, to support children’s education.",
+      "source": "data/happening-now.json#mothers-love-slum2school",
+      "sourceId": "mothers-love-slum2school",
+      "route": "/ledger/news/mothers-love-slum2school/",
+      "shareKey": "now-mothers-love-slum2school",
+      "imageInputHash": "4ca448cf1711ef4c229c9657afdf868405c366715cd1d527f6a7a04dfabb899e",
+      "image": "/assets/share/news-mothers-love-slum2school-5c86b345af.png"
+    },
+    {
+      "id": "news-venice-days",
+      "kind": "news",
+      "section": "Happening Now",
+      "headline": "Venice Days pledges its profits",
+      "caption": "Los Angeles · A film about recovery gives back",
+      "description": "An independent feature about a widowed father in recovery is pairing its story with a promise to its own community.",
+      "source": "data/happening-now.json#venice-days",
+      "sourceId": "venice-days",
+      "route": "/ledger/news/venice-days/",
+      "shareKey": "now-venice-days",
+      "imageInputHash": "0b9f18dabbc30eebe20ec2ded2f52d196ad07b72ab0583c5f7aaa6874fd548d9",
+      "image": "/assets/share/news-venice-days-4a46086738.png"
+    },
+    {
+      "id": "news-granite-rapids-moon",
+      "kind": "news",
+      "section": "Happening Now",
+      "headline": "Granite Rapids Moon gives through screenings",
+      "caption": "New York · A benefit for local environmental work",
+      "description": "A film’s route to audiences can become part of its giving.",
+      "source": "data/happening-now.json#granite-rapids-moon",
+      "sourceId": "granite-rapids-moon",
+      "route": "/ledger/news/granite-rapids-moon/",
+      "shareKey": "now-granite-rapids-moon",
+      "imageInputHash": "e7f1c5824ef3353a2e45de519f0d1eaa529cbd2ca88468ccc68c75bdbd8cf699",
+      "image": "/assets/share/news-granite-rapids-moon-43e86f9650.png"
+    },
+    {
+      "id": "news-independent-film-sustainability-handbook",
+      "kind": "news",
+      "section": "Happening Now",
+      "headline": "Planning for what a film leaves behind",
+      "caption": "UK · A handbook, funding and people to do the work",
+      "description": "Giving through production needs time, people and a budget.",
+      "source": "data/happening-now.json#independent-film-sustainability-handbook",
+      "sourceId": "independent-film-sustainability-handbook",
+      "route": "/ledger/news/independent-film-sustainability-handbook/",
+      "shareKey": "now-independent-film-sustainability-handbook",
+      "imageInputHash": "8983bec87e4ad1ca69b930d413a81959bb18e6aa10b2181198fd6c6a4b7a233c",
+      "image": "/assets/share/news-independent-film-sustainability-handbook-489ae4ffbd.png"
     }
   ]
 }

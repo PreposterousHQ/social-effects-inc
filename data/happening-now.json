@@ -1,7 +1,117 @@
 {
-  "updated": "2026-10-15",
-  "prototype": true,
+  "updated": "2026-10-29",
+  "prototype": false,
   "items": [
+    {
+      "id": "art-pantry-14c",
+      "date": "2026-10-29",
+      "place": "JERSEY CITY, NEW JERSEY, USA",
+      "production": "Art Pantry 14C",
+      "who": "ARTS 14C · Film and television productions · Local artists",
+      "summary": "A film set can keep making things possible after the cameras leave. ARTS 14C says its free materials program, launched in February 2026, has redistributed the equivalent of eight tractor-trailer loads to more than 600 artists. Donations come from productions as well as businesses and individuals. In one example, walls from a Netflix dormitory set became a haunted-house installation, then scenery for The Magic Flute. The connection is practical: what a production no longer needs becomes something another artist can afford to make.",
+      "tag": "Creative reuse → Community arts",
+      "verification": {
+        "label": "Organization-reported · 2 primary pages",
+        "sources": 2
+      },
+      "sources": [
+        {
+          "outlet": "ARTS 14C · Art Pantry",
+          "date": "Undated · reviewed Oct. 29, 2026",
+          "url": "https://arts14c.org/art-pantry/"
+        },
+        {
+          "outlet": "ARTS 14C · Film Production",
+          "date": "Undated · reviewed Oct. 29, 2026",
+          "url": "https://arts14c.org/film-and-production/"
+        }
+      ],
+      "followUp": "Program launched February 2026 · entry dated by Ledger review; totals are reported by ARTS 14C"
+    },
+    {
+      "id": "mothers-love-slum2school",
+      "date": "2026-08-12",
+      "place": "NIGERIA",
+      "production": "Mother’s Love",
+      "who": "RedHot Concepts · Omotola Jalade-Ekeinde · Slum2School Africa",
+      "summary": "Omotola Jalade-Ekeinde reports that the producers’ entire ₦22,276,558 share of the film’s Nigerian cinema run was transferred to Slum2School Africa on July 7, 2026, to support children’s education. That is the amount remaining for the producers after cinema, distribution and other deductions from a reported gross of more than ₦103 million. The distinction matters: the commitment concerns the producers’ receipts from that theatrical run. It is a reported fulfillment of a giving pledge, with the next chapter belonging to the children and communities the funds are meant to serve.",
+      "tag": "Second road: Proceeds → Education",
+      "verification": {
+        "label": "Reported transfer · filmmaker’s account",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "Premium Times · Filmmaker’s financial disclosure",
+          "date": "Aug. 12, 2026",
+          "url": "https://www.premiumtimesng.com/entertainment/nollywood/902295-omotola-reveals-earning-n22-2m-from-n103m-grossing-mothers-love.html"
+        }
+      ],
+      "followUp": "Transfer reported by the filmmaker · seek recipient confirmation and an update on how the funds were used"
+    },
+    {
+      "id": "venice-days",
+      "date": "2026-10-29",
+      "place": "LOS ANGELES, CALIFORNIA, USA",
+      "production": "Venice Days",
+      "who": "Dir. Bradley Stryker · Producer Caitlin Stryker · Los Angeles filmmakers",
+      "summary": "An independent feature about a widowed father in recovery is pairing its story with a promise to its own community. The filmmakers pledge all profits to Los Angeles organizations working on recovery, housing insecurity and rebuilding after the fires, naming Safe Place for Youth, One Voice and St. Joseph Center. Its completed Seed&Spark campaign raised $51,205 for post-production. This is a project to follow through distribution: the giving model is declared, while the eventual profits and payments to the named organizations remain to be documented.",
+      "tag": "Second road: Profits pledged → Community recovery",
+      "verification": {
+        "label": "Pledge · production’s campaign",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "Seed&Spark · Venice Days campaign",
+          "date": "Undated · reviewed Oct. 29, 2026",
+          "url": "https://seedandspark.com/fund/venice-days"
+        }
+      ],
+      "followUp": "Entry dated by Ledger review · follow release, profit calculation and payments; crowdfunding supported the film’s completion"
+    },
+    {
+      "id": "granite-rapids-moon",
+      "date": "2026-09-17",
+      "place": "MANLIUS, NEW YORK, USA",
+      "production": "Granite Rapids Moon",
+      "who": "The filmmakers · Manlius Cinema · Onondaga Environmental Institute",
+      "summary": "A film’s route to audiences can become part of its giving. Onondaga Environmental Institute announced that a portion of box-office receipts from the September 26 screening at Manlius Cinema would support its environmental work. The family drama was filmed in the Grand Canyon with National Park Service permission and oversight, using equipment the cast and crew could carry. Here, the local screening creates a relationship between the film, its audience and an organization caring for the environment. The announced benefit still needs an outcome: how much reached OEI, and what it helped make possible.",
+      "tag": "Screening receipts → Local environmental work",
+      "verification": {
+        "label": "Benefit announced · recipient source",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "Onondaga Environmental Institute",
+          "date": "Sept. 17, 2026",
+          "url": "https://www.oei2.org/granite-rapids-moon-fundraiser-for-oei/"
+        }
+      ],
+      "followUp": "September screening has passed · confirm the amount received and its use"
+    },
+    {
+      "id": "independent-film-sustainability-handbook",
+      "date": "2026-06-15",
+      "place": "UNITED KINGDOM",
+      "production": "The Independent Film Sustainability Handbook",
+      "who": "BFI · BBC Film · Film4 · Picture Zero",
+      "summary": "Giving through production needs time, people and a budget. The BFI, BBC Film and Film4 launched a free handbook developed with Picture Zero, drawing on independent-film pilots that included reused scenery and donations of usable materials at wrap. On A Town in Nova Scotia, surplus materials went to a Liverpool homelessness charity. The BFI also announced up to £6,000 per film for sustainability consultants and a requirement for future BFI Filmmaking Fund fiction features to budget for a Sustainability Assistant. For the Ledger, the possibility is structural: community benefit can become a planned responsibility within the making of a film.",
+      "tag": "Production planning → Reuse and community benefit",
+      "verification": {
+        "label": "Announced policy · funder source",
+        "sources": 1
+      },
+      "sources": [
+        {
+          "outlet": "BFI · Handbook and funding announcement",
+          "date": "June 15, 2026",
+          "url": "https://www.bfi.org.uk/news/independent-film-sustainability-handbook"
+        }
+      ],
+      "followUp": "Follow implementation · identify recipient organizations and lasting outcomes from the supported productions"
+    },
     {
       "id": "clean-hands-brookes-house",
       "date": "2026-10-14",
