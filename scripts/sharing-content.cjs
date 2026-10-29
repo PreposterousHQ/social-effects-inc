@@ -14,6 +14,7 @@ function withoutElement(html,attribute,value){
   const open=html.lastIndexOf('<',at),end=html.indexOf('>',at+body.length)+1;
   return html.slice(0,open)+html.slice(end);
 }
+const destination=s=>s.kind==='case-study'?'/ledger/#'+s.sourceId:s.route;
 const stripTags=s=>s.replace(/<[^>]*>/g,'').trim();
 function inline(html){
   // Canonical entry records contain a few deliberate emphasis/link tags and entities.
@@ -25,11 +26,11 @@ function sectionContent(s,{ledger,entries,reports,catalog,esc,chapters}){
   let content;
   if(s.shareKey==='case-studies'){
     const order=Object.keys(entries).sort((a,b)=>ledger.indexOf('data-entry="'+a+'"')-ledger.indexOf('data-entry="'+b+'"'));
-    content='<p>Sixteen entries and counting, from over 100 years right through the pioneers of sustainability and modern Filmanthropy and beyond.</p><ol class="story-index">'+order.map(id=>{const e=entries[id],card=catalog.find(s=>s.kind==='case-study'&&s.sourceId===id);return '<li><span class="index-label">'+esc(e.bLabel)+'</span><h2><a href="'+esc(card.route)+'">'+esc(e.name)+'</a></h2><p class="index-caption">'+esc(e.editorial)+'</p><p>'+esc(card.description)+'</p><a class="index-read" href="'+esc(card.route)+'">Read full entry →</a></li>';}).join('')+'</ol>';
+    content='<p>Sixteen entries and counting, from over 100 years right through the pioneers of sustainability and modern Filmanthropy and beyond.</p><ol class="story-index">'+order.map(id=>{const e=entries[id],card=catalog.find(s=>s.kind==='case-study'&&s.sourceId===id);return '<li><span class="index-label">'+esc(e.bLabel)+'</span><h2><a href="'+esc(destination(card))+'">'+esc(e.name)+'</a></h2><p class="index-caption">'+esc(e.editorial)+'</p><p>'+esc(card.description)+'</p><a class="index-read" href="'+esc(destination(card))+'">Read full entry →</a></li>';}).join('')+'</ol>';
   }else if(s.shareKey==='happening-now'){
     let intro=element(ledger,'class','live-feed-inner');
     intro=withoutElement(intro,'id','happening-feed');
-    content=intro+'<div class="news-index">'+reports.map(r=>{const card=catalog.find(s=>s.kind==='news'&&s.sourceId===r.id);return '<section><span class="index-label">'+esc(r.place)+' · '+esc(r.date)+'</span><h2><a href="'+esc(card.route)+'">'+esc(r.production)+'</a></h2><p>'+esc(r.summary)+'</p><p class="report-status">'+esc(r.verification.label)+(r.followUp?' · '+esc(r.followUp):'')+'</p><a class="index-read" href="'+esc(card.route)+'">Read report and sources →</a></section>';}).join('')+'</div>';
+    content=intro+'<div class="news-index">'+reports.map(r=>{const card=catalog.find(s=>s.kind==='news'&&s.sourceId===r.id);return '<section><span class="index-label">'+esc(r.place)+' · '+esc(r.date)+'</span><h2><a href="'+esc(destination(card))+'">'+esc(r.production)+'</a></h2><p>'+esc(r.summary)+'</p><p class="report-status">'+esc(r.verification.label)+(r.followUp?' · '+esc(r.followUp):'')+'</p><a class="index-read" href="'+esc(destination(card))+'">Read report and sources →</a></section>';}).join('')+'</div>';
   }else if(s.shareKey==='essay'){
     let summary=element(ledger,'class','inshort-band');
     summary=withoutElement(summary,'class','inshort-band-footer');
@@ -51,7 +52,7 @@ function sectionContent(s,{ledger,entries,reports,catalog,esc,chapters}){
     if(localIds.has(key))return tag;
     key=aliases[key]??key;
     const card=catalog.find(s=>s.shareKey===key);
-    if(card)return 'href="'+esc(card.route)+'"';
+    if(card)return 'href="'+esc(destination(card))+'"';
     if(Object.values(chapters).some(c=>c.id===key))return 'href="/ledger/essay/#'+key+'"';
     throw Error('Unresolved source anchor: '+key);
   });
