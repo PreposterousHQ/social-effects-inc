@@ -586,7 +586,9 @@
 
   function loadFeed() {
     if (!feedPromise) {
-      feedPromise = fetch('/data/happening-now.json')
+      var feedScript = document.querySelector('[data-share-routes]');
+      var feedVersion = feedScript && feedScript.getAttribute('data-feed-version');
+      feedPromise = fetch('/data/happening-now.json' + (feedVersion ? '?v=' + encodeURIComponent(feedVersion) : ''))
         .then(function (response) {
           if (!response.ok) throw new Error('Feed unavailable');
           return response.json();
