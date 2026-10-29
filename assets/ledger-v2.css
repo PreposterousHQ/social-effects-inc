@@ -1146,6 +1146,32 @@
     padding: 1rem 1rem 2rem;
   }
 
+  .ledger-v2 #ledger-expanded .exp-name-row {
+    min-width: 0;
+  }
+
+  .ledger-v2 #ledger-expanded .exp-share-cluster {
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 0;
+    gap: 8px;
+  }
+
+  .ledger-v2 #ledger-expanded .exp-share-label {
+    flex-basis: 100%;
+  }
+
+  .ledger-v2 #ledger-expanded .exp-share-btn {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+
+  .ledger-v2 #ledger-expanded .exp-share-divider {
+    display: none;
+  }
+
   .ledger-v2 #ledger-expanded .exp-header,
   .ledger-v2 #ledger-expanded .exp-narrative,
   .ledger-v2 #ledger-expanded .exp-verdict,
