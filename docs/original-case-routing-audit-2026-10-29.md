@@ -27,3 +27,16 @@ Original editorial records, Ledger JavaScript/CSS, company page bodies, approved
 ## Limits
 
 This is a source and desktop-rendering audit, not a full independent factual verification of every claim or a live external-link availability crawl. Mobile viewports, protected deck access, external booking/form submissions, keyboard-only flows across every page and social-platform cache behavior were not exercised. No forms were submitted. Existing browser automation tests were updated for the restored routing but not run in this environment; direct preview checks used the supported browser instead.
+
+## Follow-up: live mobile and external workflow tests
+
+- At 390 × 844 CSS pixels, all 13 company pages and eight Ledger views had no horizontal document overflow or completed broken images. This is responsive Chrome testing, not a physical iPhone/Android test.
+- At 320 × 740, all 16 case redirects opened the correct original entry. However, every entry's share row extended to about 325px inside its 320px panel. The copy control was partly clipped, and the share controls measured 28 × 28px. Recommended fix: allow the row to wrap and increase phone touch targets without changing the original visual language. This defect is still open.
+- Company mobile navigation opened correctly; Escape closed the menu and restored focus to its trigger.
+- Confirmed return-navigation defect: after a direct Skater Girl landing and Next/Previous, Back to entries returned to the company homepage in the tested history sequence. The existing history.back() behavior is still open; it should reliably target the case index.
+- The embedded Tally form loaded at narrow widths, dynamically resized, showed its upload control and 10 MB limit, and rejected missing required answers with visible errors. Its separate-window form loaded too.
+- Sent exactly one text-only synthetic entry from the 390px embedded form, labeled TEST—DO NOT PUBLISH, using codex-audit@example.com and selecting contact-before-publication. The form showed its thank-you page. Tally's API confirmed completed record KprP8EK at 2026-10-29 19:08:03 UTC (3:08:03 PM EDT), with the expected text and permission choice. The corresponding Tally notification reached Bret's bret@bretwarshawsky.com inbox. The test record and notification are retained and clearly identified as tests. No media was uploaded.
+- /schedule/ correctly opened the one-hour-call Calendly URL. The actual event is named 55 Minute Exploration and lasts 55 minutes; October 30 showed selectable time slots. No appointment was booked. The company contact page links to the separate 20-minute event; its rendering could not be verified reliably after a browser timeout.
+- Temporary viewport overrides were reset. No site source or form configuration was changed during these follow-up tests.
+
+The follow-up supersedes the earlier limitations about mobile, text submission and notification delivery. Media-upload delivery, a physical-device/browser matrix, a completed Calendly booking, and social preview caches remain untested. Prioritize the narrow share row and deterministic Back to entries behavior, then editorial consistency.
