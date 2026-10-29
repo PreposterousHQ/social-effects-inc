@@ -40,3 +40,16 @@ This is a source and desktop-rendering audit, not a full independent factual ver
 - Temporary viewport overrides were reset. No site source or form configuration was changed during these follow-up tests.
 
 The follow-up supersedes the earlier limitations about mobile, text submission and notification delivery. Media-upload delivery, a physical-device/browser matrix, a completed Calendly booking, and social preview caches remain untested. Prioritize the narrow share row and deterministic Back to entries behavior, then editorial consistency.
+
+## Resolution: mobile, navigation, copy and booking fixes
+
+Implemented at Bret's request after the follow-up audit:
+
+- Phone share controls wrap within the original case-study panel and provide 44 × 44px touch targets. Preview checks at 320px covered all 16 entries with no panel overflow; 390px and 768px entry layouts also fit. Desktop styling is preserved.
+- Back to entries and Escape now deterministically replace the entry hash with #case-studies. Preview verified direct landing → Next → Previous → return, plus the card-open path and focus restoration. A focused production-control regression covers direct, marked and unrelated history states and now runs in CI.
+- Corrected the homepage Skater Girl summary to state that the free community skatepark was built before filming. Fixed punctuation in the money/quotation sentence, split the construction run-on sentence, and added the missing comma in the national-championship sentence. No quotations or substantive case claims changed.
+- Latest-report failures now show a visitor-facing refresh/retry message. The entry-data script is content-versioned, matching the existing CSS/JS cache-busting scheme.
+- Calendly's connected account confirmed that the 20-minute event is inactive and the 55-minute event is active. All company booking copy now states 55 minutes, and the contact-page booking button uses the active one-hour-call URL. /schedule keeps that same working destination and now labels its fallback accurately. Account settings and availability were not changed. The contact-page social preview image and metadata were refreshed with the matching duration; generated article menus were rebuilt.
+- Generator freshness, original-route regression, navigation regression, JavaScript syntax and diff checks passed. Existing browser test expectations were updated for the authorized copy and booking changes; direct supported-browser QA supplied the rendered checks.
+
+This resolution supersedes the open status of the narrow share-row and return-navigation findings. Direct #entry URLs may still receive the generic Ledger social preview because social crawlers do not distinguish URL fragments. The old entry paths retain individual metadata and redirect to the originals. Media-upload delivery and physical-device/browser coverage remain verification limits, rather than known defects.

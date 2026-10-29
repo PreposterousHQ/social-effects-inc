@@ -336,12 +336,11 @@
   };
 
   window.closeExpanded = function () {
-    if (history.state && history.state.ledgerEntry) {
-      history.back();
-    } else {
-      history.replaceState(null, '', '#case-studies');
-      routeHash(false);
-    }
+    // This control promises the case list, even after a direct entry landing.
+    // Previous/next replaces the current history item, so history.back() can
+    // otherwise leave the Ledger entirely.
+    history.replaceState(null, '', '#case-studies');
+    routeHash(false);
   };
 
   function moveEntry(direction) {
@@ -595,7 +594,7 @@
         .then(renderFeed)
         .catch(function () {
           var feed = document.getElementById('happening-feed');
-          feed.replaceChildren(makeElement('p', 'feed-error', 'The prototype feed could not be loaded. Please try again from a web server.'));
+          feed.replaceChildren(makeElement('p', 'feed-error', 'The latest reports could not be loaded. Please refresh the page or try again shortly.'));
           document.getElementById('hub-happening-teasers').textContent = 'Feed unavailable';
         });
     }

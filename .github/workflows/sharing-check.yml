@@ -19,3 +19,4 @@ jobs:
         run: |
           node scripts/build-sharing.cjs --check
           node tests/original-case-routing.cjs
+          node tests/ledger-entry-navigation.cjs
