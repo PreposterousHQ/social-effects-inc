@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {initial,apply,totals,validateWorkspace} from '../src/domain.ts';
+import {initial,apply,totals,validateWorkspace,upgradeScenario} from '../src/domain.ts';
 const command=(w,type,extra={})=>apply(w,{type,version:w.production?.version,...extra},'2026-10-30T12:00:00Z',crypto.randomUUID());
 function ready(){let w=initial('demo');for(const type of ['deadline','interest','storage','collection','delivery','fuel'])w=command(w,type);return w;}
 test('sample scenario and personal network are separated',()=>{assert.equal(initial('demo').organizations.length,5);assert.equal(initial('network').organizations.length,0);assert.equal(initial('network').production,null);});
@@ -13,3 +13,25 @@ test('invalid inputs do not mutate original state',()=>{const w=ready();for(cons
 test('organization conversation creates canonical contact and zero fee membership',()=>{const w=command(initial('network'),'organization',{record:{name:'Test Organization',roles:'Nonprofit · Storage',place:'NJ',needs:'Chairs',gifts:'Van',notes:'Introduction pending',source:'Conversation',contactName:'Test Person',contactRole:'Coordinator',channel:'Phone'}});assert.equal(w.organizations.length,1);assert.equal(w.contacts[0].organizationId,w.organizations[0].id);assert.equal(w.memberships[0].fee,0);assert.equal(w.events.length,1);});
 test('questions persist as simulation records with provenance',()=>{const w=command(initial('demo'),'question',{note:'Could delivery be after 10?'});assert.match(w.messages[0].text,/after 10/);assert.equal(w.events[0].detail,'Could delivery be after 10?');});
 test('malformed snapshots are rejected instead of silently reset',()=>{assert.throws(()=>validateWorkspace({schema:999},'demo'));const w=ready();w.production.allocations=[{quantity:4,received:0}];assert.throws(()=>validateWorkspace(w,'demo'),/invalid/);});
+
+test('scenario upgrade preserves edited notes, contacts and rehearsal progress',()=>{
+ const w=ready();delete w.scenarioVersion;
+ w.ideas[0].version=2;w.ideas[0].description='My workshop notes';
+ w.ideas[1].description='Old seeded discovery text';
+ const upgraded=upgradeScenario(w);
+ assert.equal(upgraded.ideas[0].description,'My workshop notes');
+ assert.match(upgraded.ideas[1].description,/fixed requirements/);
+ assert.deepEqual(upgraded.production,w.production);
+ assert.deepEqual(upgraded.contacts,w.contacts);
+ assert.deepEqual(upgraded.events,w.events);
+ assert.deepEqual(upgradeScenario(upgraded),upgraded);
+ assert.equal(w.ideas[1].description,'Old seeded discovery text');
+ assert.equal(upgradeScenario(initial('network')).production,null);
+});
+test('untouched old rehearsal enters coordination without erasing records',()=>{
+ const w=initial('demo');delete w.scenarioVersion;w.production.stage='Discovery';
+ const updated=upgradeScenario(w);
+ assert.equal(updated.production.stage,'Liaison');
+ assert.equal(updated.scenarioVersion,2);
+ assert.equal(updated.organizations.length,w.organizations.length);
+});
