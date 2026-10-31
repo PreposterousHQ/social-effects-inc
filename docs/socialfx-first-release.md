@@ -15,3 +15,11 @@ The simulation now opens on a numbered Start here path. The prepared Unbreakable
 Expandable briefs cover land, homes, whole sets, a barn, surplus food/goods, and gifted time. They are discussion material, not interactive asset-management workflows. The couch exercise remains the interactive demonstration. AI and voice remain simulated/not connected. Browser-only storage remains unchanged.
 
 Existing snapshots receive refreshed untouched seed notes and an initial Liaison stage; edited notes and exercise history remain intact. Scenario versioning makes this upgrade idempotent. Twelve domain tests, TypeScript, build, sharing freshness and existing routing/navigation checks pass.
+
+## Mixed set release — 30 October 2026 (New York)
+
+The interactive rehearsal now covers 10 couches, 5 boxes of clothes, 3 cars, one assorted-equipment lot and one miscellaneous lot from the Unbreakable Spirit set. The two lots have unspecified contents rather than invented item counts. Each group has independent dates, interest, logistics, allocation and receipt records, plus a prominent reset button. Resetting a group restores its example logistics and leaves other groups and organizational records intact. The existing full-demo reset remains available separately.
+
+Vehicle parking/transport is matched separately from furniture and other items. Transport cost is discussed in the role-play and sponsor-covered; the earlier fixed $60 couch assumption is removed. Reports include every item group. Older active three-couch runs are archived in JSON backups as the expanded exercise opens; edited notes and organization records are preserved.
+
+Validation: 16 tests cover quantities, partial allocations, per-group completion/reset/replay, serialized state, matching, stale writes and migration archives. Typecheck, build and existing sharing/routing/navigation checks pass.

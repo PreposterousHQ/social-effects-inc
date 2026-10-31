@@ -6,14 +6,14 @@ export interface Base {id:string;version:number;updated:string}
 export interface Organization extends Base {name:string;roles:string;place:string;needs:string;gifts:string;notes:string;source:string}
 export interface Contact extends Base {organizationId:string;name:string;role:string;channel:string}
 export interface Membership extends Base {organizationId:string;status:'Invited'|'Participating'|'Paused';plan:string;fee:number}
-export interface Resource extends Base {organizationId:string;name:string;category:'Storage'|'Transport'|'Skills'|'Space'|'Equipment';capacity:number;unit:string;from:string;until:string;status:'Tentative'|'Available'|'Unavailable';conditions:string}
+export interface Resource extends Base {organizationId:string;name:string;category:'Storage'|'Transport'|'Skills'|'Space'|'Equipment';capacity:number;unit:string;from:string;until:string;status:'Tentative'|'Available'|'Unavailable';conditions:string;releaseItemId?:string}
 export interface Idea extends Base {lens:Lens;title:string;description:string;status:'Exploring'|'Needs discussion'|'Ready to rehearse'}
 export interface Allocation {id:string;organizationId:string;quantity:number;received:number;version:number}
 export interface Event {id:string;time:string;type:string;detail:string;recordId:string}
-export interface Message {id:string;time:string;to:string;text:string}
-export interface Production extends Base {stage:'Discovery'|'Design'|'Liaison'|'Story';deadline:string;early:boolean;interest:boolean;storage:boolean;collection:boolean;delivery:boolean;total:number;allocations:Allocation[];fuelCovered:boolean}
-export interface Workspace {schema:1;scenarioVersion?:2;mode:Mode;revision:number;organizations:Organization[];contacts:Contact[];memberships:Membership[];resources:Resource[];ideas:Idea[];production:Production|null;events:Event[];messages:Message[]}
-export type Command={type:string;id?:string;version?:number;record?:any;quantity?:number;value?:any;note?:string};
+export interface Message {itemId?:string;id:string;time:string;to:string;text:string}
+export interface Production extends Base {label?:string;unit?:string;detail?:string;items?:Production[];stage:'Discovery'|'Design'|'Liaison'|'Story';deadline:string;early:boolean;interest:boolean;storage:boolean;collection:boolean;delivery:boolean;total:number;allocations:Allocation[];fuelCovered:boolean}
+export interface Workspace {schema:1;scenarioVersion?:2|3;archivedRehearsals?:{production:Production;events:Event[];messages:Message[]}[];mode:Mode;revision:number;organizations:Organization[];contacts:Contact[];memberships:Membership[];resources:Resource[];ideas:Idea[];production:Production|null;events:Event[];messages:Message[]}
+export type Command={type:string;itemId?:string;id?:string;version?:number;record?:any;quantity?:number;value?:any;note?:string};
 const base=(id:string):Base=>({id,version:1,updated:'2026-10-30T12:00:00Z'});
 export function initial(mode:Mode):Workspace{
  const w:Workspace={schema:1,mode,revision:0,organizations:[],contacts:[],memberships:[],resources:[],ideas:[],production:null,events:[],messages:[]};
@@ -22,17 +22,29 @@ export function initial(mode:Mode):Workspace{
  ['film','Example Film Company','Production','Monmouth County','A useful, feasible community plan','Furniture, production skills, access and attention'],
  ['college','Example Community College','Education · Recipient','Monmouth County','Student experience and opportunities','Students, teaching expertise, local introductions'],
  ['warehouse','Example Community Warehouse','Nonprofit · Storage · Transport','Central New Jersey','Advance notice, item details and clear schedules','Temporary storage and a van, subject to approval'],
- ['community','Example Community Organization','Nonprofit · Recipient','Monmouth County','Three suitable couches for a community room','Receiving team and community relationships'],
+ ['community','Example Community Organization','Nonprofit · Recipient','Monmouth County','Useful furnishings, clothing, equipment and transport for community programs','Receiving team and community relationships'],
  ['farm','Example Equine Therapy Farm','Nonprofit · Location','New Jersey','Explore a useful lasting structure','Location knowledge and equine expertise']
  ].map(([id,name,roles,place,needs,gifts])=>({...base(id),name,roles,place,needs,gifts,notes:'Fictional rehearsal organization. No real partnership is implied.',source:'Synthetic workshop scenario'}));
  w.contacts=[{...base('contact'),organizationId:'warehouse',name:'Example operations coordinator',role:'Operations',channel:'Conversation · fictional contact'}];
  w.memberships=w.organizations.map(o=>({...base('membership-'+o.id),organizationId:o.id,status:'Invited',plan:'Founding pilot · gift basis',fee:0}));
- w.resources=[{...base('storage'),organizationId:'warehouse',name:'Short-term furniture storage',category:'Storage',capacity:3,unit:'couches',from:'2026-12-07',until:'2026-12-10',status:'Tentative',conditions:'Exercise dates. Space, dimensions, access and unloading need confirmation.'},{...base('van'),organizationId:'warehouse',name:'Community van and driver',category:'Transport',capacity:3,unit:'couches per trip',from:'2026-12-07',until:'2026-12-10',status:'Tentative',conditions:'Exercise dates. Vehicle suitability, driver, loading and both trips need confirmation.'}];
- w.scenarioVersion=2;
+ w.resources=releaseResources();
+ w.scenarioVersion=3;
  w.ideas=scenarioIdeas.map(([lens,title,description],i)=>({...base('idea-'+i),lens:lens as Lens,title,description,status:'Ready to rehearse'}));
- w.production={...base('unbreakable-spirit'),stage:'Liaison',deadline:'2026-12-10',early:false,interest:false,storage:false,collection:false,delivery:false,total:3,allocations:[],fuelCovered:false};
+ w.production=freshRelease();
  return w;
 }
+export const releaseSpecs=[
+ {id:'unbreakable-spirit',label:'Couches',unit:'couches',total:10,detail:'Ten couches from the Unbreakable Spirit set. Check dimensions, condition, loading and how many trips the vehicle needs.',storage:'Furniture storage for 10 couches',transport:'Furniture truck, driver and scheduled trips'},
+ {id:'clothes',label:'Boxes of clothes',unit:'boxes of clothes',total:5,detail:'Five boxes of clothing from the set. Review sizes, condition and contents with the receiving organization.',storage:'Dry clothing storage',transport:'Clothing van and driver'},
+ {id:'equipment',label:'Various equipment',unit:'equipment lots',total:1,detail:'One exercise lot of assorted equipment; individual contents and counts are still to be listed. Confirm condition, safe use and which items are owned and available to gift.',storage:'Secure equipment storage',transport:'Equipment transport and handling team'},
+ {id:'cars',label:'Cars',unit:'cars',total:3,detail:'Three cars used by the production. Confirm ownership and transfer documents, vehicle condition and a suitable driver or vehicle transporter.',storage:'Secure vehicle parking',transport:'Vehicle transporter and operator'},
+ {id:'misc',label:'Miscellaneous items',unit:'miscellaneous lots',total:1,detail:'One exercise lot of miscellaneous set items; contents and individual counts are still to be listed. Sort and match them with recipients before arranging transport.',storage:'Mixed-item storage',transport:'Mixed-item transport and loading team'}
+] as const;
+function freshItem(spec:typeof releaseSpecs[number]):Production{return {...base(spec.id),label:spec.label,unit:spec.unit,detail:spec.detail,stage:'Liaison',deadline:'2026-12-10',early:false,interest:false,storage:false,collection:false,delivery:false,total:spec.total,allocations:[],fuelCovered:false};}
+function freshRelease(){const [first,...rest]=releaseSpecs.map(freshItem);return {...first,items:rest};}
+export function releaseItems(p:Production|null):Production[]{return p?[p,...p.items||[]]:[];}
+export function itemUnit(p:Production){return p.unit||'couches';}
+function releaseResources():Resource[]{return releaseSpecs.flatMap((spec,i)=>['Storage','Transport'].map((category,j)=>({...base(i===0?(j===0?'storage':'van'):spec.id+'-'+category.toLowerCase()),organizationId:'warehouse',name:j===0?spec.storage:spec.transport,category:category as Resource['category'],capacity:spec.total,unit:spec.unit,releaseItemId:spec.id,from:'2026-12-07',until:'2026-12-10',status:'Tentative' as const,conditions:spec.detail+' Exercise capacity covers the full scheduled window, including any agreed multiple trips.'})));}
 export function totals(p:Production){const reserved=p.allocations.reduce((n,a)=>n+a.quantity,0),received=p.allocations.reduce((n,a)=>n+a.received,0);return {reserved,received,remaining:p.total-reserved};}
 function requireText(value:unknown,label:string,max=6000){if(typeof value!=='string'||!value.trim()||value.length>max)throw Error(label+' is required and must fit the field.');return value.trim();}
 function text(value:unknown,max=6000){if(typeof value!=='string'||value.length>max)throw Error('Use text within the field limit.');return value.trim();}
@@ -52,11 +64,12 @@ export function apply(input:Workspace,cmd:Command,time=new Date().toISOString(),
   event.detail=fields.name;
  }else if(cmd.type==='resource'){
   const r=cmd.record;if(!w.organizations.some(o=>o.id===r.organizationId))throw Error('Choose an organization in this workspace.');
-  const fields={organizationId:r.organizationId,name:requireText(r.name,'Resource name',200),category:option(r.category,['Storage','Transport','Skills','Space','Equipment']),capacity:whole(r.capacity),unit:requireText(r.unit,'Capacity unit',100),from:date(r.from),until:date(r.until),status:option(r.status,['Tentative','Available','Unavailable']),conditions:text(r.conditions)};
+  const fields={organizationId:r.organizationId,name:requireText(r.name,'Resource name',200),category:option(r.category,['Storage','Transport','Skills','Space','Equipment']),capacity:whole(r.capacity),unit:requireText(r.unit,'Capacity unit',100),from:date(r.from),until:date(r.until),status:option(r.status,['Tentative','Available','Unavailable']),conditions:text(r.conditions),releaseItemId:option(r.releaseItemId||'unbreakable-spirit',releaseSpecs.map(s=>s.id))};
   if(fields.until<fields.from)throw Error('Availability must end on or after its start date.');
+  const affectedGroups=new Set([fields.releaseItemId,w.resources.find(r=>r.id===cmd.id)?.releaseItemId||'unbreakable-spirit']);
   if(cmd.id){const row=current(w.resources,cmd.id,cmd.version);Object.assign(row,fields);stamp(row);}else w.resources.push({id:uid,version:1,updated:time,...fields});
   // Resource changes invalidate rehearsal commitments before allocation.
-  if(w.production&&w.production.allocations.length===0){w.production.storage=false;w.production.collection=false;w.production.delivery=false;stamp(w.production);}
+  for(const item of releaseItems(w.production)){if(affectedGroups.has(item.id as typeof releaseSpecs[number]['id'])&&item.allocations.length===0){item.storage=false;item.collection=false;item.delivery=false;stamp(item);}}
   event.type='Availability recorded';event.detail=fields.name+' · '+fields.status+' · '+fields.from+' through '+fields.until;
  }else if(cmd.type==='membership'){
   const r=current(w.memberships,cmd.id,cmd.version);r.status=option(cmd.value,['Invited','Participating','Paused']);stamp(r);event.type='Pilot participation updated';event.detail=w.organizations.find(o=>o.id===r.organizationId)!.name+' · '+r.status;
@@ -64,42 +77,51 @@ export function apply(input:Workspace,cmd:Command,time=new Date().toISOString(),
   if(w.mode!=='demo')throw Error('The production Canvas belongs to the rehearsal.');const r=cmd.record;const fields={lens:option(r.lens,lenses),title:requireText(r.title,'Idea title',200),description:text(r.description),status:option(r.status,['Exploring','Needs discussion','Ready to rehearse'])};
   if(cmd.id){const row=current(w.ideas,cmd.id,cmd.version);Object.assign(row,fields);stamp(row);}else w.ideas.push({id:uid,version:1,updated:time,...fields});event.type='Design idea shaped';event.detail=fields.title;
  }else{
-  const p=w.production;if(!p||w.mode!=='demo')throw Error('Open the simulation to use this rehearsal action.');if(p.version!==cmd.version)throw Error('The rehearsal changed. Review the latest plan before continuing.');event.recordId=p.id;const t=totals(p);
-  if(cmd.type==='stage'){p.stage=option(cmd.value,['Discovery','Design','Liaison','Story']);event.type='Stage selected';event.detail=p.stage;}
+  const p=releaseItems(w.production).find(x=>x.id===(cmd.itemId||'unbreakable-spirit'));if(!p||w.mode!=='demo')throw Error('Open the simulation to use this rehearsal action.');if(p.version!==cmd.version)throw Error('The rehearsal changed. Review the latest plan before continuing.');event.recordId=p.id;const t=totals(p);
+  if(cmd.type==='restart'){
+   const spec=releaseSpecs.find(x=>x.id===p.id)!;const version=p.version;const items=p.items;Object.assign(p,freshItem(spec),{version,items});
+   const defaults=releaseResources().filter(r=>r.releaseItemId===p.id);for(const fresh of defaults){const old=w.resources.find(r=>r.id===fresh.id);if(old)Object.assign(old,fresh,{version:old.version+1,updated:time});else w.resources.push(fresh);}
+   w.messages=w.messages.filter(m=>(m.itemId||'unbreakable-spirit')!==p.id);event.type='Item rehearsal reset';event.detail=p.label+' restarted with original quantities, dates and example logistics. Previous events remain in the history.';
+  }else if(cmd.type==='stage'){p.stage=option(cmd.value,['Discovery','Design','Liaison','Story']);event.type='Stage selected';event.detail=p.stage;}
   else if(cmd.type==='deadline'){
    if(p.early)throw Error('The earlier collection deadline is already applied.');if(t.reserved)throw Error('Keep the confirmed record. Reset the rehearsal to try another timeline.');p.deadline='2026-12-07';p.early=true;p.storage=false;p.collection=false;p.delivery=false;p.stage='Liaison';event.type='Collection deadline changed';event.detail='December 10 → December 7. Logistics need reconfirmation.';w.messages.push({id:uid,time,to:'Caseworker',text:'Producer update received. Check storage December 7–10, collection December 7 and onward delivery December 10. Availability is a lead, not a booking.'});
-  }else if(cmd.type==='interest'){p.interest=true;event.type='Recipient interest recorded';event.detail='Example Community Organization could use up to three couches. Interest is not allocation.';w.messages.push({id:uid,time,to:'Caseworker',text:event.detail});}
+  }else if(cmd.type==='interest'){p.interest=true;event.type='Recipient interest recorded';event.detail='Example Community Organization could use up to '+p.total+' '+itemUnit(p)+'. Interest is not allocation.';w.messages.push({id:uid,time,to:'Caseworker',text:event.detail});}
   else if(cmd.type==='question'){event.type='Participant question recorded';event.detail=requireText(cmd.note,'Question',1500);w.messages.push({id:uid,time,to:'Caseworker',text:'Recipient question: '+event.detail});}
   else if(['storage','collection','delivery'].includes(cmd.type)){
    if(t.reserved)throw Error('This plan is committed. Start a new rehearsal to explore another arrangement.');
    const key=cmd.type as 'storage'|'collection'|'delivery';if(p[key])throw Error('That confirmation is already recorded.');
-   const candidate=w.resources.find(r=>r.category===(key==='storage'?'Storage':'Transport')&&r.status!=='Unavailable'&&r.from<=p.deadline&&r.until>='2026-12-10'&&r.capacity>=p.total);
+   const candidate=w.resources.find(r=>(r.releaseItemId||'unbreakable-spirit')===p.id&&r.category===(key==='storage'?'Storage':'Transport')&&r.status!=='Unavailable'&&r.from<=p.deadline&&r.until>='2026-12-10'&&r.capacity>=p.total);
    if(!candidate)throw Error('No recorded resource covers this exercise window and capacity. Update availability first.');
    p[key]=true;event.type='Simulated '+key+' confirmation';event.detail=candidate.name+' · role-play agreement only';w.messages.push({id:uid,time,to:key==='storage'?'Warehouse partner':'Transport partner',text:event.type+' recorded. Driver, access and handling details assumed checked in the role-play.'});
-  }else if(cmd.type==='fuel'){p.fuelCovered=true;event.type='Fuel support confirmed in simulation';event.detail='$60 exercise cost covered by an example sponsor; recipient charge $0.';}
+  }else if(cmd.type==='fuel'){p.fuelCovered=true;event.type='Fuel support confirmed in simulation';event.detail='An example sponsor covers the agreed transport and handling costs for '+p.label+'; amount to be confirmed in the role-play. Recipient charge $0.';}
   else if(cmd.type==='allocate'){
    const q=whole(cmd.quantity);if(!p.interest)throw Error('Record recipient interest first.');if(!p.storage||!p.collection||!p.delivery)throw Error('Confirm storage, collection and onward delivery first.');if(!p.fuelCovered)throw Error('Resolve the simulated fuel cost before committing.');if(q>t.remaining)throw Error('That quantity is no longer available.');
-   p.allocations.push({id:uid,organizationId:'community',quantity:q,received:0,version:1});event.type='Allocation confirmed in simulation';event.detail=q+' couches → Example Community Organization. Owner release authority assumed for exercise.';
+   p.allocations.push({id:uid,organizationId:'community',quantity:q,received:0,version:1});event.type='Allocation confirmed in simulation';event.detail=q+' '+itemUnit(p)+' → Example Community Organization. Owner release authority assumed for exercise.';
   }else if(cmd.type==='receive'){
-   const a=p.allocations.find(a=>a.id===cmd.id);if(!a)throw Error('Choose a confirmed allocation.');const q=whole(cmd.quantity);if(q>a.quantity-a.received)throw Error('Receipt exceeds the outstanding confirmed quantity.');a.received+=q;a.version++;event.type='Simulated receipt acknowledged';event.detail=q+' couches received against allocation '+a.id;if(totals(p).received===p.total)p.stage='Story';
+   const a=p.allocations.find(a=>a.id===cmd.id);if(!a)throw Error('Choose a confirmed allocation.');const q=whole(cmd.quantity);if(q>a.quantity-a.received)throw Error('Receipt exceeds the outstanding confirmed quantity.');a.received+=q;a.version++;event.type='Simulated receipt acknowledged';event.detail=q+' '+itemUnit(p)+' received against allocation '+a.id;if(totals(p).received===p.total)p.stage='Story';
   }else if(cmd.type==='escalate'){event.type='Simulated follow-up';event.detail='Fictional clock advanced: no reply within the agreed window. Caseworker review requested; no real notification sent.';w.messages.push({id:uid,time,to:'Caseworker',text:event.detail});}
-  else throw Error('Unknown action.');stamp(p);
+  else throw Error('Unknown action.');stamp(p);for(const m of w.messages){if(m.id===uid)m.itemId=p.id;}event.detail=(p.label||'Couches')+' · '+event.detail;
  }
  w.events.push(event);w.revision++;return w;
 }
 export function validateWorkspace(value:unknown,mode:Mode):Workspace{
  const w=value as Workspace;if(!w||w.schema!==1||w.mode!==mode||!Number.isSafeInteger(w.revision)||w.revision<0)throw Error('Saved workspace uses an unsupported format.');
  for(const key of ['organizations','contacts','memberships','resources','ideas','events','messages'] as const){if(!Array.isArray(w[key]))throw Error('Saved workspace is incomplete.');}
- if(w.production){const p=w.production;if(!Array.isArray(p.allocations)||!Number.isSafeInteger(p.total)||p.total<1||totals(p).remaining<0||p.allocations.some(a=>a.quantity<1||a.received<0||a.received>a.quantity))throw Error('Saved rehearsal quantities are invalid.');}
+ for(const p of releaseItems(w.production)){if(!Array.isArray(p.allocations)||!Number.isSafeInteger(p.total)||p.total<1||totals(p).remaining<0||p.allocations.some(a=>a.quantity<1||a.received<0||a.received>a.quantity))throw Error('Saved rehearsal quantities are invalid.');}
  return w;
 }
 
 // Upgrade only untouched seed notes. Preserve user edits, records and exercise history.
 export function upgradeScenario(input:Workspace):Workspace{
- if(input.mode!=='demo'||input.scenarioVersion===2)return input;
+ if(input.mode!=='demo'||input.scenarioVersion===3)return input;
  const w=structuredClone(input),fresh=initial('demo');
  for(const idea of w.ideas){const replacement=fresh.ideas.find(x=>x.id===idea.id);if(replacement&&idea.version===1)Object.assign(idea,replacement);}
- if(w.production?.stage==='Discovery'&&w.production.version===1)w.production.stage='Liaison';
- w.scenarioVersion=2;
+ if(w.production){
+  if(w.production.version>1){w.archivedRehearsals=[...w.archivedRehearsals||[],{production:structuredClone(w.production),events:structuredClone(w.events),messages:structuredClone(w.messages)}];}
+  w.events=w.events.filter(e=>e.recordId!==w.production!.id);
+ }
+ w.production=fresh.production;w.messages=[];
+ for(const resource of fresh.resources){const old=w.resources.find(r=>r.id===resource.id);if(!old)w.resources.push(resource);else if(old.version===1)Object.assign(old,resource);}
+ w.scenarioVersion=3;
  return w;
 }
