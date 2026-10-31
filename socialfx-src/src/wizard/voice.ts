@@ -1,6 +1,7 @@
 import {Scribe, AudioFormat, CommitStrategy, RealtimeEvents, type RealtimeConnection} from '@elevenlabs/client';
 export const voiceEndpoint = 'https://storylivingry.studio/api/socialfx/voice';
 export type VoiceState = 'idle' | 'connecting' | 'listening' | 'thinking' | 'speaking';
+type VoiceNavigator = Navigator & {audioSession?: {type:string}};
 type Callbacks = {onState:(state:VoiceState)=>void; onPartial:(text:string)=>void; onTranscript:(text:string)=>void; onError:(message:string)=>void};
 export class VoiceConversation {
   private audio: AudioContext | null = null;
@@ -9,19 +10,35 @@ export class VoiceConversation {
   private input: MediaStreamAudioSourceNode | null = null;
   private capture: AudioWorkletNode | null = null;
   private speaker: AudioBufferSourceNode | null = null;
+  private output: GainNode | null = null;
+  private volume = 1;
+  private previousSessionType: string | null = null;
   private finishSpeech: (()=>void) | null = null;
   private timer: ReturnType<typeof setTimeout> | null = null;
   private active = false;
   private ready = false;
   private state: VoiceState = 'idle';
-  constructor(private callbacks: Callbacks) {}
+  constructor(private callbacks: Callbacks, volume = 1) {this.volume = this.validVolume(volume);}
+  private validVolume(value:number) {return Number.isFinite(value)?Math.max(0,Math.min(1,value)):1;}
+  setVolume(value:number) {
+    this.volume=this.validVolume(value);
+    if(this.output&&this.audio)this.output.gain.setTargetAtTime(this.volume,this.audio.currentTime,0.015);
+  }
   get isActive() {return this.active;}
   private change(state:VoiceState) {this.state=state;this.callbacks.onState(state);}
   async start() {
     this.active=true;
     this.change('connecting');
     try {
+      const session=(navigator as VoiceNavigator).audioSession;
+      if(session){
+        try {this.previousSessionType=session.type;session.type='play-and-record';}
+        catch {this.previousSessionType=null;}
+      }
       this.audio=new AudioContext({sampleRate:24000});
+      this.output=this.audio.createGain();
+      this.output.gain.value=this.volume;
+      this.output.connect(this.audio.destination);
       await this.audio.resume();
       const stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true}});
       if(!this.active){stream.getTracks().forEach(track=>track.stop());return;}
@@ -73,7 +90,7 @@ export class VoiceConversation {
     await new Promise<void>(resolve=>{
       this.finishSpeech=resolve;
       const source=audio.createBufferSource();
-      this.speaker=source;source.buffer=buffer;source.connect(audio.destination);
+      this.speaker=source;source.buffer=buffer;source.connect(this.output!);
       source.onended=()=>{this.speaker=null;this.finishSpeech=null;resolve();};
       source.start();
     });
@@ -91,7 +108,12 @@ export class VoiceConversation {
     if(this.capture){this.capture.port.onmessage=null;this.capture.disconnect();this.capture=null;}
     this.speaker?.stop();this.speaker=null;
     this.finishSpeech?.();this.finishSpeech=null;
+    this.output?.disconnect();this.output=null;
     void this.audio?.close().catch(()=>{});this.audio=null;
+    if(this.previousSessionType!==null){
+      try {const session=(navigator as VoiceNavigator).audioSession;if(session)session.type=this.previousSessionType;}catch{}
+      this.previousSessionType=null;
+    }
     this.change('idle');
   }
 }
