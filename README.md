@@ -9,6 +9,7 @@ Public repository and GitHub Pages deployment source for [socialeffectsnj.com](h
 | Route | Purpose |
 | --- | --- |
 | / | Social Effects NJ company homepage |
+| /socialF(X)/ | Social FX founding pilot workspace and production simulation; browser-only persistence |
 | /schedule/ | Redirect to Bret's one-hour Calendly booking link |
 | /our-practice.html, /contact.html, /team.html and linked pages | Company practice, services, booking and people |
 | /ledger/ | The Filmanthropy Ledger |
