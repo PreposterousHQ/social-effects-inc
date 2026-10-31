@@ -1,6 +1,6 @@
-import { initial, apply, validateWorkspace, type Mode, type Workspace, type Command } from './domain';
+import { initial, apply, validateWorkspace, upgradeScenario, type Mode, type Workspace, type Command } from './domain';
 const prefix='socialfx-pilot-v1:';
-export function read(mode:Mode){const raw=localStorage.getItem(prefix+mode);return raw?validateWorkspace(JSON.parse(raw),mode):initial(mode);}
+export function read(mode:Mode){const raw=localStorage.getItem(prefix+mode);return raw?upgradeScenario(validateWorkspace(JSON.parse(raw),mode)):initial(mode);}
 export async function commit(mode:Mode,command:Command){
  if(!navigator.locks)throw Error('This browser does not support safe editing. Use a current Chrome, Edge, Firefox or Safari browser.');
  return navigator.locks.request(prefix+mode,async()=>{const next=apply(read(mode),command);localStorage.setItem(prefix+mode,JSON.stringify(next));return next;});

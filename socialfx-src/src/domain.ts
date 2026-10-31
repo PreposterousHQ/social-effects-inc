@@ -1,3 +1,4 @@
+import {scenarioIdeas} from './scenario-data.ts';
 export type Mode='demo'|'network';
 export const lenses=['People','Place','Materials','Money and Ownership','Skills and Capacity','Story and Attention','Legacy'] as const;
 export type Lens=typeof lenses[number];
@@ -11,7 +12,7 @@ export interface Allocation {id:string;organizationId:string;quantity:number;rec
 export interface Event {id:string;time:string;type:string;detail:string;recordId:string}
 export interface Message {id:string;time:string;to:string;text:string}
 export interface Production extends Base {stage:'Discovery'|'Design'|'Liaison'|'Story';deadline:string;early:boolean;interest:boolean;storage:boolean;collection:boolean;delivery:boolean;total:number;allocations:Allocation[];fuelCovered:boolean}
-export interface Workspace {schema:1;mode:Mode;revision:number;organizations:Organization[];contacts:Contact[];memberships:Membership[];resources:Resource[];ideas:Idea[];production:Production|null;events:Event[];messages:Message[]}
+export interface Workspace {schema:1;scenarioVersion?:2;mode:Mode;revision:number;organizations:Organization[];contacts:Contact[];memberships:Membership[];resources:Resource[];ideas:Idea[];production:Production|null;events:Event[];messages:Message[]}
 export type Command={type:string;id?:string;version?:number;record?:any;quantity?:number;value?:any;note?:string};
 const base=(id:string):Base=>({id,version:1,updated:'2026-10-30T12:00:00Z'});
 export function initial(mode:Mode):Workspace{
@@ -27,16 +28,9 @@ export function initial(mode:Mode):Workspace{
  w.contacts=[{...base('contact'),organizationId:'warehouse',name:'Example operations coordinator',role:'Operations',channel:'Conversation · fictional contact'}];
  w.memberships=w.organizations.map(o=>({...base('membership-'+o.id),organizationId:o.id,status:'Invited',plan:'Founding pilot · gift basis',fee:0}));
  w.resources=[{...base('storage'),organizationId:'warehouse',name:'Short-term furniture storage',category:'Storage',capacity:3,unit:'couches',from:'2026-12-07',until:'2026-12-10',status:'Tentative',conditions:'Exercise dates. Space, dimensions, access and unloading need confirmation.'},{...base('van'),organizationId:'warehouse',name:'Community van and driver',category:'Transport',capacity:3,unit:'couches per trip',from:'2026-12-07',until:'2026-12-10',status:'Tentative',conditions:'Exercise dates. Vehicle suitability, driver, loading and both trips need confirmation.'}];
- w.ideas=[
- ['People','People behind the production','Explore useful, voluntary ways to support cast, crew and community participants.'],
- ['Place','Two local invitations','Jersey Freeze in Freehold and the community restaurant in Red Bank: learn what the hosts need and explore useful relationships.'],
- ['Materials','Three couches, one shared plan','Match the furniture with a real need, then arrange storage, collection and onward delivery.'],
- ['Money and Ownership','A concert with a purpose','Explore a proposed mental-health reformation concert at MetLife and fundraising through the film. No venue, artists or funding confirmed.'],
- ['Skills and Capacity','Learning alongside the film','Co-design a student talk, mentorship or set experience with an educational partner.'],
- ['Story and Attention','Artivism in Trenton','A winter presentation outside a government office invites engagement with mental-health reform.'],
- ['Legacy','A barn that stays behind','Explore a structure serving both the scene and an equine-therapy host. Need, design, ownership and upkeep must be established together.']
- ].map(([lens,title,description],i)=>({...base('idea-'+i),lens:lens as Lens,title,description,status:'Exploring'}));
- w.production={...base('unbreakable-spirit'),stage:'Discovery',deadline:'2026-12-10',early:false,interest:false,storage:false,collection:false,delivery:false,total:3,allocations:[],fuelCovered:false};
+ w.scenarioVersion=2;
+ w.ideas=scenarioIdeas.map(([lens,title,description],i)=>({...base('idea-'+i),lens:lens as Lens,title,description,status:'Ready to rehearse'}));
+ w.production={...base('unbreakable-spirit'),stage:'Liaison',deadline:'2026-12-10',early:false,interest:false,storage:false,collection:false,delivery:false,total:3,allocations:[],fuelCovered:false};
  return w;
 }
 export function totals(p:Production){const reserved=p.allocations.reduce((n,a)=>n+a.quantity,0),received=p.allocations.reduce((n,a)=>n+a.received,0);return {reserved,received,remaining:p.total-reserved};}
@@ -97,5 +91,15 @@ export function validateWorkspace(value:unknown,mode:Mode):Workspace{
  const w=value as Workspace;if(!w||w.schema!==1||w.mode!==mode||!Number.isSafeInteger(w.revision)||w.revision<0)throw Error('Saved workspace uses an unsupported format.');
  for(const key of ['organizations','contacts','memberships','resources','ideas','events','messages'] as const){if(!Array.isArray(w[key]))throw Error('Saved workspace is incomplete.');}
  if(w.production){const p=w.production;if(!Array.isArray(p.allocations)||!Number.isSafeInteger(p.total)||p.total<1||totals(p).remaining<0||p.allocations.some(a=>a.quantity<1||a.received<0||a.received>a.quantity))throw Error('Saved rehearsal quantities are invalid.');}
+ return w;
+}
+
+// Upgrade only untouched seed notes. Preserve user edits, records and exercise history.
+export function upgradeScenario(input:Workspace):Workspace{
+ if(input.mode!=='demo'||input.scenarioVersion===2)return input;
+ const w=structuredClone(input),fresh=initial('demo');
+ for(const idea of w.ideas){const replacement=fresh.ideas.find(x=>x.id===idea.id);if(replacement&&idea.version===1)Object.assign(idea,replacement);}
+ if(w.production?.stage==='Discovery'&&w.production.version===1)w.production.stage='Liaison';
+ w.scenarioVersion=2;
  return w;
 }
