@@ -1,5 +1,6 @@
 import { initial, apply, validateWorkspace, upgradeScenario, type Mode, type Workspace, type Command } from './domain';
-const prefix='socialfx-pilot-v1:';
+export const inV2Workspace=location.pathname.startsWith('/socialF(X)/v2/');
+const prefix=inV2Workspace?'socialfx-pilot-v2:':'socialfx-pilot-v1:';
 export function read(mode:Mode){const raw=localStorage.getItem(prefix+mode);return raw?upgradeScenario(validateWorkspace(JSON.parse(raw),mode)):initial(mode);}
 export async function commit(mode:Mode,command:Command){
  if(!navigator.locks)throw Error('This browser does not support safe editing. Use a current Chrome, Edge, Firefox or Safari browser.');
