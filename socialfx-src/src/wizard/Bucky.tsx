@@ -2,6 +2,11 @@ import {useEffect,useRef,useState,type FormEvent} from 'react';
 import {VoiceConversation,voiceEndpoint,type VoiceState} from './voice';
 type Source={title:string;url:string;kind?:string};
 type Turn={role:'user'|'assistant';content:string;sources?:Source[]};
+const volumeKey='socialfx-v4:bucky-volume';
+function loadVolume() {
+  try {const saved=localStorage.getItem(volumeKey);const value=Number(saved);if(saved!==null&&Number.isFinite(value)&&value>=0&&value<=1)return value;}catch{}
+  return 1;
+}
 const transcriptKey='socialfx-v4:bucky-transcript:1';
 function loadTranscript():Turn[] {
   try {
@@ -17,6 +22,7 @@ export function Bucky({context}:{context:string}) {
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState('');
   const [typing,setTyping]=useState(false);
+  const [volume,setVolume]=useState(loadVolume);
   const [voiceState,setVoiceState]=useState<VoiceState>('idle');
   const voice=useRef<VoiceConversation|null>(null);
   const generation=useRef(0);
@@ -25,6 +31,7 @@ export function Bucky({context}:{context:string}) {
   const toggle=useRef<HTMLButtonElement>(null);
   const log=useRef<HTMLDivElement>(null);
   const status={idle:'Ready when you are.',connecting:'Connecting your microphone…',listening:'Listening. Your words appear below.',thinking:'Looking into that…',speaking:'Bucky is speaking.'}[voiceState];
+  useEffect(()=>{voice.current?.setVolume(volume);try{localStorage.setItem(volumeKey,String(volume));}catch{}},[volume]);
   useEffect(()=>{try{localStorage.setItem(transcriptKey,JSON.stringify(turns.slice(-40)));}catch{}},[turns]);
   useEffect(()=>{if(log.current)log.current.scrollTop=log.current.scrollHeight;},[turns,busy]);
   function end() {generation.current++;request.current?.abort();request.current=null;voice.current?.stop();voice.current=null;setBusy(false);}
@@ -69,7 +76,7 @@ export function Bucky({context}:{context:string}) {
   answerRef.current=answer;
   function start() {
     end();setTyping(false);setError('');setQuestion('');
-    const session=new VoiceConversation({onState:setVoiceState,onPartial:setQuestion,onTranscript:text=>void answerRef.current(text,true),onError:setError});
+    const session=new VoiceConversation({onState:setVoiceState,onPartial:setQuestion,onTranscript:text=>void answerRef.current(text,true),onError:setError},volume);
     voice.current=session;void session.start();
   }
   function interrupt() {generation.current++;request.current?.abort();setBusy(false);setQuestion('');voice.current?.interrupt();}
@@ -86,6 +93,7 @@ export function Bucky({context}:{context:string}) {
       <header><strong>Bucky · Social FX guide</strong><button aria-label="Close Bucky" onClick={close}>×</button></header>
       <button className="start-voice" onClick={start} disabled={active}>Talk to Bucky</button>
       <p className="voice-status" role="status">{status}</p>
+      <label className="voice-volume" htmlFor="bucky-volume"><span>Bucky volume <output>{Math.round(volume*100)}%</output></span><input id="bucky-volume" type="range" min="0" max="100" step="1" value={Math.round(volume*100)} onChange={event=>setVolume(Number(event.target.value)/100)}/></label>
       {active&&<div className="voice-actions">{(voiceState==='thinking'||voiceState==='speaking')&&<button onClick={interrupt}>Let me speak</button>}<button onClick={end}>End conversation</button></div>}
       <p className="bucky-intro">Allow the microphone, then speak. Bucky replies in the saved One Mind voice. A pause sends your question.</p>
       <label htmlFor="bucky-question">{typing?'Your question':'Your live transcript'}</label>
