@@ -81,7 +81,7 @@ function Bucky({context}:{context:string}) {
       <p className="bucky-intro">Ask about this step, a later one, or a story in the Ledger.</p>
       <div className="chat-log" ref={log} aria-live="polite">{turns.map((turn,index)=><article key={index} className={turn.role}><strong>{turn.role==='user'?'You':'Bucky'}</strong><p>{turn.content}</p>{turn.sources?.length? <details><summary>Sources</summary>{turn.sources.map(source=><a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title}{source.kind?.includes('summary')?' · summary':''} ↗</a>)}</details>:null}</article>)}{busy&&<p>Looking into that…</p>}</div>
       <form onSubmit={ask}><label htmlFor="bucky-question">Your question</label><textarea id="bucky-question" ref={field} value={question} maxLength={2500} placeholder="What happened with Skater Girl?" onChange={event=>setQuestion(event.target.value)}/><button type="submit" disabled={busy||!question.trim()}>{busy?'Thinking…':'Ask Bucky →'}</button></form>
-      {error&&<p className="chat-error" role="alert">{error}</p>}<small>AI conversation via Anthropic. Public site sources and web search. Creative suggestions are identified as ideas.</small>
+      {error&&<p className="chat-error" role="alert">{error}</p>}<small>AI conversation via OpenAI or Anthropic. Public site sources and web search. Creative suggestions are identified as ideas.</small>
     </section>}
   </div>;
 }
