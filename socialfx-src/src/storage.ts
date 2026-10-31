@@ -6,4 +6,4 @@ export async function commit(mode:Mode,command:Command){
  return navigator.locks.request(prefix+mode,async()=>{const next=apply(read(mode),command);localStorage.setItem(prefix+mode,JSON.stringify(next));return next;});
 }
 export async function resetDemo(){if(!navigator.locks)throw Error('A browser with Web Locks is required.');return navigator.locks.request(prefix+'demo',async()=>{const fresh=initial('demo');localStorage.setItem(prefix+'demo',JSON.stringify(fresh));return fresh;});}
-export function rawBackup(mode:Mode){return localStorage.getItem(prefix+mode)||JSON.stringify(initial(mode));}
+export function rawBackup(mode:Mode){try{return JSON.stringify(read(mode));}catch{return localStorage.getItem(prefix+mode)||JSON.stringify(initial(mode));}}
