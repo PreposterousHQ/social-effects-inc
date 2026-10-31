@@ -21,3 +21,18 @@ for(const asset of roomBuild.outputFiles){
 }
 await writeFile(new URL('index.html',roomOut),`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Social FX V2 | The Rehearsal Room</title><link rel="stylesheet" href="./room.css?v=${roomHashes.css}"><script type="module" src="./room.js?v=${roomHashes.js}"></script></head><body><div id="root"></div><noscript>Enable JavaScript to enter the rehearsal room.</noscript></body></html>`);
 await writeFile(new URL('index.html',workspaceOut),html.replace('Social FX | Founding Pilot by Social Effects NJ','Social FX V2 | Full workspace').replace('rel="canonical" href="https://socialeffectsnj.com/socialF(X)/"','rel="canonical" href="https://socialeffectsnj.com/socialF(X)/v2/workspace/"'));
+
+const processOut = new URL('v3/', out);
+await mkdir(processOut, {recursive: true});
+const processBuild = await build({
+  entryPoints: ['src/process/Process.tsx'], bundle: true, minify: true,
+  format: 'esm', target: 'es2022', outdir: processOut.pathname,
+  entryNames: 'process', write: false, legalComments: 'none'
+});
+const processHashes = {};
+for (const asset of processBuild.outputFiles) {
+  const extension = asset.path.split('.').pop();
+  processHashes[extension] = createHash('sha256').update(asset.contents).digest('hex').slice(0, 12);
+  await writeFile(asset.path, asset.contents);
+}
+await writeFile(new URL('index.html', processOut), `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#17232a"><title>Social FX V3 | Discovery, Design, Liaison, Report</title><link rel="stylesheet" href="./process.css?v=${processHashes.css}"><script type="module" src="./process.js?v=${processHashes.js}"></script></head><body><div id="root"></div><noscript>Enable JavaScript to explore the Social FX process.</noscript></body></html>`);
