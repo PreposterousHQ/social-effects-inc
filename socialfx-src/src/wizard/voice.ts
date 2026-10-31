@@ -41,8 +41,8 @@ export class VoiceConversation {
         this.change('thinking');
         this.callbacks.onTranscript(data.text.trim());
       });
-      connection.on(RealtimeEvents.ERROR,()=>this.fail('Live transcription was interrupted. Start the conversation again.'));
-      connection.on(RealtimeEvents.UNACCEPTED_TERMS,()=>this.fail('ElevenLabs requires its Speech to Text terms to be accepted in your account.'));
+      connection.on(RealtimeEvents.ERROR,()=>{if(this.active)this.fail('Live transcription was interrupted. Start the conversation again.');});
+      connection.on(RealtimeEvents.UNACCEPTED_TERMS,()=>{if(this.active)this.fail('ElevenLabs requires its Speech to Text terms to be accepted in your account.');});
       connection.on(RealtimeEvents.CLOSE,()=>{if(this.active)this.fail('The listening connection ended. Start the conversation again.');});
       this.input=this.audio.createMediaStreamSource(stream);
       this.capture=new AudioWorkletNode(this.audio,'socialfx-scribe-capture');
@@ -91,7 +91,7 @@ export class VoiceConversation {
     if(this.capture){this.capture.port.onmessage=null;this.capture.disconnect();this.capture=null;}
     this.speaker?.stop();this.speaker=null;
     this.finishSpeech?.();this.finishSpeech=null;
-    void this.audio?.close();this.audio=null;
+    void this.audio?.close().catch(()=>{});this.audio=null;
     this.change('idle');
   }
 }

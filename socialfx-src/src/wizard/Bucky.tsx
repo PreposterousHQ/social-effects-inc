@@ -28,7 +28,11 @@ export function Bucky({context}:{context:string}) {
   useEffect(()=>{try{localStorage.setItem(transcriptKey,JSON.stringify(turns.slice(-40)));}catch{}},[turns]);
   useEffect(()=>{if(log.current)log.current.scrollTop=log.current.scrollHeight;},[turns,busy]);
   function end() {generation.current++;request.current?.abort();request.current=null;voice.current?.stop();voice.current=null;setBusy(false);}
-  useEffect(()=>()=>{generation.current++;request.current?.abort();voice.current?.stop();},[]);
+  useEffect(()=>{
+    const cleanup=()=>{generation.current++;request.current?.abort();voice.current?.stop();voice.current=null;};
+    window.addEventListener('pagehide',cleanup);
+    return ()=>{window.removeEventListener('pagehide',cleanup);cleanup();};
+  },[]);
   function close() {end();setOpen(false);toggle.current?.focus();}
   async function answer(message:string,spoken:boolean) {
     const attempt=++generation.current;
