@@ -1,8 +1,9 @@
-import {useEffect, useRef, useState, type FormEvent} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {apply, releaseItems, totals, type Command} from '../domain';
 import {freshProcess, nextAction, parseProcess, processReport, type ProcessState} from '../process/model';
 import './wizard.css';
+import {Bucky} from './Bucky';
 
 const steps = [
   {phase:'Discovery', title:'What could the making of your film make possible?', body:'Begin with a conversation. Share what excites you about the ways filmmaking can give to people and places.', next:'Let’s explore'},
@@ -46,45 +47,6 @@ const calls: Record<string,{title:string;body:string;button:string}> = {
   receive:{title:'Have the gifts arrived?',body:'The recipient acknowledges the outstanding delivery in the role-play. Record that receipt.',button:'Acknowledge receipt'},
   complete:{title:'This group has arrived.',body:'The simulated receipt is complete. Let’s look back at the intention and what happened.',button:'Review the outcome'}
 };
-type Source = {title:string;url:string;kind?:string};
-type Turn = {role:'user'|'assistant';content:string;sources?:Source[]};
-function Bucky({context}:{context:string}) {
-  const [open,setOpen] = useState(false);
-  const [turns,setTurns] = useState<Turn[]>([]);
-  const [question,setQuestion] = useState('');
-  const [busy,setBusy] = useState(false);
-  const [error,setError] = useState('');
-  const field = useRef<HTMLTextAreaElement>(null);
-  const toggle = useRef<HTMLButtonElement>(null);
-  const log = useRef<HTMLDivElement>(null);
-  useEffect(() => {if(open) field.current?.focus();}, [open]);
-  useEffect(() => {if(log.current) log.current.scrollTop = log.current.scrollHeight;}, [turns,busy]);
-  function close() {setOpen(false);toggle.current?.focus();}
-  async function ask(event:FormEvent) {
-    event.preventDefault();
-    const message = question.trim();
-    if (!message || busy) return;
-    setBusy(true);setError('');
-    try {
-      const response = await fetch('https://storylivingry.studio/api/socialfx/guide', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,context,history:turns.slice(-8).map(({role,content})=>({role,content}))}),signal:AbortSignal.timeout(55000)});
-      const data = await response.json();
-      if (!response.ok) throw Error(data.error || 'Bucky could not answer right now.');
-      setTurns(current => [...current,{role:'user',content:message},{role:'assistant',content:data.reply,sources:data.sources}]);
-      setQuestion('');
-    } catch (problem) {setError((problem as Error).message);}
-    finally {setBusy(false);}
-  }
-  return <div className="companion">
-    <button className="bucky-toggle" ref={toggle} aria-expanded={open} aria-controls="bucky-panel" onClick={()=>setOpen(!open)}><span className="bucky-figure" aria-hidden="true"/><span>Ask Bucky</span></button>
-    {open && <section id="bucky-panel" className="bucky-panel" aria-label="Ask Bucky" onKeyDown={event=>{if(event.key==='Escape')close();}}>
-      <header><strong>Bucky · Social FX guide</strong><button aria-label="Close Bucky" onClick={close}>×</button></header>
-      <p className="bucky-intro">Ask about this step, a later one, or a story in the Ledger.</p>
-      <div className="chat-log" ref={log} aria-live="polite">{turns.map((turn,index)=><article key={index} className={turn.role}><strong>{turn.role==='user'?'You':'Bucky'}</strong><p>{turn.content}</p>{turn.sources?.length? <details><summary>Sources</summary>{turn.sources.map(source=><a key={source.url} href={source.url} target="_blank" rel="noreferrer">{source.title}{source.kind?.includes('summary')?' · summary':''} ↗</a>)}</details>:null}</article>)}{busy&&<p>Looking into that…</p>}</div>
-      <form onSubmit={ask}><label htmlFor="bucky-question">Your question</label><textarea id="bucky-question" ref={field} value={question} maxLength={2500} placeholder="What happened with Skater Girl?" onChange={event=>setQuestion(event.target.value)}/><button type="submit" disabled={busy||!question.trim()}>{busy?'Thinking…':'Ask Bucky →'}</button></form>
-      {error&&<p className="chat-error" role="alert">{error}</p>}<small>AI conversation via OpenAI or Anthropic. Public site sources and web search. Creative suggestions are identified as ideas.</small>
-    </section>}
-  </div>;
-}
 function Wizard() {
   const [loaded] = useState(load);
   const [run,setRun] = useState(loaded.run);

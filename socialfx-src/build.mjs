@@ -49,3 +49,5 @@ for (const asset of wizardBuild.outputFiles) {
 const {buildKnowledge} = await import('./knowledge.mjs');
 await writeFile(new URL('knowledge.json',wizardOut),JSON.stringify(await buildKnowledge()));
 await writeFile(new URL('index.html',wizardOut),`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Social FX V4 | One step together</title><link rel="stylesheet" href="./wizard.css?v=${wizardHashes.css}"><script type="module" src="./wizard.js?v=${wizardHashes.js}"></script></head><body><div id="root"></div><noscript>Enable JavaScript to begin the guided Social FX practice.</noscript></body></html>`);
+
+await writeFile(new URL('scribe-capture.js',wizardOut),await readFile(new URL('src/wizard/scribe-capture.js',import.meta.url)));
