@@ -7,3 +7,4 @@
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 .budget-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.brief-detail summary{cursor:pointer;font-size:16px;line-height:1.6;font-weight:600}.brief-detail summary small{display:block;font-size:11px;font-weight:400;color:var(--muted);margin-top:5px}.brief-detail p{font-size:13px;line-height:1.9;margin-top:18px}.brief-detail[open] summary{margin-bottom:16px}.production-hero>.secondary{position:relative}.brief-detail summary:focus-visible{outline:2px solid var(--green);outline-offset:5px}@media(max-width:800px){.budget-grid{grid-template-columns:1fr}}
+.production-hero>.secondary{background:var(--paper);color:var(--green);border-color:var(--paper)}
